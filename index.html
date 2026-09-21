@@ -14,21 +14,42 @@
             padding: 0;
             height: 100%;
             width: 100%;
-            overflow: hidden; /* Mengunci scroll luar */
+            overflow: hidden;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background-color: #F8F5EE;
             color: #2D3748;
         }
 
-        /* Transition Transisi Transparan Sidebar & Layout Utama */
+        /* Sidebar Melayang (Overlay) */
         #sidebar {
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            z-index: 50;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-100%); /* Default Tertutup */
         }
 
-        /* Saat Sidebar Ditutup (Collapsed) */
-        #sidebar.collapsed {
-            transform: translateX(-100%);
-            margin-right: -280px; /* Menghilangkan alokasi lebar sidebar dari flex parent */
+        #sidebar.open {
+            transform: translateX(0); /* Terbuka Melayang */
+        }
+
+        /* Overlay Gelap Dibelakang Sidebar saat Terbuka */
+        #sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(2px);
+            z-index: 40;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        #sidebar-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
         }
 
         /* Tombol Kapsul Sidebar */
@@ -64,8 +85,8 @@
 
         /* Card Logo Melingkar */
         .logo-card {
-            width: 105px;
-            height: 105px;
+            width: 100px;
+            height: 100px;
             border-radius: 9999px;
             background-color: #FFFFFF;
             display: flex;
@@ -82,11 +103,11 @@
             transform: translateY(-3px);
         }
 
-        /* Tab / Halaman Slide */
+        /* Slide Page Transition */
         .slide-page {
             display: none;
             opacity: 0;
-            transition: opacity 0.35s ease-in-out;
+            transition: opacity 0.3s ease-in-out;
             height: 100%;
             width: 100%;
         }
@@ -112,15 +133,15 @@
             50% { opacity: 0; }
         }
 
-        /* Container Dalam Jika Perlu Scroll Vertikal Internal saat Layar Pendek */
-        .slide-content-container {
-            max-height: 100vh;
+        /* Container Scroll Halus */
+        .scroll-container {
             overflow-y: auto;
+            max-height: 100vh;
         }
-        .slide-content-container::-webkit-scrollbar {
-            width: 5px;
+        .scroll-container::-webkit-scrollbar {
+            width: 6px;
         }
-        .slide-content-container::-webkit-scrollbar-thumb {
+        .scroll-container::-webkit-scrollbar-thumb {
             background-color: #E2D9C8;
             border-radius: 10px;
         }
@@ -128,242 +149,242 @@
 </head>
 <body class="bg-[#F8F5EE] h-screen w-screen overflow-hidden">
 
-    <!-- Tombol Garis 3 (Toggle Sidebar - Selalu di Pojok Kiri Atas) -->
+    <!-- Tombol Menu Garis 3 (Selalu di Pojok Kiri Atas) -->
     <button id="toggleBtn" onclick="toggleSidebar()" class="fixed top-5 left-5 z-50 bg-[#FFFDFA] border border-[#EFE8DC] text-[#2D3748] hover:bg-[#2D3748] hover:text-white w-11 h-11 rounded-full flex items-center justify-center shadow-md transition-all duration-200 focus:outline-none">
-        <i id="toggleIcon" class="fa-solid fa-xmark text-lg"></i>
+        <i id="toggleIcon" class="fa-solid fa-bars text-lg"></i>
     </button>
 
-    <div class="flex h-full w-full relative overflow-hidden">
+    <!-- Overlay Latar Belakang saat Sidebar Buka -->
+    <div id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
-        <!-- Sidebar Navigasi Kiri -->
-        <aside id="sidebar" class="fixed md:relative z-40 w-[280px] h-full bg-[#F8F5EE] border-r border-[#E8E1D5] flex flex-col justify-between p-6 shrink-0 shadow-lg md:shadow-none">
+    <!-- Sidebar Melayang (Fixed Left) -->
+    <aside id="sidebar" class="w-[280px] h-full bg-[#F8F5EE] border-r border-[#E8E1D5] flex flex-col justify-between p-6 shadow-2xl">
+        <div class="flex flex-col items-center w-full pt-12">
+            <!-- Foto Profile & Info -->
+            <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border border-[#EFE8DC] shadow-sm">
+                <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
+            </div>
+
+            <h1 class="text-lg font-bold text-[#2D3748]">Nisa Sri Fadilah</h1>
             
-            <div class="flex flex-col items-center w-full pt-10 md:pt-4">
-                <!-- Foto Profile & Info -->
-                <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border border-[#EFE8DC] shadow-sm">
-                    <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
-                </div>
+            <div class="flex space-x-4 my-2.5 text-[#9E8268]">
+                <a href="https://github.com" target="_blank" class="hover:text-[#6E5945]"><i class="fa-brands fa-github text-lg"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="hover:text-[#6E5945]"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
+                <a href="https://instagram.com" target="_blank" class="hover:text-[#6E5945]"><i class="fa-brands fa-instagram text-lg"></i></a>
+            </div>
 
-                <h1 class="text-lg font-bold text-[#2D3748]">Nisa Sri Fadilah</h1>
+            <p class="text-[11px] text-[#718096] text-center max-w-[210px] mb-6 leading-relaxed">
+                Welcome to my portfolio. Explore my professional background and featured work below.
+            </p>
+
+            <!-- Navigasi Menu Tombol -->
+            <nav class="w-full space-y-2.5 px-2">
+                <button onclick="goToSlide(0)" id="btn-slide-0" class="btn-kapsul-ivory active block w-full py-2 text-xs font-medium rounded-full text-center">
+                    Home
+                </button>
+                <button onclick="goToSlide(1)" id="btn-slide-1" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
+                    Creative
+                </button>
+                <button onclick="goToSlide(2)" id="btn-slide-2" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
+                    Projects
+                </button>
+                <button onclick="goToSlide(3)" id="btn-slide-3" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
+                    About
+                </button>
+                <a href="cv.pdf" target="_blank" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
+                    View CV
+                </a>
+            </nav>
+        </div>
+
+        <div class="text-center text-[11px] text-[#A0AEC0] pt-4">
+            2026 made by Nisa
+        </div>
+    </aside>
+
+
+    <!-- Area Utama (Penuh 100% Layar & Presisi di Tengah) -->
+    <main class="w-full h-full bg-[#F8F5EE] relative overflow-hidden">
+        
+        <!-- SLIDE 1: HOME -->
+        <section id="slide-0" class="slide-page active flex-col items-center justify-center relative h-full w-full">
+            <img src="hero.jpg" alt="Nisa Sri Fadilah Hero" class="absolute inset-0 w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-[#F8F5EE]/20 backdrop-blur-[0.5px]"></div>
+
+            <div class="relative z-10 text-center px-4 text-hero-shadow">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-wider uppercase text-[#1D232A]">
+                    NISA SRI FADILAH
+                </h2>
+                <p class="text-xs sm:text-sm md:text-base tracking-[0.25em] font-bold mt-3 uppercase text-[#3D4451] min-h-[28px]">
+                    <span id="typing-text" class="typing-cursor"></span>
+                </p>
+            </div>
+        </section>
+
+
+        <!-- SLIDE 2: CREATIVE (GABUNGAN LOGO + BRANDING) -->
+        <section id="slide-1" class="slide-page scroll-container flex-col py-16 px-4 sm:px-8 md:px-12 h-full w-full items-center">
+            <div class="max-w-[1100px] w-full mx-auto space-y-10 my-auto pt-6 pb-12">
                 
-                <div class="flex space-x-4 my-2.5 text-[#9E8268]">
-                    <a href="https://github.com" target="_blank" class="hover:text-[#6E5945]"><i class="fa-brands fa-github text-lg"></i></a>
-                    <a href="https://linkedin.com" target="_blank" class="hover:text-[#6E5945]"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
-                    <a href="https://instagram.com" target="_blank" class="hover:text-[#6E5945]"><i class="fa-brands fa-instagram text-lg"></i></a>
-                </div>
-
-                <p class="text-[11px] text-[#718096] text-center max-w-[210px] mb-5 leading-relaxed">
-                    Welcome to my portfolio. Explore my professional background and featured work below.
-                </p>
-
-                <!-- Navigasi Menu Tombol -->
-                <nav class="w-full space-y-2.5 px-2">
-                    <button onclick="goToSlide(0)" id="btn-slide-0" class="btn-kapsul-ivory active block w-full py-2 text-xs font-medium rounded-full text-center">
-                        Home
-                    </button>
-                    <button onclick="goToSlide(1)" id="btn-slide-1" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
-                        Creative
-                    </button>
-                    <button onclick="goToSlide(2)" id="btn-slide-2" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
-                        Projects
-                    </button>
-                    <button onclick="goToSlide(3)" id="btn-slide-3" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
-                        About
-                    </button>
-                    <a href="cv.pdf" target="_blank" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
-                        View CV
-                    </a>
-                </nav>
-            </div>
-
-            <div class="text-center text-[11px] text-[#A0AEC0] pt-4">
-                2026 made by Nisa
-            </div>
-        </aside>
-
-
-        <!-- Area Utama (Layout Utama Fleksibel Otomatis Ke Tengah) -->
-        <main class="flex-1 h-full w-full bg-[#F8F5EE] relative overflow-hidden flex items-center justify-center transition-all duration-300">
-            
-            <!-- SLIDE 1: HOME -->
-            <section id="slide-0" class="slide-page active flex-col items-center justify-center relative h-full w-full">
-                <img src="hero.jpg" alt="Nisa Sri Fadilah Hero" class="absolute inset-0 w-full h-full object-cover object-center">
-                <div class="absolute inset-0 bg-[#F8F5EE]/20 backdrop-blur-[0.5px]"></div>
-
-                <div class="relative z-10 text-center px-4 text-hero-shadow">
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-wider uppercase text-[#1D232A]">
-                        NISA SRI FADILAH
+                <!-- Judul Utama (Diberi Padding Top Agar Tidak Terpotong) -->
+                <header class="text-center pt-4">
+                    <h2 class="text-2xl sm:text-3xl font-bold tracking-[0.35em] text-[#2D3748] uppercase">
+                        C R E A T I V E
                     </h2>
-                    <p class="text-xs sm:text-sm md:text-base tracking-[0.25em] font-bold mt-3 uppercase text-[#3D4451] min-h-[28px]">
-                        <span id="typing-text" class="typing-cursor"></span>
-                    </p>
-                </div>
-            </section>
+                </header>
 
-
-            <!-- SLIDE 2: CREATIVE (GABUNGAN LOGO + BRANDING) -->
-            <section id="slide-1" class="slide-page slide-content-container flex-col py-8 px-4 sm:px-8 md:px-12 h-full w-full justify-center">
-                <div class="max-w-[1200px] mx-auto w-full space-y-8 my-auto">
-                    
-                    <header class="text-center">
-                        <h2 class="text-2xl sm:text-3xl font-bold tracking-[0.35em] text-[#2D3748] uppercase">
-                            C R E A T I V E
-                        </h2>
-                    </header>
-
-                    <!-- BAGIAN 1: LOGO -->
-                    <div class="space-y-4 text-center">
-                        <div>
-                            <span class="category-pill uppercase">LOGO</span>
-                        </div>
-
-                        <!-- 6 Logo Melingkar -->
-                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 justify-items-center items-center pt-1">
-                            <div class="logo-card">
-                                <img src="Lunae Logo.png" alt="Lunáe Logo" class="w-full h-full object-contain">
-                            </div>
-                            <div class="logo-card">
-                                <img src="Hyper Season.png" alt="Hyper Season" class="w-full h-full object-contain">
-                            </div>
-                            <div class="logo-card">
-                                <img src="Madala Creative.png" alt="Madala Creative" class="w-full h-full object-contain">
-                            </div>
-                            <div class="logo-card">
-                                <img src="Teknik Industri.png" alt="Teknik Industri" class="w-full h-full object-contain">
-                            </div>
-                            <div class="logo-card">
-                                <img src="Two Ambiverts.png" alt="Two Ambiverts" class="w-full h-full object-contain">
-                            </div>
-                            <div class="logo-card">
-                                <img src="Beauty Skin Care.png" alt="Beauty Skin Care" class="w-full h-full object-contain">
-                            </div>
-                        </div>
+                <!-- SEKSI LOGO -->
+                <div class="space-y-4 text-center">
+                    <div>
+                        <span class="category-pill uppercase">LOGO</span>
                     </div>
 
-                    <!-- BAGIAN 2: BRANDING SHOWCASE -->
-                    <div class="space-y-4 text-center pt-2">
-                        <div>
-                            <span class="category-pill uppercase">BRANDING</span>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 justify-items-center items-center pt-2">
+                        <div class="logo-card">
+                            <img src="Lunae Logo.png" alt="Lunáe Logo" class="w-full h-full object-contain">
+                        </div>
+                        <div class="logo-card">
+                            <img src="Hyper Season.png" alt="Hyper Season" class="w-full h-full object-contain">
+                        </div>
+                        <div class="logo-card">
+                            <img src="Madala Creative.png" alt="Madala Creative" class="w-full h-full object-contain">
+                        </div>
+                        <div class="logo-card">
+                            <img src="Teknik Industri.png" alt="Teknik Industri" class="w-full h-full object-contain">
+                        </div>
+                        <div class="logo-card">
+                            <img src="Two Ambiverts.png" alt="Two Ambiverts" class="w-full h-full object-contain">
+                        </div>
+                        <div class="logo-card">
+                            <img src="Beauty Skin Care.png" alt="Beauty Skin Care" class="w-full h-full object-contain">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEKSI BRANDING -->
+                <div class="space-y-4 text-center pt-4">
+                    <div>
+                        <span class="category-pill uppercase">BRANDING</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch text-left pt-2">
+                        <!-- 1. Poster Kiri -->
+                        <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex flex-col justify-center min-h-[280px]">
+                            <img src="Meet Lunae.png" alt="Meet Lunáe Poster" class="w-full h-full object-cover">
                         </div>
 
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch text-left">
-                            <!-- 1. Poster Kiri -->
-                            <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex flex-col justify-center">
-                                <img src="Meet Lunae.png" alt="Meet Lunáe Poster" class="w-full h-full object-cover">
+                        <!-- 2. Produk + Palette -->
+                        <div class="flex flex-col justify-between space-y-3 min-h-[280px]">
+                            <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex-1 min-h-[160px]">
+                                <img src="Lunae Products.png" alt="Lunáe Products" class="w-full h-full object-cover">
                             </div>
 
-                            <!-- 2. Produk + Palette -->
-                            <div class="flex flex-col justify-between space-y-3">
-                                <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex-1">
-                                    <img src="Lunae Products.png" alt="Lunáe Products" class="w-full h-full object-cover">
+                            <div class="bg-white rounded-xl p-3 shadow-sm border border-[#EFE8DC] space-y-2 shrink-0">
+                                <div class="w-full flex flex-col h-10 rounded-md overflow-hidden border border-gray-100">
+                                    <div class="h-1/4 bg-[#F7F1DE]"></div>
+                                    <div class="h-1/4 bg-[#B0BA99]"></div>
+                                    <div class="h-1/4 bg-[#9D6638]"></div>
+                                    <div class="h-1/4 bg-[#4E220F]"></div>
                                 </div>
 
-                                <div class="bg-white rounded-xl p-3 shadow-sm border border-[#EFE8DC] space-y-2 shrink-0">
-                                    <div class="w-full flex flex-col h-12 rounded-md overflow-hidden border border-gray-100">
-                                        <div class="h-1/4 bg-[#F7F1DE]"></div>
-                                        <div class="h-1/4 bg-[#B0BA99]"></div>
-                                        <div class="h-1/4 bg-[#9D6638]"></div>
-                                        <div class="h-1/4 bg-[#4E220F]"></div>
+                                <div class="grid grid-cols-4 gap-1 text-center">
+                                    <div class="flex flex-col items-center">
+                                        <span class="w-2 h-2 rounded-full bg-[#F7F1DE] border border-gray-300 mb-0.5"></span>
+                                        <p class="text-[7.5px] font-bold text-gray-700">#F7F1DE</p>
                                     </div>
-
-                                    <div class="grid grid-cols-4 gap-1 text-center">
-                                        <div class="flex flex-col items-center">
-                                            <span class="w-2.5 h-2.5 rounded-full bg-[#F7F1DE] border border-gray-300 mb-0.5"></span>
-                                            <p class="text-[8px] font-bold text-gray-700">#F7F1DE</p>
-                                        </div>
-                                        <div class="flex flex-col items-center">
-                                            <span class="w-2.5 h-2.5 rounded-full bg-[#B0BA99] mb-0.5"></span>
-                                            <p class="text-[8px] font-bold text-gray-700">#B0BA99</p>
-                                        </div>
-                                        <div class="flex flex-col items-center">
-                                            <span class="w-2.5 h-2.5 rounded-full bg-[#9D6638] mb-0.5"></span>
-                                            <p class="text-[8px] font-bold text-gray-700">#9D6638</p>
-                                        </div>
-                                        <div class="flex flex-col items-center">
-                                            <span class="w-2.5 h-2.5 rounded-full bg-[#4E220F] mb-0.5"></span>
-                                            <p class="text-[8px] font-bold text-gray-700">#4E220F</p>
-                                        </div>
+                                    <div class="flex flex-col items-center">
+                                        <span class="w-2 h-2 rounded-full bg-[#B0BA99] mb-0.5"></span>
+                                        <p class="text-[7.5px] font-bold text-gray-700">#B0BA99</p>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <span class="w-2 h-2 rounded-full bg-[#9D6638] mb-0.5"></span>
+                                        <p class="text-[7.5px] font-bold text-gray-700">#9D6638</p>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <span class="w-2 h-2 rounded-full bg-[#4E220F] mb-0.5"></span>
+                                        <p class="text-[7.5px] font-bold text-gray-700">#4E220F</p>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- 3. Typeface -->
-                            <div class="bg-white rounded-xl p-4 shadow-sm border border-[#EFE8DC] flex flex-col justify-between">
-                                <div>
-                                    <h3 class="text-3xl font-serif tracking-wide text-[#1A202C]">Lunáe✦</h3>
-                                    <p class="text-[9px] font-bold tracking-[0.2em] text-gray-500 uppercase mt-1">LUNAE TYPEFACE</p>
-                                    <hr class="my-2 border-[#EFE8DC]">
+                        <!-- 3. Typeface Box -->
+                        <div class="bg-white rounded-xl p-4 shadow-sm border border-[#EFE8DC] flex flex-col justify-between min-h-[280px]">
+                            <div>
+                                <h3 class="text-2xl font-serif tracking-wide text-[#1A202C]">Lunáe✦</h3>
+                                <p class="text-[8px] font-bold tracking-[0.2em] text-gray-500 uppercase mt-0.5">LUNAE TYPEFACE</p>
+                                <hr class="my-2 border-[#EFE8DC]">
 
-                                    <div class="grid grid-cols-2 gap-2 text-[9px] font-serif text-gray-700 tracking-wider">
-                                        <div>
-                                            <p>ABCDEFGHIJKLM</p>
-                                            <p>NOPQRSTUVWXYZ</p>
-                                        </div>
-                                        <div>
-                                            <p>ABCDEFGHIJ</p>
-                                            <p>RSTUVWXYZ</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="grid grid-cols-2 gap-2 mt-4 pt-2 border-t border-gray-100">
+                                <div class="grid grid-cols-2 gap-2 text-[8.5px] font-serif text-gray-700 tracking-wider">
                                     <div>
-                                        <p class="text-[9.5px] font-semibold text-gray-800">Content Sans-serif</p>
-                                        <p class="text-[8px] text-gray-500 leading-tight mt-0.5">Simple text, minimal look, timeless impression.</p>
+                                        <p>ABCDEFGHIJKLM</p>
+                                        <p>NOPQRSTUVWXYZ</p>
                                     </div>
-                                    <div class="text-[8.5px] font-mono text-gray-600 space-y-0.5">
-                                        <p>0123456789</p>
-                                        <p>!?#$%&amp;</p>
+                                    <div>
+                                        <p>ABCDEFGHIJ</p>
+                                        <p>RSTUVWXYZ</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- 4. Model Showcase -->
-                            <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex flex-col justify-center">
-                                <img src="Model Showcase.png" alt="Model Showcase" class="w-full h-full object-cover">
+                            <div class="grid grid-cols-2 gap-2 mt-4 pt-2 border-t border-gray-100">
+                                <div>
+                                    <p class="text-[9px] font-semibold text-gray-800">Content Sans-serif</p>
+                                    <p class="text-[7.5px] text-gray-500 leading-tight mt-0.5">Simple text, minimal look, timeless impression.</p>
+                                </div>
+                                <div class="text-[8px] font-mono text-gray-600 space-y-0.5">
+                                    <p>0123456789</p>
+                                    <p>!?#$%&amp;</p>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- 4. Model Showcase -->
+                        <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex flex-col justify-center min-h-[280px]">
+                            <img src="Model Showcase.png" alt="Model Showcase" class="w-full h-full object-cover">
+                        </div>
                     </div>
-
                 </div>
-            </section>
+
+            </div>
+        </section>
 
 
-            <!-- SLIDE 3: PROJECTS -->
-            <section id="slide-2" class="slide-page flex-col items-center justify-center p-8 h-full w-full text-center">
-                <h2 class="text-2xl font-bold text-gray-700 uppercase tracking-widest mb-2">Projects</h2>
-                <p class="text-xs text-gray-500 max-w-md">Koleksi project terbaru akan ditampilkan di halaman ini.</p>
-            </section>
+        <!-- SLIDE 3: PROJECTS -->
+        <section id="slide-2" class="slide-page flex-col items-center justify-center p-8 h-full w-full text-center">
+            <h2 class="text-2xl font-bold text-gray-700 uppercase tracking-widest mb-2">Projects</h2>
+            <p class="text-xs text-gray-500 max-w-md">Koleksi project terbaru akan ditampilkan di halaman ini.</p>
+        </section>
 
 
-            <!-- SLIDE 4: ABOUT ME -->
-            <section id="slide-3" class="slide-page flex-col items-center justify-center p-8 h-full w-full text-center">
-                <h2 class="text-2xl font-bold text-gray-700 uppercase tracking-widest mb-2">About Me</h2>
-                <p class="text-xs text-gray-500 max-w-md leading-relaxed">
-                    Halo, saya Nisa Sri Fadilah! Seorang Industrial Engineer, E-Commerce Specialist, dan Digital Marketing enthusiast.
-                </p>
-            </section>
+        <!-- SLIDE 4: ABOUT ME -->
+        <section id="slide-3" class="slide-page flex-col items-center justify-center p-8 h-full w-full text-center">
+            <h2 class="text-2xl font-bold text-gray-700 uppercase tracking-widest mb-2">About Me</h2>
+            <p class="text-xs text-gray-500 max-w-md leading-relaxed">
+                Halo, saya Nisa Sri Fadilah! Seorang Industrial Engineer, E-Commerce Specialist, dan Digital Marketing enthusiast.
+            </p>
+        </section>
 
-        </main>
-
-    </div>
+    </main>
 
     <!-- JavaScript Interaktif -->
     <script>
         let currentSlide = 0;
         const totalSlides = 4;
 
-        // Buka / Tutup Sidebar secara Fleksibel
+        // Buka / Tutup Sidebar Melayang
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
             const toggleIcon = document.getElementById('toggleIcon');
             
-            sidebar.classList.toggle('collapsed');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('active');
             
-            if (sidebar.classList.contains('collapsed')) {
-                toggleIcon.className = 'fa-solid fa-bars text-lg';
-            } else {
+            if (sidebar.classList.contains('open')) {
                 toggleIcon.className = 'fa-solid fa-xmark text-lg';
+            } else {
+                toggleIcon.className = 'fa-solid fa-bars text-lg';
             }
         }
 
@@ -373,7 +394,6 @@
             
             currentSlide = index;
 
-            // Sembunyikan semua halaman
             for (let i = 0; i < totalSlides; i++) {
                 const slide = document.getElementById('slide-' + i);
                 const btn = document.getElementById('btn-slide-' + i);
@@ -382,19 +402,16 @@
                 if (btn) btn.classList.remove('active');
             }
 
-            // Tampilkan halaman aktif
             const targetSlide = document.getElementById('slide-' + currentSlide);
             const targetBtn = document.getElementById('btn-slide-' + currentSlide);
             
             if (targetSlide) targetSlide.classList.add('active');
             if (targetBtn) targetBtn.classList.add('active');
 
-            // Tutup sidebar otomatis pada tampilan mobile
-            if (window.innerWidth < 768) {
-                const sidebar = document.getElementById('sidebar');
-                if (!sidebar.classList.contains('collapsed')) {
-                    toggleSidebar();
-                }
+            // Tutup sidebar setelah pilih menu
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar.classList.contains('open')) {
+                toggleSidebar();
             }
         }
 
@@ -437,11 +454,6 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             typeEffect();
-            // Default awal tutup sidebar jika di layar HP
-            if (window.innerWidth < 768) {
-                document.getElementById('sidebar').classList.add('collapsed');
-                document.getElementById('toggleIcon').className = 'fa-solid fa-bars text-lg';
-            }
         });
     </script>
 </body>
