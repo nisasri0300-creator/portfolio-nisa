@@ -157,80 +157,35 @@
             filter: blur(4px);
         }
 
-        /* RESPONSIVE HERO DESIGN */
-        @media (max-width: 767px) {
-            .hero-mobile-wrapper {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                height: 100%;
-                padding-top: 40px;
-                padding-bottom: 90px;
-            }
-
-            .profile-card-mobile {
-                width: 270px;
-                height: 330px;
-                border-radius: 32px;
-                background-color: #FFFFFF;
-                overflow: hidden;
-                box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.08);
-                border: 1px solid rgba(255, 255, 255, 0.8);
-                position: relative;
-            }
-
-            .profile-card-mobile img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center top;
-            }
-
-            .desktop-split-view {
-                display: none;
-            }
+        /* FULLSCREEN HERO OVERLAY STYLE */
+        .hero-fullscreen-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        @media (min-width: 768px) {
-            .hero-mobile-wrapper {
-                display: none;
-            }
+        .hero-fullscreen-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Kunci fokus di area ATAS agar kepala tidak terpotong */
+            object-position: top center; 
+            z-index: 1;
+        }
 
-            .desktop-split-view {
-                display: flex;
-                width: 100%;
-                height: 100%;
-                align-items: center;
-            }
-
-            .desktop-left-content {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: flex-start;
-                padding-left: 10%;
-                padding-right: 5%;
-                z-index: 10;
-            }
-
-            .desktop-right-photo {
-                flex: 1;
-                height: 100%;
-                position: relative;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                overflow: hidden;
-            }
-
-            .desktop-right-photo img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center top;
-            }
+        .hero-fullscreen-overlay {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 0 20px;
+            /* Menggeser teks agak ke bawah agar tidak menutupi wajah */
+            margin-top: 10vh; 
         }
     </style>
 </head>
@@ -302,23 +257,21 @@
     <!-- AREA UTAMA SLIDE -->
     <main class="w-full h-full relative overflow-hidden">
 
-        <!-- SLIDE 1: HOME -->
-        <section id="slide-0" class="slide-page active flex-col items-center justify-center relative h-full w-full">
-            
-            <!-- Mobile Layout -->
-            <div class="hero-mobile-wrapper px-4">
-                <div class="profile-card-mobile mb-6">
-                    <img src="hero.jpg" alt="Nisa Sri Fadilah">
-                </div>
+        <!-- SLIDE 1: HOME (FULLSCREEN OVERLAY) -->
+        <section id="slide-0" class="slide-page active relative h-full w-full">
+            <div class="hero-fullscreen-container">
+                <!-- Foto latar belakang penuh hero.jpg -->
+                <img src="hero.jpg" alt="Nisa Sri Fadilah" class="hero-fullscreen-bg">
 
-                <div class="text-center space-y-3">
-                    <h1 class="text-2xl font-extrabold tracking-[0.08em] text-[#0F172A] uppercase leading-none">
+                <!-- Content Overlay melayang di tengah -->
+                <div class="hero-fullscreen-overlay space-y-4">
+                    <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-[0.08em] text-[#0F172A] uppercase leading-tight drop-shadow-sm">
                         NISA SRI FADILAH
                     </h1>
 
                     <div>
-                        <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-black/5 shadow-sm">
-                            <div class="text-[10px] font-bold text-[#334155] uppercase min-h-[18px] flex items-center justify-center">
+                        <div class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-white/80 backdrop-blur-md border border-black/5 shadow-sm">
+                            <div class="text-xs sm:text-sm font-bold text-[#334155] uppercase min-h-[20px] flex items-center justify-center">
                                 <div class="scale-fade-container">
                                     <span class="scale-title-item scale-fade-item active">INDUSTRIAL ENGINEERING</span>
                                 </div>
@@ -327,34 +280,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Laptop View (Memanggil hero.jpg) -->
-            <div class="desktop-split-view">
-                <div class="desktop-left-content space-y-5">
-                    <span class="px-4 py-1.5 rounded-full border border-[#E2D8BE] bg-white text-[11px] font-bold tracking-[0.25em] text-[#64748B] uppercase shadow-sm">
-                        Portfolio 2026
-                    </span>
-
-                    <h1 class="text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-[0.08em] text-[#0F172A] uppercase leading-tight">
-                        NISA SRI<br>FADILAH
-                    </h1>
-
-                    <div class="pt-2">
-                        <div class="inline-flex items-center px-6 py-2.5 rounded-full bg-white border border-black/5 shadow-sm">
-                            <div class="text-sm font-bold text-[#334155] uppercase min-h-[22px] flex items-center">
-                                <div class="scale-fade-container">
-                                    <span class="scale-title-item scale-fade-item active">INDUSTRIAL ENGINEERING</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="desktop-right-photo">
-                    <img src="hero.jpg" alt="Nisa Sri Fadilah">
-                </div>
-            </div>
-
         </section>
 
         <!-- SLIDE 2: LOGO GALLERY -->
