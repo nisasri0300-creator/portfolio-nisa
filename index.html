@@ -14,7 +14,7 @@
             padding: 0;
             height: 100%;
             width: 100%;
-            overflow: hidden; /* Mengunci scroll */
+            overflow: hidden; /* Tanpa Scrollbar Utama */
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background-color: #F8F5EE;
             color: #2D3748;
@@ -62,8 +62,8 @@
 
         /* Card Logo Melingkar */
         .logo-card {
-            width: 100px;
-            height: 100px;
+            width: 105px;
+            height: 105px;
             border-radius: 9999px;
             background-color: #FFFFFF;
             display: flex;
@@ -110,7 +110,7 @@
             50% { opacity: 0; }
         }
 
-        /* Container Dalam Slide jika butuh penyesuaian skala */
+        /* Container Khusus Jika Konten Lebih Tinggi di Layar Kecil */
         .slide-content-container {
             max-height: 100vh;
             overflow-y: auto;
@@ -126,7 +126,7 @@
 </head>
 <body class="bg-[#F8F5EE] h-screen w-screen overflow-hidden">
 
-    <!-- Tombol Floating Garis 3 (Selalu Muncul di Pojok Kiri Atas) -->
+    <!-- Tombol Garis 3 (Selalu Muncul di Pojok Kiri Atas) -->
     <button id="toggleBtn" onclick="toggleSidebar()" class="fixed top-5 left-5 z-50 bg-[#FFFDFA] border border-[#EFE8DC] text-[#2D3748] hover:bg-[#2D3748] hover:text-white w-11 h-11 rounded-full flex items-center justify-center shadow-md transition-all duration-200 focus:outline-none">
         <i id="toggleIcon" class="fa-solid fa-bars text-lg"></i>
     </button>
@@ -160,18 +160,15 @@
                         Home
                     </button>
                     <button onclick="goToSlide(1)" id="btn-slide-1" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
-                        Logo Portfolio
-                    </button>
-                    <button onclick="goToSlide(2)" id="btn-slide-2" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
-                        Branding Portfolio
+                        Portfolio
                     </button>
                     <a href="cv.pdf" target="_blank" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
                         View CV
                     </a>
-                    <button onclick="goToSlide(3)" id="btn-slide-3" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
+                    <button onclick="goToSlide(2)" id="btn-slide-2" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
                         Projects
                     </button>
-                    <button onclick="goToSlide(4)" id="btn-slide-4" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
+                    <button onclick="goToSlide(3)" id="btn-slide-3" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
                         About
                     </button>
                 </nav>
@@ -183,10 +180,10 @@
         </aside>
 
 
-        <!-- Area Utama (Layar Presentasi / Slide) -->
+        <!-- Area Utama (Layar Kanan) -->
         <main class="flex-1 h-full w-full bg-[#F8F5EE] relative overflow-hidden">
             
-            <!-- SLIDE 1: HOME (HERO) -->
+            <!-- SLIDE 1: HOME -->
             <section id="slide-0" class="slide-page active flex-col items-center justify-center relative h-full w-full">
                 <img src="hero.jpg" alt="Nisa Sri Fadilah Hero" class="absolute inset-0 w-full h-full object-cover object-center">
                 <div class="absolute inset-0 bg-[#F8F5EE]/20 backdrop-blur-[0.5px]"></div>
@@ -202,156 +199,148 @@
             </section>
 
 
-            <!-- SLIDE 2: LOGO PORTFOLIO -->
-            <section id="slide-1" class="slide-page flex-col items-center justify-center p-6 h-full w-full">
-                <div class="max-w-[1100px] w-full space-y-6 text-center">
-                    <header>
-                        <h2 class="text-2xl sm:text-3xl font-bold tracking-[0.35em] text-[#2D3748] uppercase mb-4">
+            <!-- SLIDE 2: PORTFOLIO (CREATIVE - LOGO & BRANDING) -->
+            <section id="slide-1" class="slide-page slide-content-container flex-col py-8 px-4 sm:px-6 md:px-8 h-full w-full justify-center">
+                <div class="max-w-[1280px] mx-auto w-full space-y-6 my-auto">
+                    
+                    <header class="text-center">
+                        <h2 class="text-2xl sm:text-3xl font-bold tracking-[0.35em] text-[#2D3748] uppercase">
                             C R E A T I V E
                         </h2>
-                        <span class="category-pill uppercase">LOGO DESIGN</span>
                     </header>
 
-                    <!-- Row 6 Logo Bulat -->
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 justify-items-center items-center pt-6">
-                        <div class="logo-card">
-                            <img src="Lunae Logo.png" alt="Lunáe Logo" class="w-full h-full object-contain">
+                    <!-- Sub-Seksi LOGO -->
+                    <div class="space-y-3">
+                        <div>
+                            <span class="category-pill uppercase">LOGO</span>
                         </div>
-                        <div class="logo-card">
-                            <img src="Hyper Season.png" alt="Hyper Season" class="w-full h-full object-contain">
-                        </div>
-                        <div class="logo-card">
-                            <img src="Madala Creative.png" alt="Madala Creative" class="w-full h-full object-contain">
-                        </div>
-                        <div class="logo-card">
-                            <img src="Teknik Industri.png" alt="Teknik Industri" class="w-full h-full object-contain">
-                        </div>
-                        <div class="logo-card">
-                            <img src="Two Ambiverts.png" alt="Two Ambiverts" class="w-full h-full object-contain">
-                        </div>
-                        <div class="logo-card">
-                            <img src="Beauty Skin Care.png" alt="Beauty Skin Care" class="w-full h-full object-contain">
+
+                        <!-- 6 Logo Bulat -->
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 justify-items-center items-center pt-1">
+                            <div class="logo-card">
+                                <img src="Lunae Logo.png" alt="Lunáe Logo" class="w-full h-full object-contain">
+                            </div>
+                            <div class="logo-card">
+                                <img src="Hyper Season.png" alt="Hyper Season" class="w-full h-full object-contain">
+                            </div>
+                            <div class="logo-card">
+                                <img src="Madala Creative.png" alt="Madala Creative" class="w-full h-full object-contain">
+                            </div>
+                            <div class="logo-card">
+                                <img src="Teknik Industri.png" alt="Teknik Industri" class="w-full h-full object-contain">
+                            </div>
+                            <div class="logo-card">
+                                <img src="Two Ambiverts.png" alt="Two Ambiverts" class="w-full h-full object-contain">
+                            </div>
+                            <div class="logo-card">
+                                <img src="Beauty Skin Care.png" alt="Beauty Skin Care" class="w-full h-full object-contain">
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
 
-
-            <!-- SLIDE 3: BRANDING PORTFOLIO -->
-            <section id="slide-2" class="slide-page slide-content-container flex-col py-6 px-4 sm:px-6 md:px-8 h-full w-full justify-center">
-                <div class="max-w-[1280px] mx-auto w-full space-y-4 my-auto">
-                    <header class="text-center">
-                        <span class="category-pill uppercase">BRANDING &amp; VISUAL IDENTITY</span>
-                    </header>
-
-                    <!-- Layout Presisi Komposisi 4 Kolom -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch pt-2">
-                        <!-- 1. Poster Kiri -->
-                        <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex flex-col justify-center">
-                            <img src="Meet Lunae.png" alt="Meet Lunáe Poster" class="w-full h-full object-cover">
+                    <!-- Sub-Seksi BRANDING -->
+                    <div class="space-y-3">
+                        <div>
+                            <span class="category-pill uppercase">BRANDING</span>
                         </div>
 
-                        <!-- 2. Kolom Tengah: Produk + Palette Warna -->
-                        <div class="flex flex-col justify-between space-y-3">
-                            <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex-1">
-                                <img src="Lunae Products.png" alt="Lunáe Products" class="w-full h-full object-cover">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch pt-1">
+                            <!-- Poster Kiri -->
+                            <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex flex-col justify-center">
+                                <img src="Meet Lunae.png" alt="Meet Lunáe Poster" class="w-full h-full object-cover">
                             </div>
 
-                            <div class="bg-white rounded-xl p-3 shadow-sm border border-[#EFE8DC] space-y-2 shrink-0">
-                                <div class="w-full flex flex-col h-14 rounded-md overflow-hidden border border-gray-100">
-                                    <div class="h-1/4 bg-[#F7F1DE]"></div>
-                                    <div class="h-1/4 bg-[#B0BA99]"></div>
-                                    <div class="h-1/4 bg-[#9D6638]"></div>
-                                    <div class="h-1/4 bg-[#4E220F]"></div>
+                            <!-- Tengah: Produk + Palette -->
+                            <div class="flex flex-col justify-between space-y-3">
+                                <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex-1">
+                                    <img src="Lunae Products.png" alt="Lunáe Products" class="w-full h-full object-cover">
                                 </div>
 
-                                <div class="grid grid-cols-4 gap-1 text-center">
-                                    <div class="flex flex-col items-center">
-                                        <span class="w-2.5 h-2.5 rounded-full bg-[#F7F1DE] border border-gray-300 mb-0.5"></span>
-                                        <p class="text-[8px] font-bold text-gray-700">#F7F1DE</p>
+                                <div class="bg-white rounded-xl p-3 shadow-sm border border-[#EFE8DC] space-y-2 shrink-0">
+                                    <div class="w-full flex flex-col h-14 rounded-md overflow-hidden border border-gray-100">
+                                        <div class="h-1/4 bg-[#F7F1DE]"></div>
+                                        <div class="h-1/4 bg-[#B0BA99]"></div>
+                                        <div class="h-1/4 bg-[#9D6638]"></div>
+                                        <div class="h-1/4 bg-[#4E220F]"></div>
                                     </div>
-                                    <div class="flex flex-col items-center">
-                                        <span class="w-2.5 h-2.5 rounded-full bg-[#B0BA99] mb-0.5"></span>
-                                        <p class="text-[8px] font-bold text-gray-700">#B0BA99</p>
-                                    </div>
-                                    <div class="flex flex-col items-center">
-                                        <span class="w-2.5 h-2.5 rounded-full bg-[#9D6638] mb-0.5"></span>
-                                        <p class="text-[8px] font-bold text-gray-700">#9D6638</p>
-                                    </div>
-                                    <div class="flex flex-col items-center">
-                                        <span class="w-2.5 h-2.5 rounded-full bg-[#4E220F] mb-0.5"></span>
-                                        <p class="text-[8px] font-bold text-gray-700">#4E220F</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- 3. Kolom Typeface -->
-                        <div class="bg-white rounded-xl p-4 shadow-sm border border-[#EFE8DC] flex flex-col justify-between">
-                            <div>
-                                <h3 class="text-3xl font-serif tracking-wide text-[#1A202C]">Lunáe✦</h3>
-                                <p class="text-[9px] font-bold tracking-[0.2em] text-gray-500 uppercase mt-1">LUNAE TYPEFACE</p>
-                                <hr class="my-2 border-[#EFE8DC]">
-
-                                <div class="grid grid-cols-2 gap-2 text-[9px] font-serif text-gray-700 tracking-wider">
-                                    <div>
-                                        <p>ABCDEFGHIJKLM</p>
-                                        <p>NOPQRSTUVWXYZ</p>
-                                    </div>
-                                    <div>
-                                        <p>ABCDEFGHIJ</p>
-                                        <p>RSTUVWXYZ</p>
+                                    <div class="grid grid-cols-4 gap-1 text-center">
+                                        <div class="flex flex-col items-center">
+                                            <span class="w-2.5 h-2.5 rounded-full bg-[#F7F1DE] border border-gray-300 mb-0.5"></span>
+                                            <p class="text-[8px] font-bold text-gray-700">#F7F1DE</p>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <span class="w-2.5 h-2.5 rounded-full bg-[#B0BA99] mb-0.5"></span>
+                                            <p class="text-[8px] font-bold text-gray-700">#B0BA99</p>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <span class="w-2.5 h-2.5 rounded-full bg-[#9D6638] mb-0.5"></span>
+                                            <p class="text-[8px] font-bold text-gray-700">#9D6638</p>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <span class="w-2.5 h-2.5 rounded-full bg-[#4E220F] mb-0.5"></span>
+                                            <p class="text-[8px] font-bold text-gray-700">#4E220F</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-2 gap-2 mt-4 pt-2 border-t border-gray-100">
+                            <!-- Typeface Box -->
+                            <div class="bg-white rounded-xl p-4 shadow-sm border border-[#EFE8DC] flex flex-col justify-between">
                                 <div>
-                                    <p class="text-[9.5px] font-semibold text-gray-800">Content Sans-serif</p>
-                                    <p class="text-[8px] text-gray-500 leading-tight mt-0.5">Simple text, minimal look, timeless impression.</p>
+                                    <h3 class="text-3xl font-serif tracking-wide text-[#1A202C]">Lunáe✦</h3>
+                                    <p class="text-[9px] font-bold tracking-[0.2em] text-gray-500 uppercase mt-1">LUNAE TYPEFACE</p>
+                                    <hr class="my-2 border-[#EFE8DC]">
+
+                                    <div class="grid grid-cols-2 gap-2 text-[9px] font-serif text-gray-700 tracking-wider">
+                                        <div>
+                                            <p>ABCDEFGHIJKLM</p>
+                                            <p>NOPQRSTUVWXYZ</p>
+                                        </div>
+                                        <div>
+                                            <p>ABCDEFGHIJ</p>
+                                            <p>RSTUVWXYZ</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="text-[8.5px] font-mono text-gray-600 space-y-0.5">
-                                    <p>0123456789</p>
-                                    <p>!?#$%&amp;</p>
+
+                                <div class="grid grid-cols-2 gap-2 mt-4 pt-2 border-t border-gray-100">
+                                    <div>
+                                        <p class="text-[9.5px] font-semibold text-gray-800">Content Sans-serif</p>
+                                        <p class="text-[8px] text-gray-500 leading-tight mt-0.5">Simple text, minimal look, timeless impression.</p>
+                                    </div>
+                                    <div class="text-[8.5px] font-mono text-gray-600 space-y-0.5">
+                                        <p>0123456789</p>
+                                        <p>!?#$%&amp;</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- 4. Model Showcase Kanan -->
-                        <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex flex-col justify-center">
-                            <img src="Model Showcase.png" alt="Model Showcase" class="w-full h-full object-cover">
+                            <!-- Model Showcase Kanan -->
+                            <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex flex-col justify-center">
+                                <img src="Model Showcase.png" alt="Model Showcase" class="w-full h-full object-cover">
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </section>
 
 
-            <!-- SLIDE 4: PROJECTS -->
-            <section id="slide-3" class="slide-page flex-col items-center justify-center p-8 h-full w-full text-center">
+            <!-- SLIDE 3: PROJECTS -->
+            <section id="slide-2" class="slide-page flex-col items-center justify-center p-8 h-full w-full text-center">
                 <h2 class="text-2xl font-bold text-gray-700 uppercase tracking-widest mb-2">Projects</h2>
                 <p class="text-xs text-gray-500 max-w-md">Koleksi project terbaru akan ditampilkan di halaman ini.</p>
             </section>
 
 
-            <!-- SLIDE 5: ABOUT ME -->
-            <section id="slide-4" class="slide-page flex-col items-center justify-center p-8 h-full w-full text-center">
+            <!-- SLIDE 4: ABOUT ME -->
+            <section id="slide-3" class="slide-page flex-col items-center justify-center p-8 h-full w-full text-center">
                 <h2 class="text-2xl font-bold text-gray-700 uppercase tracking-widest mb-2">About Me</h2>
                 <p class="text-xs text-gray-500 max-w-md leading-relaxed">
                     Halo, saya Nisa Sri Fadilah! Seorang Industrial Engineer, E-Commerce Specialist, dan Digital Marketing enthusiast.
                 </p>
             </section>
-
-
-            <!-- Control Navigation Docking (Tombol Panah Kanan/Kiri Bawah) -->
-            <div class="absolute bottom-6 right-6 z-30 flex items-center space-x-3 bg-[#FFFDFA]/90 backdrop-blur-md px-4 py-2 rounded-full border border-[#EFE8DC] shadow-md">
-                <button onclick="prevSlide()" class="w-8 h-8 rounded-full flex items-center justify-center text-gray-700 hover:bg-[#2D3748] hover:text-white transition">
-                    <i class="fa-solid fa-chevron-left text-xs"></i>
-                </button>
-                <span id="slide-counter" class="text-xs font-bold text-gray-600 tracking-wider">01 / 05</span>
-                <button onclick="nextSlide()" class="w-8 h-8 rounded-full flex items-center justify-center text-gray-700 hover:bg-[#2D3748] hover:text-white transition">
-                    <i class="fa-solid fa-chevron-right text-xs"></i>
-                </button>
-            </div>
 
         </main>
 
@@ -360,9 +349,9 @@
     <!-- JavaScript Interaktif -->
     <script>
         let currentSlide = 0;
-        const totalSlides = 5;
+        const totalSlides = 4;
 
-        // Fungsi Buka/Tutup Sidebar
+        // Buka/Tutup Sidebar
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const toggleIcon = document.getElementById('toggleIcon');
@@ -376,7 +365,7 @@
             }
         }
 
-        // Fungsi Pindah Slide
+        // Pindah Halaman saat Tombol Sidebar Diklik
         function goToSlide(index) {
             if (index < 0 || index >= totalSlides) return;
             
@@ -391,18 +380,14 @@
                 if (btn) btn.classList.remove('active');
             }
 
-            // Tampilkan slide yang dipilih
+            // Tampilkan slide terpilih
             const targetSlide = document.getElementById('slide-' + currentSlide);
             const targetBtn = document.getElementById('btn-slide-' + currentSlide);
             
             if (targetSlide) targetSlide.classList.add('active');
             if (targetBtn) targetBtn.classList.add('active');
 
-            // Update Angka Counter
-            document.getElementById('slide-counter').textContent = 
-                `0${currentSlide + 1} / 0${totalSlides}`;
-
-            // Pada layar mobile, otomatis tutup sidebar setelah pilih menu
+            // Otomatis tutup sidebar di mobile setelah klik
             if (window.innerWidth < 768) {
                 const sidebar = document.getElementById('sidebar');
                 if (!sidebar.classList.contains('collapsed')) {
@@ -411,29 +396,7 @@
             }
         }
 
-        function nextSlide() {
-            if (currentSlide < totalSlides - 1) {
-                goToSlide(currentSlide + 1);
-            } else {
-                goToSlide(0); // kembali ke awal
-            }
-        }
-
-        function prevSlide() {
-            if (currentSlide > 0) {
-                goToSlide(currentSlide - 1);
-            } else {
-                goToSlide(totalSlides - 1); // ke slide akhir
-            }
-        }
-
-        // Navigasi menggunakan Tombol Panah Keyboard
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowRight') nextSlide();
-            if (e.key === 'ArrowLeft') prevSlide();
-        });
-
-        // Efek Typing Text di Slide Home
+        // Efek Ketikan Nama Title
         const subTitles = [
             "INDUSTRIAL ENGINEERING",
             "E-COMMERCE SPECIALIST",
@@ -472,7 +435,6 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             typeEffect();
-            // Secara default buka sidebar di layar besar desktop
             if (window.innerWidth < 768) {
                 document.getElementById('sidebar').classList.add('collapsed');
             }
