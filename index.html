@@ -1,67 +1,54 @@
 <!DOCTYPE html>
-<html lang="id" class="h-full w-full overflow-hidden">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Nisa Sri Fadilah - Interactive Portfolio Deck (Modern Soft)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nisa Sri Fadilah - Portfolio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons CDN -->
+    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Font: Plus Jakarta Sans & Cormorant Garamond -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Strict No-Scroll Lockdown for Deck View */
-        * {
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <style>
         html, body {
-            width: 100%;
-            height: 100%;
             margin: 0;
             padding: 0;
-            overflow: hidden !important;
-            touch-action: none;
-            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #F8F5EE;
             color: #2D3748;
         }
 
-        /* Glassmorphism Floating Sidebar Overlay */
         #sidebar {
             position: fixed;
             top: 0;
             left: 0;
             bottom: 0;
             z-index: 50;
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             transform: translateX(-100%);
-            background-color: rgba(248, 245, 238, 0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            box-shadow: 10px 0 30px rgba(0, 0, 0, 0.08);
+            background-color: #F8F5EE;
         }
 
         #sidebar.open {
             transform: translateX(0);
         }
 
-        /* Backdrop Blur Overlay */
         #sidebar-overlay {
             position: fixed;
             inset: 0;
-            background-color: rgba(26, 32, 44, 0.25);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
+            background-color: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(2px);
             z-index: 40;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.35s ease;
+            transition: opacity 0.3s ease;
         }
 
         #sidebar-overlay.active {
@@ -69,186 +56,111 @@
             pointer-events: auto;
         }
 
-        /* Double-Ring Avatar Container */
-        .avatar-container {
-            position: relative;
-            padding: 4px;
+        /* Foto Profil Clean Tanpa Shadow Kusam */
+        .clean-avatar {
+            width: 90px;
+            height: 90px;
             border-radius: 9999px;
-            background: linear-gradient(135deg, #E2D9C8 0%, #FFFFFF 100%);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-            transition: transform 0.3s ease;
+            object-fit: cover;
+            border: 3px solid #FFFFFF;
+            outline: 1px solid #E5DEC9;
         }
 
-        .avatar-container:hover {
-            transform: scale(1.03);
-        }
-
-        .avatar-inner {
-            width: 86px;
-            height: 86px;
-            border-radius: 9999px;
-            overflow: hidden;
-            border: 2px solid #FFFFFF;
-        }
-
-        /* Pill Social Media Buttons */
-        .social-pill {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 38px;
-            height: 38px;
+        /* Social Icon Minimalis */
+        .social-icon-btn {
+            width: 34px;
+            height: 34px;
             border-radius: 9999px;
             background-color: #FFFFFF;
             border: 1px solid #EFE8DC;
-            color: #5A6578;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
-            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4A5568;
+            transition: all 0.2s ease;
         }
 
-        .social-pill:hover {
+        .social-icon-btn:hover {
             background-color: #2D3748;
             color: #FFFFFF;
             border-color: #2D3748;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(45, 55, 72, 0.15);
         }
 
-        /* Modern Soft Navigation Menu Buttons */
-        .nav-pill {
+        /* Menu Button Clean */
+        .menu-btn {
             display: flex;
             align-items: center;
             justify-content: space-between;
             width: 100%;
             padding: 0.65rem 1rem;
-            border-radius: 16px;
+            border-radius: 12px;
             background-color: #FFFFFF;
             border: 1px solid #EFE8DC;
             color: #4A5568;
             font-size: 0.85rem;
             font-weight: 600;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.2s ease;
             cursor: pointer;
         }
 
-        .nav-pill:hover {
+        .menu-btn:hover {
             border-color: #CBD5E0;
-            background-color: #FDFBF7;
-            transform: translateX(4px);
+            background-color: #FFFFFF;
+            transform: translateX(2px);
             color: #1A202C;
         }
 
-        .nav-pill.active-nav {
+        .menu-btn.active {
             background-color: #2D3748;
             color: #FFFFFF;
             border-color: #2D3748;
-            box-shadow: 0 6px 16px rgba(45, 55, 72, 0.18);
         }
 
-        .nav-pill.active-nav .nav-icon-bg {
+        .menu-btn.active .icon-box {
             background-color: rgba(255, 255, 255, 0.15);
             color: #FFFFFF;
         }
 
-        .nav-icon-bg {
-            width: 30px;
-            height: 30px;
-            border-radius: 10px;
+        .icon-box {
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
             background-color: #F8F5EE;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #718096;
-            transition: all 0.2s ease;
+            font-size: 11px;
         }
 
-        /* Download CV Special Pill Button */
-        .cv-pill {
-            background: linear-gradient(135deg, #F5EFE3 0%, #EFE5D3 100%);
-            border: 1px solid #E2D5BE;
-            color: #3B3021;
+        /* CV Button Clean */
+        .cv-btn {
+            background-color: #EFE8D8;
+            border: 1px solid #E2D7C3;
+            color: #383024;
         }
 
-        .cv-pill:hover {
-            background: linear-gradient(135deg, #3B3021 0%, #221B12 100%);
+        .cv-btn:hover {
+            background-color: #2D3748;
             color: #FFFFFF;
-            border-color: #221B12;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(59, 48, 33, 0.18);
+            border-color: #2D3748;
         }
 
-        /* Category Badges */
-        .category-pill {
-            background-color: #F8F5EE;
-            border: 1.5px solid #D9D2C5;
-            color: #1A202C;
-            font-weight: 700;
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
-            padding: 0.35rem 1.75rem;
-            border-radius: 9999px;
-            box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 2px 4px rgba(0, 0, 0, 0.04);
-            display: inline-block;
-        }
-
-        /* Circular Logo Cards */
-        .logo-card {
-            width: 90px;
-            height: 90px;
-            border-radius: 9999px;
-            background-color: #FFFFFF;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-            border: 1px solid #EFE8DC;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
-            padding: 0.5rem;
-        }
-
-        @media (min-width: 640px) {
-            .logo-card {
-                width: 110px;
-                height: 110px;
-            }
-        }
-
-        .logo-card:hover {
-            transform: scale(1.05) translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            border-color: #D9D2C5;
-        }
-
-        /* Slide Deck Transition Rules */
-        .slide-deck {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
+        .slide-page {
+            display: none;
             opacity: 0;
-            visibility: hidden;
-            transform: scale(0.98);
-            transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 1.25rem;
-            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+            height: 100%;
+            width: 100%;
         }
 
-        .slide-deck.active-slide {
+        .slide-page.active {
+            display: flex;
             opacity: 1;
-            visibility: visible;
-            transform: scale(1);
-            pointer-events: auto;
-            z-index: 10;
         }
 
         .text-hero-shadow {
-            text-shadow: 0px 2px 12px rgba(255, 253, 250, 0.9);
+            text-shadow: 0px 2px 10px rgba(255, 253, 250, 0.85);
         }
 
         .typing-cursor::after {
@@ -263,477 +175,317 @@
             50% { opacity: 0; }
         }
 
-        /* Navigation Dock Elements */
-        .nav-arrow-btn {
-            background-color: #FFFFFF;
-            border: 1px solid #EFE8DC;
-            color: #2D3748;
-            width: 42px;
-            height: 42px;
+        .scroll-container {
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+        .scroll-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .scroll-container::-webkit-scrollbar-thumb {
+            background-color: #E2D9C8;
+            border-radius: 10px;
+        }
+
+        .category-pill {
+            background-color: #F8F5EE;
+            border: 1.5px solid #D9D2C5;
+            color: #1A202C;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            padding: 0.35rem 2rem;
             border-radius: 9999px;
+            display: inline-block;
+        }
+
+        .logo-card {
+            width: 100px;
+            height: 100px;
+            border-radius: 9999px;
+            background-color: #FFFFFF;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-
-        .nav-arrow-btn:hover:not(:disabled) {
-            background-color: #2D3748;
-            color: #FFFFFF;
-            border-color: #2D3748;
-            transform: scale(1.08);
-        }
-
-        .nav-arrow-btn:disabled {
-            opacity: 0.35;
-            cursor: not-allowed;
-            box-shadow: none;
-        }
-
-        .dot-indicator {
-            width: 8px;
-            height: 8px;
-            border-radius: 9999px;
-            background-color: #D9D2C5;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .dot-indicator.active-dot {
-            width: 24px;
-            background-color: #2D3748;
+            border: 1px solid #EFE8DC;
+            overflow: hidden;
+            padding: 0.5rem;
         }
     </style>
 </head>
-<body class="bg-[#F8F5EE] h-full w-full overflow-hidden select-none">
+<body class="bg-[#F8F5EE] h-screen w-screen overflow-hidden">
 
-    <!-- Floating Hamburger Menu Button -->
-    <button id="toggleBtn" onclick="toggleSidebar()" aria-label="Toggle Sidebar" class="fixed top-5 left-5 z-50 bg-[#FFFDFA] border border-[#EFE8DC] text-[#2D3748] hover:bg-[#2D3748] hover:text-white w-11 h-11 rounded-full flex items-center justify-center shadow-md transition-all duration-300 focus:outline-none">
+    <!-- Tombol Menu Garis 3 -->
+    <button id="toggleBtn" onclick="toggleSidebar()" class="fixed top-5 left-5 z-50 bg-[#FFFFFF] border border-[#EFE8DC] text-[#2D3748] hover:bg-[#2D3748] hover:text-white w-10 h-10 rounded-full flex items-center justify-center shadow-sm transition-all duration-200 focus:outline-none">
         <i id="toggleIcon" class="fa-solid fa-bars text-base"></i>
     </button>
 
-    <!-- Dark Blur Backdrop Overlay -->
+    <!-- Overlay -->
     <div id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
-    <!-- Sidebar Opsi B: Modern Soft & Glassmorphism -->
-    <aside id="sidebar" class="w-[310px] h-full flex flex-col justify-between p-6">
+    <!-- Sidebar Clean & Rapih -->
+    <aside id="sidebar" class="w-[280px] h-full border-r border-[#E8E1D5] flex flex-col justify-between p-5 shadow-xl">
         <div class="flex flex-col items-center w-full pt-8">
             
-            <!-- Double-Ring Avatar Frame -->
-            <div class="avatar-container mb-3">
-                <div class="avatar-inner">
-                    <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/EFE8DC/2D3748?text=NISA'">
-                </div>
+            <!-- Foto Profil Bersih Tanpa Shadow Gelap -->
+            <img src="profile.jpg" alt="Nisa Sri Fadilah" class="clean-avatar mb-3">
+
+            <!-- Nama & Role -->
+            <h1 class="text-base font-bold text-[#1A202C] tracking-tight">Nisa Sri Fadilah</h1>
+            
+            <!-- Subtitle Dot Status Halus (Tanpa Kotak Kasar) -->
+            <div class="flex items-center space-x-1.5 mt-1 mb-4">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span class="text-[11px] font-medium text-[#718096]">Digital & Creative Lead</span>
             </div>
 
-            <!-- Profile Info -->
-            <h1 class="text-lg font-bold text-[#1A202C] tracking-tight">Nisa Sri Fadilah</h1>
-            <p class="text-[11px] font-semibold text-[#8C7A6B] tracking-wider uppercase mt-0.5 mb-3">Digital & Creative Lead</p>
-
-            <!-- Social Media Pills -->
-            <div class="flex space-x-2.5 mb-4">
-                <a href="https://github.com" target="_blank" class="social-pill" title="GitHub">
-                    <i class="fa-brands fa-github text-sm"></i>
+            <!-- Ikon Sosial Media Clean -->
+            <div class="flex space-x-2 mb-6">
+                <a href="https://github.com" target="_blank" class="social-icon-btn" title="GitHub">
+                    <i class="fa-brands fa-github text-xs"></i>
                 </a>
-                <a href="https://linkedin.com" target="_blank" class="social-pill" title="LinkedIn">
-                    <i class="fa-brands fa-linkedin-in text-sm"></i>
+                <a href="https://linkedin.com" target="_blank" class="social-icon-btn" title="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in text-xs"></i>
                 </a>
-                <a href="https://instagram.com" target="_blank" class="social-pill" title="Instagram">
-                    <i class="fa-brands fa-instagram text-sm"></i>
+                <a href="https://instagram.com" target="_blank" class="social-icon-btn" title="Instagram">
+                    <i class="fa-brands fa-instagram text-xs"></i>
                 </a>
             </div>
 
-            <!-- Status Badge Available for Projects -->
-            <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-[#EAE3D2]/50 border border-[#DDD3C1] text-[10.5px] font-semibold text-[#5A4F41] mb-5">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>Available for Projects</span>
-            </div>
-
-            <!-- Modern Soft Navigation Menu (Option B) -->
-            <nav class="w-full space-y-2 px-1">
-                <button onclick="goToSlide(0)" id="nav-slide-0" class="nav-pill active-nav">
-                    <div class="flex items-center space-x-3">
-                        <div class="nav-icon-bg"><i class="fa-solid fa-house text-xs"></i></div>
+            <!-- Menu Navigasi -->
+            <nav class="w-full space-y-2">
+                <button onclick="goToSlide(0)" id="btn-slide-0" class="menu-btn active">
+                    <div class="flex items-center space-x-2.5">
+                        <div class="icon-box"><i class="fa-solid fa-house"></i></div>
                         <span>Home</span>
                     </div>
-                    <i class="fa-solid fa-chevron-right text-[10px] opacity-40"></i>
+                    <i class="fa-solid fa-chevron-right text-[9px] opacity-30"></i>
                 </button>
 
-                <button onclick="goToSlide(1)" id="nav-slide-1" class="nav-pill">
-                    <div class="flex items-center space-x-3">
-                        <div class="nav-icon-bg"><i class="fa-solid fa-palette text-xs"></i></div>
-                        <span>Logo Gallery</span>
+                <button onclick="goToSlide(1)" id="btn-slide-1" class="menu-btn">
+                    <div class="flex items-center space-x-2.5">
+                        <div class="icon-box"><i class="fa-solid fa-palette"></i></div>
+                        <span>Creative</span>
                     </div>
-                    <i class="fa-solid fa-chevron-right text-[10px] opacity-40"></i>
+                    <i class="fa-solid fa-chevron-right text-[9px] opacity-30"></i>
                 </button>
 
-                <button onclick="goToSlide(2)" id="nav-slide-2" class="nav-pill">
-                    <div class="flex items-center space-x-3">
-                        <div class="nav-icon-bg"><i class="fa-solid fa-sparkles text-xs"></i></div>
-                        <span>Branding Showcase</span>
-                    </div>
-                    <i class="fa-solid fa-chevron-right text-[10px] opacity-40"></i>
-                </button>
-
-                <button onclick="goToSlide(3)" id="nav-slide-3" class="nav-pill">
-                    <div class="flex items-center space-x-3">
-                        <div class="nav-icon-bg"><i class="fa-solid fa-briefcase text-xs"></i></div>
+                <button onclick="goToSlide(2)" id="btn-slide-2" class="menu-btn">
+                    <div class="flex items-center space-x-2.5">
+                        <div class="icon-box"><i class="fa-solid fa-briefcase"></i></div>
                         <span>Projects</span>
                     </div>
-                    <i class="fa-solid fa-chevron-right text-[10px] opacity-40"></i>
+                    <i class="fa-solid fa-chevron-right text-[9px] opacity-30"></i>
                 </button>
 
-                <button onclick="goToSlide(4)" id="nav-slide-4" class="nav-pill">
-                    <div class="flex items-center space-x-3">
-                        <div class="nav-icon-bg"><i class="fa-solid fa-user text-xs"></i></div>
-                        <span>About Me</span>
+                <button onclick="goToSlide(3)" id="btn-slide-3" class="menu-btn">
+                    <div class="flex items-center space-x-2.5">
+                        <div class="icon-box"><i class="fa-solid fa-user"></i></div>
+                        <span>About</span>
                     </div>
-                    <i class="fa-solid fa-chevron-right text-[10px] opacity-40"></i>
+                    <i class="fa-solid fa-chevron-right text-[9px] opacity-30"></i>
                 </button>
 
-                <!-- Download CV Special Button -->
-                <a href="cv.pdf" target="_blank" class="nav-pill cv-pill !mt-3">
-                    <div class="flex items-center space-x-3">
-                        <div class="nav-icon-bg !bg-white/20 !text-current"><i class="fa-solid fa-file-pdf text-xs"></i></div>
-                        <span>Download CV</span>
+                <a href="cv.pdf" target="_blank" class="menu-btn cv-btn mt-1">
+                    <div class="flex items-center space-x-2.5">
+                        <div class="icon-box !bg-white/40"><i class="fa-solid fa-file-pdf"></i></div>
+                        <span>View CV</span>
                     </div>
-                    <i class="fa-solid fa-arrow-down text-xs opacity-70"></i>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-60"></i>
                 </a>
             </nav>
         </div>
 
-        <div class="text-center text-[10px] font-medium text-[#A0AEC0] pt-2">
-            © 2026 Nisa Sri Fadilah
+        <div class="text-center text-[10px] text-[#A0AEC0] pb-2">
+            2026 made by Nisa
         </div>
     </aside>
 
-    <!-- Main Interactive Area -->
-    <div class="flex flex-col h-full w-full overflow-hidden relative">
+    <!-- Area Utama -->
+    <main class="w-full h-full bg-[#F8F5EE] relative overflow-hidden">
+        
+        <!-- SLIDE 1: HOME -->
+        <section id="slide-0" class="slide-page active flex-col items-center justify-center relative h-full w-full">
+            <img src="hero.jpg" alt="Nisa Sri Fadilah Hero" class="absolute inset-0 w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-[#F8F5EE]/20 backdrop-blur-[0.5px]"></div>
 
-        <main class="flex-1 h-full w-full bg-[#F8F5EE] relative overflow-hidden flex flex-col justify-between">
-            
-            <!-- Slides Container -->
-            <div class="relative w-full flex-1 overflow-hidden">
+            <div class="relative z-10 text-center px-4 text-hero-shadow">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-wider uppercase text-[#1D232A]">
+                    NISA SRI FADILAH
+                </h2>
+                <p class="text-xs sm:text-sm md:text-base tracking-[0.25em] font-bold mt-3 uppercase text-[#3D4451] min-h-[28px]">
+                    <span id="typing-text" class="typing-cursor"></span>
+                </p>
+            </div>
+        </section>
 
-                <!-- SLIDE 1: HOME -->
-                <section id="slide-0" class="slide-deck active-slide">
-                    <img src="hero.jpg" alt="Hero Background" class="absolute inset-0 w-full h-full object-cover object-center" onerror="this.src='https://placehold.co/1200x800/EFE8DC/2D3748?text=NISA+SRI+FADILAH'">
-                    <div class="absolute inset-0 bg-[#F8F5EE]/25 backdrop-blur-[1px]"></div>
+        <!-- SLIDE 2: CREATIVE -->
+        <section id="slide-1" class="slide-page scroll-container flex-col py-16 px-4 sm:px-8 md:px-12 h-full w-full items-center">
+            <div class="max-w-[1100px] w-full mx-auto space-y-10 my-auto pt-6 pb-12">
+                <header class="text-center pt-4">
+                    <h2 class="text-2xl sm:text-3xl font-bold tracking-[0.35em] text-[#2D3748] uppercase">
+                        C R E A T I V E
+                    </h2>
+                </header>
 
-                    <div class="relative z-10 text-center px-4 max-w-3xl mx-auto text-hero-shadow">
-                        <span class="text-[10px] sm:text-xs font-bold tracking-[0.3em] uppercase text-[#4A5568] bg-white/60 px-4 py-1.5 rounded-full border border-white/80 shadow-sm inline-block mb-3">
-                            PORTFOLIO PRESENTATION DECK
-                        </span>
-                        <h2 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-wider uppercase text-[#1D232A] my-2">
-                            NISA SRI FADILAH
-                        </h2>
-                        <p class="text-xs sm:text-sm md:text-base tracking-[0.2em] font-bold uppercase text-[#3D4451] min-h-[28px] mt-2">
-                            <span id="typing-text" class="typing-cursor"></span>
-                        </p>
+                <div class="space-y-4 text-center">
+                    <div>
+                        <span class="category-pill uppercase">LOGO</span>
                     </div>
-                </section>
 
-                <!-- SLIDE 2: LOGO GALLERY -->
-                <section id="slide-1" class="slide-deck">
-                    <div class="max-w-5xl w-full h-full flex flex-col justify-center items-center py-2 px-2 sm:px-6">
-                        <div class="mb-4 text-center">
-                            <span class="category-pill uppercase">LOGO GALLERY</span>
-                            <p class="text-[11px] text-gray-500 mt-1">Identitas visual dan desain logo terkurasi</p>
-                        </div>
-
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-6 md:gap-8 justify-items-center items-center w-full max-w-3xl my-auto">
-                            <div class="flex flex-col items-center">
-                                <div class="logo-card">
-                                    <img src="Lunae Logo.png" alt="Lunae Logo" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/120x120/FFFFFF/2D3748?text=Lunae'">
-                                </div>
-                                <span class="text-[10px] sm:text-xs font-semibold text-gray-700 mt-2">Lunáe Wear</span>
-                            </div>
-
-                            <div class="flex flex-col items-center">
-                                <div class="logo-card">
-                                    <img src="Hyper Season.png" alt="Hyper Season" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/120x120/FFFFFF/2D3748?text=Hyper+Season'">
-                                </div>
-                                <span class="text-[10px] sm:text-xs font-semibold text-gray-700 mt-2">Hyper Season</span>
-                            </div>
-
-                            <div class="flex flex-col items-center">
-                                <div class="logo-card">
-                                    <img src="Madala Creative.png" alt="Madala Creative" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/120x120/FFFFFF/2D3748?text=Madala'">
-                                </div>
-                                <span class="text-[10px] sm:text-xs font-semibold text-gray-700 mt-2">Madala Creative</span>
-                            </div>
-
-                            <div class="flex flex-col items-center">
-                                <div class="logo-card">
-                                    <img src="Teknik Industri.png" alt="Teknik Industri" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/120x120/FFFFFF/2D3748?text=Teknik+Industri'">
-                                </div>
-                                <span class="text-[10px] sm:text-xs font-semibold text-gray-700 mt-2">Teknik Industri</span>
-                            </div>
-
-                            <div class="flex flex-col items-center">
-                                <div class="logo-card">
-                                    <img src="Two Ambiverts.png" alt="Two Ambiverts" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/120x120/FFFFFF/2D3748?text=Two+Ambiverts'">
-                                </div>
-                                <span class="text-[10px] sm:text-xs font-semibold text-gray-700 mt-2">Two Ambiverts</span>
-                            </div>
-
-                            <div class="flex flex-col items-center">
-                                <div class="logo-card">
-                                    <img src="Beauty Skin Care.png" alt="Beauty Skin Care" class="w-full h-full object-contain" onerror="this.src='https://placehold.co/120x120/FFFFFF/2D3748?text=Skin+Care'">
-                                </div>
-                                <span class="text-[10px] sm:text-xs font-semibold text-gray-700 mt-2">Beauty Skincare</span>
-                            </div>
-                        </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 justify-items-center items-center pt-2">
+                        <div class="logo-card"><img src="Lunae Logo.png" alt="Lunáe Logo" class="w-full h-full object-contain"></div>
+                        <div class="logo-card"><img src="Hyper Season.png" alt="Hyper Season" class="w-full h-full object-contain"></div>
+                        <div class="logo-card"><img src="Madala Creative.png" alt="Madala Creative" class="w-full h-full object-contain"></div>
+                        <div class="logo-card"><img src="Teknik Industri.png" alt="Teknik Industri" class="w-full h-full object-contain"></div>
+                        <div class="logo-card"><img src="Two Ambiverts.png" alt="Two Ambiverts" class="w-full h-full object-contain"></div>
+                        <div class="logo-card"><img src="Beauty Skin Care.png" alt="Beauty Skin Care" class="w-full h-full object-contain"></div>
                     </div>
-                </section>
+                </div>
 
-                <!-- SLIDE 3: BRANDING SHOWCASE -->
-                <section id="slide-2" class="slide-deck">
-                    <div class="max-w-6xl w-full h-full flex flex-col justify-center items-center py-2 px-2 sm:px-4">
-                        <div class="mb-2 sm:mb-3 text-center shrink-0">
-                            <span class="category-pill uppercase">BRANDING SHOWCASE</span>
+                <div class="space-y-4 text-center pt-4">
+                    <div>
+                        <span class="category-pill uppercase">BRANDING</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch text-left pt-2">
+                        <div class="bg-white rounded-xl overflow-hidden border border-[#EFE8DC] min-h-[280px]">
+                            <img src="Meet Lunae.png" alt="Meet Lunáe Poster" class="w-full h-full object-cover">
                         </div>
 
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4 items-stretch w-full max-w-5xl my-auto max-h-[75vh]">
-                            <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex flex-col justify-center h-36 sm:h-auto">
-                                <img src="Meet Lunae.png" alt="Meet Lunáe" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x600/F8F5EE/2D3748?text=Meet+Lunae'">
+                        <div class="flex flex-col justify-between space-y-3 min-h-[280px]">
+                            <div class="bg-white rounded-xl overflow-hidden border border-[#EFE8DC] flex-1 min-h-[160px]">
+                                <img src="Lunae Products.png" alt="Lunáe Products" class="w-full h-full object-cover">
                             </div>
 
-                            <div class="flex flex-col justify-between space-y-2 sm:space-y-3">
-                                <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex-1 min-h-[90px]">
-                                    <img src="Lunae Products.png" alt="Lunáe Products" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x300/F8F5EE/2D3748?text=Lunae+Products'">
+                            <div class="bg-white rounded-xl p-3 border border-[#EFE8DC] space-y-2 shrink-0">
+                                <div class="w-full flex flex-col h-10 rounded-md overflow-hidden border border-gray-100">
+                                    <div class="h-1/4 bg-[#F7F1DE]"></div>
+                                    <div class="h-1/4 bg-[#B0BA99]"></div>
+                                    <div class="h-1/4 bg-[#9D6638]"></div>
+                                    <div class="h-1/4 bg-[#4E220F]"></div>
                                 </div>
 
-                                <div class="bg-white rounded-xl p-2.5 shadow-sm border border-[#EFE8DC] space-y-2 shrink-0">
-                                    <div class="w-full flex flex-col h-12 rounded overflow-hidden border border-gray-100">
-                                        <div class="h-1/4 bg-[#F7F1DE]"></div>
-                                        <div class="h-1/4 bg-[#B0BA99]"></div>
-                                        <div class="h-1/4 bg-[#9D6638]"></div>
-                                        <div class="h-1/4 bg-[#4E220F]"></div>
+                                <div class="grid grid-cols-4 gap-1 text-center">
+                                    <div class="flex flex-col items-center">
+                                        <span class="w-2 h-2 rounded-full bg-[#F7F1DE] border border-gray-300 mb-0.5"></span>
+                                        <p class="text-[7.5px] font-bold text-gray-700">#F7F1DE</p>
                                     </div>
-
-                                    <div class="grid grid-cols-4 gap-0.5 text-center">
-                                        <div class="flex flex-col items-center">
-                                            <span class="w-2.5 h-2.5 rounded-full bg-[#F7F1DE] border border-gray-300"></span>
-                                            <p class="text-[8px] font-bold text-gray-700 mt-0.5">#F7F1DE</p>
-                                        </div>
-                                        <div class="flex flex-col items-center">
-                                            <span class="w-2.5 h-2.5 rounded-full bg-[#B0BA99]"></span>
-                                            <p class="text-[8px] font-bold text-gray-700 mt-0.5">#B0BA99</p>
-                                        </div>
-                                        <div class="flex flex-col items-center">
-                                            <span class="w-2.5 h-2.5 rounded-full bg-[#9D6638]"></span>
-                                            <p class="text-[8px] font-bold text-gray-700 mt-0.5">#9D6638</p>
-                                        </div>
-                                        <div class="flex flex-col items-center">
-                                            <span class="w-2.5 h-2.5 rounded-full bg-[#4E220F]"></span>
-                                            <p class="text-[8px] font-bold text-gray-700 mt-0.5">#4E220F</p>
-                                        </div>
+                                    <div class="flex flex-col items-center">
+                                        <span class="w-2 h-2 rounded-full bg-[#B0BA99] mb-0.5"></span>
+                                        <p class="text-[7.5px] font-bold text-gray-700">#B0BA99</p>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <span class="w-2 h-2 rounded-full bg-[#9D6638] mb-0.5"></span>
+                                        <p class="text-[7.5px] font-bold text-gray-700">#9D6638</p>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <span class="w-2 h-2 rounded-full bg-[#4E220F] mb-0.5"></span>
+                                        <p class="text-[7.5px] font-bold text-gray-700">#4E220F</p>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="bg-white rounded-xl p-3 sm:p-4 shadow-sm border border-[#EFE8DC] flex flex-col justify-between">
-                                <div>
-                                    <h3 class="text-2xl sm:text-3xl font-serif tracking-wide text-[#1A202C]">Lunáe✦</h3>
-                                    <p class="text-[8px] sm:text-[9px] font-bold tracking-[0.2em] text-gray-500 uppercase mt-0.5">LUNAE TYPEFACE</p>
-                                    <hr class="my-2 border-[#EFE8DC]">
+                        <div class="bg-white rounded-xl p-4 border border-[#EFE8DC] flex flex-col justify-between min-h-[280px]">
+                            <div>
+                                <h3 class="text-2xl font-serif tracking-wide text-[#1A202C]">Lunáe✦</h3>
+                                <p class="text-[8px] font-bold tracking-[0.2em] text-gray-500 uppercase mt-0.5">LUNAE TYPEFACE</p>
+                                <hr class="my-2 border-[#EFE8DC]">
 
-                                    <div class="text-[8.5px] font-serif text-gray-700 tracking-wider space-y-1">
+                                <div class="grid grid-cols-2 gap-2 text-[8.5px] font-serif text-gray-700 tracking-wider">
+                                    <div>
                                         <p>ABCDEFGHIJKLM</p>
                                         <p>NOPQRSTUVWXYZ</p>
                                     </div>
+                                    <div>
+                                        <p>ABCDEFGHIJ</p>
+                                        <p>RSTUVWXYZ</p>
+                                    </div>
                                 </div>
+                            </div>
 
-                                <div class="pt-2 border-t border-gray-100">
+                            <div class="grid grid-cols-2 gap-2 mt-4 pt-2 border-t border-gray-100">
+                                <div>
                                     <p class="text-[9px] font-semibold text-gray-800">Content Sans-serif</p>
-                                    <p class="text-[8px] text-gray-500 leading-tight mt-0.5">Minimal look, timeless impression & refined typography.</p>
+                                    <p class="text-[7.5px] text-gray-500 leading-tight mt-0.5">Simple text, minimal look, timeless impression.</p>
                                 </div>
-                            </div>
-
-                            <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex flex-col justify-center h-36 sm:h-auto">
-                                <img src="Model Showcase.png" alt="Model Showcase" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x600/F8F5EE/2D3748?text=Model+Showcase'">
+                                <div class="text-[8px] font-mono text-gray-600 space-y-0.5">
+                                    <p>0123456789</p>
+                                    <p>!?#$%&amp;</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </section>
 
-                <!-- SLIDE 4: PROJECTS -->
-                <section id="slide-3" class="slide-deck">
-                    <div class="max-w-4xl w-full h-full flex flex-col justify-center items-center py-4 px-4 text-center">
-                        <span class="category-pill uppercase mb-3">FEATURED PROJECTS</span>
-                        <h3 class="text-xl sm:text-2xl font-bold text-[#2D3748] mb-6">Inovasi & Optimization Projects</h3>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-3xl my-auto">
-                            <div class="bg-white p-5 rounded-2xl border border-[#EFE8DC] shadow-sm text-left hover:border-gray-400 transition-all">
-                                <div class="w-8 h-8 rounded-full bg-[#F8F5EE] flex items-center justify-center text-[#2D3748] mb-3">
-                                    <i class="fa-solid fa-chart-line text-sm"></i>
-                                </div>
-                                <h4 class="font-bold text-sm text-gray-800 mb-1">Process Optimization</h4>
-                                <p class="text-[11px] text-gray-500 leading-relaxed">Penerapan analisis Teknik Industri untuk meningkatkan efisiensi alur kerja & sistem produksi.</p>
-                            </div>
-
-                            <div class="bg-white p-5 rounded-2xl border border-[#EFE8DC] shadow-sm text-left hover:border-gray-400 transition-all">
-                                <div class="w-8 h-8 rounded-full bg-[#F8F5EE] flex items-center justify-center text-[#2D3748] mb-3">
-                                    <i class="fa-solid fa-store text-sm"></i>
-                                </div>
-                                <h4 class="font-bold text-sm text-gray-800 mb-1">E-Commerce Growth</h4>
-                                <p class="text-[11px] text-gray-500 leading-relaxed">Strategi pemasaran produk, pengelolaan toko online, dan konversi penjual digital.</p>
-                            </div>
-
-                            <div class="bg-white p-5 rounded-2xl border border-[#EFE8DC] shadow-sm text-left hover:border-gray-400 transition-all">
-                                <div class="w-8 h-8 rounded-full bg-[#F8F5EE] flex items-center justify-center text-[#2D3748] mb-3">
-                                    <i class="fa-solid fa-bullhorn text-sm"></i>
-                                </div>
-                                <h4 class="font-bold text-sm text-gray-800 mb-1">Digital Marketing</h4>
-                                <p class="text-[11px] text-gray-500 leading-relaxed">Kampanye kreatif, analisis audiens, serta pengembangan konten media sosial yang berdampak.</p>
-                            </div>
+                        <div class="bg-white rounded-xl overflow-hidden border border-[#EFE8DC] min-h-[280px]">
+                            <img src="Model Showcase.png" alt="Model Showcase" class="w-full h-full object-cover">
                         </div>
                     </div>
-                </section>
-
-                <!-- SLIDE 5: ABOUT ME -->
-                <section id="slide-4" class="slide-deck">
-                    <div class="max-w-3xl w-full h-full flex flex-col justify-center items-center py-4 px-4 text-center">
-                        <span class="category-pill uppercase mb-4">ABOUT ME</span>
-                        
-                        <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-[#EFE8DC] max-w-xl my-auto text-center space-y-4">
-                            <div class="w-20 h-20 rounded-full overflow-hidden mx-auto border-2 border-[#EFE8DC]">
-                                <img src="profile.jpg" alt="Nisa Profile" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/100x100/EFE8DC/2D3748?text=NISA'">
-                            </div>
-
-                            <h3 class="text-xl font-bold text-[#2D3748]">Salam, Saya Nisa Sri Fadilah</h3>
-
-                            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                                Berpengalaman di bidang <strong>Teknik Industri</strong>, <strong>E-Commerce</strong>, dan <strong>Digital Marketing</strong>. Memiliki passion tinggi dalam menciptakan identitas visual brand, optimasi proses bisnis, dan strategi pemasaran kreatif yang terukur.
-                            </p>
-
-                            <div class="pt-2 flex justify-center space-x-3 text-xs">
-                                <span class="bg-[#F8F5EE] px-3.5 py-1 rounded-full border border-[#D9D2C5] text-gray-700 font-medium inline-flex items-center">
-                                    <i class="fa-solid fa-circle text-[8px] text-emerald-500 mr-2 animate-pulse"></i> Available for Project
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-            </div>
-
-            <!-- Bottom Control Dock -->
-            <footer class="w-full bg-[#F8F5EE] border-t border-[#E8E1D5] py-2.5 px-4 sm:px-6 flex items-center justify-between z-20 shrink-0">
-                <button id="prevBtn" onclick="prevSlide()" class="nav-arrow-btn">
-                    <i class="fa-solid fa-arrow-left text-sm"></i>
-                </button>
-
-                <div class="flex flex-col items-center">
-                    <div class="flex space-x-2 mb-1">
-                        <span onclick="goToSlide(0)" class="dot-indicator active-dot" id="dot-0"></span>
-                        <span onclick="goToSlide(1)" class="dot-indicator" id="dot-1"></span>
-                        <span onclick="goToSlide(2)" class="dot-indicator" id="dot-2"></span>
-                        <span onclick="goToSlide(3)" class="dot-indicator" id="dot-3"></span>
-                        <span onclick="goToSlide(4)" class="dot-indicator" id="dot-4"></span>
-                    </div>
-                    <span id="slideCounter" class="text-[10px] font-bold tracking-widest text-gray-500 uppercase">
-                        SLIDE 01 / 05
-                    </span>
                 </div>
 
-                <button id="nextBtn" onclick="nextSlide()" class="nav-arrow-btn">
-                    <i class="fa-solid fa-arrow-right text-sm"></i>
-                </button>
-            </footer>
+            </div>
+        </section>
 
-        </main>
+        <!-- SLIDE 3: PROJECTS -->
+        <section id="slide-2" class="slide-page flex-col items-center justify-center p-8 h-full w-full text-center">
+            <h2 class="text-2xl font-bold text-gray-700 uppercase tracking-widest mb-2">Projects</h2>
+            <p class="text-xs text-gray-500 max-w-md">Koleksi project terbaru akan ditampilkan di halaman ini.</p>
+        </section>
 
-    </div>
+        <!-- SLIDE 4: ABOUT ME -->
+        <section id="slide-3" class="slide-page flex-col items-center justify-center p-8 h-full w-full text-center">
+            <h2 class="text-2xl font-bold text-gray-700 uppercase tracking-widest mb-2">About Me</h2>
+            <p class="text-xs text-gray-500 max-w-md leading-relaxed">
+                Halo, saya Nisa Sri Fadilah! Seorang Industrial Engineer, E-Commerce Specialist, dan Digital Marketing enthusiast.
+            </p>
+        </section>
+
+    </main>
 
     <script>
-        const TOTAL_SLIDES = 5;
         let currentSlide = 0;
+        const totalSlides = 4;
 
-        // Sidebar Toggle Handler
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('sidebar-overlay');
             const toggleIcon = document.getElementById('toggleIcon');
             
-            if (!sidebar || !overlay || !toggleIcon) return;
-
             sidebar.classList.toggle('open');
             overlay.classList.toggle('active');
-
+            
             if (sidebar.classList.contains('open')) {
-                toggleIcon.className = 'fa-solid fa-xmark text-lg';
+                toggleIcon.className = 'fa-solid fa-xmark text-base';
             } else {
                 toggleIcon.className = 'fa-solid fa-bars text-base';
             }
         }
 
-        // Slide Navigation Engine
-        function goToSlide(slideIndex) {
-            if (slideIndex < 0 || slideIndex >= TOTAL_SLIDES) return;
+        function goToSlide(index) {
+            if (index < 0 || index >= totalSlides) return;
+            
+            currentSlide = index;
 
-            const currentActiveSlide = document.getElementById(`slide-${currentSlide}`);
-            if (currentActiveSlide) currentActiveSlide.classList.remove('active-slide');
-
-            const currentActiveNav = document.getElementById(`nav-slide-${currentSlide}`);
-            if (currentActiveNav) currentActiveNav.classList.remove('active-nav');
-
-            const currentActiveDot = document.getElementById(`dot-${currentSlide}`);
-            if (currentActiveDot) currentActiveDot.classList.remove('active-dot');
-
-            currentSlide = slideIndex;
-
-            const newActiveSlide = document.getElementById(`slide-${currentSlide}`);
-            if (newActiveSlide) newActiveSlide.classList.add('active-slide');
-
-            const newActiveNav = document.getElementById(`nav-slide-${currentSlide}`);
-            if (newActiveNav) newActiveNav.classList.add('active-nav');
-
-            const newActiveDot = document.getElementById(`dot-${currentSlide}`);
-            if (newActiveDot) newActiveDot.classList.add('active-dot');
-
-            const slideCounter = document.getElementById('slideCounter');
-            if (slideCounter) {
-                slideCounter.textContent = `SLIDE 0${currentSlide + 1} / 0${TOTAL_SLIDES}`;
+            for (let i = 0; i < totalSlides; i++) {
+                const slide = document.getElementById('slide-' + i);
+                const btn = document.getElementById('btn-slide-' + i);
+                
+                if (slide) slide.classList.remove('active');
+                if (btn) btn.classList.remove('active');
             }
 
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            if (prevBtn) prevBtn.disabled = (currentSlide === 0);
-            if (nextBtn) nextBtn.disabled = (currentSlide === TOTAL_SLIDES - 1);
+            const targetSlide = document.getElementById('slide-' + currentSlide);
+            const targetBtn = document.getElementById('btn-slide-' + currentSlide);
+            
+            if (targetSlide) targetSlide.classList.add('active');
+            if (targetBtn) targetBtn.classList.add('active');
 
-            // Auto Close Sidebar when selecting a slide
             const sidebar = document.getElementById('sidebar');
-            if (sidebar && sidebar.classList.contains('open')) {
+            if (sidebar.classList.contains('open')) {
                 toggleSidebar();
             }
         }
 
-        function nextSlide() {
-            if (currentSlide < TOTAL_SLIDES - 1) {
-                goToSlide(currentSlide + 1);
-            }
-        }
-
-        function prevSlide() {
-            if (currentSlide > 0) {
-                goToSlide(currentSlide - 1);
-            }
-        }
-
-        // Keyboard Arrow Key Navigation
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
-                nextSlide();
-            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-                prevSlide();
-            }
-        });
-
-        // Subtitle Typing Animation Effect
         const subTitles = [
             "INDUSTRIAL ENGINEERING",
             "E-COMMERCE SPECIALIST",
@@ -746,8 +498,6 @@
         const typingElement = document.getElementById('typing-text');
 
         function typeEffect() {
-            if (!typingElement) return;
-
             const currentTitle = subTitles[titleIndex];
 
             if (isDeleting) {
@@ -773,7 +523,6 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            goToSlide(0);
             typeEffect();
         });
     </script>
