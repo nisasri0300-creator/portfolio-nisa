@@ -6,14 +6,14 @@
     <title>Nisa Sri Fadilah - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
     </style>
 </head>
-<body class="bg-[#e8e2d5] min-h-screen p-4 md:p-8 flex items-center justify-center">
+<body class="bg-[#e8e2d5] min-h-screen p-3 md:p-8 flex items-center justify-center">
 
-    <div class="max-w-6xl w-full bg-[#f4f0ea] rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-[600px] border border-white/40">
+    <div class="max-w-6xl w-full bg-[#f4f0ea] rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 border border-white/40">
         
         <!-- Sidebar Kiri -->
         <div class="md:col-span-4 bg-white/70 backdrop-blur-md p-6 flex flex-col justify-between border-r border-stone-200/50 z-10">
@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="text-center mb-6">
-                    <!-- Foto Profil Bulat -->
+                    <!-- Foto Profil Bulat Kecil -->
                     <div class="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-stone-300 shadow-md mb-4 bg-stone-200">
                         <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
                     </div>
@@ -51,10 +51,22 @@
             </div>
         </div>
 
-        <!-- Area Kanan (Hero Image Proporsional) -->
-        <div class="md:col-span-8 relative flex items-center justify-center min-h-[400px] bg-[#f4f0ea] overflow-hidden">
-            <!-- Gambar Hero Pas Ukuran (Not Crop/Zoom) -->
-            <img src="hero.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-contain object-right-bottom">
+        <!-- Area Kanan (Foto Pas + Teks Nama Kanan Atas) -->
+        <div class="md:col-span-8 relative flex flex-col justify-between min-h-[450px] md:min-h-[580px] bg-white overflow-hidden p-6 md:p-10">
+            
+            <!-- Teks Nama di Pojok Kanan Atas -->
+            <div class="text-right z-10">
+                <h1 class="text-3xl md:text-5xl font-extrabold text-stone-700 tracking-wider uppercase mb-1">
+                    NISA SRI FADILAH
+                </h1>
+                <p class="text-stone-400 text-xs md:text-sm font-semibold tracking-[0.25em] uppercase">
+                    INDUSTRIAL ENGINEERING
+                </p>
+            </div>
+
+            <!-- Foto Badan di Bawah (Kepala Aman Tidak Terpotong) -->
+            <img src="hero.jpg" alt="Nisa Sri Fadilah" class="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-10 h-[85%] max-h-[500px] w-auto object-contain object-bottom pointer-events-none">
+
         </div>
 
     </div>
