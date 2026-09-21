@@ -156,16 +156,16 @@
             filter: blur(4px);
         }
 
-        /* Efek bayangan halus penopang keterbacaan teks di atas baju */
+        /* Efek bayangan halus penopang keterbacaan teks */
         .hero-text-shadow {
-            text-shadow: 0 2px 16px rgba(247, 244, 238, 0.8), 0 1px 3px rgba(0, 0, 0, 0.12);
+            text-shadow: 0 2px 18px rgba(247, 244, 238, 0.85), 0 1px 3px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body class="relative bg-[#F7F4EE]">
 
     <!-- Tombol Hamburger Menu Minimalis -->
-    <button onclick="toggleSidebar()" class="fixed top-8 left-8 z-40 w-11 h-11 rounded-full bg-white/80 hover:bg-white backdrop-blur-md shadow-sm border border-black/5 text-gray-800 flex items-center justify-center transition-all">
+    <button onclick="toggleSidebar()" class="fixed top-6 left-6 z-40 w-11 h-11 rounded-full bg-white/80 hover:bg-white backdrop-blur-md shadow-sm border border-black/5 text-gray-800 flex items-center justify-center transition-all">
         <i class="fa-solid fa-bars text-sm"></i>
     </button>
 
@@ -231,28 +231,28 @@
     <!-- AREA UTAMA SLIDE -->
     <main class="w-full h-full relative overflow-hidden">
 
-        <!-- SLIDE 1: HERO HOME (TITLE DI ATAS, NAMA DI AREA BAJU) -->
-        <section id="slide-0" class="slide-page active flex-col items-center justify-end md:justify-end relative h-full w-full pb-32 md:pb-24">
+        <!-- SLIDE 1: HERO HOME (POSISI NAİK SIKIT KE AREA DADA ATAS / BADAAN TENGAH) -->
+        <section id="slide-0" class="slide-page active flex-col items-center justify-center relative h-full w-full">
             
             <!-- Foto Profil Background -->
             <div class="absolute inset-0 z-0">
                 <img src="profile.jpg" alt="Nisa Background" class="w-full h-full object-cover object-top sm:object-center">
-                <!-- Soft vignette khusus bagian bawah baju -->
-                <div class="absolute inset-0 bg-gradient-to-t from-[#F7F4EE]/80 via-transparent to-transparent"></div>
+                <!-- Soft vignette transparan di dasar -->
+                <div class="absolute inset-0 bg-gradient-to-t from-[#F7F4EE]/60 via-transparent to-transparent"></div>
             </div>
 
-            <!-- Header Content (Hirarki Baru) -->
-            <div class="relative z-10 text-center space-y-2 px-6 max-w-4xl mx-auto">
+            <!-- Header Content (Di-offset sedikit ke bawah dari center murni agar pas di dada atas) -->
+            <div class="relative z-10 text-center space-y-1.5 px-6 max-w-4xl mx-auto translate-y-24 sm:translate-y-28 md:translate-y-32">
                 
                 <!-- 1. TITLE / SUBTITLE ANIMATED (POSISI DI ATAS NAMA) -->
-                <div class="text-[11px] sm:text-xs font-bold text-[#475569] uppercase tracking-[0.3em] min-h-[24px] flex items-center justify-center">
+                <div class="text-[10px] sm:text-xs font-bold text-[#475569] uppercase tracking-[0.25em] min-h-[22px] flex items-center justify-center">
                     <div class="scale-fade-container">
                         <span id="scale-title" class="scale-fade-item active">INDUSTRIAL ENGINEERING</span>
                     </div>
                 </div>
 
-                <!-- 2. NAMA UTAMA (BOLD TEGAS, PAS DI AREA BAJU) -->
-                <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#0F172A] uppercase hero-text-shadow">
+                <!-- 2. NAMA UTAMA (BOLD TEGAS, PAS DI AREA DADA ATAS) -->
+                <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#0F172A] uppercase hero-text-shadow">
                     NISA SRI FADILAH
                 </h1>
 
@@ -343,20 +343,20 @@
     </main>
 
     <!-- FLOATING MINIMALIST NAVIGATION -->
-    <div class="fixed bottom-8 inset-x-0 z-30 flex items-center justify-between px-8 max-w-screen-xl mx-auto pointer-events-none">
+    <div class="fixed bottom-6 inset-x-0 z-30 flex items-center justify-between px-6 sm:px-8 max-w-screen-xl mx-auto pointer-events-none">
         
         <!-- Tombol Prev Melayang -->
-        <button onclick="prevSlide()" class="pointer-events-auto w-11 h-11 rounded-full bg-white/80 hover:bg-white backdrop-blur-md shadow-md border border-black/5 text-gray-800 flex items-center justify-center transition-all">
+        <button onclick="prevSlide()" class="pointer-events-auto w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/85 hover:bg-white backdrop-blur-md shadow-md border border-black/5 text-gray-800 flex items-center justify-center transition-all">
             <i class="fa-solid fa-arrow-left text-xs"></i>
         </button>
 
         <!-- Indikator Slide Minimalis (Garis Tipis Modern) -->
-        <div class="flex space-x-2 pointer-events-auto bg-white/80 backdrop-blur-md border border-black/5 px-4 py-2.5 rounded-full shadow-sm" id="dots-container">
+        <div class="flex space-x-2 pointer-events-auto bg-white/85 backdrop-blur-md border border-black/5 px-4 py-2 sm:py-2.5 rounded-full shadow-sm" id="dots-container">
             <!-- Indikator diinjeksi via JS -->
         </div>
 
         <!-- Tombol Next Melayang -->
-        <button onclick="nextSlide()" class="pointer-events-auto w-11 h-11 rounded-full bg-white/80 hover:bg-white backdrop-blur-md shadow-md border border-black/5 text-gray-800 flex items-center justify-center transition-all">
+        <button onclick="nextSlide()" class="pointer-events-auto w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/85 hover:bg-white backdrop-blur-md shadow-md border border-black/5 text-gray-800 flex items-center justify-center transition-all">
             <i class="fa-solid fa-arrow-right text-xs"></i>
         </button>
     </div>
@@ -392,7 +392,7 @@
             for (let i = 0; i < totalSlides; i++) {
                 const dot = document.createElement('span');
                 dot.className = i === currentSlide 
-                    ? 'w-7 h-1 rounded-full bg-gray-800 transition-all duration-300' 
+                    ? 'w-6 sm:w-7 h-1 rounded-full bg-gray-800 transition-all duration-300' 
                     : 'w-2 h-1 rounded-full bg-gray-300 transition-all duration-300';
                 dotsContainer.appendChild(dot);
             }
