@@ -26,17 +26,16 @@
 </head>
 <body class="relative min-h-screen flex bg-[#F7F4EE]">
 
-    <!-- Sidebar Desktop (Dengan Foto Profil Lebih Besar) -->
+    <!-- Sidebar Desktop -->
     <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-80 bg-[#F4EFE6] border-r border-[#E8E1D5] flex flex-col justify-between p-10 transition-transform duration-300 transform translate-x-0">
         <div>
-            <!-- Header Sidebar dengan Foto Lebih Besar & Tombol Close (✕) -->
+            <!-- Header Sidebar -->
             <div class="flex items-center justify-between mb-8">
                 <div class="flex items-center gap-4">
-                    <!-- Foto Profil Lebih Besar -->
                     <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-md">
                     <div>
                         <h2 class="text-[10px] uppercase tracking-[0.3em] text-slate-400 font-bold mb-0.5">PORTFOLIO</h2>
-                        <h1 class="text-base font-bold tracking-tight text-slate-900 drop-shadow-[0_1px_2px_rgba(255,255,255,0.8)]">Nisa Sri Fadilah</h1>
+                        <h1 class="text-base font-bold tracking-tight text-slate-900">Nisa Sri Fadilah</h1>
                     </div>
                 </div>
                 <button onclick="toggleSidebar()" class="w-8 h-8 rounded-full hover:bg-[#EAE2D2] flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors">
@@ -75,7 +74,6 @@
             </nav>
         </div>
 
-        <!-- Tombol Download Resume di Bawah Sidebar -->
         <div>
             <a href="#" class="inline-flex items-center justify-between w-full text-slate-800 hover:text-slate-900 font-semibold text-xs tracking-[0.2em] uppercase pb-2 border-b border-slate-300 hover:border-slate-900 transition-all">
                 <span>Download Resume</span>
@@ -84,16 +82,10 @@
         </div>
     </aside>
 
-    <!-- Tombol Menu (☰) untuk Membuka Kembali Sidebar jika Ditutup -->
+    <!-- Tombol Menu (☰) -->
     <button id="open-btn" onclick="toggleSidebar()" class="fixed top-6 left-6 z-40 w-10 h-10 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full hidden items-center justify-center text-slate-800 shadow-md hover:bg-[#eae2d2] transition-all">
         ☰
     </button>
-
-    <!-- Mobile Top Header -->
-    <div class="md:hidden fixed top-0 inset-x-0 z-40 bg-[#F4EFE6]/90 backdrop-blur-md border-b border-[#E8E1D5] px-6 py-4 flex items-center justify-between">
-        <span class="text-xs font-bold uppercase tracking-[0.2em] text-slate-800">Nisa Sri Fadilah</span>
-        <a href="#" class="text-[10px] font-semibold uppercase tracking-widest text-slate-700 border-b border-slate-400 pb-0.5">Resume ↓</a>
-    </div>
 
     <!-- Main Content Area -->
     <div id="main-container" class="flex-1 ml-0 md:ml-80 transition-all duration-300 min-h-screen flex flex-col">
@@ -113,69 +105,38 @@
         </main>
 
         <!-- TAB 2: CREATIVE SECTION -->
-        <!-- TAB 2: CREATIVE SECTION -->
-<section id="section-creative" class="hidden flex-1 p-8 md:p-16 pt-24 md:pt-16">
-    <div class="max-w-6xl mx-auto">
-        <h2 class="text-center text-xl md:text-2xl font-bold tracking-[0.3em] uppercase mb-12 text-slate-900">C R E A T I V E</h2>
-        
-        <!-- Category: LOGO -->
-        <div class="mb-14">
-            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] mb-8 shadow-sm">
-                LOGO
-            </div>
-            
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-                <div class="bg-white rounded-full aspect-square flex items-center justify-center p-4 shadow-sm border border-[#E8E1D5]">
-                    <img src="Lunae Logo.png" alt="Lunae Logo" class="max-h-16 object-contain">
-                </div>
-                <div class="bg-white rounded-full aspect-square flex items-center justify-center p-4 shadow-sm border border-[#E8E1D5]">
-                    <img src="Hyper Season.png" alt="Hyper Season" class="max-h-16 object-contain">
-                </div>
-                <div class="bg-white rounded-full aspect-square flex items-center justify-center p-4 shadow-sm border border-[#E8E1D5]">
-                    <img src="Madala Creative.png" alt="Madala Creative" class="max-h-16 object-contain">
-                </div>
-                <div class="bg-white rounded-full aspect-square flex items-center justify-center p-4 shadow-sm border border-[#E8E1D5]">
-                    <img src="Teknik Industri.png" alt="Teknik Industri" class="max-h-16 object-contain">
-                </div>
-                <div class="bg-white rounded-full aspect-square flex items-center justify-center p-4 shadow-sm border border-[#E8E1D5]">
-                    <img src="Two Ambiverts.png" alt="Two Ambiverts" class="max-h-16 object-contain">
-                </div>
-                <div class="bg-white rounded-full aspect-square flex items-center justify-center p-4 shadow-sm border border-[#E8E1D5]">
-                    <img src="Beauty Skin Care.png" alt="Beauty Skin Care" class="max-h-16 object-contain">
-                </div>
-            </div>
-        </div>
-
-        <!-- Category: BRANDING -->
-        <div>
-            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] mb-8 shadow-sm">
-                BRANDING
-            </div>
-            
-            <!-- Grid Layout Persis Gambar 2 -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Kolom 1: Meet Lunae Showcase -->
-                <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                    <img src="Meet Lunae.png" alt="Meet Lunae" class="w-full h-80 object-cover rounded-xl mb-3 border border-white">
-                    <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">MEET LUNAE SHOWCASE</h3>
-                </div>
+        <section id="section-creative" class="hidden flex-1 p-8 md:p-16 pt-24 md:pt-16">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-center text-xl md:text-2xl font-bold tracking-[0.3em] uppercase mb-12 text-slate-900">C R E A T I V E</h2>
                 
-                <!-- Kolom 2: Color Palette & Moodboard -->
-                <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                    <img src="Lunae Products.png" alt="Color Palette & Moodboard" class="w-full h-80 object-cover rounded-xl mb-3 border border-white">
-                    <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">COLOR PALETTE & MOODBOARD</h3>
+                <!-- Category: LOGO -->
+                <div class="mb-14">
+                    <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] mb-8 shadow-sm">
+                        LOGO
+                    </div>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+                        <div class="bg-white rounded-full aspect-square flex items-center justify-center p-4 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform">
+                            <img src="Lunae Logo.png" alt="Lunae Logo" class="max-h-16 object-contain">
+                        </div>
+                        <div class="bg-white rounded-full aspect-square flex items-center justify-center p-4 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform">
+                            <img src="Hyper Season.png" alt="Hyper Season" class="max-h-16 object-contain">
+                        </div>
+                        <div class="bg-white rounded-full aspect-square flex items-center justify-center p-4 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform">
+                            <img src="Madala Creative.png" alt="Madala Creative" class="max-h-16 object-contain">
+                        </div>
+                        <div class="bg-white rounded-full aspect-square flex items-center justify-center p-4 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform">
+                            <img src="Teknik Industri.png" alt="Teknik Industri" class="max-h-16 object-contain">
+                        </div>
+                        <div class="bg-white rounded-full aspect-square flex items-center justify-center p-4 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform">
+                            <img src="Two Ambiverts.png" alt="Two Ambiverts" class="max-h-16 object-contain">
+                        </div>
+                        <div class="bg-white rounded-full aspect-square flex items-center justify-center p-4 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform">
+                            <img src="Beauty Skin Care.png" alt="Beauty Skin Care" class="max-h-16 object-contain">
+                        </div>
+                    </div>
                 </div>
-                
-                <!-- Kolom 3: Editorial & Typography (Dengan Model di Sanan) -->
-                <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                    <img src="Model Showcase.png" alt="Editorial & Typography" class="w-full h-80 object-cover rounded-xl mb-3 border border-white">
-                    <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">EDITORIAL & TYPOGRAPHY</h3>
-                </div>
-            </div>
-        </div>
 
-    </div>
-</section>
                 <!-- Category: BRANDING -->
                 <div>
                     <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] mb-8 shadow-sm">
@@ -238,15 +199,7 @@
 
     </div>
 
-    <!-- Mobile Bottom Navigation Bar -->
-    <nav class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-[#F4EFE6]/95 backdrop-blur-md border-t border-[#E8E1D5] px-6 py-4 flex items-center justify-around shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
-        <button onclick="switchTab('home')" class="text-xs font-bold text-slate-950 uppercase tracking-widest">Home</button>
-        <button onclick="switchTab('creative')" class="text-xs font-medium text-slate-400 hover:text-slate-900 uppercase tracking-widest transition-colors">Creative</button>
-        <button onclick="switchTab('projects')" class="text-xs font-medium text-slate-400 hover:text-slate-900 uppercase tracking-widest transition-colors">Projects</button>
-        <button onclick="switchTab('about')" class="text-xs font-medium text-slate-400 hover:text-slate-900 uppercase tracking-widest transition-colors">About</button>
-    </nav>
-
-    <!-- Script Pendukung Interaksi & Navigasi -->
+    <!-- Script Navigasi & Tab -->
     <script>
         let isSidebarOpen = true;
 
