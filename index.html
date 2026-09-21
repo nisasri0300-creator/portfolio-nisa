@@ -11,7 +11,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         html, body {
@@ -31,54 +31,29 @@
             top: 0;
             left: 0;
             bottom: 0;
-            width: 280px;
+            width: 290px;
             background-color: #F7F4EE;
             z-index: 50;
             transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             overflow-y: auto;
             border-right: 1px solid rgba(0,0,0,0.06);
-            color: #1E293B;
             padding: 24px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            box-shadow: 4px 0 24px rgba(0,0,0,0.03);
         }
 
-        /* Di HP: default sembunyi (ditutup) */
-        @media (max-width: 1023px) {
-            #sidebar {
-                transform: translateX(-100%);
-            }
-            #sidebar.open {
-                transform: translateX(0);
-            }
-            .main-content {
-                margin-left: 0 !important;
-            }
-            .hamburger-btn {
-                display: flex !important;
-            }
-        }
-
-        /* Di Laptop/Desktop (LG): Sidebar Otomatis TERBUKA Permanen! */
-        @media (min-width: 1024px) {
-            #sidebar {
-                transform: translateX(0) !important;
-            }
-            .main-content {
-                margin-left: 280px; /* Memberikan ruang untuk sidebar terbuka */
-                width: calc(100% - 280px);
-            }
-            .hamburger-btn {
-                display: none !important; /* Sembunyikan ikon hamburger di laptop */
-            }
+        /* Default: Sidebar Kebuka di Laptop & Mobile awal (Bisa Ditutup) */
+        #sidebar.closed {
+            transform: translateX(-100%) !important;
         }
 
         #sidebar-overlay {
             position: fixed;
             inset: 0;
-            background-color: rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(3px);
+            background-color: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(2px);
             z-index: 40;
             opacity: 0;
             pointer-events: none;
@@ -88,6 +63,21 @@
         #sidebar-overlay.active {
             opacity: 1;
             pointer-events: auto;
+        }
+
+        /* Adjust main content when sidebar open/closed on Desktop */
+        @media (min-width: 1024px) {
+            .main-content {
+                transition: margin-left 0.35s ease, width 0.35s ease;
+            }
+            body.sidebar-open .main-content {
+                margin-left: 290px;
+                width: calc(100% - 290px);
+            }
+            body:not(.sidebar-open) .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
         }
 
         .menu-btn {
@@ -139,7 +129,7 @@
         .slide-page {
             display: none;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.4s ease-in-out;
             height: 100%;
             width: 100%;
         }
@@ -149,17 +139,29 @@
             opacity: 1;
         }
 
-        .scroll-container {
-            overflow-y: auto;
-            max-height: 100vh;
+        /* HERO CARD OVERLAY CLEAN STYLING */
+        .hero-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
 
-        /* Animated Text Scale Fade */
+        .hero-img-full {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        /* Animasi Text Title */
         .scale-fade-container {
             display: inline-block;
             position: relative;
             min-height: 20px;
-            vertical-align: middle;
         }
 
         .scale-fade-item {
@@ -167,7 +169,6 @@
             transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
             opacity: 0;
             transform: scale(0.92);
-            letter-spacing: 0.1em;
             filter: blur(3px);
             white-space: nowrap;
         }
@@ -175,62 +176,58 @@
         .scale-fade-item.active {
             opacity: 1;
             transform: scale(1);
-            letter-spacing: 0.14em;
             filter: blur(0px);
         }
 
         .scale-fade-item.exit {
             opacity: 0;
             transform: scale(1.05);
-            letter-spacing: 0.2em;
             filter: blur(4px);
         }
 
-        /* HERO FULLSCREEN ADJUSTMENT */
-        .hero-fullscreen-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+        /* Mobile Bottom Nav styling */
+        .bottom-nav-item {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            color: #64748B;
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
         }
 
-        .hero-fullscreen-bg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top center; 
-            z-index: 1;
-        }
-
-        .hero-fullscreen-overlay {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            padding: 0 20px;
-            margin-top: 12vh; /* Menggeser posisi teks agak ke bawah agar tidak menutupi wajah */
+        .bottom-nav-item.active {
+            color: #0F172A;
+            background-color: #F1F5F9;
         }
     </style>
 </head>
-<body class="relative bg-[#F7F4EE]">
+<body class="relative bg-[#F7F4EE] sidebar-open">
 
-    <!-- Tombol Hamburger Menu (Hanya Muncul di HP) -->
-    <button onclick="toggleSidebar()" class="hamburger-btn fixed top-6 left-6 z-40 w-11 h-11 rounded-full bg-white/80 hover:bg-white backdrop-blur-md shadow-sm border border-black/5 text-gray-800 flex items-center justify-center transition-all">
+    <!-- Tombol Hamburger / Toggle Sidebar (Untuk Laptop & HP) -->
+    <button onclick="toggleSidebar()" class="fixed top-5 left-5 z-40 w-11 h-11 rounded-full bg-white/90 hover:bg-white backdrop-blur-md shadow-md border border-black/5 text-gray-800 flex items-center justify-center transition-all">
         <i class="fa-solid fa-bars text-sm"></i>
     </button>
 
-    <!-- Overlay Sidebar (Mobile Only) -->
+    <!-- Overlay Sidebar -->
     <div id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
-    <!-- SIDEBAR (Otomatis Terbuka di Laptop) -->
+    <!-- SIDEBAR (Bisa Dibuka / Ditutup kapan saja) -->
     <aside id="sidebar">
         <div class="w-full">
-            <div class="flex flex-col items-center text-center mt-2 mb-6">
-                <div class="w-16 h-16 rounded-full p-0.5 bg-white shadow-sm mb-2.5 overflow-hidden">
+            <!-- Header Sidebar dengan Tombol Close (X) -->
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Navigation</span>
+                <button onclick="toggleSidebar()" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center transition-all">
+                    <i class="fa-solid fa-xmark text-xs"></i>
+                </button>
+            </div>
+
+            <div class="flex flex-col items-center text-center mt-1 mb-6">
+                <div class="w-16 h-16 rounded-full p-0.5 bg-white shadow-sm mb-2 overflow-hidden">
                     <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
                 </div>
                 <h2 class="text-base font-bold tracking-tight text-[#1E293B]">Nisa Sri Fadilah</h2>
@@ -281,27 +278,24 @@
         </a>
     </aside>
 
-    <!-- AREA UTAMA SLIDE -->
+    <!-- AREA UTAMA CONTENT -->
     <main class="main-content h-full relative overflow-hidden transition-all duration-300">
 
-        <!-- SLIDE 1: HOME (FULLSCREEN OVERLAY) -->
+        <!-- SLIDE 1: HOME -->
         <section id="slide-0" class="slide-page active relative h-full w-full">
-            <div class="hero-fullscreen-container">
-                <!-- Foto latar belakang hero.jpg -->
-                <img src="hero.jpg" alt="Nisa Sri Fadilah" class="hero-fullscreen-bg">
+            <div class="hero-wrapper">
+                <img src="hero.jpg" alt="Nisa Sri Fadilah" class="hero-img-full">
 
-                <!-- Content Overlay -->
-                <div class="hero-fullscreen-overlay space-y-4">
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-[0.08em] text-[#0F172A] uppercase leading-tight drop-shadow-sm">
+                <!-- Overlay Nama & Profesi (Disesuaikan posisinya agar pas di baju pink & tidak menutupi wajah) -->
+                <div class="absolute inset-0 z-10 flex flex-col items-center justify-center pt-32 sm:pt-40 px-4 text-center">
+                    <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-wider text-[#0F172A] uppercase drop-shadow-sm mb-3">
                         NISA SRI FADILAH
                     </h1>
 
-                    <div>
-                        <div class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-white/85 backdrop-blur-md border border-black/5 shadow-sm">
-                            <div class="text-xs sm:text-sm font-bold text-[#334155] uppercase min-h-[20px] flex items-center justify-center">
-                                <div class="scale-fade-container">
-                                    <span class="scale-title-item scale-fade-item active">INDUSTRIAL ENGINEERING</span>
-                                </div>
+                    <div class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-white/80 backdrop-blur-md border border-black/5 shadow-sm">
+                        <div class="text-xs sm:text-sm font-bold text-[#334155] uppercase min-h-[20px] flex items-center justify-center">
+                            <div class="scale-fade-container">
+                                <span class="scale-title-item scale-fade-item active">INDUSTRIAL ENGINEERING</span>
                             </div>
                         </div>
                     </div>
@@ -310,8 +304,8 @@
         </section>
 
         <!-- SLIDE 2: LOGO GALLERY -->
-        <section id="slide-1" class="slide-page scroll-container flex-col py-16 px-6 sm:px-12 h-full w-full items-center bg-[#F7F4EE]">
-            <div class="max-w-5xl w-full mx-auto space-y-8 my-auto pb-20">
+        <section id="slide-1" class="slide-page overflow-y-auto flex-col py-16 px-6 sm:px-12 h-full w-full items-center bg-[#F7F4EE]">
+            <div class="max-w-5xl w-full mx-auto space-y-8 my-auto pb-24">
                 <div class="text-center">
                     <span class="inline-block px-5 py-1 rounded-full border border-[#E2D8BE] bg-white text-[10px] font-bold tracking-[0.25em] text-[#475569] uppercase shadow-sm">
                         Selected Works
@@ -331,8 +325,8 @@
         </section>
 
         <!-- SLIDE 3: BRANDING SHOWCASE -->
-        <section id="slide-2" class="slide-page scroll-container flex-col py-16 px-6 sm:px-12 h-full w-full items-center bg-[#F7F4EE]">
-            <div class="max-w-5xl w-full mx-auto space-y-8 my-auto pb-20">
+        <section id="slide-2" class="slide-page overflow-y-auto flex-col py-16 px-6 sm:px-12 h-full w-full items-center bg-[#F7F4EE]">
+            <div class="max-w-5xl w-full mx-auto space-y-8 my-auto pb-24">
                 <div class="text-center">
                     <span class="inline-block px-5 py-1 rounded-full border border-[#E2D8BE] bg-white text-[10px] font-bold tracking-[0.25em] text-[#475569] uppercase shadow-sm">
                         Visual Identity
@@ -392,17 +386,38 @@
 
     </main>
 
-    <!-- NAVIGATION FLOATING -->
-    <div class="fixed bottom-6 right-6 lg:right-8 z-30 flex items-center space-x-3 pointer-events-none">
-        <button onclick="prevSlide()" class="pointer-events-auto w-10 h-10 rounded-full bg-white/90 hover:bg-white backdrop-blur-md shadow-md border border-black/5 text-gray-800 flex items-center justify-center transition-all">
+    <!-- LAPTOP FLOATING CONTROLS (Next / Prev Slide Buttons) -->
+    <div class="hidden sm:flex fixed bottom-6 right-6 z-30 items-center space-x-3">
+        <button onclick="prevSlide()" class="w-10 h-10 rounded-full bg-white/90 hover:bg-white backdrop-blur-md shadow-md border border-black/5 text-gray-800 flex items-center justify-center transition-all">
             <i class="fa-solid fa-arrow-left text-xs"></i>
         </button>
-
-        <div class="flex space-x-2 pointer-events-auto bg-white/90 backdrop-blur-md border border-black/5 px-4 py-2.5 rounded-full shadow-sm" id="dots-container">
-        </div>
-
-        <button onclick="nextSlide()" class="pointer-events-auto w-10 h-10 rounded-full bg-white/90 hover:bg-white backdrop-blur-md shadow-md border border-black/5 text-gray-800 flex items-center justify-center transition-all">
+        <div class="flex space-x-2 bg-white/90 backdrop-blur-md border border-black/5 px-4 py-2.5 rounded-full shadow-sm" id="dots-container"></div>
+        <button onclick="nextSlide()" class="w-10 h-10 rounded-full bg-white/90 hover:bg-white backdrop-blur-md shadow-md border border-black/5 text-gray-800 flex items-center justify-center transition-all">
             <i class="fa-solid fa-arrow-right text-xs"></i>
+        </button>
+    </div>
+
+    <!-- MOBILE BOTTOM NAVIGATION BAR (Khusus Tampilan HP - Permanen Di Bawah, Nggak Bisa Di-close) -->
+    <div class="sm:hidden fixed bottom-3 inset-x-3 z-40 bg-white/95 backdrop-blur-lg border border-black/5 rounded-2xl shadow-lg px-2 py-2 flex items-center justify-around">
+        <button onclick="goToSlide(0)" id="mb-btn-0" class="bottom-nav-item active">
+            <i class="fa-solid fa-house text-base mb-0.5"></i>
+            <span>Home</span>
+        </button>
+        <button onclick="goToSlide(1)" id="mb-btn-1" class="bottom-nav-item">
+            <i class="fa-solid fa-palette text-base mb-0.5"></i>
+            <span>Logo</span>
+        </button>
+        <button onclick="goToSlide(2)" id="mb-btn-2" class="bottom-nav-item">
+            <i class="fa-solid fa-border-all text-base mb-0.5"></i>
+            <span>Branding</span>
+        </button>
+        <button onclick="goToSlide(3)" id="mb-btn-3" class="bottom-nav-item">
+            <i class="fa-solid fa-briefcase text-base mb-0.5"></i>
+            <span>Projects</span>
+        </button>
+        <button onclick="goToSlide(4)" id="mb-btn-4" class="bottom-nav-item">
+            <i class="fa-solid fa-user text-base mb-0.5"></i>
+            <span>About</span>
         </button>
     </div>
 
@@ -411,34 +426,44 @@
         let currentSlide = 0;
         const totalSlides = 5;
 
+        // Toggle Sidebar kebuka / tutup
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebar-overlay');
-            sidebar.classList.toggle('open');
-            overlay.classList.toggle('active');
+            const body = document.body;
+            sidebar.classList.toggle('closed');
+            body.classList.toggle('sidebar-open');
         }
 
         function updateSlideUI() {
             for (let i = 0; i < totalSlides; i++) {
                 const slide = document.getElementById('slide-' + i);
                 const btn = document.getElementById('btn-slide-' + i);
+                const mbBtn = document.getElementById('mb-btn-' + i);
+                
                 if (slide) slide.classList.remove('active');
                 if (btn) btn.classList.remove('active');
+                if (mbBtn) mbBtn.classList.remove('active');
             }
 
             const targetSlide = document.getElementById('slide-' + currentSlide);
             const targetBtn = document.getElementById('btn-slide-' + currentSlide);
+            const targetMbBtn = document.getElementById('mb-btn-' + currentSlide);
+
             if (targetSlide) targetSlide.classList.add('active');
             if (targetBtn) targetBtn.classList.add('active');
+            if (targetMbBtn) targetMbBtn.classList.add('active');
 
+            // Dots Nav
             const dotsContainer = document.getElementById('dots-container');
-            dotsContainer.innerHTML = '';
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('span');
-                dot.className = i === currentSlide 
-                    ? 'w-6 h-1 rounded-full bg-gray-800 transition-all duration-300' 
-                    : 'w-2 h-1 rounded-full bg-gray-300 transition-all duration-300';
-                dotsContainer.appendChild(dot);
+            if (dotsContainer) {
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < totalSlides; i++) {
+                    const dot = document.createElement('span');
+                    dot.className = i === currentSlide 
+                        ? 'w-6 h-1 rounded-full bg-gray-800 transition-all duration-300' 
+                        : 'w-2 h-1 rounded-full bg-gray-300 transition-all duration-300';
+                    dotsContainer.appendChild(dot);
+                }
             }
         }
 
@@ -447,9 +472,10 @@
             currentSlide = index;
             updateSlideUI();
 
-            if (window.innerWidth < 1024) {
+            // Jika di HP & sidebar terbuka, tutup otomatis
+            if (window.innerWidth < 640) {
                 const sidebar = document.getElementById('sidebar');
-                if (sidebar.classList.contains('open')) {
+                if (!sidebar.classList.contains('closed')) {
                     toggleSidebar();
                 }
             }
@@ -465,7 +491,7 @@
             updateSlideUI();
         }
 
-        /* Animated Titles */
+        /* Animated Titles Cycle */
         const titles = [
             "Industrial Engineering",
             "E-Commerce Specialist",
