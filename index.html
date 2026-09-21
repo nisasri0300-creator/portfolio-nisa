@@ -14,19 +14,21 @@
             padding: 0;
             height: 100%;
             width: 100%;
-            overflow: hidden; /* Tanpa Scrollbar Utama */
+            overflow: hidden; /* Mengunci scroll luar */
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background-color: #F8F5EE;
             color: #2D3748;
         }
 
-        /* Sidebar Slide Transition */
+        /* Transition Transisi Transparan Sidebar & Layout Utama */
         #sidebar {
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        /* Saat Sidebar Ditutup (Collapsed) */
         #sidebar.collapsed {
             transform: translateX(-100%);
+            margin-right: -280px; /* Menghilangkan alokasi lebar sidebar dari flex parent */
         }
 
         /* Tombol Kapsul Sidebar */
@@ -46,15 +48,15 @@
             transform: translateY(-1px);
         }
 
-        /* Label Sub-Header Portfolio */
+        /* Sub-Header Category Pill */
         .category-pill {
             background-color: #F8F5EE;
             border: 1.5px solid #D9D2C5;
             color: #1A202C;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             letter-spacing: 0.15em;
-            padding: 0.4rem 2.25rem;
+            padding: 0.35rem 2rem;
             border-radius: 9999px;
             box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 2px 4px rgba(0, 0, 0, 0.04);
             display: inline-block;
@@ -80,11 +82,11 @@
             transform: translateY(-3px);
         }
 
-        /* Halaman Slide/Tab */
+        /* Tab / Halaman Slide */
         .slide-page {
             display: none;
             opacity: 0;
-            transition: opacity 0.3s ease-in-out;
+            transition: opacity 0.35s ease-in-out;
             height: 100%;
             width: 100%;
         }
@@ -110,7 +112,7 @@
             50% { opacity: 0; }
         }
 
-        /* Container Khusus Jika Konten Lebih Tinggi di Layar Kecil */
+        /* Container Dalam Jika Perlu Scroll Vertikal Internal saat Layar Pendek */
         .slide-content-container {
             max-height: 100vh;
             overflow-y: auto;
@@ -126,12 +128,12 @@
 </head>
 <body class="bg-[#F8F5EE] h-screen w-screen overflow-hidden">
 
-    <!-- Tombol Garis 3 (Selalu Muncul di Pojok Kiri Atas) -->
+    <!-- Tombol Garis 3 (Toggle Sidebar - Selalu di Pojok Kiri Atas) -->
     <button id="toggleBtn" onclick="toggleSidebar()" class="fixed top-5 left-5 z-50 bg-[#FFFDFA] border border-[#EFE8DC] text-[#2D3748] hover:bg-[#2D3748] hover:text-white w-11 h-11 rounded-full flex items-center justify-center shadow-md transition-all duration-200 focus:outline-none">
-        <i id="toggleIcon" class="fa-solid fa-bars text-lg"></i>
+        <i id="toggleIcon" class="fa-solid fa-xmark text-lg"></i>
     </button>
 
-    <div class="flex h-full w-full relative">
+    <div class="flex h-full w-full relative overflow-hidden">
 
         <!-- Sidebar Navigasi Kiri -->
         <aside id="sidebar" class="fixed md:relative z-40 w-[280px] h-full bg-[#F8F5EE] border-r border-[#E8E1D5] flex flex-col justify-between p-6 shrink-0 shadow-lg md:shadow-none">
@@ -160,17 +162,17 @@
                         Home
                     </button>
                     <button onclick="goToSlide(1)" id="btn-slide-1" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
-                        Portfolio
+                        Creative
                     </button>
-                    <a href="cv.pdf" target="_blank" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
-                        View CV
-                    </a>
                     <button onclick="goToSlide(2)" id="btn-slide-2" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
                         Projects
                     </button>
                     <button onclick="goToSlide(3)" id="btn-slide-3" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
                         About
                     </button>
+                    <a href="cv.pdf" target="_blank" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
+                        View CV
+                    </a>
                 </nav>
             </div>
 
@@ -180,8 +182,8 @@
         </aside>
 
 
-        <!-- Area Utama (Layar Kanan) -->
-        <main class="flex-1 h-full w-full bg-[#F8F5EE] relative overflow-hidden">
+        <!-- Area Utama (Layout Utama Fleksibel Otomatis Ke Tengah) -->
+        <main class="flex-1 h-full w-full bg-[#F8F5EE] relative overflow-hidden flex items-center justify-center transition-all duration-300">
             
             <!-- SLIDE 1: HOME -->
             <section id="slide-0" class="slide-page active flex-col items-center justify-center relative h-full w-full">
@@ -199,9 +201,9 @@
             </section>
 
 
-            <!-- SLIDE 2: PORTFOLIO (CREATIVE - LOGO & BRANDING) -->
-            <section id="slide-1" class="slide-page slide-content-container flex-col py-8 px-4 sm:px-6 md:px-8 h-full w-full justify-center">
-                <div class="max-w-[1280px] mx-auto w-full space-y-6 my-auto">
+            <!-- SLIDE 2: CREATIVE (GABUNGAN LOGO + BRANDING) -->
+            <section id="slide-1" class="slide-page slide-content-container flex-col py-8 px-4 sm:px-8 md:px-12 h-full w-full justify-center">
+                <div class="max-w-[1200px] mx-auto w-full space-y-8 my-auto">
                     
                     <header class="text-center">
                         <h2 class="text-2xl sm:text-3xl font-bold tracking-[0.35em] text-[#2D3748] uppercase">
@@ -209,13 +211,13 @@
                         </h2>
                     </header>
 
-                    <!-- Sub-Seksi LOGO -->
-                    <div class="space-y-3">
+                    <!-- BAGIAN 1: LOGO -->
+                    <div class="space-y-4 text-center">
                         <div>
                             <span class="category-pill uppercase">LOGO</span>
                         </div>
 
-                        <!-- 6 Logo Bulat -->
+                        <!-- 6 Logo Melingkar -->
                         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 justify-items-center items-center pt-1">
                             <div class="logo-card">
                                 <img src="Lunae Logo.png" alt="Lunáe Logo" class="w-full h-full object-contain">
@@ -238,26 +240,26 @@
                         </div>
                     </div>
 
-                    <!-- Sub-Seksi BRANDING -->
-                    <div class="space-y-3">
+                    <!-- BAGIAN 2: BRANDING SHOWCASE -->
+                    <div class="space-y-4 text-center pt-2">
                         <div>
                             <span class="category-pill uppercase">BRANDING</span>
                         </div>
 
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch pt-1">
-                            <!-- Poster Kiri -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch text-left">
+                            <!-- 1. Poster Kiri -->
                             <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex flex-col justify-center">
                                 <img src="Meet Lunae.png" alt="Meet Lunáe Poster" class="w-full h-full object-cover">
                             </div>
 
-                            <!-- Tengah: Produk + Palette -->
+                            <!-- 2. Produk + Palette -->
                             <div class="flex flex-col justify-between space-y-3">
                                 <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex-1">
                                     <img src="Lunae Products.png" alt="Lunáe Products" class="w-full h-full object-cover">
                                 </div>
 
                                 <div class="bg-white rounded-xl p-3 shadow-sm border border-[#EFE8DC] space-y-2 shrink-0">
-                                    <div class="w-full flex flex-col h-14 rounded-md overflow-hidden border border-gray-100">
+                                    <div class="w-full flex flex-col h-12 rounded-md overflow-hidden border border-gray-100">
                                         <div class="h-1/4 bg-[#F7F1DE]"></div>
                                         <div class="h-1/4 bg-[#B0BA99]"></div>
                                         <div class="h-1/4 bg-[#9D6638]"></div>
@@ -285,7 +287,7 @@
                                 </div>
                             </div>
 
-                            <!-- Typeface Box -->
+                            <!-- 3. Typeface -->
                             <div class="bg-white rounded-xl p-4 shadow-sm border border-[#EFE8DC] flex flex-col justify-between">
                                 <div>
                                     <h3 class="text-3xl font-serif tracking-wide text-[#1A202C]">Lunáe✦</h3>
@@ -316,7 +318,7 @@
                                 </div>
                             </div>
 
-                            <!-- Model Showcase Kanan -->
+                            <!-- 4. Model Showcase -->
                             <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex flex-col justify-center">
                                 <img src="Model Showcase.png" alt="Model Showcase" class="w-full h-full object-cover">
                             </div>
@@ -351,7 +353,7 @@
         let currentSlide = 0;
         const totalSlides = 4;
 
-        // Buka/Tutup Sidebar
+        // Buka / Tutup Sidebar secara Fleksibel
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const toggleIcon = document.getElementById('toggleIcon');
@@ -365,13 +367,13 @@
             }
         }
 
-        // Pindah Halaman saat Tombol Sidebar Diklik
+        // Pindah Halaman/Tab
         function goToSlide(index) {
             if (index < 0 || index >= totalSlides) return;
             
             currentSlide = index;
 
-            // Sembunyikan semua slide
+            // Sembunyikan semua halaman
             for (let i = 0; i < totalSlides; i++) {
                 const slide = document.getElementById('slide-' + i);
                 const btn = document.getElementById('btn-slide-' + i);
@@ -380,14 +382,14 @@
                 if (btn) btn.classList.remove('active');
             }
 
-            // Tampilkan slide terpilih
+            // Tampilkan halaman aktif
             const targetSlide = document.getElementById('slide-' + currentSlide);
             const targetBtn = document.getElementById('btn-slide-' + currentSlide);
             
             if (targetSlide) targetSlide.classList.add('active');
             if (targetBtn) targetBtn.classList.add('active');
 
-            // Otomatis tutup sidebar di mobile setelah klik
+            // Tutup sidebar otomatis pada tampilan mobile
             if (window.innerWidth < 768) {
                 const sidebar = document.getElementById('sidebar');
                 if (!sidebar.classList.contains('collapsed')) {
@@ -435,8 +437,10 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             typeEffect();
+            // Default awal tutup sidebar jika di layar HP
             if (window.innerWidth < 768) {
                 document.getElementById('sidebar').classList.add('collapsed');
+                document.getElementById('toggleIcon').className = 'fa-solid fa-bars text-lg';
             }
         });
     </script>
