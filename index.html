@@ -8,10 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Playfair Display (Serif Elegant) & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         html, body {
@@ -21,8 +21,12 @@
             width: 100%;
             overflow: hidden;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #F7F4EE;
-            color: #1E293B;
+            background-color: #0F172A;
+            color: #F8FAFC;
+        }
+
+        .font-serif-editorial {
+            font-family: 'Playfair Display', serif;
         }
 
         /* Sidebar Styling */
@@ -32,12 +36,13 @@
             left: 0;
             bottom: 0;
             width: 320px;
-            background-color: #F7F4EE;
+            background-color: #0F172A;
             z-index: 50;
             transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             transform: translateX(-100%);
             overflow-y: auto;
-            border-right: 1px solid rgba(0,0,0,0.05);
+            border-right: 1px solid rgba(255,255,255,0.08);
+            color: #F8FAFC;
         }
 
         #sidebar.open {
@@ -47,8 +52,8 @@
         #sidebar-overlay {
             position: fixed;
             inset: 0;
-            background-color: rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(2px);
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
             z-index: 40;
             opacity: 0;
             pointer-events: none;
@@ -66,49 +71,49 @@
             justify-content: space-between;
             width: 100%;
             padding: 14px 20px;
-            border-radius: 20px;
-            background-color: #FFFFFF;
-            color: #2D3748;
-            font-weight: 600;
-            font-size: 0.95rem;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            border-radius: 16px;
+            background-color: rgba(255,255,255,0.03);
+            color: #94A3B8;
+            font-weight: 500;
+            font-size: 0.9rem;
             transition: all 0.2s ease;
             cursor: pointer;
-            border: 1px solid rgba(0,0,0,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
         .menu-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
-        .menu-btn.active {
-            background-color: #2B364B;
+            background-color: rgba(255,255,255,0.08);
             color: #FFFFFF;
         }
 
+        .menu-btn.active {
+            background-color: #FFFFFF;
+            color: #0F172A;
+            font-weight: 700;
+        }
+
         .menu-btn.active .icon-box {
-            background-color: rgba(255,255,255,0.15);
+            background-color: #0F172A;
             color: #FFFFFF;
         }
 
         .icon-box {
-            width: 36px;
-            height: 36px;
-            border-radius: 12px;
-            background-color: #F1F5F9;
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background-color: rgba(255,255,255,0.05);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #475569;
-            font-size: 0.9rem;
+            color: #94A3B8;
+            font-size: 0.85rem;
             margin-right: 12px;
         }
 
         .slide-page {
             display: none;
             opacity: 0;
-            transition: opacity 0.4s ease-in-out;
+            transition: opacity 0.5s ease-in-out;
             height: 100%;
             width: 100%;
         }
@@ -123,11 +128,11 @@
             max-height: 100vh;
         }
 
-        /* --- EXPAND LINE / SCALE FADE ANIMATION STYLING --- */
+        /* --- SCALE FADE ANIMATION STYLING --- */
         .scale-fade-container {
             display: inline-block;
             position: relative;
-            min-height: 24px;
+            min-height: 28px;
             vertical-align: middle;
         }
 
@@ -135,30 +140,30 @@
             display: inline-block;
             transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
             opacity: 0;
-            transform: scale(0.85);
-            letter-spacing: 0.05em;
-            filter: blur(5px);
+            transform: scale(0.9);
+            letter-spacing: 0.1em;
+            filter: blur(4px);
         }
 
         .scale-fade-item.active {
             opacity: 1;
             transform: scale(1);
-            letter-spacing: 0.25em; /* Efek mekar / merenggang */
+            letter-spacing: 0.3em;
             filter: blur(0px);
         }
 
         .scale-fade-item.exit {
             opacity: 0;
-            transform: scale(1.1);
-            letter-spacing: 0.35em;
-            filter: blur(6px);
+            transform: scale(1.08);
+            letter-spacing: 0.4em;
+            filter: blur(5px);
         }
     </style>
 </head>
-<body class="relative">
+<body class="relative bg-[#0F172A]">
 
-    <!-- Tombol Hamburger Menu -->
-    <button onclick="toggleSidebar()" class="fixed top-6 left-6 z-40 w-10 h-10 rounded-full bg-white/80 backdrop-blur-md shadow-md flex items-center justify-center text-gray-700 hover:bg-white transition-all">
+    <!-- Tombol Hamburger Menu Minimalis -->
+    <button onclick="toggleSidebar()" class="fixed top-8 left-8 z-40 w-11 h-11 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-all">
         <i class="fa-solid fa-bars text-sm"></i>
     </button>
 
@@ -166,110 +171,83 @@
     <div id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
     <!-- SIDEBAR -->
-    <aside id="sidebar" class="p-6 flex flex-col items-center">
-        <div class="flex flex-col items-center text-center mt-2 mb-5">
-            <div class="w-24 h-24 rounded-full p-1 bg-white shadow-md mb-3">
-                <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full rounded-full object-cover">
+    <aside id="sidebar" class="p-6 flex flex-col items-center justify-between">
+        <div class="w-full">
+            <div class="flex flex-col items-center text-center mt-4 mb-8">
+                <div class="w-20 h-20 rounded-full p-0.5 border border-white/20 mb-3 overflow-hidden">
+                    <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full rounded-full object-cover">
+                </div>
+
+                <h2 class="text-lg font-semibold tracking-wide text-white">Nisa Sri Fadilah</h2>
+                <p class="text-[9px] font-medium tracking-[0.2em] text-slate-400 uppercase mt-1">Creative Director</p>
             </div>
 
-            <h2 class="text-xl font-bold text-[#1E293B]">Nisa Sri Fadilah</h2>
-            <p class="text-[10px] font-bold tracking-[0.15em] text-[#8C7A6B] uppercase mt-1">DIGITAL & CREATIVE LEAD</p>
+            <nav class="w-full space-y-2">
+                <button onclick="goToSlide(0)" id="btn-slide-0" class="menu-btn active">
+                    <div class="flex items-center">
+                        <div class="icon-box"><i class="fa-solid fa-house"></i></div>
+                        <span>Home</span>
+                    </div>
+                </button>
 
-            <div class="flex space-x-3 mt-4">
-                <a href="#" class="w-10 h-10 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-700 hover:text-black transition-all">
-                    <i class="fa-brands fa-github text-base"></i>
-                </a>
-                <a href="#" class="w-10 h-10 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-700 hover:text-black transition-all">
-                    <i class="fa-brands fa-linkedin-in text-base"></i>
-                </a>
-                <a href="#" class="w-10 h-10 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-700 hover:text-black transition-all">
-                    <i class="fa-brands fa-instagram text-base"></i>
-                </a>
-            </div>
+                <button onclick="goToSlide(1)" id="btn-slide-1" class="menu-btn">
+                    <div class="flex items-center">
+                        <div class="icon-box"><i class="fa-solid fa-palette"></i></div>
+                        <span>Logo Gallery</span>
+                    </div>
+                </button>
 
-            <div class="mt-4 px-4 py-1.5 rounded-full bg-[#EFEAD8] border border-[#E2D8BE] flex items-center space-x-2">
-                <span class="w-2 h-2 rounded-full bg-[#10B981]"></span>
-                <span class="text-xs font-semibold text-[#524B38]">Available for Projects</span>
-            </div>
+                <button onclick="goToSlide(2)" id="btn-slide-2" class="menu-btn">
+                    <div class="flex items-center">
+                        <div class="icon-box"><i class="fa-solid fa-border-all"></i></div>
+                        <span>Branding Showcase</span>
+                    </div>
+                </button>
+
+                <button onclick="goToSlide(3)" id="btn-slide-3" class="menu-btn">
+                    <div class="flex items-center">
+                        <div class="icon-box"><i class="fa-solid fa-briefcase"></i></div>
+                        <span>Projects</span>
+                    </div>
+                </button>
+
+                <button onclick="goToSlide(4)" id="btn-slide-4" class="menu-btn">
+                    <div class="flex items-center">
+                        <div class="icon-box"><i class="fa-solid fa-user"></i></div>
+                        <span>About Me</span>
+                    </div>
+                </button>
+            </nav>
         </div>
 
-        <nav class="w-full space-y-2.5 mb-6">
-            <button onclick="goToSlide(0)" id="btn-slide-0" class="menu-btn active">
-                <div class="flex items-center">
-                    <div class="icon-box"><i class="fa-solid fa-house"></i></div>
-                    <span>Home</span>
-                </div>
-                <i class="fa-solid fa-chevron-right text-xs opacity-60"></i>
-            </button>
-
-            <button onclick="goToSlide(1)" id="btn-slide-1" class="menu-btn">
-                <div class="flex items-center">
-                    <div class="icon-box"><i class="fa-solid fa-palette"></i></div>
-                    <span>Logo Gallery</span>
-                </div>
-                <i class="fa-solid fa-chevron-right text-xs opacity-60"></i>
-            </button>
-
-            <button onclick="goToSlide(2)" id="btn-slide-2" class="menu-btn">
-                <div class="flex items-center">
-                    <div class="icon-box"><i class="fa-solid fa-border-all"></i></div>
-                    <span>Branding Showcase</span>
-                </div>
-                <i class="fa-solid fa-chevron-right text-xs opacity-60"></i>
-            </button>
-
-            <button onclick="goToSlide(3)" id="btn-slide-3" class="menu-btn">
-                <div class="flex items-center">
-                    <div class="icon-box"><i class="fa-solid fa-briefcase"></i></div>
-                    <span>Projects</span>
-                </div>
-                <i class="fa-solid fa-chevron-right text-xs opacity-60"></i>
-            </button>
-
-            <button onclick="goToSlide(4)" id="btn-slide-4" class="menu-btn">
-                <div class="flex items-center">
-                    <div class="icon-box"><i class="fa-solid fa-user"></i></div>
-                    <span>About Me</span>
-                </div>
-                <i class="fa-solid fa-chevron-right text-xs opacity-60"></i>
-            </button>
-        </nav>
-
-        <a href="cv.pdf" target="_blank" class="w-full py-3 px-5 rounded-2xl bg-[#EFEAD8] border border-[#E2D8BE] flex items-center justify-between text-gray-800 font-semibold text-sm hover:bg-[#E8E1CA] transition-all">
-            <div class="flex items-center space-x-3">
-                <div class="w-8 h-8 rounded-lg bg-white/60 flex items-center justify-center text-gray-700">
-                    <i class="fa-solid fa-file-pdf"></i>
-                </div>
-                <span>Download CV</span>
-            </div>
-            <i class="fa-solid fa-arrow-down text-xs text-gray-600"></i>
+        <a href="cv.pdf" target="_blank" class="w-full py-3 px-4 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between text-slate-200 text-xs hover:bg-white/10 transition-all mt-6">
+            <span class="font-medium">Download Resume</span>
+            <i class="fa-solid fa-arrow-down text-xs text-slate-400"></i>
         </a>
     </aside>
 
-    <!-- AREA UTAMA SLIDE -->
+    <!-- AREA UTAMA -->
     <main class="w-full h-full relative overflow-hidden">
 
-        <!-- SLIDE 1: HERO HOME -->
+        <!-- SLIDE 1: HERO HOME (EDITORIAL LOOK) -->
         <section id="slide-0" class="slide-page active flex-col items-center justify-end md:justify-center relative h-full w-full">
             
-            <!-- Foto Profil Full Layar -->
-            <div class="absolute inset-0 z-0 flex items-center justify-center">
-                <img src="profile.jpg" alt="Nisa Background" class="w-full h-full object-cover object-top sm:object-center">
+            <!-- Foto Profil Background -->
+            <div class="absolute inset-0 z-0">
+                <img src="profile.jpg" alt="Nisa Background" class="w-full h-full object-cover object-top sm:object-center filter brightness-95">
+                <!-- Overlay Gradient Tipis Halus untuk keterbacaan teks tanpa kotak blur -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30"></div>
             </div>
 
-            <!-- Card Banner Teks -->
-            <div class="relative z-10 text-center space-y-2.5 px-6 py-6 mb-20 sm:mb-10 max-w-2xl mx-4 rounded-3xl bg-white/40 backdrop-blur-md border border-white/60 shadow-lg">
+            <!-- Header Content (Tanpa Card Blur / Tanpa Label Deck) -->
+            <div class="relative z-10 text-center space-y-3 px-6 pb-28 md:pb-0 max-w-3xl mx-auto">
                 
-                <div class="inline-block px-5 py-1 rounded-full bg-white/70 border border-white/80 shadow-sm">
-                    <span class="text-[10px] sm:text-xs font-bold tracking-[0.25em] text-gray-700 uppercase">PORTFOLIO PRESENTATION DECK</span>
-                </div>
-
-                <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#1D2939]">
-                    NISA SRI FADILAH
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-white font-serif-editorial drop-shadow-md italic">
+                    Nisa Sri Fadilah
                 </h1>
 
-                <!-- EXPAND LINE / SCALE FADE ANIMATED TITLE -->
-                <div class="text-xs sm:text-sm font-bold text-[#334155] uppercase min-h-[24px] flex items-center justify-center overflow-hidden">
+                <!-- ANIMATED SUBTITLE -->
+                <div class="text-xs sm:text-sm font-medium text-slate-300 uppercase tracking-[0.3em] min-h-[28px] flex items-center justify-center">
                     <div class="scale-fade-container">
                         <span id="scale-title" class="scale-fade-item active">INDUSTRIAL ENGINEERING</span>
                     </div>
@@ -279,74 +257,62 @@
         </section>
 
         <!-- SLIDE 2: LOGO GALLERY -->
-        <section id="slide-1" class="slide-page scroll-container flex-col py-16 px-6 sm:px-12 h-full w-full items-center">
+        <section id="slide-1" class="slide-page scroll-container flex-col py-16 px-6 sm:px-12 h-full w-full items-center bg-[#0F172A]">
             <div class="max-w-5xl w-full mx-auto space-y-8 my-auto pb-20">
                 <div class="text-center">
-                    <span class="inline-block px-6 py-1.5 rounded-full border border-[#D9D2C5] bg-white text-[11px] font-bold tracking-[0.2em] text-[#2D3748] uppercase shadow-sm">
-                        LOGO GALLERY
-                    </span>
+                    <h2 class="text-xs font-semibold tracking-[0.3em] text-slate-400 uppercase">Selected Works</h2>
+                    <p class="text-2xl font-serif-editorial text-white mt-1 italic">Logo Gallery</p>
                 </div>
 
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 justify-center items-center pt-4">
-                    <div class="aspect-square bg-white rounded-2xl border border-gray-200/80 p-4 flex items-center justify-center shadow-sm"><img src="Lunae Logo.png" alt="Logo" class="max-h-full max-w-full object-contain"></div>
-                    <div class="aspect-square bg-white rounded-2xl border border-gray-200/80 p-4 flex items-center justify-center shadow-sm"><img src="Hyper Season.png" alt="Logo" class="max-h-full max-w-full object-contain"></div>
-                    <div class="aspect-square bg-white rounded-2xl border border-gray-200/80 p-4 flex items-center justify-center shadow-sm"><img src="Madala Creative.png" alt="Logo" class="max-h-full max-w-full object-contain"></div>
-                    <div class="aspect-square bg-white rounded-2xl border border-gray-200/80 p-4 flex items-center justify-center shadow-sm"><img src="Teknik Industri.png" alt="Logo" class="max-h-full max-w-full object-contain"></div>
-                    <div class="aspect-square bg-white rounded-2xl border border-gray-200/80 p-4 flex items-center justify-center shadow-sm"><img src="Two Ambiverts.png" alt="Logo" class="max-h-full max-w-full object-contain"></div>
-                    <div class="aspect-square bg-white rounded-2xl border border-gray-200/80 p-4 flex items-center justify-center shadow-sm"><img src="Beauty Skin Care.png" alt="Logo" class="max-h-full max-w-full object-contain"></div>
+                    <div class="aspect-square bg-white/5 rounded-2xl border border-white/10 p-4 flex items-center justify-center"><img src="Lunae Logo.png" alt="Logo" class="max-h-full max-w-full object-contain"></div>
+                    <div class="aspect-square bg-white/5 rounded-2xl border border-white/10 p-4 flex items-center justify-center"><img src="Hyper Season.png" alt="Logo" class="max-h-full max-w-full object-contain"></div>
+                    <div class="aspect-square bg-white/5 rounded-2xl border border-white/10 p-4 flex items-center justify-center"><img src="Madala Creative.png" alt="Logo" class="max-h-full max-w-full object-contain"></div>
+                    <div class="aspect-square bg-white/5 rounded-2xl border border-white/10 p-4 flex items-center justify-center"><img src="Teknik Industri.png" alt="Logo" class="max-h-full max-w-full object-contain"></div>
+                    <div class="aspect-square bg-white/5 rounded-2xl border border-white/10 p-4 flex items-center justify-center"><img src="Two Ambiverts.png" alt="Logo" class="max-h-full max-w-full object-contain"></div>
+                    <div class="aspect-square bg-white/5 rounded-2xl border border-white/10 p-4 flex items-center justify-center"><img src="Beauty Skin Care.png" alt="Logo" class="max-h-full max-w-full object-contain"></div>
                 </div>
             </div>
         </section>
 
         <!-- SLIDE 3: BRANDING SHOWCASE -->
-        <section id="slide-2" class="slide-page scroll-container flex-col py-16 px-6 sm:px-12 h-full w-full items-center">
+        <section id="slide-2" class="slide-page scroll-container flex-col py-16 px-6 sm:px-12 h-full w-full items-center bg-[#0F172A]">
             <div class="max-w-5xl w-full mx-auto space-y-8 my-auto pb-20">
                 <div class="text-center">
-                    <span class="inline-block px-6 py-1.5 rounded-full border border-[#D9D2C5] bg-white text-[11px] font-bold tracking-[0.2em] text-[#2D3748] uppercase shadow-sm">
-                        BRANDING SHOWCASE
-                    </span>
+                    <h2 class="text-xs font-semibold tracking-[0.3em] text-slate-400 uppercase">Visual Identity</h2>
+                    <p class="text-2xl font-serif-editorial text-white mt-1 italic">Branding Showcase</p>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left pt-2 items-stretch">
-                    <div class="bg-white rounded-2xl overflow-hidden border border-gray-200/80 shadow-sm h-[360px]">
+                    <div class="bg-white/5 rounded-2xl overflow-hidden border border-white/10 h-[360px]">
                         <img src="Meet Lunae.png" alt="Poster" class="w-full h-full object-cover">
                     </div>
                     <div class="flex flex-col justify-between space-y-4 h-[360px]">
-                        <div class="bg-white rounded-2xl overflow-hidden border border-gray-200/80 shadow-sm flex-1">
+                        <div class="bg-white/5 rounded-2xl overflow-hidden border border-white/10 flex-1">
                             <img src="Lunae Products.png" alt="Products" class="w-full h-full object-cover">
                         </div>
-                        <div class="bg-white rounded-2xl p-3 border border-gray-200/80 shadow-sm space-y-2 shrink-0">
-                            <div class="w-full flex h-7 rounded-lg overflow-hidden border border-gray-100">
+                        <div class="bg-white/5 rounded-2xl p-3 border border-white/10 space-y-2 shrink-0">
+                            <div class="w-full flex h-7 rounded-lg overflow-hidden">
                                 <div class="w-1/4 bg-[#F7F1DE]"></div>
                                 <div class="w-1/4 bg-[#B0BA99]"></div>
                                 <div class="w-1/4 bg-[#9D6638]"></div>
                                 <div class="w-1/4 bg-[#4E220F]"></div>
                             </div>
-                            <div class="grid grid-cols-4 gap-1 text-center text-[8px] font-bold text-gray-600">
-                                <span>#F7F1DE</span>
-                                <span>#B0BA99</span>
-                                <span>#9D6638</span>
-                                <span>#4E220F</span>
-                            </div>
                         </div>
                     </div>
-                    <div class="bg-white rounded-2xl p-5 border border-gray-200/80 shadow-sm flex flex-col justify-between h-[360px]">
+                    <div class="bg-white/5 rounded-2xl p-5 border border-white/10 flex flex-col justify-between h-[360px]">
                         <div>
-                            <h3 class="text-2xl font-bold text-gray-800">Lunáe✦</h3>
-                            <p class="text-[9px] font-bold tracking-[0.2em] text-gray-400 uppercase mt-1">LUNAE TYPEFACE</p>
-                            <hr class="my-3 border-gray-100">
-                            <div class="space-y-1.5 text-[10px] text-gray-700 tracking-wider">
+                            <h3 class="text-2xl font-serif-editorial text-white italic">Lunáe✦</h3>
+                            <p class="text-[9px] font-bold tracking-[0.2em] text-slate-400 uppercase mt-1">LUNAE TYPEFACE</p>
+                            <hr class="my-3 border-white/10">
+                            <div class="space-y-1.5 text-[10px] text-slate-300 tracking-wider">
                                 <p>ABCDEFGHIJKLM</p>
                                 <p>NOPQRSTUVWXYZ</p>
-                                <p class="text-gray-400 pt-1">0123456789</p>
+                                <p class="text-slate-500 pt-1">0123456789</p>
                             </div>
                         </div>
-                        <div class="pt-3 border-t border-gray-100">
-                            <p class="text-[10px] font-semibold text-gray-800">Content Sans-serif</p>
-                            <p class="text-[8px] text-gray-500 mt-0.5">Simple text, minimal look, timeless impression.</p>
-                        </div>
                     </div>
-                    <div class="bg-white rounded-2xl overflow-hidden border border-gray-200/80 shadow-sm h-[360px]">
+                    <div class="bg-white/5 rounded-2xl overflow-hidden border border-white/10 h-[360px]">
                         <img src="Model Showcase.png" alt="Model" class="w-full h-full object-cover">
                     </div>
                 </div>
@@ -354,44 +320,41 @@
         </section>
 
         <!-- SLIDE 4: PROJECTS -->
-        <section id="slide-3" class="slide-page flex-col items-center justify-center p-8 h-full w-full text-center">
-            <h2 class="text-3xl font-bold text-gray-800">Projects</h2>
-            <p class="text-xs text-gray-500 max-w-sm mt-2">Selected industrial engineering & digital marketing projects.</p>
+        <section id="slide-3" class="slide-page flex-col items-center justify-center p-8 h-full w-full text-center bg-[#0F172A]">
+            <h2 class="text-3xl font-serif-editorial text-white italic">Featured Projects</h2>
+            <p class="text-xs text-slate-400 max-w-sm mt-2">Industrial engineering & digital marketing portfolio.</p>
         </section>
 
         <!-- SLIDE 5: ABOUT ME -->
-        <section id="slide-4" class="slide-page flex-col items-center justify-center p-8 h-full w-full text-center">
-            <h2 class="text-3xl font-bold text-gray-800">About Me</h2>
-            <p class="text-xs text-gray-600 max-w-md mt-4 leading-relaxed">
+        <section id="slide-4" class="slide-page flex-col items-center justify-center p-8 h-full w-full text-center bg-[#0F172A]">
+            <h2 class="text-3xl font-serif-editorial text-white italic">About Me</h2>
+            <p class="text-xs text-slate-300 max-w-md mt-4 leading-relaxed">
                 Nisa Sri Fadilah is an Industrial Engineer & Creative Specialist focused on digital marketing, e-commerce growth, and visual identity design.
             </p>
         </section>
 
     </main>
 
-    <!-- FOOTER NAVIGASI -->
-    <div class="fixed bottom-0 inset-x-0 h-16 bg-[#F7F4EE]/90 backdrop-blur-md border-t border-gray-200/50 z-30 flex items-center justify-between px-6 sm:px-10">
-        <button onclick="prevSlide()" class="w-9 h-9 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-600 hover:text-black hover:shadow transition-all">
+    <!-- FLOATING MINIMALIST NAVIGATION (TANPA BAR PUTIH KAMPUNGAN) -->
+    <div class="fixed bottom-8 inset-x-0 z-30 flex items-center justify-between px-8 max-w-screen-xl mx-auto pointer-events-none">
+        
+        <!-- Tombol Prev Melayang -->
+        <button onclick="prevSlide()" class="pointer-events-auto w-11 h-11 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-all">
             <i class="fa-solid fa-arrow-left text-xs"></i>
         </button>
 
-        <div class="flex flex-col items-center space-y-1">
-            <div class="flex space-x-1.5" id="dots-container">
-                <span class="w-2.5 h-2.5 rounded-full bg-gray-800 transition-all"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-all"></span>
-            </div>
-            <span id="slide-counter" class="text-[9px] font-bold tracking-[0.2em] text-gray-500 uppercase">SLIDE 01 / 05</span>
+        <!-- Indikator Slide Minimalis (Garis Progress Modern) -->
+        <div class="flex space-x-2 pointer-events-auto bg-black/20 backdrop-blur-md border border-white/10 px-4 py-2.5 rounded-full" id="dots-container">
+            <!-- Indikator diinjeksi via JS -->
         </div>
 
-        <button onclick="nextSlide()" class="w-9 h-9 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-600 hover:text-black hover:shadow transition-all">
+        <!-- Tombol Next Melayang -->
+        <button onclick="nextSlide()" class="pointer-events-auto w-11 h-11 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-all">
             <i class="fa-solid fa-arrow-right text-xs"></i>
         </button>
     </div>
 
-    <!-- SCRIPT NAVIGASI & SCALE FADE ANIMATION -->
+    <!-- SCRIPT NAVIGASI & ANIMASI -->
     <script>
         let currentSlide = 0;
         const totalSlides = 5;
@@ -416,15 +379,14 @@
             if (targetSlide) targetSlide.classList.add('active');
             if (targetBtn) targetBtn.classList.add('active');
 
-            document.getElementById('slide-counter').innerText = `SLIDE 0${currentSlide + 1} / 0${totalSlides}`;
-
+            // Render Indikator Garis Tipis Modern (Bukan Bulatan Kampungan)
             const dotsContainer = document.getElementById('dots-container');
             dotsContainer.innerHTML = '';
             for (let i = 0; i < totalSlides; i++) {
                 const dot = document.createElement('span');
                 dot.className = i === currentSlide 
-                    ? 'w-2.5 h-2.5 rounded-full bg-gray-800 transition-all' 
-                    : 'w-2.5 h-2.5 rounded-full bg-gray-300 transition-all';
+                    ? 'w-8 h-1 rounded-full bg-white transition-all duration-300' 
+                    : 'w-2 h-1 rounded-full bg-white/30 transition-all duration-300';
                 dotsContainer.appendChild(dot);
             }
         }
@@ -462,27 +424,24 @@
         const scaleElement = document.getElementById("scale-title");
 
         function cycleTitles() {
-            // Efek keluar: membesar sedikit dan pudar
             scaleElement.classList.remove("active");
             scaleElement.classList.add("exit");
 
             setTimeout(() => {
-                // Ganti teks
                 index = (index + 1) % titles.length;
                 scaleElement.textContent = titles[index];
-
-                // Kembalikan ke posisi awal animasi masuk
                 scaleElement.classList.remove("exit");
                 
-                // Efek masuk: dari kecil, mengembang dan memudar masuk
                 setTimeout(() => {
                     scaleElement.classList.add("active");
                 }, 50);
-            }, 800); // Durasi transisi
+            }, 800);
         }
 
-        // Jalankan pergantian teks setiap 3.2 detik
         setInterval(cycleTitles, 3200);
+
+        // Inisialisasi awal UI
+        updateSlideUI();
     </script>
 </body>
 </html>
