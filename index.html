@@ -138,21 +138,21 @@
             transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
             opacity: 0;
             transform: scale(0.92);
-            letter-spacing: 0.15em;
+            letter-spacing: 0.25em;
             filter: blur(3px);
         }
 
         .scale-fade-item.active {
             opacity: 1;
             transform: scale(1);
-            letter-spacing: 0.22em;
+            letter-spacing: 0.35em;
             filter: blur(0px);
         }
 
         .scale-fade-item.exit {
             opacity: 0;
             transform: scale(1.05);
-            letter-spacing: 0.3em;
+            letter-spacing: 0.45em;
             filter: blur(4px);
         }
 
@@ -231,7 +231,7 @@
     <!-- AREA UTAMA SLIDE -->
     <main class="w-full h-full relative overflow-hidden">
 
-        <!-- SLIDE 1: HOME (Hanya bagian ukuran Nama dan Title yang disesuaikan) -->
+        <!-- SLIDE 1: HOME -->
         <section id="slide-0" class="slide-page active flex-col items-center justify-center relative h-full w-full">
             
             <!-- Foto Profil Background -->
@@ -242,21 +242,23 @@
             </div>
 
             <!-- Header Content -->
-            <div class="relative z-10 text-center space-y-2 sm:space-y-3 px-6 max-w-4xl mx-auto translate-y-20 sm:translate-y-24 md:translate-y-28">
+            <div class="relative z-10 text-center space-y-3 sm:space-y-4 px-6 max-w-5xl mx-auto translate-y-16 sm:translate-y-20 md:translate-y-24">
                 
-                <!-- 1. TITLE / SUBTITLE ANIMATED (Ukuran dibesarkan & dibungkus kapsul halus agar sangat jelas di HP & Web) -->
-                <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-white/60 backdrop-blur-md border border-white/80 shadow-sm transition-all">
-                    <div class="text-xs sm:text-sm md:text-base font-extrabold text-[#334155] uppercase tracking-[0.18em] sm:tracking-[0.22em] min-h-[20px] flex items-center justify-center">
-                        <div class="scale-fade-container">
-                            <span id="scale-title" class="scale-fade-item active">INDUSTRIAL ENGINEERING</span>
+                <!-- 1. NAMA UTAMA (Besar, Tebal, dan Spasi Huruf Renggang Elegan) -->
+                <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[0.15em] sm:tracking-[0.2em] text-[#0F172A] uppercase hero-text-shadow leading-tight">
+                    NISA SRI FADILAH
+                </h1>
+
+                <!-- 2. TITLE ANIMATED (Posisi di Bawah Nama + Bar Kapsul + Spasi Direnggangkan) -->
+                <div class="pt-1">
+                    <div class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-white/70 backdrop-blur-md border border-white/80 shadow-sm transition-all">
+                        <div class="text-[10px] sm:text-xs md:text-sm font-extrabold text-[#334155] uppercase tracking-[0.28em] sm:tracking-[0.35em] min-h-[20px] flex items-center justify-center">
+                            <div class="scale-fade-container">
+                                <span id="scale-title" class="scale-fade-item active">INDUSTRIAL ENGINEERING</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- 2. NAMA UTAMA (Ukuran dibesarkan & lebih tegas di HP maupun Web) -->
-                <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#0F172A] uppercase hero-text-shadow leading-none pt-1">
-                    NISA SRI FADILAH
-                </h1>
 
             </div>
         </section>
