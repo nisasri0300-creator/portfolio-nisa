@@ -16,7 +16,7 @@
     <div class="max-w-6xl w-full bg-[#f4f0ea] rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-[600px] border border-white/40">
         
         <!-- Sidebar Kiri -->
-        <div class="md:col-span-4 bg-white/70 backdrop-blur-md p-6 flex flex-col justify-between border-r border-stone-200/50">
+        <div class="md:col-span-4 bg-white/70 backdrop-blur-md p-6 flex flex-col justify-between border-r border-stone-200/50 z-10">
             <div>
                 <div class="flex justify-between items-center mb-6">
                     <button class="p-2 hover:bg-stone-200/50 rounded-lg transition">
@@ -51,20 +51,10 @@
             </div>
         </div>
 
-        <!-- Bahagian Utama / Gambar Kanan -->
-        <div class="md:col-span-8 relative flex flex-col items-center justify-center p-8 text-center min-h-[400px] overflow-hidden">
-            <!-- Background Foto Hero -->
-            <img src="hero.jpg" alt="Nisa Sri Fadilah" class="absolute inset-0 w-full h-full object-cover object-center">
-            
-            <!-- Teks Nama di Atas Foto -->
-            <div class="relative z-10">
-                <h1 class="text-4xl md:text-6xl font-black text-white tracking-widest drop-shadow-lg mb-2 uppercase">
-                    NISA SRI FADILAH
-                </h1>
-                <p class="text-white/90 text-sm md:text-base tracking-[0.2em] font-semibold uppercase drop-shadow-md">
-                    Industrial Engineering
-                </p>
-            </div>
+        <!-- Area Kanan (Hero Image Proporsional) -->
+        <div class="md:col-span-8 relative flex items-center justify-center min-h-[400px] bg-[#f4f0ea] overflow-hidden">
+            <!-- Gambar Hero Pas Ukuran (Not Crop/Zoom) -->
+            <img src="hero.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-contain object-right-bottom">
         </div>
 
     </div>
