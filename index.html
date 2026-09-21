@@ -8,6 +8,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome CDN untuk Ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans untuk gaya modern & clean -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
         html, body {
             margin: 0;
@@ -15,32 +20,34 @@
             height: 100%;
             width: 100%;
             overflow: hidden;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #F8F5EE;
             color: #2D3748;
         }
 
-        /* Sidebar Melayang (Overlay) */
+        /* Sidebar Melayang (Overlay) Modern Soft */
         #sidebar {
             position: fixed;
             top: 0;
             left: 0;
             bottom: 0;
             z-index: 50;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateX(-100%); /* Default Tertutup */
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateX(-100%);
+            background-color: rgba(248, 245, 238, 0.95);
+            backdrop-filter: blur(12px);
         }
 
         #sidebar.open {
-            transform: translateX(0); /* Terbuka Melayang */
+            transform: translateX(0);
         }
 
-        /* Overlay Gelap Dibelakang Sidebar saat Terbuka */
+        /* Overlay Gelap Dibelakang Sidebar */
         #sidebar-overlay {
             position: fixed;
             inset: 0;
-            background-color: rgba(0, 0, 0, 0.15);
-            backdrop-filter: blur(2px);
+            background-color: rgba(26, 32, 44, 0.25);
+            backdrop-filter: blur(3px);
             z-index: 40;
             opacity: 0;
             pointer-events: none;
@@ -52,21 +59,108 @@
             pointer-events: auto;
         }
 
-        /* Tombol Kapsul Sidebar */
-        .btn-kapsul-ivory {
-            background-color: #FFFDFA;
-            border: 1px solid #EFE8DC;
-            color: #4A5568;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-            transition: all 0.2s ease-in-out;
-            cursor: pointer;
+        /* Avatar Frame Double-Ring */
+        .avatar-container {
+            position: relative;
+            padding: 4px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #E2D9C8 0%, #FFFFFF 100%);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
         }
 
-        .btn-kapsul-ivory:hover, .btn-kapsul-ivory.active {
+        .avatar-inner {
+            width: 84px;
+            height: 84px;
+            border-radius: 9999px;
+            overflow: hidden;
+            border: 2px solid #FFFFFF;
+        }
+
+        /* Pill Social Media Buttons */
+        .social-pill {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 9999px;
+            background-color: #FFFFFF;
+            border: 1px solid #EFE8DC;
+            color: #5A6578;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s ease;
+        }
+
+        .social-pill:hover {
             background-color: #2D3748;
             color: #FFFFFF;
             border-color: #2D3748;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(45, 55, 72, 0.15);
+        }
+
+        /* Modern Soft Navigation Menu Buttons */
+        .nav-pill {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0.7rem 1.1rem;
+            border-radius: 16px;
+            background-color: #FFFFFF;
+            border: 1px solid #EFE8DC;
+            color: #4A5568;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .nav-pill:hover {
+            border-color: #CBD5E0;
+            background-color: #FDFBF7;
+            transform: translateX(3px);
+            color: #1A202C;
+        }
+
+        .nav-pill.active {
+            background-color: #2D3748;
+            color: #FFFFFF;
+            border-color: #2D3748;
+            box-shadow: 0 6px 16px rgba(45, 55, 72, 0.2);
+        }
+
+        .nav-pill.active .nav-icon-bg {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #FFFFFF;
+        }
+
+        .nav-icon-bg {
+            width: 28px;
+            height: 28px;
+            border-radius: 10px;
+            background-color: #F8F5EE;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #718096;
+            transition: all 0.2s ease;
+        }
+
+        /* CV Download Button Special */
+        .cv-pill {
+            background: linear-gradient(135deg, #F5EFE3 0%, #EFE5D3 100%);
+            border: 1px solid #E2D5BE;
+            color: #3B3021;
+        }
+
+        .cv-pill:hover {
+            background: linear-gradient(135deg, #3B3021 0%, #221B12 100%);
+            color: #FFFFFF;
+            border-color: #221B12;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 48, 33, 0.18);
         }
 
         /* Sub-Header Category Pill */
@@ -157,48 +251,87 @@
     <!-- Overlay Latar Belakang saat Sidebar Buka -->
     <div id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
-    <!-- Sidebar Melayang (Fixed Left) -->
-    <aside id="sidebar" class="w-[280px] h-full bg-[#F8F5EE] border-r border-[#E8E1D5] flex flex-col justify-between p-6 shadow-2xl">
-        <div class="flex flex-col items-center w-full pt-12">
-            <!-- Foto Profile & Info -->
-            <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border border-[#EFE8DC] shadow-sm">
-                <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
-            </div>
-
-            <h1 class="text-lg font-bold text-[#2D3748]">Nisa Sri Fadilah</h1>
+    <!-- Sidebar Melayang Modern Soft Style -->
+    <aside id="sidebar" class="w-[300px] h-full border-r border-[#E8E1D5] flex flex-col justify-between p-6 shadow-2xl">
+        <div class="flex flex-col items-center w-full pt-10">
             
-            <div class="flex space-x-4 my-2.5 text-[#9E8268]">
-                <a href="https://github.com" target="_blank" class="hover:text-[#6E5945]"><i class="fa-brands fa-github text-lg"></i></a>
-                <a href="https://linkedin.com" target="_blank" class="hover:text-[#6E5945]"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
-                <a href="https://instagram.com" target="_blank" class="hover:text-[#6E5945]"><i class="fa-brands fa-instagram text-lg"></i></a>
+            <!-- Avatar Foto Profil dengan Bingkai Ring Elegan -->
+            <div class="avatar-container mb-3">
+                <div class="avatar-inner">
+                    <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
+                </div>
             </div>
 
-            <p class="text-[11px] text-[#718096] text-center max-w-[210px] mb-6 leading-relaxed">
-                Welcome to my portfolio. Explore my professional background and featured work below.
-            </p>
+            <!-- Nama & Subtitle -->
+            <h1 class="text-lg font-bold text-[#1A202C] tracking-tight">Nisa Sri Fadilah</h1>
+            <p class="text-[11px] font-medium text-[#8C7A6B] tracking-wider uppercase mt-0.5 mb-3">Digital & Creative Lead</p>
 
-            <!-- Navigasi Menu Tombol -->
-            <nav class="w-full space-y-2.5 px-2">
-                <button onclick="goToSlide(0)" id="btn-slide-0" class="btn-kapsul-ivory active block w-full py-2 text-xs font-medium rounded-full text-center">
-                    Home
+            <!-- Kapsul Sosial Media Modern -->
+            <div class="flex space-x-2.5 mb-4">
+                <a href="https://github.com" target="_blank" class="social-pill" title="GitHub">
+                    <i class="fa-brands fa-github text-sm"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="social-pill" title="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in text-sm"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="social-pill" title="Instagram">
+                    <i class="fa-brands fa-instagram text-sm"></i>
+                </a>
+            </div>
+
+            <!-- Status Badge Available for Work -->
+            <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#EAE3D2]/50 border border-[#DDD3C1] text-[10px] font-semibold text-[#5A4F41] mb-5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Available for Projects</span>
+            </div>
+
+            <!-- Navigasi Menu Kapsul Soft dengan Ikon -->
+            <nav class="w-full space-y-2 px-1">
+                <button onclick="goToSlide(0)" id="btn-slide-0" class="nav-pill active">
+                    <div class="flex items-center space-x-3">
+                        <div class="nav-icon-bg"><i class="fa-solid fa-house text-xs"></i></div>
+                        <span>Home</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-[10px] opacity-40"></i>
                 </button>
-                <button onclick="goToSlide(1)" id="btn-slide-1" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
-                    Creative
+
+                <button onclick="goToSlide(1)" id="btn-slide-1" class="nav-pill">
+                    <div class="flex items-center space-x-3">
+                        <div class="nav-icon-bg"><i class="fa-solid fa-palette text-xs"></i></div>
+                        <span>Creative</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-[10px] opacity-40"></i>
                 </button>
-                <button onclick="goToSlide(2)" id="btn-slide-2" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
-                    Projects
+
+                <button onclick="goToSlide(2)" id="btn-slide-2" class="nav-pill">
+                    <div class="flex items-center space-x-3">
+                        <div class="nav-icon-bg"><i class="fa-solid fa-briefcase text-xs"></i></div>
+                        <span>Projects</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-[10px] opacity-40"></i>
                 </button>
-                <button onclick="goToSlide(3)" id="btn-slide-3" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
-                    About
+
+                <button onclick="goToSlide(3)" id="btn-slide-3" class="nav-pill">
+                    <div class="flex items-center space-x-3">
+                        <div class="nav-icon-bg"><i class="fa-solid fa-user text-xs"></i></div>
+                        <span>About</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-[10px] opacity-40"></i>
                 </button>
-                <a href="cv.pdf" target="_blank" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
-                    View CV
+
+                <!-- Tombol Akses CV Spesial -->
+                <a href="cv.pdf" target="_blank" class="nav-pill cv-pill mt-2">
+                    <div class="flex items-center space-x-3">
+                        <div class="nav-icon-bg !bg-white/20 !text-current"><i class="fa-solid fa-file-pdf text-xs"></i></div>
+                        <span>Download CV</span>
+                    </div>
+                    <i class="fa-solid fa-arrow-down-long text-xs opacity-70"></i>
                 </a>
             </nav>
         </div>
 
-        <div class="text-center text-[11px] text-[#A0AEC0] pt-4">
-            2026 made by Nisa
+        <div class="text-center text-[10px] font-medium text-[#A0AEC0] pt-4">
+            2026 Made with ❤️ by Nisa
         </div>
     </aside>
 
@@ -226,7 +359,7 @@
         <section id="slide-1" class="slide-page scroll-container flex-col py-16 px-4 sm:px-8 md:px-12 h-full w-full items-center">
             <div class="max-w-[1100px] w-full mx-auto space-y-10 my-auto pt-6 pb-12">
                 
-                <!-- Judul Utama (Diberi Padding Top Agar Tidak Terpotong) -->
+                <!-- Judul Utama -->
                 <header class="text-center pt-4">
                     <h2 class="text-2xl sm:text-3xl font-bold tracking-[0.35em] text-[#2D3748] uppercase">
                         C R E A T I V E
