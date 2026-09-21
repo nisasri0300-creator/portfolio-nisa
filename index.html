@@ -1,507 +1,167 @@
 <!DOCTYPE html>
-<html lang="id" class="h-full">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nisa Sri Fadilah - Portfolio</title>
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Plus Jakarta Sans -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
+        body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #F6F3EB;
-            color: #0F172A;
+            background-color: #fcfbfa;
+            color: #1e293b;
+            overflow-x: hidden;
         }
-
-        /* Sidebar Drawer Overlay & Animation */
-        #sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            width: 320px;
-            max-width: 85vw;
-            z-index: 50;
-            background-color: #F6F3EB;
-            border-right: 1px solid rgba(0, 0, 0, 0.08);
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            transform: translateX(-100%);
-        }
-
-        #sidebar.open {
-            transform: translateX(0);
-        }
-
-        #sidebar-overlay {
-            position: fixed;
-            inset: 0;
-            background-color: rgba(15, 23, 42, 0.35);
-            backdrop-filter: blur(4px);
-            z-index: 40;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        #sidebar-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        /* Menu Button Styling */
-        .menu-btn {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            width: 100%;
-            padding: 14px 18px;
-            border-radius: 16px;
-            background-color: #FFFFFF;
-            color: #475569;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            border: 1px solid rgba(0,0,0,0.03);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-        }
-
-        .menu-btn:hover {
-            background-color: #FAF8F5;
-            color: #0F172A;
-        }
-
-        .menu-btn.active {
-            background-color: #1E293B;
-            color: #FFFFFF;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
-        }
-
-        .menu-btn.active .icon-box {
-            background-color: rgba(255,255,255,0.15);
-            color: #FFFFFF;
-        }
-
-        .icon-box {
-            width: 32px;
-            height: 32px;
-            border-radius: 10px;
-            background-color: #F1F5F9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #64748B;
-            font-size: 0.85rem;
-            margin-right: 14px;
-        }
-
-        /* Slide Transition */
-        .slide-page {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.4s ease-in-out;
-            height: 100%;
-            width: 100%;
-        }
-
-        .slide-page.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .scroll-container {
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* Title Scale Fade Animation */
-        .scale-fade-container {
-            display: inline-block;
-            position: relative;
-            min-height: 18px;
-            vertical-align: middle;
-        }
-
-        .scale-fade-item {
-            display: inline-block;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            opacity: 0;
-            transform: scale(0.92);
-            letter-spacing: 0.12em;
-            filter: blur(3px);
-            white-space: nowrap;
-        }
-
-        .scale-fade-item.active {
-            opacity: 1;
-            transform: scale(1);
-            filter: blur(0px);
-        }
-
-        .scale-fade-item.exit {
-            opacity: 0;
-            transform: scale(1.05);
-            filter: blur(4px);
-        }
-
-        /* Hero Image Precision Framing */
-        .hero-img-framed {
-            object-fit: cover;
-            object-position: center 15%; /* Precise face-level crop matching target reference */
-        }
-
-        /* Custom Scrollbar */
-        .scroll-container::-webkit-scrollbar {
-            width: 5px;
-        }
-        .scroll-container::-webkit-scrollbar-thumb {
-            background: rgba(0,0,0,0.12);
-            border-radius: 4px;
+        .hero-bg {
+            background-image: url('hero.jpg'); /* Ganti dengan nama file foto kamu */
+            background-size: cover;
+            background-position: center 30%; /* Mengatur posisi vertikal wajah agar pas di atas teks */
         }
     </style>
 </head>
-<body class="relative bg-[#F6F3EB] select-none h-full w-full overflow-hidden">
+<body class="relative min-h-screen flex flex-col justify-between">
 
-    <!-- FLOATING TOP-LEFT HAMBURGER BUTTON (Reference Match) -->
-    <button onclick="toggleSidebar()" aria-label="Toggle Navigation" class="fixed top-6 left-6 z-30 w-11 h-11 rounded-full bg-white/95 hover:bg-white active:scale-95 shadow-md border border-black/5 text-slate-800 flex items-center justify-center transition-all cursor-pointer">
-        <i class="fa-solid fa-bars text-xs text-slate-700"></i>
+    <!-- Tombol Menu Hamburger (Kiri Atas) -->
+    <button onclick="toggleSidebar()" class="absolute top-6 left-6 z-30 w-12 h-12 bg-white/80 hover:bg-white backdrop-blur-md rounded-full flex items-center justify-center shadow-md transition-all">
+        <svg class="w-6 h-6 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
     </button>
 
-    <!-- OVERLAY BACKGROUND FOR DRAWER -->
-    <div id="sidebar-overlay" onclick="toggleSidebar()"></div>
-
-    <!-- SIDEBAR NAVIGATION DRAWER -->
-    <aside id="sidebar" class="p-6 lg:p-8 flex flex-col justify-between overflow-y-auto">
-        <div class="w-full">
-            <!-- Sidebar Header / Close Button -->
+    <!-- Sidebar / Drawer Navigasi -->
+    <div id="sidebar" class="fixed inset-y-0 left-0 z-50 w-80 bg-[#f8f5ee] shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-6">
+        <div>
             <div class="flex items-center justify-between mb-8">
-                <span class="text-[11px] font-bold tracking-[0.2em] text-slate-400 uppercase">NAVIGATION</span>
-                <button onclick="toggleSidebar()" class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-slate-500 hover:text-slate-900 shadow-xs border border-black/5 transition-all">
-                    <i class="fa-solid fa-xmark text-xs"></i>
-                </button>
+                <span class="text-xs uppercase tracking-widest text-slate-400 font-semibold">Navigation</span>
+                <button onclick="toggleSidebar()" class="w-8 h-8 rounded-full bg-slate-200/60 hover:bg-slate-200 flex items-center justify-center text-slate-600 font-bold">✕</button>
+            </div>
+            
+            <!-- Profil Singkat di Sidebar -->
+            <div class="flex flex-col items-center text-center mb-8 pb-6 border-b border-slate-200/60">
+                <img src="profile.jpg" alt="Profile" class="w-20 h-20 rounded-full object-cover shadow-sm mb-3">
+                <h3 class="font-bold text-slate-900 text-lg">Nisa Sri Fadilah</h3>
+                <p class="text-xs uppercase tracking-wider text-slate-500 font-medium">Creative Director</p>
             </div>
 
-            <!-- User Mini Profile -->
-            <div class="flex flex-col items-center text-center mb-8">
-                <div class="w-20 h-20 rounded-full bg-white p-1 shadow-sm mb-3 overflow-hidden border border-black/5">
-                    <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover rounded-full" onerror="this.src='https://placehold.co/200x200/F1F5F9/0F172A?text=NISA'">
-                </div>
-                <h2 class="text-lg font-extrabold tracking-tight text-slate-900">Nisa Sri Fadilah</h2>
-                <p class="text-[10px] font-bold tracking-[0.2em] text-[#8C7A6B] uppercase mt-0.5">CREATIVE DIRECTOR</p>
-            </div>
-
-            <!-- Navigation Links -->
-            <nav class="w-full space-y-2.5">
-                <button onclick="goToSlide(0)" id="btn-slide-0" class="menu-btn active">
-                    <div class="icon-box"><i class="fa-solid fa-house"></i></div>
-                    <span>Home</span>
-                </button>
-
-                <button onclick="goToSlide(1)" id="btn-slide-1" class="menu-btn">
-                    <div class="icon-box"><i class="fa-solid fa-palette"></i></div>
-                    <span>Logo Gallery</span>
-                </button>
-
-                <button onclick="goToSlide(2)" id="btn-slide-2" class="menu-btn">
-                    <div class="icon-box"><i class="fa-solid fa-border-all"></i></div>
-                    <span>Branding Showcase</span>
-                </button>
-
-                <button onclick="goToSlide(3)" id="btn-slide-3" class="menu-btn">
-                    <div class="icon-box"><i class="fa-solid fa-briefcase"></i></div>
-                    <span>Projects</span>
-                </button>
-
-                <button onclick="goToSlide(4)" id="btn-slide-4" class="menu-btn">
-                    <div class="icon-box"><i class="fa-solid fa-user"></i></div>
-                    <span>About Me</span>
-                </button>
+            <!-- Menu List -->
+            <nav class="space-y-2">
+                <a href="#" class="flex items-center gap-4 px-4 py-3 bg-[#1e293b] text-white rounded-xl font-medium shadow-sm">
+                    <span>🏠</span> Home
+                </a>
+                <a href="#" class="flex items-center gap-4 px-4 py-3 hover:bg-slate-200/50 text-slate-700 rounded-xl font-medium transition-colors">
+                    <span>🎨</span> Logo Gallery
+                </a>
+                <a href="#" class="flex items-center gap-4 px-4 py-3 hover:bg-slate-200/50 text-slate-700 rounded-xl font-medium transition-colors">
+                    <span>📦</span> Branding Showcase
+                </a>
+                <a href="#" class="flex items-center gap-4 px-4 py-3 hover:bg-slate-200/50 text-slate-700 rounded-xl font-medium transition-colors">
+                    <span>📁</span> Projects
+                </a>
+                <a href="#" class="flex items-center gap-4 px-4 py-3 hover:bg-slate-200/50 text-slate-700 rounded-xl font-medium transition-colors">
+                    <span>👤</span> About Me
+                </a>
             </nav>
         </div>
 
-        <!-- Resume Download Button -->
-        <a href="cv.pdf" target="_blank" class="w-full py-3.5 px-5 rounded-2xl bg-[#EFEAD8] border border-[#E2D8BE] flex items-center justify-between text-slate-800 text-xs font-semibold hover:bg-[#E8E1CA] active:scale-[0.98] transition-all mt-6 shadow-xs">
-            <span>Download Resume</span>
-            <i class="fa-solid fa-arrow-down text-xs text-slate-600"></i>
-        </a>
-    </aside>
+        <!-- Tombol Download Resume di Bawah Sidebar -->
+        <div>
+            <a href="#" class="flex items-center justify-between w-full px-4 py-3 bg-[#f3efe6] hover:bg-[#eae4d5] border border-slate-300/40 rounded-xl text-slate-800 font-medium text-sm transition-colors">
+                <span>Download Resume</span>
+                <span>↓</span>
+            </a>
+        </div>
+    </div>
 
-    <!-- MAIN HERO & PAGES SLIDER CONTAINER -->
-    <main class="h-full w-full relative overflow-hidden bg-[#F6F3EB]">
+    <!-- Backdrop untuk Sidebar -->
+    <div id="backdrop" onclick="toggleSidebar()" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"></div>
 
-        <!-- ================= SLIDE 1: HERO VIEW (Exact Match to Target Image) ================= -->
-        <section id="slide-0" class="slide-page active h-full w-full relative overflow-hidden">
-            
-            <!-- FULLSCREEN MODEL HERO IMAGE (Zoomed close-up to face & pink top) -->
-            <div class="absolute inset-0 w-full h-full bg-white">
-                <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full hero-img-framed" onerror="this.src='https://placehold.co/1000x1200/FFFFFF/0F172A?text=Nisa+Sri+Fadilah'">
+    <!-- Main Hero Section (Full Screen) -->
+    <main class="relative w-full h-screen hero-bg flex flex-col items-center justify-end pb-16 px-4">
+        
+        <!-- Overlay tipis agar teks lebih kontras dan terbaca jelas -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></div>
+
+        <!-- Konten Nama & Title (Diposisikan di area bawah/baju agar wajah bersih) -->
+        <div class="relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center">
+            <!-- Nama Besar -->
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-widest text-[#121c2e] uppercase drop-shadow-sm mb-3">
+                NISA SRI FADILAH
+            </h1>
+
+            <!-- Pill Badge Subtitle yang Berganti Otomatis -->
+            <div class="inline-flex items-center px-5 py-2 bg-white/90 backdrop-blur-md rounded-full shadow-md border border-white/40">
+                <span id="role-text" class="text-xs sm:text-sm font-bold tracking-widest text-slate-800 uppercase">
+                    DIGITAL MARKETING LEAD
+                </span>
             </div>
-
-            <!-- TEXT OVERLAY: NAME & PILL BADGE (Positioned center-bottom over sweater, exact target image) -->
-            <div class="absolute inset-x-0 bottom-[22%] z-20 flex flex-col items-center text-center px-4 pointer-events-none">
-                <!-- Main Name Header -->
-                <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-[0.18em] text-[#1E293B] uppercase mb-3 drop-shadow-xs">
-                    NISA SRI FADILAH
-                </h1>
-
-                <!-- Pill Subtitle Badge -->
-                <div class="pointer-events-auto">
-                    <span class="inline-flex items-center px-6 py-2 rounded-full bg-white/95 backdrop-blur-md border border-black/5 shadow-md text-[11px] sm:text-xs font-bold tracking-[0.14em] text-slate-800 uppercase">
-                        <span class="scale-fade-container">
-                            <span id="scale-title-hero" class="scale-fade-item active">DIGITAL MARKETING LEAD</span>
-                        </span>
-                    </span>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- ================= SLIDE 2: LOGO GALLERY ================= -->
-        <section id="slide-1" class="slide-page scroll-container flex-col py-16 px-6 lg:px-16 h-full w-full items-center bg-[#F6F3EB]">
-            <div class="max-w-4xl w-full mx-auto space-y-6 my-auto pb-28 pt-8 text-center">
-                <div class="space-y-1.5">
-                    <span class="inline-block px-4 py-1 rounded-full border border-[#E2D8BE] bg-white text-[10px] font-bold tracking-[0.2em] text-slate-600 uppercase shadow-xs">
-                        SELECTED WORKS
-                    </span>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Logo Gallery</h2>
-                </div>
-
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 justify-center items-center pt-2">
-                    <div class="aspect-square bg-white rounded-2xl border border-black/5 p-5 flex items-center justify-center shadow-xs"><img src="Lunae Logo.png" alt="Lunae Logo" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/200x200/FFFFFF/0F172A?text=Lunae'"></div>
-                    <div class="aspect-square bg-white rounded-2xl border border-black/5 p-5 flex items-center justify-center shadow-xs"><img src="Hyper Season.png" alt="Hyper Season" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/200x200/FFFFFF/0F172A?text=Hyper+Season'"></div>
-                    <div class="aspect-square bg-white rounded-2xl border border-black/5 p-5 flex items-center justify-center shadow-xs"><img src="Madala Creative.png" alt="Madala Creative" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/200x200/FFFFFF/0F172A?text=Madala'"></div>
-                    <div class="aspect-square bg-white rounded-2xl border border-black/5 p-5 flex items-center justify-center shadow-xs"><img src="Teknik Industri.png" alt="Teknik Industri" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/200x200/FFFFFF/0F172A?text=Industrial'"></div>
-                    <div class="aspect-square bg-white rounded-2xl border border-black/5 p-5 flex items-center justify-center shadow-xs"><img src="Two Ambiverts.png" alt="Two Ambiverts" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/200x200/FFFFFF/0F172A?text=Ambiverts'"></div>
-                    <div class="aspect-square bg-white rounded-2xl border border-black/5 p-5 flex items-center justify-center shadow-xs"><img src="Beauty Skin Care.png" alt="Beauty Skin Care" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/200x200/FFFFFF/0F172A?text=SkinCare'"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ================= SLIDE 3: BRANDING SHOWCASE ================= -->
-        <section id="slide-2" class="slide-page scroll-container flex-col py-16 px-6 lg:px-16 h-full w-full items-center bg-[#F6F3EB]">
-            <div class="max-w-4xl w-full mx-auto space-y-6 my-auto pb-28 pt-8 text-center">
-                <div class="space-y-1.5">
-                    <span class="inline-block px-4 py-1 rounded-full border border-[#E2D8BE] bg-white text-[10px] font-bold tracking-[0.2em] text-slate-600 uppercase shadow-xs">
-                        VISUAL IDENTITY
-                    </span>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Branding Showcase</h2>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left pt-2">
-                    <div class="bg-white rounded-2xl overflow-hidden border border-black/5 shadow-xs h-64 sm:h-80">
-                        <img src="Meet Lunae.png" alt="Meet Lunae Poster" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/300x400/FFFFFF/0F172A?text=Meet+Lunae'">
-                    </div>
-                    <div class="flex flex-col justify-between space-y-3 h-64 sm:h-80">
-                        <div class="bg-white rounded-2xl overflow-hidden border border-black/5 shadow-xs flex-1">
-                            <img src="Lunae Products.png" alt="Lunae Products" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/300x300/FFFFFF/0F172A?text=Products'">
-                        </div>
-                        <div class="bg-white rounded-2xl p-3 border border-black/5 shadow-xs">
-                            <div class="w-full flex h-6 rounded-lg overflow-hidden border border-black/5">
-                                <div class="w-1/4 bg-[#F7F1DE]"></div>
-                                <div class="w-1/4 bg-[#B0BA99]"></div>
-                                <div class="w-1/4 bg-[#9D6638]"></div>
-                                <div class="w-1/4 bg-[#4E220F]"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-2xl p-5 border border-black/5 shadow-xs flex flex-col justify-between h-64 sm:h-80">
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-800">Lunáe✦</h3>
-                            <p class="text-[9px] font-bold tracking-[0.2em] text-slate-400 uppercase mt-1">LUNAE TYPEFACE</p>
-                            <hr class="my-3 border-slate-100">
-                            <div class="space-y-1 text-[10px] text-slate-600 tracking-wider font-mono">
-                                <p>ABCDEFGHIJKLM</p>
-                                <p>NOPQRSTUVWXYZ</p>
-                                <p class="text-slate-400 pt-1">0123456789</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-2xl overflow-hidden border border-black/5 shadow-xs h-64 sm:h-80">
-                        <img src="Model Showcase.png" alt="Model Showcase" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/300x400/FFFFFF/0F172A?text=Model+Showcase'">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ================= SLIDE 4: PROJECTS ================= -->
-        <section id="slide-3" class="slide-page flex-col items-center justify-center p-6 h-full w-full text-center bg-[#F6F3EB]">
-            <div class="max-w-md w-full mx-auto my-auto space-y-4">
-                <div class="w-14 h-14 rounded-2xl bg-white border border-black/5 shadow-xs flex items-center justify-center mx-auto text-slate-700 text-xl">
-                    <i class="fa-solid fa-briefcase"></i>
-                </div>
-                <h2 class="text-2xl font-bold text-slate-900">Projects</h2>
-                <p class="text-xs text-slate-600 leading-relaxed">
-                    Collection of Industrial Engineering, E-Commerce Strategy & Digital Marketing Campaigns.
-                </p>
-            </div>
-        </section>
-
-        <!-- ================= SLIDE 5: ABOUT ME ================= -->
-        <section id="slide-4" class="slide-page flex-col items-center justify-center p-6 h-full w-full text-center bg-[#F6F3EB]">
-            <div class="max-w-md w-full mx-auto my-auto space-y-4">
-                <div class="w-20 h-20 rounded-full bg-white p-1 border border-black/5 shadow-xs flex items-center justify-center mx-auto overflow-hidden">
-                    <img src="profile.jpg" alt="Nisa" class="w-full h-full object-cover rounded-full" onerror="this.src='https://placehold.co/100x100/FFFFFF/0F172A?text=Nisa'">
-                </div>
-                <h2 class="text-2xl font-bold text-slate-900">About Me</h2>
-                <p class="text-xs text-slate-600 leading-relaxed px-2">
-                    Nisa Sri Fadilah is a Creative Specialist skilled in visual identity, digital marketing growth, and creative direction.
-                </p>
-            </div>
-        </section>
-
-        <!-- FLOATING BOTTOM NAVIGATION BAR (Exact Match to Target Reference Controls) -->
-        <!-- Left Circular Arrow -->
-        <button onclick="prevSlide()" aria-label="Previous Slide" class="fixed bottom-6 left-6 z-30 w-11 h-11 rounded-full bg-white/95 hover:bg-white active:scale-95 shadow-md border border-black/5 text-slate-800 flex items-center justify-center transition-all cursor-pointer">
-            <i class="fa-solid fa-arrow-left text-xs"></i>
-        </button>
-
-        <!-- Center Indicator Dots Bar -->
-        <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-30 bg-white/95 backdrop-blur-md border border-black/5 px-4 py-2.5 rounded-full shadow-md flex items-center space-x-1.5" id="dots-container">
-            <!-- Dynamic Dots via JS -->
         </div>
 
-        <!-- Right Circular Arrow -->
-        <button onclick="nextSlide()" aria-label="Next Slide" class="fixed bottom-6 right-6 z-30 w-11 h-11 rounded-full bg-white/95 hover:bg-white active:scale-95 shadow-md border border-black/5 text-slate-800 flex items-center justify-center transition-all cursor-pointer">
-            <i class="fa-solid fa-arrow-right text-xs"></i>
+        <!-- Tombol Navigasi Kiri & Kanan Bawah -->
+        <button onclick="prevSlide()" class="absolute left-6 bottom-1/2 translate-y-1/2 w-12 h-12 bg-white/80 hover:bg-white backdrop-blur-md rounded-full flex items-center justify-center shadow-md transition-all text-slate-800">
+            ←
         </button>
+        <button onclick="nextSlide()" class="absolute right-6 bottom-1/2 translate-y-1/2 w-12 h-12 bg-white/80 hover:bg-white backdrop-blur-md rounded-full flex items-center justify-center shadow-md transition-all text-slate-800">
+            →
+        </button>
+
+        <!-- Indicator Bar (Pill Slider Dots di Bawah Tengah) -->
+        <div class="absolute bottom-6 z-10 flex items-center gap-2 bg-white/70 backdrop-blur-md px-4 py-2 rounded-full shadow-sm">
+            <span class="w-6 h-1.5 bg-slate-900 rounded-full transition-all"></span>
+            <span class="w-1.5 h-1.5 bg-slate-400 rounded-full hover:bg-slate-700 transition-all cursor-pointer"></span>
+            <span class="w-1.5 h-1.5 bg-slate-400 rounded-full hover:bg-slate-700 transition-all cursor-pointer"></span>
+            <span class="w-1.5 h-1.5 bg-slate-400 rounded-full hover:bg-slate-700 transition-all cursor-pointer"></span>
+        </div>
 
     </main>
 
+    <!-- Script Pendukung Interaksi -->
     <script>
-        let currentSlide = 0;
-        const totalSlides = 5;
-
-        // Toggle Navigation Drawer Sidebar
+        // Fungsi Buka/Tutup Sidebar
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('sidebar-overlay');
-            sidebar.classList.toggle('open');
-            overlay.classList.toggle('active');
-        }
-
-        // Update Slide Display & Dots Indicator (Matching Reference Image)
-        function updateSlideUI() {
-            for (let i = 0; i < totalSlides; i++) {
-                const slide = document.getElementById('slide-' + i);
-                const btn = document.getElementById('btn-slide-' + i);
-                if (slide) slide.classList.remove('active');
-                if (btn) btn.classList.remove('active');
-            }
-
-            const targetSlide = document.getElementById('slide-' + currentSlide);
-            const targetBtn = document.getElementById('btn-slide-' + currentSlide);
-            if (targetSlide) targetSlide.classList.add('active');
-            if (targetBtn) targetBtn.classList.add('active');
-
-            // Render Horizontal Pill Indicator Bar
-            const dotsContainer = document.getElementById('dots-container');
-            if (dotsContainer) {
-                dotsContainer.innerHTML = '';
-                for (let i = 0; i < totalSlides; i++) {
-                    const dot = document.createElement('span');
-                    dot.className = i === currentSlide 
-                        ? 'w-7 h-1.5 rounded-full bg-slate-900 transition-all duration-300' 
-                        : 'w-1.5 h-1.5 rounded-full bg-slate-300 transition-all duration-300';
-                    dotsContainer.appendChild(dot);
-                }
+            const backdrop = document.getElementById('backdrop');
+            
+            if (sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.remove('-translate-x-full');
+                backdrop.classList.remove('hidden');
+                setTimeout(() => backdrop.classList.remove('opacity-0'), 10);
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                backdrop.classList.add('opacity-0');
+                setTimeout(() => backdrop.classList.add('hidden'), 300);
             }
         }
 
-        function goToSlide(index) {
-            if (index < 0 || index >= totalSlides) return;
-            currentSlide = index;
-            updateSlideUI();
+        // Animasi Teks Berganti pada Pill Badge
+        const roles = [
+            "DIGITAL MARKETING LEAD",
+            "CREATIVE DIRECTOR",
+            "BRAND STRATEGIST",
+            "UI/UX DESIGNER"
+        ];
+        let currentRoleIndex = 0;
 
-            const sidebar = document.getElementById('sidebar');
-            if (sidebar && sidebar.classList.contains('open')) {
-                toggleSidebar();
+        setInterval(() => {
+            currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+            const roleElement = document.getElementById('role-text');
+            if (roleElement) {
+                roleElement.style.opacity = '0';
+                setTimeout(() => {
+                    roleElement.textContent = roles[currentRoleIndex];
+                    roleElement.style.opacity = '1';
+                }, 200);
             }
+        }, 3500);
+
+        function prevSlide() {
+            // Logika slide sebelumnya bisa ditambahkan di sini
         }
 
         function nextSlide() {
-            currentSlide = (currentSlide < totalSlides - 1) ? currentSlide + 1 : 0;
-            updateSlideUI();
+            // Logika slide berikutnya bisa ditambahkan di sini
         }
-
-        function prevSlide() {
-            currentSlide = (currentSlide > 0) ? currentSlide - 1 : totalSlides - 1;
-            updateSlideUI();
-        }
-
-        // Subtitle Title Text Cycler
-        const titles = [
-            "DIGITAL MARKETING LEAD",
-            "INDUSTRIAL ENGINEERING",
-            "E-COMMERCE SPECIALIST",
-            "CREATIVE DIRECTOR"
-        ];
-
-        let titleIndex = 0;
-
-        function cycleTitles() {
-            const heroEl = document.getElementById("scale-title-hero");
-            if (!heroEl) return;
-
-            heroEl.classList.remove("active");
-            heroEl.classList.add("exit");
-
-            setTimeout(() => {
-                titleIndex = (titleIndex + 1) % titles.length;
-                heroEl.textContent = titles[titleIndex];
-                heroEl.classList.remove("exit");
-                setTimeout(() => {
-                    heroEl.classList.add("active");
-                }, 50);
-            }, 500);
-        }
-
-        setInterval(cycleTitles, 3000);
-
-        // Mobile Touch Swipe Gesture Support
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        document.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        document.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, { passive: true });
-
-        function handleSwipe() {
-            const sidebar = document.getElementById('sidebar');
-            if (sidebar && sidebar.classList.contains('open')) return;
-            
-            const swipeDistance = touchEndX - touchStartX;
-            if (Math.abs(swipeDistance) > 60) {
-                if (swipeDistance < 0) {
-                    nextSlide();
-                } else {
-                    prevSlide();
-                }
-            }
-        }
-
-        // Initialize UI on load
-        updateSlideUI();
     </script>
 </body>
 </html>
