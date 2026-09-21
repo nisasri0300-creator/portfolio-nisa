@@ -191,12 +191,10 @@
 
                 <!-- Teks Hero: Nama Stay + Title Ketikan Bergantian -->
                 <div class="relative z-10 text-center px-4 text-hero-shadow">
-                    <!-- NAMA UTAMA (STAY / DIAM) -->
                     <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-wider uppercase text-[#1D232A]">
                         NISA SRI FADILAH
                     </h2>
                     
-                    <!-- TITLE SUB-HEADER (TYPING EFFECT / BERGANTIAN) -->
                     <p class="text-xs sm:text-sm md:text-base tracking-[0.25em] font-bold mt-3 uppercase text-[#3D4451] min-h-[28px]">
                         <span id="typing-text" class="typing-cursor"></span>
                     </p>
@@ -221,22 +219,22 @@
 
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 justify-items-center items-center pt-2">
                         <div class="logo-card">
-                            <img src="logo1.png" alt="Lunae Logo" class="w-full h-full object-contain">
+                            <img src="Lunae Logo.png" alt="Lunae Logo" class="w-full h-full object-contain">
                         </div>
                         <div class="logo-card">
-                            <img src="logo2.png" alt="Hyper Season" class="w-full h-full object-contain">
+                            <img src="Hyper Season.png" alt="Hyper Season" class="w-full h-full object-contain">
                         </div>
                         <div class="logo-card">
-                            <img src="logo3.png" alt="Madala Creative" class="w-full h-full object-contain">
+                            <img src="Madala Creative.png" alt="Madala Creative" class="w-full h-full object-contain">
                         </div>
                         <div class="logo-card">
-                            <img src="logo4.png" alt="Teknik Industri" class="w-full h-full object-contain">
+                            <img src="Teknik Industri.png" alt="Teknik Industri" class="w-full h-full object-contain">
                         </div>
                         <div class="logo-card">
-                            <img src="logo5.png" alt="Two Ambiverts" class="w-full h-full object-contain">
+                            <img src="PORTOFOLIO NISA.jpg" alt="Two Ambiverts" class="w-full h-full object-contain">
                         </div>
                         <div class="logo-card">
-                            <img src="logo6.png" alt="Beauty Skin Care" class="w-full h-full object-contain">
+                            <img src="PORTOFOLIO NISA (1).jpg" alt="Beauty Skin Care" class="w-full h-full object-contain">
                         </div>
                     </div>
                 </div>
@@ -248,13 +246,15 @@
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch pt-2">
+                        <!-- Poster Kiri (Meet Lunae) -->
                         <div class="md:col-span-3 branding-card flex items-center justify-center p-2">
-                            <img src="branding-1.jpg" alt="Meet Lunae Poster" class="w-full h-full object-cover rounded">
+                            <img src="Meet Lunae.png" alt="Meet Lunae Poster" class="w-full h-full object-cover rounded">
                         </div>
 
+                        <!-- Kolom Tengah (Lunae Products + Color Palette) -->
                         <div class="md:col-span-4 flex flex-col justify-between space-y-4">
                             <div class="branding-card flex-1 p-2">
-                                <img src="branding-2.jpg" alt="Lunae Products" class="w-full h-full object-cover rounded">
+                                <img src="Lunae Products.png" alt="Lunae Products" class="w-full h-full object-cover rounded">
                             </div>
 
                             <div class="branding-card p-4 bg-[#FFFDF9] space-y-3">
@@ -286,6 +286,7 @@
                             </div>
                         </div>
 
+                        <!-- Kartu Typeface Typography -->
                         <div class="md:col-span-3 branding-card p-6 bg-[#FDFBF7] flex flex-col justify-between">
                             <div>
                                 <h3 class="text-3xl font-serif tracking-wide text-[#2D3748]">Lunáe</h3>
@@ -305,8 +306,9 @@
                             </div>
                         </div>
 
+                        <!-- Kartu Kanan (Model Showcase) -->
                         <div class="md:col-span-2 branding-card p-2 flex items-center justify-center">
-                            <img src="branding-model.jpg" alt="Model Showcase" class="w-full h-full object-cover rounded">
+                            <img src="Model Showcase.png" alt="Model Showcase" class="w-full h-full object-cover rounded">
                         </div>
 
                     </div>
@@ -318,9 +320,8 @@
 
     </div>
 
-    <!-- Script JavaScript untuk Toggle Sidebar & Efek Ketikan Sub-Title -->
+    <!-- Script JavaScript untuk Toggle Sidebar & Efek Ketikan -->
     <script>
-        // 1. Fungsi Toggle Sidebar
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const toggleIcon = document.getElementById('toggleIcon');
@@ -348,7 +349,6 @@
             }
         }
 
-        // 2. Transisi Ketikan Khusus Sub-Title
         const subTitles = [
             "INDUSTRIAL ENGINEERING",
             "E-COMMERCE SPECIALIST",
@@ -374,7 +374,7 @@
             let typeSpeed = isDeleting ? 35 : 85;
 
             if (!isDeleting && charIndex === currentTitle.length) {
-                typeSpeed = 1800; // Tahan teks selama 1.8 detik
+                typeSpeed = 1800;
                 isDeleting = true;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
@@ -385,7 +385,6 @@
             setTimeout(typeEffect, typeSpeed);
         }
 
-        // Jalankan animasi setelah halaman dimuat
         document.addEventListener('DOMContentLoaded', typeEffect);
     </script>
 </body>
