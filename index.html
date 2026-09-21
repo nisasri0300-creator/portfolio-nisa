@@ -9,7 +9,6 @@
     <!-- Font Awesome CDN untuk Ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Reset margin & padding agar Full Screen 100vh tanpa scrollbar tidak perlu */
         html, body {
             margin: 0;
             padding: 0;
@@ -17,32 +16,38 @@
             width: 100%;
             overflow-x: hidden;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #FFFDFA; /* Warna Utama Ivory */
         }
 
-        /* Styling Tombol Kapsul Khas Desain Kamu */
-        .btn-kapsul {
-            background-color: #FAF6F0;
-            border: 1px solid #E2D7C7;
+        /* Tombol Kapsul Ivory Khas Desain Kamu */
+        .btn-kapsul-ivory {
+            background-color: #FFFDFA;
+            border: 1px solid #EFE8DC;
             color: #4A5568;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
             transition: all 0.2s ease-in-out;
         }
 
-        .btn-kapsul:hover {
-            background-color: #F3ECE2;
+        .btn-kapsul-ivory:hover {
+            background-color: #F8F3E8;
             color: #1A202C;
             transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Shadow Terang Segar Khusus Teks Nama di Atas Foto */
+        .text-ivory-shadow {
+            text-shadow: 0px 2px 12px rgba(255, 253, 250, 0.95), 0px 0px 24px rgba(255, 253, 250, 0.9);
         }
     </style>
 </head>
-<body class="bg-[#FDFBF7]">
+<body class="bg-[#FFFDFA]">
 
-    <!-- 1. Layout Utama Full Screen (100vh & 100vw, Tanpa Card/Margin) -->
+    <!-- Layout Utama Full Screen (100vh & 100vw) -->
     <div class="flex flex-col md:flex-row h-screen w-screen overflow-hidden">
 
-        <!-- 2. Panel Sidebar Navigasi (Sisi Kiri) - Lebar Ramping (~20-25% / w-80) -->
-        <aside class="w-full md:w-80 lg:w-[320px] bg-[#FDFBF7] border-r border-[#E8DFD5] flex flex-col justify-between p-6 z-20 shrink-0">
+        <!-- Panel Sidebar Navigasi (Sisi Kiri) - Tema Ivory & Ramping -->
+        <aside class="w-full md:w-80 lg:w-[320px] bg-[#FFFDFA] border-r border-[#EFE8DC] flex flex-col justify-between p-6 z-20 shrink-0">
             
             <!-- Bagian Atas: Hamburger & Profile Info -->
             <div class="flex flex-col items-center w-full">
@@ -55,7 +60,7 @@
                 </div>
 
                 <!-- Foto Profil Melingkar -->
-                <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border border-[#E8DFD5] shadow-sm">
+                <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border border-[#EFE8DC] shadow-sm">
                     <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
                 </div>
 
@@ -63,7 +68,7 @@
                 <h1 class="text-lg font-bold text-[#2D3748] tracking-tight">Nisa Sri Fadilah</h1>
                 
                 <!-- Ikon Sosial Media -->
-                <div class="flex space-x-4 my-2.5 text-[#947C6A]">
+                <div class="flex space-x-4 my-2.5 text-[#A08C7C]">
                     <a href="https://github.com" target="_blank" class="hover:text-[#524337] transition"><i class="fa-brands fa-github text-lg"></i></a>
                     <a href="https://linkedin.com" target="_blank" class="hover:text-[#524337] transition"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
                     <a href="https://instagram.com" target="_blank" class="hover:text-[#524337] transition"><i class="fa-brands fa-instagram text-lg"></i></a>
@@ -74,45 +79,45 @@
                     Welcome to my portfolio. Explore my professional background and featured work below.
                 </p>
 
-                <!-- Tombol Navigasi Kapsul (Khas Gambar 1) -->
+                <!-- Tombol Navigasi Kapsul Ivory -->
                 <nav class="w-full space-y-2.5 px-2">
-                    <a href="cv.pdf" target="_blank" class="btn-kapsul block w-full py-2 text-xs font-medium rounded-full text-center">
+                    <a href="cv.pdf" target="_blank" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
                         View CV
                     </a>
-                    <a href="#portfolio" class="btn-kapsul block w-full py-2 text-xs font-medium rounded-full text-center">
+                    <a href="#portfolio" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
                         Portfolio
                     </a>
-                    <a href="#projects" class="btn-kapsul block w-full py-2 text-xs font-medium rounded-full text-center">
+                    <a href="#projects" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
                         Projects
                     </a>
-                    <a href="#about" class="btn-kapsul block w-full py-2 text-xs font-medium rounded-full text-center">
+                    <a href="#about" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
                         About
                     </a>
                 </nav>
             </div>
 
-            <!-- Footer Sidebar (Paling Bawah) -->
+            <!-- Footer Sidebar -->
             <div class="text-center text-[11px] text-[#A0AEC0] pt-4">
                 2026 made by Nisa
             </div>
         </aside>
 
 
-        <!-- 3. Area Banner/Hero (Sisi Kanan) - Luas (~75-80% Layar) -->
-        <main class="relative flex-1 h-full bg-[#E8E2D5] flex items-center justify-center overflow-hidden">
+        <!-- Area Banner/Hero (Sisi Kanan) - Terang dengan Warna Ivory Soft -->
+        <main class="relative flex-1 h-full bg-[#FFFDFA] flex items-center justify-center overflow-hidden">
             
-            <!-- Foto Hero / Foto Utama Kamu -->
+            <!-- Foto Hero Kamu -->
             <img src="hero.jpg" alt="Nisa Sri Fadilah Hero" class="absolute inset-0 w-full h-full object-cover object-center">
             
-            <!-- Lapisan Transparan (Overlay) Agar Teks Terbaca Jelas -->
-            <div class="absolute inset-0 bg-black/30 backdrop-blur-[1px]"></div>
+            <!-- Soft Lapisan Transparan Terang Khas Ivory -->
+            <div class="absolute inset-0 bg-[#FFFDFA]/30 backdrop-blur-[0.5px]"></div>
 
-            <!-- Teks Overlay di Tengah Foto (Ala Dion) -->
-            <div class="relative z-10 text-center px-4 text-white drop-shadow-lg">
-                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-wider uppercase font-sans">
+            <!-- Teks Nama Warna Charcoal Elegan di Tengah Foto -->
+            <div class="relative z-10 text-center px-4 text-ivory-shadow">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-wider uppercase text-[#2D3748]">
                     Nisa Sri Fadilah
                 </h2>
-                <p class="text-xs sm:text-sm md:text-base tracking-[0.25em] font-light mt-2 uppercase text-gray-200">
+                <p class="text-xs sm:text-sm md:text-base tracking-[0.25em] font-semibold mt-2 uppercase text-[#4A5568]">
                     Industrial Engineering
                 </p>
             </div>
