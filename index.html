@@ -89,7 +89,7 @@
         /* Kartu / Galeri Branding */
         .branding-card {
             background-color: #FFFFFF;
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
             border: 1px solid #F3ECE2;
@@ -218,7 +218,6 @@
                     </div>
 
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 justify-items-center items-center pt-2">
-                        <!-- Format spasi disesuaikan untuk URL Web (%20) -->
                         <div class="logo-card">
                             <img src="./Lunae%20Logo.png" alt="Lunae Logo" class="w-full h-full object-contain">
                         </div>
@@ -246,21 +245,25 @@
                         <span class="category-pill uppercase">BRANDING</span>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch pt-2">
-                        <!-- Poster Kiri (Meet Lunae) -->
-                        <div class="md:col-span-3 branding-card flex items-center justify-center p-2">
-                            <img src="./Meet%20Lunae.png" alt="Meet Lunae Poster" class="w-full h-full object-cover rounded">
+                    <!-- Grid Branding 12 Kolom Presisi -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch pt-2">
+                        
+                        <!-- 1. Poster Kiri: Meet Lunáe -->
+                        <div class="md:col-span-3 branding-card overflow-hidden">
+                            <img src="./Meet%20Lunae.png" alt="Meet Lunáe Poster" class="w-full h-full object-cover">
                         </div>
 
-                        <!-- Kolom Tengah (Lunae Products + Color Palette) -->
+                        <!-- 2. Kolom Tengah: Lunáe Products (Atas) & Color Palette (Bawah) -->
                         <div class="md:col-span-4 flex flex-col justify-between space-y-4">
-                            <div class="branding-card flex-1 p-2">
-                                <img src="./Lunae%20Products.png" alt="Lunae Products" class="w-full h-full object-cover rounded">
+                            <!-- Produk Atas -->
+                            <div class="branding-card flex-1 overflow-hidden">
+                                <img src="./Lunae%20Products.png" alt="Lunáe Products" class="w-full h-full object-cover">
                             </div>
 
-                            <div class="branding-card p-4 bg-[#FFFDF9] space-y-3">
-                                <p class="text-[10px] font-bold tracking-widest text-gray-500 uppercase">Color Palette</p>
-                                <div class="grid grid-cols-4 gap-2 h-12 rounded overflow-hidden">
+                            <!-- Palette Bawah -->
+                            <div class="branding-card p-4 bg-[#FFFDF9] space-y-3 shrink-0">
+                                <p class="text-[10px] font-bold tracking-widest text-gray-500 uppercase">COLOR PALETTE</p>
+                                <div class="grid grid-cols-4 gap-2 h-10 rounded overflow-hidden">
                                     <div class="bg-[#F7F1DE]" title="#F7F1DE"></div>
                                     <div class="bg-[#B0BA99]" title="#B0BA99"></div>
                                     <div class="bg-[#9D6638]" title="#9D6638"></div>
@@ -287,12 +290,12 @@
                             </div>
                         </div>
 
-                        <!-- Kartu Typeface Typography -->
+                        <!-- 3. Typeface Box -->
                         <div class="md:col-span-3 branding-card p-6 bg-[#FDFBF7] flex flex-col justify-between">
                             <div>
                                 <h3 class="text-3xl font-serif tracking-wide text-[#2D3748]">Lunáe</h3>
                                 <p class="text-[10px] font-bold tracking-widest text-gray-400 uppercase mt-1">LUNAE TYPEFACE</p>
-                                <hr class="my-3 border-[#EFE8DC]">
+                                <hr class="my-4 border-[#EFE8DC]">
 
                                 <div class="space-y-2 text-xs font-serif text-gray-700">
                                     <p class="text-[11px] tracking-widest">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
@@ -307,9 +310,9 @@
                             </div>
                         </div>
 
-                        <!-- Kartu Kanan (Model Showcase) -->
-                        <div class="md:col-span-2 branding-card p-2 flex items-center justify-center">
-                            <img src="./Model%20Showcase.png" alt="Model Showcase" class="w-full h-full object-cover rounded">
+                        <!-- 4. Model Showcase Kanan -->
+                        <div class="md:col-span-2 branding-card overflow-hidden">
+                            <img src="./Model%20Showcase.png" alt="Model Showcase" class="w-full h-full object-cover">
                         </div>
 
                     </div>
