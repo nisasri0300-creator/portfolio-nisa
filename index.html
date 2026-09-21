@@ -19,11 +19,11 @@
             min-height: 100vh; 
         }
 
-        /* Shadow lembut dengan efek inset border seperti pada desain */
+        /* Styling tombol dengan warna & efek lembut */
         .custom-btn {
             background-color: #FAF6F0;
             border: 1.5px solid #E8DFD5;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             transition: all 0.2s ease-in-out;
         }
 
@@ -32,27 +32,17 @@
             transform: translateY(-1px);
             box-shadow: 0 6px 10px -1px rgba(0, 0, 0, 0.08);
         }
-
-        /* Trik Memotong / Crop Sisi Kiri Gambar Portofolio */
-        .cropped-banner {
-            width: 100%;
-            height: 100%;
-            min-height: 450px;
-            /* Memotong 45% bagian kiri gambar agar bagian menumpuk tidak kelihatan */
-            object-fit: cover;
-            object-position: 100% center; 
-        }
     </style>
 </head>
 <body>
 
-    <!-- Main Container Card -->
-    <div class="max-w-[1000px] w-full bg-[#FDFBF7] rounded-[28px] overflow-hidden shadow-2xl m-4 grid grid-cols-1 md:grid-cols-12 min-h-[580px] border border-[#E5DEC9]">
+    <!-- Container Utama Card -->
+    <div class="max-w-[1050px] w-full bg-[#FDFBF7] rounded-[28px] overflow-hidden shadow-2xl m-4 grid grid-cols-1 md:grid-cols-12 min-h-[580px] border border-[#E5DEC9]">
         
-        <!-- Sisi Kiri: Panel Navigasi Modul (Dirumuskan dengan HTML/CSS) -->
-        <div class="md:col-span-5 p-8 flex flex-col justify-between items-center text-center bg-[#FDFBF7]">
+        <!-- Sisi Kiri: Panel Navigasi -->
+        <div class="md:col-span-5 p-8 flex flex-col justify-between items-center text-center bg-[#FDFBF7] border-r border-[#E8DFD5]">
             
-            <!-- Menu Bar Icon (Atas Kiri) -->
+            <!-- Icon Menu Bar -->
             <div class="w-full flex justify-start mb-2">
                 <button class="text-gray-700 hover:text-black transition">
                     <i class="fa-solid fa-bars text-xl"></i>
@@ -60,15 +50,15 @@
             </div>
 
             <div class="w-full flex flex-col items-center">
-                <!-- Foto Profil -->
+                <!-- Foto Profil Bulat (Memakai profile.jpg) -->
                 <div class="w-24 h-24 rounded-full overflow-hidden mb-4 shadow-sm border-2 border-white">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
+                    <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
                 </div>
 
                 <!-- Nama -->
                 <h1 class="text-2xl font-bold text-[#2D3748] tracking-tight">Nisa Sri Fadilah</h1>
                 
-                <!-- Social Media Links (Bisa Diklik) -->
+                <!-- Social Media Icons (Bisa diklik) -->
                 <div class="flex space-x-4 my-3 text-[#A08875]">
                     <a href="https://github.com/username" target="_blank" class="text-xl hover:text-[#6B5748] transition"><i class="fa-brands fa-github"></i></a>
                     <a href="https://linkedin.com/in/username" target="_blank" class="text-xl hover:text-[#6B5748] transition"><i class="fa-brands fa-linkedin"></i></a>
@@ -80,7 +70,7 @@
                     Welcome to my portfolio. Explore my professional background and featured work below.
                 </p>
 
-                <!-- Tombol Navigasi Utama (Bisa Diklik) -->
+                <!-- Tombol Navigasi Utama (Bisa diklik) -->
                 <div class="w-full space-y-3.5 max-w-[260px]">
                     <a href="link-cv-kamu.pdf" target="_blank" class="custom-btn block w-full py-2.5 text-sm font-semibold text-[#4A5568] rounded-full text-center">
                         View CV
@@ -97,13 +87,12 @@
                 </div>
             </div>
 
-            <!-- Empty div for vertical balance -->
             <div></div>
         </div>
 
-        <!-- Sisi Kanan: Banner Gambar Utama yang Di-crop Bagian Terpotongnya -->
-        <div class="md:col-span-7 relative bg-[#E8E2D5] overflow-hidden flex items-center justify-center">
-            <img src="PORTOFOLIO NISA.jpg" alt="Portfolio Banner Nisa" class="cropped-banner">
+        <!-- Sisi Kanan: Foto Banner Besar (Memakai hero.jpg) -->
+        <div class="md:col-span-7 bg-[#E8E2D5] overflow-hidden flex items-center justify-center min-h-[350px] md:min-h-full">
+            <img src="hero.jpg" alt="Portfolio Banner Nisa" class="w-full h-full object-cover object-center">
         </div>
 
     </div>
