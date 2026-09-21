@@ -105,7 +105,6 @@
             margin-right: 12px;
         }
 
-        /* Slide Page Transition */
         .slide-page {
             display: none;
             opacity: 0;
@@ -124,20 +123,35 @@
             max-height: 100vh;
         }
 
-        /* Typing Effect Cursor */
-        .typing-cursor {
+        /* --- EXPAND LINE / SCALE FADE ANIMATION STYLING --- */
+        .scale-fade-container {
             display: inline-block;
-            width: 2px;
-            height: 1em;
-            background-color: #1E293B;
-            margin-left: 4px;
+            position: relative;
+            min-height: 24px;
             vertical-align: middle;
-            animation: blink 0.8s infinite;
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        .scale-fade-item {
+            display: inline-block;
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 0;
+            transform: scale(0.85);
+            letter-spacing: 0.05em;
+            filter: blur(5px);
+        }
+
+        .scale-fade-item.active {
+            opacity: 1;
+            transform: scale(1);
+            letter-spacing: 0.25em; /* Efek mekar / merenggang */
+            filter: blur(0px);
+        }
+
+        .scale-fade-item.exit {
+            opacity: 0;
+            transform: scale(1.1);
+            letter-spacing: 0.35em;
+            filter: blur(6px);
         }
     </style>
 </head>
@@ -243,7 +257,7 @@
                 <img src="profile.jpg" alt="Nisa Background" class="w-full h-full object-cover object-top sm:object-center">
             </div>
 
-            <!-- Card Banner Teks di Bawah (Didesain Elegan dengan Glassmorphism agar Tidak Menutupi Muka) -->
+            <!-- Card Banner Teks -->
             <div class="relative z-10 text-center space-y-2.5 px-6 py-6 mb-20 sm:mb-10 max-w-2xl mx-4 rounded-3xl bg-white/40 backdrop-blur-md border border-white/60 shadow-lg">
                 
                 <div class="inline-block px-5 py-1 rounded-full bg-white/70 border border-white/80 shadow-sm">
@@ -254,11 +268,11 @@
                     NISA SRI FADILAH
                 </h1>
 
-                <!-- ANIMATED TYPING TITLE -->
-                <div class="min-h-[28px] flex items-center justify-center">
-                    <p class="text-xs sm:text-sm font-bold tracking-[0.25em] text-[#334155] uppercase">
-                        <span id="animated-title"></span><span class="typing-cursor"></span>
-                    </p>
+                <!-- EXPAND LINE / SCALE FADE ANIMATED TITLE -->
+                <div class="text-xs sm:text-sm font-bold text-[#334155] uppercase min-h-[24px] flex items-center justify-center overflow-hidden">
+                    <div class="scale-fade-container">
+                        <span id="scale-title" class="scale-fade-item active">INDUSTRIAL ENGINEERING</span>
+                    </div>
                 </div>
 
             </div>
@@ -377,12 +391,11 @@
         </button>
     </div>
 
-    <!-- SCRIPT NAVIGASI & TYPING ANIMATION -->
+    <!-- SCRIPT NAVIGASI & SCALE FADE ANIMATION -->
     <script>
         let currentSlide = 0;
         const totalSlides = 5;
 
-        // Toggle Sidebar
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('sidebar-overlay');
@@ -390,7 +403,6 @@
             overlay.classList.toggle('active');
         }
 
-        // Slide Navigation
         function updateSlideUI() {
             for (let i = 0; i < totalSlides; i++) {
                 const slide = document.getElementById('slide-' + i);
@@ -438,7 +450,7 @@
             updateSlideUI();
         }
 
-        /* --- SCRIPT TYPING ANIMATION ELEGANT --- */
+        /* --- SCRIPT SCALE FADE ANIMATION --- */
         const titles = [
             "Industrial Engineering",
             "E-Commerce Specialist",
@@ -446,43 +458,31 @@
             "Education Teacher"
         ];
 
-        let titleIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typingSpeed = 90;
-        const deletingSpeed = 45;
-        const delayBetweenWords = 2000;
-        const titleElement = document.getElementById("animated-title");
+        let index = 0;
+        const scaleElement = document.getElementById("scale-title");
 
-        function typeEffect() {
-            const currentTitle = titles[titleIndex];
+        function cycleTitles() {
+            // Efek keluar: membesar sedikit dan pudar
+            scaleElement.classList.remove("active");
+            scaleElement.classList.add("exit");
 
-            if (isDeleting) {
-                titleElement.textContent = currentTitle.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                titleElement.textContent = currentTitle.substring(0, charIndex + 1);
-                charIndex++;
-            }
+            setTimeout(() => {
+                // Ganti teks
+                index = (index + 1) % titles.length;
+                scaleElement.textContent = titles[index];
 
-            let currentSpeed = isDeleting ? deletingSpeed : typingSpeed;
-
-            if (!isDeleting && charIndex === currentTitle.length) {
-                currentSpeed = delayBetweenWords;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                titleIndex = (titleIndex + 1) % titles.length;
-                currentSpeed = 400;
-            }
-
-            setTimeout(typeEffect, currentSpeed);
+                // Kembalikan ke posisi awal animasi masuk
+                scaleElement.classList.remove("exit");
+                
+                // Efek masuk: dari kecil, mengembang dan memudar masuk
+                setTimeout(() => {
+                    scaleElement.classList.add("active");
+                }, 50);
+            }, 800); // Durasi transisi
         }
 
-        // Jalankan animasi ketik saat halaman siap
-        document.addEventListener("DOMContentLoaded", () => {
-            setTimeout(typeEffect, 600);
-        });
+        // Jalankan pergantian teks setiap 3.2 detik
+        setInterval(cycleTitles, 3200);
     </script>
 </body>
 </html>
