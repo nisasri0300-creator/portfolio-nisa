@@ -43,7 +43,7 @@
             content: '|';
             animation: blink 0.7s infinite;
             margin-left: 2px;
-            color: #1D232A;
+            color: #3D4451;
         }
 
         @keyframes blink {
@@ -184,16 +184,22 @@
         <!-- Konten Utama (Sisi Kanan) -->
         <main class="flex-1 w-full bg-[#FFFDFA]">
             
-            <!-- 1. Hero Section dengan Transisi Ketikan (Typing Effect) -->
+            <!-- 1. Hero Section -->
             <section class="relative h-screen w-full bg-[#FFFDFA] flex items-center justify-center overflow-hidden">
                 <img src="hero.jpg" alt="Nisa Sri Fadilah Hero" class="absolute inset-0 w-full h-full object-cover object-center">
                 <div class="absolute inset-0 bg-[#FFFDFA]/20 backdrop-blur-[0.5px]"></div>
 
-                <!-- Area Teks dengan Transisi Ketikan Ketik/Hapus Otomatis -->
-                <div class="relative z-10 text-center px-4 text-hero-shadow min-h-[140px] flex flex-col justify-center items-center">
+                <!-- Teks Hero: Nama Stay + Title Ketikan Bergantian -->
+                <div class="relative z-10 text-center px-4 text-hero-shadow">
+                    <!-- NAMA UTAMA (STAY / DIAM) -->
                     <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-wider uppercase text-[#1D232A]">
-                        <span id="typing-text" class="typing-cursor"></span>
+                        NISA SRI FADILAH
                     </h2>
+                    
+                    <!-- TITLE SUB-HEADER (TYPING EFFECT / BERGANTIAN) -->
+                    <p class="text-xs sm:text-sm md:text-base tracking-[0.25em] font-bold mt-3 uppercase text-[#3D4451] min-h-[28px]">
+                        <span id="typing-text" class="typing-cursor"></span>
+                    </p>
                 </div>
             </section>
 
@@ -312,7 +318,7 @@
 
     </div>
 
-    <!-- Script JavaScript untuk Toggle Sidebar & Efek Ketikan (Typing Effect) -->
+    <!-- Script JavaScript untuk Toggle Sidebar & Efek Ketikan Sub-Title -->
     <script>
         // 1. Fungsi Toggle Sidebar
         function toggleSidebar() {
@@ -342,45 +348,44 @@
             }
         }
 
-        // 2. Transisi Ketikan (Typing Effect)
-        const words = [
-            "NISA SRI FADILAH",
+        // 2. Transisi Ketikan Khusus Sub-Title
+        const subTitles = [
             "INDUSTRIAL ENGINEERING",
             "E-COMMERCE SPECIALIST",
             "DIGITAL MARKETING"
         ];
 
-        let wordIndex = 0;
+        let titleIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
         const typingElement = document.getElementById('typing-text');
 
         function typeEffect() {
-            const currentWord = words[wordIndex];
+            const currentTitle = subTitles[titleIndex];
 
             if (isDeleting) {
-                typingElement.textContent = currentWord.substring(0, charIndex - 1);
+                typingElement.textContent = currentTitle.substring(0, charIndex - 1);
                 charIndex--;
             } else {
-                typingElement.textContent = currentWord.substring(0, charIndex + 1);
+                typingElement.textContent = currentTitle.substring(0, charIndex + 1);
                 charIndex++;
             }
 
-            let typeSpeed = isDeleting ? 40 : 90; // Kecepatan ketik & hapus
+            let typeSpeed = isDeleting ? 35 : 85;
 
-            if (!isDeleting && charIndex === currentWord.length) {
-                typeSpeed = 1800; // Tahan kata selama 1.8 detik
+            if (!isDeleting && charIndex === currentTitle.length) {
+                typeSpeed = 1800; // Tahan teks selama 1.8 detik
                 isDeleting = true;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length; // Pindah ke kata berikutnya
-                typeSpeed = 400; // Jeda sebelum ketik kata baru
+                titleIndex = (titleIndex + 1) % subTitles.length;
+                typeSpeed = 350;
             }
 
             setTimeout(typeEffect, typeSpeed);
         }
 
-        // Jalankan Efek Ketikan Saat Halaman Dimuat
+        // Jalankan animasi setelah halaman dimuat
         document.addEventListener('DOMContentLoaded', typeEffect);
     </script>
 </body>
