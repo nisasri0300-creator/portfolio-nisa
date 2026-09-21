@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,12 +12,31 @@
         html, body {
             margin: 0;
             padding: 0;
+            height: 100%;
+            overflow: hidden; /* Menghilangkan Scrollbar Utama */
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #F8F5EE; /* Warna Latar Ivory Sesuai Gambar Referensi */
+            background-color: #F8F5EE;
             color: #2D3748;
         }
 
-        /* Tombol Kapsul Ivory Header Sub-Seksi */
+        /* Tombol Kapsul Sidebar */
+        .btn-kapsul-ivory {
+            background-color: #FFFDFA;
+            border: 1px solid #EFE8DC;
+            color: #4A5568;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        .btn-kapsul-ivory:hover, .btn-kapsul-ivory.active {
+            background-color: #2D3748;
+            color: #FFFFFF;
+            border-color: #2D3748;
+            transform: translateY(-1px);
+        }
+
+        /* Label Sub-Header Portfolio */
         .category-pill {
             background-color: #F8F5EE;
             border: 1.5px solid #D9D2C5;
@@ -33,8 +52,8 @@
 
         /* Card Logo Melingkar */
         .logo-card {
-            width: 110px;
-            height: 110px;
+            width: 105px;
+            height: 105px;
             border-radius: 9999px;
             background-color: #FFFFFF;
             display: flex;
@@ -51,19 +70,18 @@
             transform: translateY(-3px);
         }
 
-        /* Tombol Kapsul Sidebar */
-        .btn-kapsul-ivory {
-            background-color: #FFFDFA;
-            border: 1px solid #EFE8DC;
-            color: #4A5568;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-            transition: all 0.2s ease-in-out;
+        /* Transisi Halaman (Tab Content) */
+        .tab-page {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            height: 100%;
+            width: 100%;
         }
 
-        .btn-kapsul-ivory:hover {
-            background-color: #F8F3E8;
-            color: #1A202C;
-            transform: translateY(-1px);
+        .tab-page.active {
+            display: flex;
+            opacity: 1;
         }
 
         .text-hero-shadow {
@@ -82,37 +100,38 @@
             50% { opacity: 0; }
         }
 
-        aside {
-            transition: width 0.3s ease;
+        /* Custom Scrollbar Jika Konten Tab Lebih Tinggi dari Layar HP */
+        .tab-scrollable {
+            overflow-y: auto;
+            max-height: 100vh;
         }
-
-        aside.collapsed-desktop {
-            width: 70px !important;
-            padding-left: 0.75rem !important;
-            padding-right: 0.75rem !important;
+        .tab-scrollable::-webkit-scrollbar {
+            width: 6px;
         }
-
-        aside.collapsed-desktop .sidebar-content {
-            display: none !important;
+        .tab-scrollable::-webkit-scrollbar-thumb {
+            background-color: #E2D9C8;
+            border-radius: 10px;
         }
     </style>
 </head>
-<body class="bg-[#F8F5EE]">
+<body class="bg-[#F8F5EE] h-screen w-screen overflow-hidden">
 
-    <div class="flex flex-col md:flex-row min-h-screen w-screen">
+    <div class="flex flex-col md:flex-row h-full w-full">
 
-        <!-- Sidebar Navigasi -->
-        <aside id="sidebar" class="w-full md:w-80 lg:w-[280px] md:h-screen bg-[#F8F5EE] border-r border-[#E8E1D5] flex flex-col justify-between p-6 z-30 shrink-0 md:sticky md:top-0">
+        <!-- Sidebar Navigasi Kiri -->
+        <aside id="sidebar" class="w-full md:w-80 lg:w-[280px] h-auto md:h-full bg-[#F8F5EE] border-r border-[#E8E1D5] flex flex-col justify-between p-6 z-30 shrink-0">
             
             <div class="flex flex-col items-center w-full">
+                <!-- Header Sidebar Mobile -->
                 <div class="w-full flex justify-between md:justify-start items-center mb-4">
-                    <button id="toggleBtn" onclick="toggleSidebar()" class="text-gray-700 hover:text-black focus:outline-none p-1">
+                    <button id="toggleBtn" onclick="toggleSidebarMobile()" class="md:hidden text-gray-700 hover:text-black focus:outline-none p-1">
                         <i id="toggleIcon" class="fa-solid fa-bars text-xl"></i>
                     </button>
                     <span class="md:hidden font-bold text-sm text-[#2D3748]">Nisa Sri Fadilah</span>
                 </div>
 
-                <div id="sidebarContent" class="sidebar-content flex flex-col items-center w-full">
+                <!-- Konten Sidebar -->
+                <div id="sidebarContent" class="hidden md:flex flex-col items-center w-full">
                     <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border border-[#EFE8DC] shadow-sm">
                         <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
                     </div>
@@ -129,26 +148,38 @@
                         Welcome to my portfolio. Explore my professional background and featured work below.
                     </p>
 
+                    <!-- Navigasi Menu Tombol/Tab -->
                     <nav class="w-full space-y-2.5 px-2">
-                        <a href="cv.pdf" target="_blank" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">View CV</a>
-                        <a href="#portfolio" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">Portfolio</a>
-                        <a href="#projects" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">Projects</a>
-                        <a href="#about" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">About</a>
+                        <button onclick="openTab('home')" id="btn-home" class="btn-kapsul-ivory active block w-full py-2 text-xs font-medium rounded-full text-center">
+                            Home
+                        </button>
+                        <button onclick="openTab('portfolio')" id="btn-portfolio" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
+                            Portfolio
+                        </button>
+                        <a href="cv.pdf" target="_blank" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
+                            View CV
+                        </a>
+                        <button onclick="openTab('projects')" id="btn-projects" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
+                            Projects
+                        </button>
+                        <button onclick="openTab('about')" id="btn-about" class="btn-kapsul-ivory block w-full py-2 text-xs font-medium rounded-full text-center">
+                            About
+                        </button>
                     </nav>
                 </div>
             </div>
 
-            <div id="sidebarFooter" class="sidebar-content text-center text-[11px] text-[#A0AEC0] pt-4">
+            <div id="sidebarFooter" class="hidden md:block text-center text-[11px] text-[#A0AEC0] pt-4">
                 2026 made by Nisa
             </div>
         </aside>
 
 
-        <!-- Konten Utama -->
-        <main class="flex-1 w-full bg-[#F8F5EE] overflow-x-hidden">
+        <!-- Area Konten Utama (Layar Kanan) -->
+        <main class="flex-1 h-full w-full bg-[#F8F5EE] relative overflow-hidden">
             
-            <!-- Hero Section -->
-            <section class="relative h-screen w-full bg-[#F8F5EE] flex items-center justify-center overflow-hidden">
+            <!-- 1. SLIDE/TAB HOME (HERO) -->
+            <section id="tab-home" class="tab-page active flex-col items-center justify-center relative h-full w-full">
                 <img src="hero.jpg" alt="Nisa Sri Fadilah Hero" class="absolute inset-0 w-full h-full object-cover object-center">
                 <div class="absolute inset-0 bg-[#F8F5EE]/20 backdrop-blur-[0.5px]"></div>
 
@@ -163,178 +194,201 @@
             </section>
 
 
-            <!-- Section Portfolio Creative -->
-            <section id="portfolio" class="py-12 px-4 sm:px-6 md:px-8 lg:px-10 space-y-10 max-w-[1280px] mx-auto">
-                
-                <!-- Main Header -->
-                <header class="text-center mb-8">
-                    <h2 class="text-2xl sm:text-3xl font-bold tracking-[0.35em] text-[#2D3748] uppercase">
-                        C R E A T I V E
-                    </h2>
-                </header>
+            <!-- 2. SLIDE/TAB PORTFOLIO (CREATIVE) -->
+            <section id="tab-portfolio" class="tab-page tab-scrollable flex-col py-8 px-4 sm:px-6 md:px-8 lg:px-10 h-full w-full">
+                <div class="max-w-[1280px] mx-auto w-full space-y-8 my-auto">
+                    
+                    <!-- Title -->
+                    <header class="text-center">
+                        <h2 class="text-2xl sm:text-3xl font-bold tracking-[0.35em] text-[#2D3748] uppercase">
+                            C R E A T I V E
+                        </h2>
+                    </header>
 
-                <!-- Sub-Seksi LOGO -->
-                <div class="space-y-4">
-                    <div>
-                        <span class="category-pill uppercase">LOGO</span>
-                    </div>
-
-                    <!-- Row 6 Logo Bulat -->
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 justify-items-center items-center pt-2">
-                        <div class="logo-card">
-                            <img src="Lunae Logo.png" alt="Lunáe Modular Wear" class="w-full h-full object-contain">
-                        </div>
-                        <div class="logo-card">
-                            <img src="Hyper Season.png" alt="Hyper Season" class="w-full h-full object-contain">
-                        </div>
-                        <div class="logo-card">
-                            <img src="Madala Creative.png" alt="Madala Creative" class="w-full h-full object-contain">
-                        </div>
-                        <div class="logo-card">
-                            <img src="Teknik Industri.png" alt="Teknik Industri" class="w-full h-full object-contain">
-                        </div>
-                        <div class="logo-card">
-                            <img src="Two Ambiverts.png" alt="Two Ambiverts" class="w-full h-full object-contain">
-                        </div>
-                        <div class="logo-card">
-                            <img src="Beauty Skin Care.png" alt="Beauty Skin Care" class="w-full h-full object-contain">
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Sub-Seksi BRANDING -->
-                <div class="space-y-4 pt-6">
-                    <div>
-                        <span class="category-pill uppercase">BRANDING</span>
-                    </div>
-
-                    <!-- Layout Presisi Komposisi 4 Kolom -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch pt-2">
-                        
-                        <!-- 1. Poster Kiri: Meet Lunáe -->
-                        <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex flex-col justify-center">
-                            <img src="Meet Lunae.png" alt="Meet Lunáe Poster" class="w-full h-full object-cover">
+                    <!-- Sub-Seksi LOGO -->
+                    <div class="space-y-3">
+                        <div>
+                            <span class="category-pill uppercase">LOGO</span>
                         </div>
 
-                        <!-- 2. Kolom Tengah: Produk Atas + Palette Warna Bawah -->
-                        <div class="flex flex-col justify-between space-y-4">
-                            <!-- Foto Produk Manekin -->
-                            <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex-1">
-                                <img src="Lunae Products.png" alt="Lunáe Products" class="w-full h-full object-cover">
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 justify-items-center items-center pt-1">
+                            <div class="logo-card">
+                                <img src="Lunae Logo.png" alt="Lunáe Logo" class="w-full h-full object-contain">
                             </div>
-
-                            <!-- Color Palette Horizontal & Kode Color Swatch -->
-                            <div class="bg-white rounded-xl p-3.5 shadow-sm border border-[#EFE8DC] space-y-3 shrink-0">
-                                <!-- 4 Baris Warna Horizontal -->
-                                <div class="w-full flex flex-col h-20 rounded-md overflow-hidden border border-gray-100">
-                                    <div class="h-1/4 bg-[#F7F1DE]"></div>
-                                    <div class="h-1/4 bg-[#B0BA99]"></div>
-                                    <div class="h-1/4 bg-[#9D6638]"></div>
-                                    <div class="h-1/4 bg-[#4E220F]"></div>
-                                </div>
-
-                                <!-- Swatch Bulatan & Teks HEX/RGB -->
-                                <div class="grid grid-cols-4 gap-1 text-center">
-                                    <div class="flex flex-col items-center">
-                                        <span class="w-3.5 h-3.5 rounded-full bg-[#F7F1DE] border border-gray-300 mb-1"></span>
-                                        <p class="text-[9px] font-bold text-gray-700">#F7F1DE</p>
-                                        <p class="text-[7.5px] text-gray-400">rgb(247,241,222)</p>
-                                    </div>
-                                    <div class="flex flex-col items-center">
-                                        <span class="w-3.5 h-3.5 rounded-full bg-[#B0BA99] mb-1"></span>
-                                        <p class="text-[9px] font-bold text-gray-700">#B0BA99</p>
-                                        <p class="text-[7.5px] text-gray-400">rgb(176,186,153)</p>
-                                    </div>
-                                    <div class="flex flex-col items-center">
-                                        <span class="w-3.5 h-3.5 rounded-full bg-[#9D6638] mb-1"></span>
-                                        <p class="text-[9px] font-bold text-gray-700">#9D6638</p>
-                                        <p class="text-[7.5px] text-gray-400">rgb(157,102,56)</p>
-                                    </div>
-                                    <div class="flex flex-col items-center">
-                                        <span class="w-3.5 h-3.5 rounded-full bg-[#4E220F] mb-1"></span>
-                                        <p class="text-[9px] font-bold text-gray-700">#4E220F</p>
-                                        <p class="text-[7.5px] text-gray-400">rgb(78,34,15)</p>
-                                    </div>
-                                </div>
+                            <div class="logo-card">
+                                <img src="Hyper Season.png" alt="Hyper Season" class="w-full h-full object-contain">
+                            </div>
+                            <div class="logo-card">
+                                <img src="Madala Creative.png" alt="Madala Creative" class="w-full h-full object-contain">
+                            </div>
+                            <div class="logo-card">
+                                <img src="Teknik Industri.png" alt="Teknik Industri" class="w-full h-full object-contain">
+                            </div>
+                            <div class="logo-card">
+                                <img src="Two Ambiverts.png" alt="Two Ambiverts" class="w-full h-full object-contain">
+                            </div>
+                            <div class="logo-card">
+                                <img src="Beauty Skin Care.png" alt="Beauty Skin Care" class="w-full h-full object-contain">
                             </div>
                         </div>
+                    </div>
 
-                        <!-- 3. Kolom Typeface (Lunáe) -->
-                        <div class="bg-white rounded-xl p-5 shadow-sm border border-[#EFE8DC] flex flex-col justify-between">
-                            <div>
-                                <h3 class="text-4xl font-serif tracking-wide text-[#1A202C]">Lunáe✦</h3>
-                                <p class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase mt-2">LUNAE TYPEFACE</p>
-                                <hr class="my-3 border-[#EFE8DC]">
+                    <!-- Sub-Seksi BRANDING -->
+                    <div class="space-y-3">
+                        <div>
+                            <span class="category-pill uppercase">BRANDING</span>
+                        </div>
 
-                                <div class="grid grid-cols-2 gap-2 text-[10px] font-serif text-gray-700 tracking-wider">
-                                    <div>
-                                        <p>ABCDEFGHIJKLM</p>
-                                        <p>NOPQRSTUVWXYZ</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch pt-1">
+                            <!-- Poster Kiri -->
+                            <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex flex-col justify-center">
+                                <img src="Meet Lunae.png" alt="Meet Lunáe Poster" class="w-full h-full object-cover">
+                            </div>
+
+                            <!-- Tengah: Products + Palette -->
+                            <div class="flex flex-col justify-between space-y-3">
+                                <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex-1">
+                                    <img src="Lunae Products.png" alt="Lunáe Products" class="w-full h-full object-cover">
+                                </div>
+
+                                <div class="bg-white rounded-xl p-3 shadow-sm border border-[#EFE8DC] space-y-2.5 shrink-0">
+                                    <div class="w-full flex flex-col h-16 rounded-md overflow-hidden border border-gray-100">
+                                        <div class="h-1/4 bg-[#F7F1DE]"></div>
+                                        <div class="h-1/4 bg-[#B0BA99]"></div>
+                                        <div class="h-1/4 bg-[#9D6638]"></div>
+                                        <div class="h-1/4 bg-[#4E220F]"></div>
                                     </div>
-                                    <div>
-                                        <p>ABCDEFGHIJ</p>
-                                        <p>RSTUVWXYZ</p>
+
+                                    <div class="grid grid-cols-4 gap-1 text-center">
+                                        <div class="flex flex-col items-center">
+                                            <span class="w-3 h-3 rounded-full bg-[#F7F1DE] border border-gray-300 mb-0.5"></span>
+                                            <p class="text-[8.5px] font-bold text-gray-700">#F7F1DE</p>
+                                            <p class="text-[7px] text-gray-400">rgb(247,241,222)</p>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <span class="w-3 h-3 rounded-full bg-[#B0BA99] mb-0.5"></span>
+                                            <p class="text-[8.5px] font-bold text-gray-700">#B0BA99</p>
+                                            <p class="text-[7px] text-gray-400">rgb(176,186,153)</p>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <span class="w-3 h-3 rounded-full bg-[#9D6638] mb-0.5"></span>
+                                            <p class="text-[8.5px] font-bold text-gray-700">#9D6638</p>
+                                            <p class="text-[7px] text-gray-400">rgb(157,102,56)</p>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <span class="w-3 h-3 rounded-full bg-[#4E220F] mb-0.5"></span>
+                                            <p class="text-[8.5px] font-bold text-gray-700">#4E220F</p>
+                                            <p class="text-[7px] text-gray-400">rgb(78,34,15)</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-2 gap-2 mt-6 pt-3 border-t border-gray-100">
+                            <!-- Typeface Box -->
+                            <div class="bg-white rounded-xl p-4 shadow-sm border border-[#EFE8DC] flex flex-col justify-between">
                                 <div>
-                                    <p class="text-[11px] font-semibold text-gray-800">Content Sans-serif</p>
-                                    <p class="text-[9px] text-gray-500 leading-tight mt-1">Simple text, minimal look, timeless impression, elegant and refined.</p>
+                                    <h3 class="text-3xl font-serif tracking-wide text-[#1A202C]">Lunáe✦</h3>
+                                    <p class="text-[9px] font-bold tracking-[0.2em] text-gray-500 uppercase mt-1">LUNAE TYPEFACE</p>
+                                    <hr class="my-2.5 border-[#EFE8DC]">
+
+                                    <div class="grid grid-cols-2 gap-2 text-[9.5px] font-serif text-gray-700 tracking-wider">
+                                        <div>
+                                            <p>ABCDEFGHIJKLM</p>
+                                            <p>NOPQRSTUVWXYZ</p>
+                                        </div>
+                                        <div>
+                                            <p>ABCDEFGHIJ</p>
+                                            <p>RSTUVWXYZ</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="text-[10px] font-mono text-gray-600 space-y-0.5">
-                                    <p>0123456789</p>
-                                    <p>!?#$%&amp;</p>
-                                    <p>( * , + . ; : &lt; = &gt; / )</p>
+
+                                <div class="grid grid-cols-2 gap-2 mt-4 pt-2.5 border-t border-gray-100">
+                                    <div>
+                                        <p class="text-[10px] font-semibold text-gray-800">Content Sans-serif</p>
+                                        <p class="text-[8.5px] text-gray-500 leading-tight mt-0.5">Simple text, minimal look, timeless impression, elegant and refined.</p>
+                                    </div>
+                                    <div class="text-[9px] font-mono text-gray-600 space-y-0.5">
+                                        <p>0123456789</p>
+                                        <p>!?#$%&amp;</p>
+                                        <p>( * , + . ; : &lt; = &gt; / )</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- 4. Model Showcase Kanan (Full Height) -->
-                        <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex flex-col justify-center">
-                            <img src="Model Showcase.png" alt="Model Showcase" class="w-full h-full object-cover">
+                            <!-- Model Showcase Kanan -->
+                            <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-[#EFE8DC] flex flex-col justify-center">
+                                <img src="Model Showcase.png" alt="Model Showcase" class="w-full h-full object-cover">
+                            </div>
                         </div>
-
                     </div>
-                </div>
 
+                </div>
+            </section>
+
+
+            <!-- 3. SLIDE/TAB PROJECTS -->
+            <section id="tab-projects" class="tab-page flex-col items-center justify-center p-8 h-full w-full text-center">
+                <h2 class="text-2xl font-bold text-gray-700 uppercase tracking-widest mb-2">Projects</h2>
+                <p class="text-xs text-gray-500 max-w-md">Koleksi project terbaru akan ditampilkan di halaman ini.</p>
+            </section>
+
+
+            <!-- 4. SLIDE/TAB ABOUT -->
+            <section id="tab-about" class="tab-page flex-col items-center justify-center p-8 h-full w-full text-center">
+                <h2 class="text-2xl font-bold text-gray-700 uppercase tracking-widest mb-2">About Me</h2>
+                <p class="text-xs text-gray-500 max-w-md leading-relaxed">
+                    Halo, saya Nisa Sri Fadilah! Seorang Industrial Engineer, E-Commerce Specialist, dan Digital Marketing enthusiast.
+                </p>
             </section>
 
         </main>
 
     </div>
 
-    <!-- JavaScript -->
+    <!-- JavaScript Perpindahan Tab (Sistem Klik) -->
     <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const toggleIcon = document.getElementById('toggleIcon');
-            const isMobile = window.innerWidth < 768;
+        // Fungsi Pindah Halaman/Tab
+        function openTab(tabName) {
+            // Sembunyikan Semua Tab
+            const allTabs = document.querySelectorAll('.tab-page');
+            allTabs.forEach(tab => tab.classList.remove('active'));
 
-            if (isMobile) {
+            // Nonaktifkan Semua Style Tombol Active
+            const allBtns = document.querySelectorAll('nav button');
+            allBtns.forEach(btn => btn.classList.remove('active'));
+
+            // Tampilkan Tab yang Dipilih
+            const targetTab = document.getElementById('tab-' + tabName);
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+
+            // Aktifkan Style Tombol yang Dipilih
+            const activeBtn = document.getElementById('btn-' + tabName);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            }
+
+            // Tutup sidebar mobile jika dibuka
+            if (window.innerWidth < 768) {
                 const content = document.getElementById('sidebarContent');
                 const footer = document.getElementById('sidebarFooter');
-                if (content.style.display === 'none') {
-                    content.style.display = 'flex';
-                    footer.style.display = 'block';
-                    toggleIcon.className = 'fa-solid fa-xmark text-xl';
-                } else {
-                    content.style.display = 'none';
-                    footer.style.display = 'none';
-                    toggleIcon.className = 'fa-solid fa-bars text-xl';
-                }
-            } else {
-                sidebar.classList.toggle('collapsed-desktop');
-                if (sidebar.classList.contains('collapsed-desktop')) {
-                    toggleIcon.className = 'fa-solid fa-bars text-xl';
-                } else {
-                    toggleIcon.className = 'fa-solid fa-xmark text-xl';
-                }
+                content.classList.add('hidden');
+                footer.classList.add('hidden');
             }
         }
 
+        // Toggle Sidebar khusus Tampilan HP/Mobile
+        function toggleSidebarMobile() {
+            const content = document.getElementById('sidebarContent');
+            const footer = document.getElementById('sidebarFooter');
+            content.classList.toggle('hidden');
+            content.classList.toggle('flex');
+            footer.classList.toggle('hidden');
+        }
+
+        // Efek Ketikan Nama Title di Home
         const subTitles = [
             "INDUSTRIAL ENGINEERING",
             "E-COMMERCE SPECIALIST",
