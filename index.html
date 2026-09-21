@@ -4,58 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nisa Sri Fadilah - Portfolio</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background-color: #e8e2d5; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+        }
+    </style>
 </head>
-<body class="bg-[#e8e2d5] min-h-screen flex items-center justify-center p-4">
+<body>
 
-    <!-- Container Utama -->
-    <div class="max-w-5xl w-full bg-white rounded-3xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-[550px]">
+    <div style="max-width: 1100px; width: 100%; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); position: relative;">
         
-        <!-- Sisi Kiri: Profil & Navigasi -->
-        <div class="md:col-span-5 p-8 flex flex-col justify-between items-center text-center bg-white border-r border-gray-100">
-            <div class="w-full flex flex-col items-center">
-                <!-- Foto Profil -->
-                <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-200 mb-4 shadow-sm">
-                    <img src="foto-profil.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
-                </div>
+        <!-- Gambar Portofolio dengan atribut usemap -->
+        <img src="PORTOFOLIO NISA.jpg" usemap="#portfolio-map" alt="Portfolio Nisa" style="width: 100%; height: auto; display: block;">
 
-                <!-- Nama & Deskripsi -->
-                <h1 class="text-2xl font-bold text-gray-800">Nisa Sri Fadilah</h1>
-                
-                <!-- Icon Sosial Media -->
-                <div class="flex space-x-3 my-3 text-gray-600">
-                    <a href="#" class="p-2 rounded-full hover:bg-gray-100 transition"><i class="fab font-bold fa-github"></i></a>
-                    <a href="#" class="p-2 rounded-full hover:bg-gray-100 transition"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="p-2 rounded-full hover:bg-gray-100 transition"><i class="fab fa-instagram"></i></a>
-                </div>
+        <!-- Peta Area Klik Tombol -->
+        <map name="portfolio-map">
+            <!-- Icon Sosial Media -->
+            <!-- GitHub -->
+            <area shape="circle" coords="100,230,20" href="https://github.com/username-kamu" target="_blank" alt="GitHub">
+            <!-- LinkedIn -->
+            <area shape="circle" coords="145,230,20" href="https://linkedin.com/in/username-kamu" target="_blank" alt="LinkedIn">
+            <!-- Instagram -->
+            <area shape="circle" coords="190,230,20" href="https://instagram.com/username-kamu" target="_blank" alt="Instagram">
 
-                <p class="text-xs text-gray-500 max-w-xs mb-6">
-                    Welcome to my portfolio. Explore my professional background and featured work below.
-                </p>
-
-                <!-- Menu Tombol Navigasi -->
-                <div class="w-full space-y-3 max-w-xs">
-                    <a href="#cv" class="block w-full py-2.5 px-4 text-sm font-medium text-gray-700 border border-gray-300 rounded-full hover:bg-gray-50 transition text-center">View CV</a>
-                    <a href="#portfolio" class="block w-full py-2.5 px-4 text-sm font-medium text-gray-700 border border-gray-300 rounded-full hover:bg-gray-50 transition text-center">Portfolio</a>
-                    <a href="#projects" class="block w-full py-2.5 px-4 text-sm font-medium text-gray-700 border border-gray-300 rounded-full hover:bg-gray-50 transition text-center">Projects</a>
-                    <a href="#about" class="block w-full py-2.5 px-4 text-sm font-medium text-gray-700 border border-gray-300 rounded-full hover:bg-gray-50 transition text-center">About</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sisi Kanan: Hero Banner / Foto Besar -->
-        <div class="md:col-span-7 relative min-h-[300px] md:min-h-full bg-cover bg-center flex items-center justify-center" style="background-image: url('foto-hero.jpg');">
-            <!-- Overlay tipis agar teks lebih terbaca -->
-            <div class="absolute inset-0 bg-black/10"></div>
-            
-            <!-- Headline Teks -->
-            <div class="relative z-10 text-center text-white px-4">
-                <h2 class="text-4xl md:text-5xl font-black tracking-wider drop-shadow-md">NISA SRI FADILAH</h2>
-                <p class="text-sm md:text-base tracking-widest font-light mt-1 drop-shadow">INDUSTRIAL ENGINEERING</p>
-            </div>
-        </div>
+            <!-- Tombol Navigasi Utama -->
+            <!-- View CV -->
+            <area shape="rect" coords="50,350,240,390" href="link-cv-kamu.pdf" target="_blank" alt="View CV">
+            <!-- Portfolio -->
+            <area shape="rect" coords="50,405,240,445" href="link-portfolio-kamu" target="_blank" alt="Portfolio">
+            <!-- Projects -->
+            <area shape="rect" coords="50,460,240,500" href="link-projects-kamu" target="_blank" alt="Projects">
+            <!-- About -->
+            <area shape="rect" coords="50,515,240,555" href="link-about-kamu" target="_blank" alt="About">
+        </map>
 
     </div>
 
