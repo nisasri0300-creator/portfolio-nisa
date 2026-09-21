@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="h-full">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Nisa Sri Fadilah - Portfolio</title>
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome CDN -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
         html, body {
             margin: 0;
             padding: 0;
@@ -22,23 +26,23 @@
             overflow: hidden;
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #F7F4EE;
-            color: #1E293B;
+            color: #0F172A;
         }
 
-        /* Sidebar Styling */
+        /* Sidebar Navigation Drawer */
         #sidebar {
             position: fixed;
             top: 0;
             left: 0;
             bottom: 0;
-            width: 320px;
+            width: 300px;
+            max-width: 85vw;
             background-color: #F7F4EE;
             z-index: 50;
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             transform: translateX(-100%);
             overflow-y: auto;
             border-right: 1px solid rgba(0,0,0,0.06);
-            color: #1E293B;
         }
 
         #sidebar.open {
@@ -48,8 +52,8 @@
         #sidebar-overlay {
             position: fixed;
             inset: 0;
-            background-color: rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(3px);
+            background-color: rgba(15, 23, 42, 0.3);
+            backdrop-filter: blur(4px);
             z-index: 40;
             opacity: 0;
             pointer-events: none;
@@ -61,31 +65,31 @@
             pointer-events: auto;
         }
 
+        /* Menu Button Styling */
         .menu-btn {
             display: flex;
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            padding: 14px 20px;
-            border-radius: 16px;
+            padding: 12px 16px;
+            border-radius: 14px;
             background-color: #FFFFFF;
             color: #475569;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             transition: all 0.2s ease;
             cursor: pointer;
             border: 1px solid rgba(0,0,0,0.04);
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
-        .menu-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        .menu-btn:active, .menu-btn:hover {
+            background-color: #F1F5F9;
             color: #0F172A;
         }
 
         .menu-btn.active {
-            background-color: #1E293B;
+            background-color: #0F172A;
             color: #FFFFFF;
         }
 
@@ -95,22 +99,23 @@
         }
 
         .icon-box {
-            width: 34px;
-            height: 34px;
+            width: 32px;
+            height: 32px;
             border-radius: 10px;
             background-color: #F1F5F9;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #64748B;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             margin-right: 12px;
         }
 
+        /* Slide Transition Management */
         .slide-page {
             display: none;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.4s ease-in-out;
             height: 100%;
             width: 100%;
         }
@@ -122,20 +127,20 @@
 
         .scroll-container {
             overflow-y: auto;
-            max-height: 100vh;
+            -webkit-overflow-scrolling: touch;
         }
 
-        /* Scale Fade Animation Styling */
+        /* Scale Fade Animation for Titles */
         .scale-fade-container {
             display: inline-block;
             position: relative;
-            min-height: 20px;
+            min-height: 18px;
             vertical-align: middle;
         }
 
         .scale-fade-item {
             display: inline-block;
-            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             opacity: 0;
             transform: scale(0.92);
             letter-spacing: 0.1em;
@@ -146,86 +151,50 @@
         .scale-fade-item.active {
             opacity: 1;
             transform: scale(1);
-            letter-spacing: 0.14em;
+            letter-spacing: 0.12em;
             filter: blur(0px);
         }
 
         .scale-fade-item.exit {
             opacity: 0;
             transform: scale(1.05);
-            letter-spacing: 0.2em;
+            letter-spacing: 0.18em;
             filter: blur(4px);
         }
 
-        /* PENYESUAIAN RESPOSIF MOBILE & DESKTOP */
-        @media (max-width: 640px) {
-            /* Di HP: Foto dimasukkan ke frame terpotong rapi tanpa lengkungan */
-            .hero-img-container {
-                height: 52vh;
-                width: 100%;
-                overflow: hidden;
-                position: relative;
-            }
-
-            .hero-img-container img {
-                width: 100%;
-                height: 135%;
-                object-fit: cover;
-                object-position: top center;
-            }
-
-            /* Teks ditaruh dengan rapi di bawah foto */
-            .hero-text-mobile {
-                position: relative;
-                margin-top: 16px;
-                padding-bottom: 90px;
-            }
+        /* Custom Scrollbar */
+        .scroll-container::-webkit-scrollbar {
+            width: 4px;
         }
-
-        @media (min-width: 641px) {
-            .hero-img-container {
-                position: absolute;
-                inset: 0;
-                z-index: 0;
-            }
-
-            .hero-img-container img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center 20%;
-            }
-
-            .hero-text-mobile {
-                position: relative;
-                z-index: 10;
-                margin-top: auto;
-                margin-bottom: 120px;
-            }
+        .scroll-container::-webkit-scrollbar-thumb {
+            background: rgba(0,0,0,0.1);
+            border-radius: 4px;
         }
     </style>
 </head>
-<body class="relative bg-[#F7F4EE]">
+<body class="relative bg-[#F7F4EE] select-none h-full w-full overflow-hidden">
 
-    <!-- Tombol Hamburger Menu -->
-    <button onclick="toggleSidebar()" class="fixed top-6 left-6 z-40 w-11 h-11 rounded-full bg-white/80 hover:bg-white backdrop-blur-md shadow-sm border border-black/5 text-gray-800 flex items-center justify-center transition-all">
+    <!-- Floating Hamburger Button -->
+    <button onclick="toggleSidebar()" aria-label="Toggle Menu" class="fixed top-5 left-5 z-40 w-11 h-11 rounded-full bg-white/90 hover:bg-white active:scale-95 backdrop-blur-md shadow-md border border-black/5 text-slate-800 flex items-center justify-center transition-all">
         <i class="fa-solid fa-bars text-sm"></i>
     </button>
 
-    <!-- Overlay Sidebar -->
+    <!-- Overlay Latar Sidebar -->
     <div id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
-    <!-- SIDEBAR -->
-    <aside id="sidebar" class="p-6 flex flex-col items-center justify-between">
+    <!-- SIDEBAR DRAWER -->
+    <aside id="sidebar" class="p-6 flex flex-col justify-between">
         <div class="w-full">
+            <!-- User Mini Profile -->
             <div class="flex flex-col items-center text-center mt-4 mb-8">
-                <div class="w-20 h-20 rounded-full p-0.5 bg-white shadow-sm mb-3 overflow-hidden">
-                    <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
+                <div class="w-16 h-16 rounded-2xl bg-white p-1 shadow-sm mb-3 overflow-hidden border border-black/5">
+                    <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover rounded-xl" onerror="this.src='https://placehold.co/150x150/F1F5F9/0F172A?text=NISA'">
                 </div>
-                <h2 class="text-lg font-bold tracking-tight text-[#1E293B]">Nisa Sri Fadilah</h2>
-                <p class="text-[9px] font-bold tracking-[0.2em] text-[#8C7A6B] uppercase mt-1">Creative Director</p>
+                <h2 class="text-base font-bold tracking-tight text-slate-900">Nisa Sri Fadilah</h2>
+                <p class="text-[10px] font-bold tracking-[0.2em] text-[#8C7A6B] uppercase mt-0.5">Creative Specialist</p>
             </div>
 
+            <!-- Navigation Links -->
             <nav class="w-full space-y-2">
                 <button onclick="goToSlide(0)" id="btn-slide-0" class="menu-btn active">
                     <div class="flex items-center">
@@ -264,86 +233,93 @@
             </nav>
         </div>
 
-        <a href="cv.pdf" target="_blank" class="w-full py-3 px-4 rounded-xl bg-[#EFEAD8] border border-[#E2D8BE] flex items-center justify-between text-gray-800 text-xs font-semibold hover:bg-[#E8E1CA] transition-all mt-6">
+        <!-- Resume Download Button -->
+        <a href="cv.pdf" target="_blank" class="w-full py-3 px-4 rounded-xl bg-[#EFEAD8] border border-[#E2D8BE] flex items-center justify-between text-slate-800 text-xs font-semibold hover:bg-[#E8E1CA] active:scale-[0.98] transition-all mt-6">
             <span>Download Resume</span>
-            <i class="fa-solid fa-arrow-down text-xs text-gray-600"></i>
+            <i class="fa-solid fa-arrow-down text-xs text-slate-600"></i>
         </a>
     </aside>
 
-    <!-- AREA UTAMA SLIDE -->
+    <!-- MAIN CONTAINER -->
     <main class="w-full h-full relative overflow-hidden">
 
-        <!-- SLIDE 1: HOME -->
-        <section id="slide-0" class="slide-page active flex-col items-center justify-between sm:justify-center relative h-full w-full">
-            
-            <!-- Container Foto Profil -->
-            <div class="hero-img-container">
-                <img src="profile.jpg" alt="Nisa Sri Fadilah">
-            </div>
-
-            <!-- Header Content Teks -->
-            <div class="hero-text-mobile text-center space-y-3 px-4 w-full max-w-5xl mx-auto">
+        <!-- ================= SLIDE 1: HOME ================= -->
+        <section id="slide-0" class="slide-page active flex-col items-center justify-center p-4 sm:p-8 h-full w-full">
+            <div class="w-full max-w-sm sm:max-w-md md:max-w-2xl flex flex-col items-center my-auto pb-16 pt-6">
                 
-                <!-- Nama Utama -->
-                <h1 class="text-2xl sm:text-5xl md:text-6xl font-extrabold tracking-[0.08em] sm:tracking-[0.12em] text-[#0F172A] uppercase leading-none">
-                    NISA SRI FADILAH
-                </h1>
+                <!-- MOBILE & DESKTOP ELEGAN HERO AVATAR CARD -->
+                <!-- Menampung foto di dalam Frame Card Cantik agar lengkungan foto lama terpotong rapi -->
+                <div class="relative w-64 h-72 sm:w-80 sm:h-96 rounded-[32px] sm:rounded-[40px] p-2 bg-gradient-to-b from-white via-white to-[#F1ECE1] shadow-xl shadow-stone-300/40 border border-white/80 overflow-hidden mb-6 flex-shrink-0">
+                    <div class="w-full h-full rounded-[26px] sm:rounded-[32px] overflow-hidden bg-white relative">
+                        <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover object-top" onerror="this.src='https://placehold.co/400x500/F1F5F9/0F172A?text=Nisa+Sri+Fadilah'">
+                        <!-- Soft Inner Border Shadow Overlay -->
+                        <div class="absolute inset-0 rounded-[26px] sm:rounded-[32px] ring-1 ring-inset ring-black/5 pointer-events-none"></div>
+                    </div>
+                </div>
 
-                <!-- Title Animated Kapsul -->
-                <div>
-                    <div class="inline-flex items-center justify-center px-4 py-1.5 sm:px-5 sm:py-2 rounded-full bg-white/90 backdrop-blur-md border border-black/5 shadow-sm">
-                        <div class="text-[10px] sm:text-xs md:text-sm font-bold text-[#334155] uppercase min-h-[18px] sm:min-h-[20px] flex items-center justify-center">
+                <!-- NAME & TITLE CONTAINER (Bersih & Tanpa Gap) -->
+                <div class="text-center space-y-2.5 px-2 w-full">
+                    
+                    <!-- 1. Name Title -->
+                    <h1 class="text-xl sm:text-3xl md:text-4xl font-extrabold tracking-[0.08em] sm:tracking-[0.14em] text-slate-900 uppercase leading-snug">
+                        NISA SRI FADILAH
+                    </h1>
+
+                    <!-- 2. Animated Pill Container -->
+                    <div class="inline-flex items-center justify-center px-4 py-1.5 sm:px-5 sm:py-2 rounded-full bg-white/90 backdrop-blur-md border border-slate-200/60 shadow-sm">
+                        <div class="text-[10px] sm:text-xs font-bold text-slate-700 uppercase min-h-[16px] sm:min-h-[18px] flex items-center justify-center">
                             <div class="scale-fade-container">
                                 <span id="scale-title" class="scale-fade-item active">INDUSTRIAL ENGINEERING</span>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>
         </section>
 
-        <!-- SLIDE 2: LOGO GALLERY -->
-        <section id="slide-1" class="slide-page scroll-container flex-col py-16 px-6 sm:px-12 h-full w-full items-center bg-[#F7F4EE]">
-            <div class="max-w-5xl w-full mx-auto space-y-8 my-auto pb-20">
-                <div class="text-center">
-                    <span class="inline-block px-5 py-1 rounded-full border border-[#E2D8BE] bg-white text-[10px] font-bold tracking-[0.25em] text-[#475569] uppercase shadow-sm">
+        <!-- ================= SLIDE 2: LOGO GALLERY ================= -->
+        <section id="slide-1" class="slide-page scroll-container flex-col py-16 px-5 sm:px-10 h-full w-full items-center">
+            <div class="max-w-4xl w-full mx-auto space-y-6 my-auto pb-24 pt-4">
+                <div class="text-center space-y-1">
+                    <span class="inline-block px-4 py-1 rounded-full border border-[#E2D8BE] bg-white text-[10px] font-bold tracking-[0.2em] text-slate-600 uppercase shadow-xs">
                         Selected Works
                     </span>
-                    <h2 class="text-2xl font-bold text-[#0F172A] mt-2">Logo Gallery</h2>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Logo Gallery</h2>
                 </div>
 
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 justify-center items-center pt-2">
-                    <div class="aspect-square bg-white rounded-2xl border border-black/5 p-4 flex items-center justify-center shadow-sm"><img src="Lunae Logo.png" alt="Logo" class="max-h-full max-w-full object-contain"></div>
-                    <div class="aspect-square bg-white rounded-2xl border border-black/5 p-4 flex items-center justify-center shadow-sm"><img src="Hyper Season.png" alt="Logo" class="max-h-full max-w-full object-contain"></div>
-                    <div class="aspect-square bg-white rounded-2xl border border-black/5 p-4 flex items-center justify-center shadow-sm"><img src="Madala Creative.png" alt="Logo" class="max-h-full max-w-full object-contain"></div>
-                    <div class="aspect-square bg-white rounded-2xl border border-black/5 p-4 flex items-center justify-center shadow-sm"><img src="Teknik Industri.png" alt="Logo" class="max-h-full max-w-full object-contain"></div>
-                    <div class="aspect-square bg-white rounded-2xl border border-black/5 p-4 flex items-center justify-center shadow-sm"><img src="Two Ambiverts.png" alt="Logo" class="max-h-full max-w-full object-contain"></div>
-                    <div class="aspect-square bg-white rounded-2xl border border-black/5 p-4 flex items-center justify-center shadow-sm"><img src="Beauty Skin Care.png" alt="Logo" class="max-h-full max-w-full object-contain"></div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 justify-center items-center pt-2">
+                    <div class="aspect-square bg-white rounded-2xl border border-black/5 p-4 flex items-center justify-center shadow-xs"><img src="Lunae Logo.png" alt="Lunae Logo" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/200x200/FFFFFF/0F172A?text=Lunae'"></div>
+                    <div class="aspect-square bg-white rounded-2xl border border-black/5 p-4 flex items-center justify-center shadow-xs"><img src="Hyper Season.png" alt="Hyper Season" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/200x200/FFFFFF/0F172A?text=Hyper+Season'"></div>
+                    <div class="aspect-square bg-white rounded-2xl border border-black/5 p-4 flex items-center justify-center shadow-xs"><img src="Madala Creative.png" alt="Madala Creative" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/200x200/FFFFFF/0F172A?text=Madala'"></div>
+                    <div class="aspect-square bg-white rounded-2xl border border-black/5 p-4 flex items-center justify-center shadow-xs"><img src="Teknik Industri.png" alt="Teknik Industri" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/200x200/FFFFFF/0F172A?text=Industrial'"></div>
+                    <div class="aspect-square bg-white rounded-2xl border border-black/5 p-4 flex items-center justify-center shadow-xs"><img src="Two Ambiverts.png" alt="Two Ambiverts" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/200x200/FFFFFF/0F172A?text=Ambiverts'"></div>
+                    <div class="aspect-square bg-white rounded-2xl border border-black/5 p-4 flex items-center justify-center shadow-xs"><img src="Beauty Skin Care.png" alt="Beauty Skin Care" class="max-h-full max-w-full object-contain" onerror="this.src='https://placehold.co/200x200/FFFFFF/0F172A?text=SkinCare'"></div>
                 </div>
             </div>
         </section>
 
-        <!-- SLIDE 3: BRANDING SHOWCASE -->
-        <section id="slide-2" class="slide-page scroll-container flex-col py-16 px-6 sm:px-12 h-full w-full items-center bg-[#F7F4EE]">
-            <div class="max-w-5xl w-full mx-auto space-y-8 my-auto pb-20">
-                <div class="text-center">
-                    <span class="inline-block px-5 py-1 rounded-full border border-[#E2D8BE] bg-white text-[10px] font-bold tracking-[0.25em] text-[#475569] uppercase shadow-sm">
+        <!-- ================= SLIDE 3: BRANDING SHOWCASE ================= -->
+        <section id="slide-2" class="slide-page scroll-container flex-col py-16 px-5 sm:px-10 h-full w-full items-center">
+            <div class="max-w-4xl w-full mx-auto space-y-6 my-auto pb-24 pt-4">
+                <div class="text-center space-y-1">
+                    <span class="inline-block px-4 py-1 rounded-full border border-[#E2D8BE] bg-white text-[10px] font-bold tracking-[0.2em] text-slate-600 uppercase shadow-xs">
                         Visual Identity
                     </span>
-                    <h2 class="text-2xl font-bold text-[#0F172A] mt-2">Branding Showcase</h2>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Branding Showcase</h2>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left pt-2 items-stretch">
-                    <div class="bg-white rounded-2xl overflow-hidden border border-black/5 shadow-sm h-[360px]">
-                        <img src="Meet Lunae.png" alt="Poster" class="w-full h-full object-cover">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left pt-2">
+                    <div class="bg-white rounded-2xl overflow-hidden border border-black/5 shadow-xs h-64 sm:h-80">
+                        <img src="Meet Lunae.png" alt="Meet Lunae Poster" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/300x400/FFFFFF/0F172A?text=Meet+Lunae'">
                     </div>
-                    <div class="flex flex-col justify-between space-y-4 h-[360px]">
-                        <div class="bg-white rounded-2xl overflow-hidden border border-black/5 shadow-sm flex-1">
-                            <img src="Lunae Products.png" alt="Products" class="w-full h-full object-cover">
+                    <div class="flex flex-col justify-between space-y-3 h-64 sm:h-80">
+                        <div class="bg-white rounded-2xl overflow-hidden border border-black/5 shadow-xs flex-1">
+                            <img src="Lunae Products.png" alt="Lunae Products" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/300x300/FFFFFF/0F172A?text=Products'">
                         </div>
-                        <div class="bg-white rounded-2xl p-3 border border-black/5 shadow-sm space-y-2 shrink-0">
-                            <div class="w-full flex h-7 rounded-lg overflow-hidden border border-black/5">
+                        <div class="bg-white rounded-2xl p-3 border border-black/5 shadow-xs">
+                            <div class="w-full flex h-6 rounded-lg overflow-hidden border border-black/5">
                                 <div class="w-1/4 bg-[#F7F1DE]"></div>
                                 <div class="w-1/4 bg-[#B0BA99]"></div>
                                 <div class="w-1/4 bg-[#9D6638]"></div>
@@ -351,61 +327,76 @@
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white rounded-2xl p-5 border border-black/5 shadow-sm flex flex-col justify-between h-[360px]">
+                    <div class="bg-white rounded-2xl p-5 border border-black/5 shadow-xs flex flex-col justify-between h-64 sm:h-80">
                         <div>
-                            <h3 class="text-2xl font-bold text-gray-800">Lunáe✦</h3>
-                            <p class="text-[9px] font-bold tracking-[0.2em] text-gray-400 uppercase mt-1">LUNAE TYPEFACE</p>
-                            <hr class="my-3 border-gray-100">
-                            <div class="space-y-1.5 text-[10px] text-gray-700 tracking-wider">
+                            <h3 class="text-xl font-bold text-slate-800">Lunáe✦</h3>
+                            <p class="text-[9px] font-bold tracking-[0.2em] text-slate-400 uppercase mt-1">LUNAE TYPEFACE</p>
+                            <hr class="my-3 border-slate-100">
+                            <div class="space-y-1 text-[10px] text-slate-600 tracking-wider font-mono">
                                 <p>ABCDEFGHIJKLM</p>
                                 <p>NOPQRSTUVWXYZ</p>
-                                <p class="text-gray-400 pt-1">0123456789</p>
+                                <p class="text-slate-400 pt-1">0123456789</p>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white rounded-2xl overflow-hidden border border-black/5 shadow-sm h-[360px]">
-                        <img src="Model Showcase.png" alt="Model" class="w-full h-full object-cover">
+                    <div class="bg-white rounded-2xl overflow-hidden border border-black/5 shadow-xs h-64 sm:h-80">
+                        <img src="Model Showcase.png" alt="Model Showcase" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/300x400/FFFFFF/0F172A?text=Model+Showcase'">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SLIDE 4: PROJECTS -->
-        <section id="slide-3" class="slide-page flex-col items-center justify-center p-8 h-full w-full text-center bg-[#F7F4EE]">
-            <h2 class="text-3xl font-bold text-gray-800">Projects</h2>
-            <p class="text-xs text-gray-500 max-w-sm mt-2">Industrial engineering & digital marketing portfolio.</p>
+        <!-- ================= SLIDE 4: PROJECTS ================= -->
+        <section id="slide-3" class="slide-page flex-col items-center justify-center p-6 h-full w-full text-center">
+            <div class="max-w-md w-full mx-auto my-auto space-y-3">
+                <div class="w-12 h-12 rounded-2xl bg-white border border-black/5 shadow-xs flex items-center justify-center mx-auto text-slate-700 text-lg">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-900">Projects</h2>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Collection of Industrial Engineering, E-Commerce Strategy & Digital Marketing Campaigns.
+                </p>
+            </div>
         </section>
 
-        <!-- SLIDE 5: ABOUT ME -->
-        <section id="slide-4" class="slide-page flex-col items-center justify-center p-8 h-full w-full text-center bg-[#F7F4EE]">
-            <h2 class="text-3xl font-bold text-gray-800">About Me</h2>
-            <p class="text-xs text-gray-600 max-w-md mt-4 leading-relaxed">
-                Nisa Sri Fadilah is an Industrial Engineer & Creative Specialist focused on digital marketing, e-commerce growth, and visual identity design.
-            </p>
+        <!-- ================= SLIDE 5: ABOUT ME ================= -->
+        <section id="slide-4" class="slide-page flex-col items-center justify-center p-6 h-full w-full text-center">
+            <div class="max-w-md w-full mx-auto my-auto space-y-4">
+                <div class="w-16 h-16 rounded-full bg-white p-1 border border-black/5 shadow-xs flex items-center justify-center mx-auto overflow-hidden">
+                    <img src="profile.jpg" alt="Nisa" class="w-full h-full object-cover rounded-full" onerror="this.src='https://placehold.co/100x100/FFFFFF/0F172A?text=Nisa'">
+                </div>
+                <h2 class="text-2xl font-bold text-slate-900">About Me</h2>
+                <p class="text-xs text-slate-600 leading-relaxed px-2">
+                    Nisa Sri Fadilah is an Industrial Engineer & Creative Specialist skilled in e-commerce optimization, digital marketing strategy, and visual brand identity.
+                </p>
+            </div>
         </section>
 
     </main>
 
-    <!-- NAVIGATION FLOATING -->
-    <div class="fixed bottom-6 inset-x-0 z-30 flex items-center justify-between px-6 sm:px-8 max-w-screen-xl mx-auto pointer-events-none">
-        
-        <button onclick="prevSlide()" class="pointer-events-auto w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/90 hover:bg-white backdrop-blur-md shadow-md border border-black/5 text-gray-800 flex items-center justify-center transition-all">
+    <!-- FLOATING BOTTOM NAVIGATION BAR -->
+    <div class="fixed bottom-5 inset-x-0 z-30 flex items-center justify-between px-6 max-w-lg mx-auto pointer-events-none">
+        <!-- Prev Button -->
+        <button onclick="prevSlide()" aria-label="Previous Slide" class="pointer-events-auto w-10 h-10 rounded-full bg-white/95 hover:bg-white active:scale-90 backdrop-blur-md shadow-md border border-black/5 text-slate-800 flex items-center justify-center transition-all">
             <i class="fa-solid fa-arrow-left text-xs"></i>
         </button>
 
-        <div class="flex space-x-2 pointer-events-auto bg-white/90 backdrop-blur-md border border-black/5 px-4 py-2 sm:py-2.5 rounded-full shadow-sm" id="dots-container">
+        <!-- Active Dots Indicator -->
+        <div class="flex space-x-1.5 pointer-events-auto bg-white/95 backdrop-blur-md border border-black/5 px-3.5 py-2 rounded-full shadow-sm" id="dots-container">
+            <!-- Dynamic Dots -->
         </div>
 
-        <button onclick="nextSlide()" class="pointer-events-auto w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/90 hover:bg-white backdrop-blur-md shadow-md border border-black/5 text-gray-800 flex items-center justify-center transition-all">
+        <!-- Next Button -->
+        <button onclick="nextSlide()" aria-label="Next Slide" class="pointer-events-auto w-10 h-10 rounded-full bg-white/95 hover:bg-white active:scale-90 backdrop-blur-md shadow-md border border-black/5 text-slate-800 flex items-center justify-center transition-all">
             <i class="fa-solid fa-arrow-right text-xs"></i>
         </button>
     </div>
 
-    <!-- JAVASCRIPT -->
     <script>
         let currentSlide = 0;
         const totalSlides = 5;
 
+        // Toggle Sidebar Navigation
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('sidebar-overlay');
@@ -413,6 +404,7 @@
             overlay.classList.toggle('active');
         }
 
+        // Update Slide Display & Active States
         function updateSlideUI() {
             for (let i = 0; i < totalSlides; i++) {
                 const slide = document.getElementById('slide-' + i);
@@ -426,13 +418,14 @@
             if (targetSlide) targetSlide.classList.add('active');
             if (targetBtn) targetBtn.classList.add('active');
 
+            // Render Nav Dots
             const dotsContainer = document.getElementById('dots-container');
             dotsContainer.innerHTML = '';
             for (let i = 0; i < totalSlides; i++) {
                 const dot = document.createElement('span');
                 dot.className = i === currentSlide 
-                    ? 'w-6 sm:w-7 h-1 rounded-full bg-gray-800 transition-all duration-300' 
-                    : 'w-2 h-1 rounded-full bg-gray-300 transition-all duration-300';
+                    ? 'w-5 h-1.5 rounded-full bg-slate-900 transition-all duration-300' 
+                    : 'w-1.5 h-1.5 rounded-full bg-slate-300 transition-all duration-300';
                 dotsContainer.appendChild(dot);
             }
         }
@@ -458,18 +451,19 @@
             updateSlideUI();
         }
 
-        /* Animated Titles */
+        // Animated Titles Cycler
         const titles = [
-            "Industrial Engineering",
-            "E-Commerce Specialist",
-            "Digital Marketing Lead",
-            "Education Teacher"
+            "INDUSTRIAL ENGINEERING",
+            "E-COMMERCE SPECIALIST",
+            "DIGITAL MARKETING LEAD",
+            "EDUCATION TEACHER"
         ];
 
         let index = 0;
         const scaleElement = document.getElementById("scale-title");
 
         function cycleTitles() {
+            if (!scaleElement) return;
             scaleElement.classList.remove("active");
             scaleElement.classList.add("exit");
 
@@ -481,11 +475,39 @@
                 setTimeout(() => {
                     scaleElement.classList.add("active");
                 }, 50);
-            }, 800);
+            }, 600);
         }
 
-        setInterval(cycleTitles, 3200);
+        setInterval(cycleTitles, 3000);
 
+        // Touch Swipe Navigation for Mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar && sidebar.classList.contains('open')) return;
+            
+            const swipeDistance = touchEndX - touchStartX;
+            if (Math.abs(swipeDistance) > 60) {
+                if (swipeDistance < 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        }
+
+        // Initialize UI
         updateSlideUI();
     </script>
 </body>
