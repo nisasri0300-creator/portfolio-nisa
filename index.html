@@ -25,24 +25,53 @@
             color: #1E293B;
         }
 
-        /* Sidebar Styling */
+        /* SIDEBAR STYLING */
         #sidebar {
             position: fixed;
             top: 0;
             left: 0;
             bottom: 0;
-            width: 320px;
+            width: 280px;
             background-color: #F7F4EE;
             z-index: 50;
             transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateX(-100%);
             overflow-y: auto;
             border-right: 1px solid rgba(0,0,0,0.06);
             color: #1E293B;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        #sidebar.open {
-            transform: translateX(0);
+        /* Di HP: default sembunyi (ditutup) */
+        @media (max-width: 1023px) {
+            #sidebar {
+                transform: translateX(-100%);
+            }
+            #sidebar.open {
+                transform: translateX(0);
+            }
+            .main-content {
+                margin-left: 0 !important;
+            }
+            .hamburger-btn {
+                display: flex !important;
+            }
+        }
+
+        /* Di Laptop/Desktop (LG): Sidebar Otomatis TERBUKA Permanen! */
+        @media (min-width: 1024px) {
+            #sidebar {
+                transform: translateX(0) !important;
+            }
+            .main-content {
+                margin-left: 280px; /* Memberikan ruang untuk sidebar terbuka */
+                width: calc(100% - 280px);
+            }
+            .hamburger-btn {
+                display: none !important; /* Sembunyikan ikon hamburger di laptop */
+            }
         }
 
         #sidebar-overlay {
@@ -66,12 +95,12 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            padding: 14px 20px;
-            border-radius: 16px;
+            padding: 12px 18px;
+            border-radius: 14px;
             background-color: #FFFFFF;
             color: #475569;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             transition: all 0.2s ease;
             cursor: pointer;
             border: 1px solid rgba(0,0,0,0.04);
@@ -95,15 +124,15 @@
         }
 
         .icon-box {
-            width: 34px;
-            height: 34px;
-            border-radius: 10px;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
             background-color: #F1F5F9;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #64748B;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             margin-right: 12px;
         }
 
@@ -157,7 +186,7 @@
             filter: blur(4px);
         }
 
-        /* FULLSCREEN HERO OVERLAY STYLE */
+        /* HERO FULLSCREEN ADJUSTMENT */
         .hero-fullscreen-container {
             position: relative;
             width: 100%;
@@ -174,7 +203,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* Kunci fokus di area ATAS agar kepala tidak terpotong */
             object-position: top center; 
             z-index: 1;
         }
@@ -184,30 +212,29 @@
             z-index: 10;
             text-align: center;
             padding: 0 20px;
-            /* Menggeser teks agak ke bawah agar tidak menutupi wajah */
-            margin-top: 10vh; 
+            margin-top: 12vh; /* Menggeser posisi teks agak ke bawah agar tidak menutupi wajah */
         }
     </style>
 </head>
 <body class="relative bg-[#F7F4EE]">
 
-    <!-- Tombol Hamburger Menu -->
-    <button onclick="toggleSidebar()" class="fixed top-6 left-6 z-40 w-11 h-11 rounded-full bg-white/80 hover:bg-white backdrop-blur-md shadow-sm border border-black/5 text-gray-800 flex items-center justify-center transition-all">
+    <!-- Tombol Hamburger Menu (Hanya Muncul di HP) -->
+    <button onclick="toggleSidebar()" class="hamburger-btn fixed top-6 left-6 z-40 w-11 h-11 rounded-full bg-white/80 hover:bg-white backdrop-blur-md shadow-sm border border-black/5 text-gray-800 flex items-center justify-center transition-all">
         <i class="fa-solid fa-bars text-sm"></i>
     </button>
 
-    <!-- Overlay Sidebar -->
+    <!-- Overlay Sidebar (Mobile Only) -->
     <div id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
-    <!-- SIDEBAR -->
-    <aside id="sidebar" class="p-6 flex flex-col items-center justify-between">
+    <!-- SIDEBAR (Otomatis Terbuka di Laptop) -->
+    <aside id="sidebar">
         <div class="w-full">
-            <div class="flex flex-col items-center text-center mt-4 mb-8">
-                <div class="w-20 h-20 rounded-full p-0.5 bg-white shadow-sm mb-3 overflow-hidden">
+            <div class="flex flex-col items-center text-center mt-2 mb-6">
+                <div class="w-16 h-16 rounded-full p-0.5 bg-white shadow-sm mb-2.5 overflow-hidden">
                     <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
                 </div>
-                <h2 class="text-lg font-bold tracking-tight text-[#1E293B]">Nisa Sri Fadilah</h2>
-                <p class="text-[9px] font-bold tracking-[0.2em] text-[#8C7A6B] uppercase mt-1">Creative Director</p>
+                <h2 class="text-base font-bold tracking-tight text-[#1E293B]">Nisa Sri Fadilah</h2>
+                <p class="text-[9px] font-bold tracking-[0.2em] text-[#8C7A6B] uppercase mt-0.5">Creative Director</p>
             </div>
 
             <nav class="w-full space-y-2">
@@ -248,29 +275,29 @@
             </nav>
         </div>
 
-        <a href="cv.pdf" target="_blank" class="w-full py-3 px-4 rounded-xl bg-[#EFEAD8] border border-[#E2D8BE] flex items-center justify-between text-gray-800 text-xs font-semibold hover:bg-[#E8E1CA] transition-all mt-6">
+        <a href="cv.pdf" target="_blank" class="w-full py-2.5 px-4 rounded-xl bg-[#EFEAD8] border border-[#E2D8BE] flex items-center justify-between text-gray-800 text-xs font-semibold hover:bg-[#E8E1CA] transition-all">
             <span>Download Resume</span>
             <i class="fa-solid fa-arrow-down text-xs text-gray-600"></i>
         </a>
     </aside>
 
     <!-- AREA UTAMA SLIDE -->
-    <main class="w-full h-full relative overflow-hidden">
+    <main class="main-content h-full relative overflow-hidden transition-all duration-300">
 
         <!-- SLIDE 1: HOME (FULLSCREEN OVERLAY) -->
         <section id="slide-0" class="slide-page active relative h-full w-full">
             <div class="hero-fullscreen-container">
-                <!-- Foto latar belakang penuh hero.jpg -->
+                <!-- Foto latar belakang hero.jpg -->
                 <img src="hero.jpg" alt="Nisa Sri Fadilah" class="hero-fullscreen-bg">
 
-                <!-- Content Overlay melayang di tengah -->
+                <!-- Content Overlay -->
                 <div class="hero-fullscreen-overlay space-y-4">
-                    <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-[0.08em] text-[#0F172A] uppercase leading-tight drop-shadow-sm">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-[0.08em] text-[#0F172A] uppercase leading-tight drop-shadow-sm">
                         NISA SRI FADILAH
                     </h1>
 
                     <div>
-                        <div class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-white/80 backdrop-blur-md border border-black/5 shadow-sm">
+                        <div class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-white/85 backdrop-blur-md border border-black/5 shadow-sm">
                             <div class="text-xs sm:text-sm font-bold text-[#334155] uppercase min-h-[20px] flex items-center justify-center">
                                 <div class="scale-fade-container">
                                     <span class="scale-title-item scale-fade-item active">INDUSTRIAL ENGINEERING</span>
@@ -366,15 +393,15 @@
     </main>
 
     <!-- NAVIGATION FLOATING -->
-    <div class="fixed bottom-6 inset-x-0 z-30 flex items-center justify-between px-6 sm:px-8 max-w-screen-xl mx-auto pointer-events-none">
-        <button onclick="prevSlide()" class="pointer-events-auto w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/90 hover:bg-white backdrop-blur-md shadow-md border border-black/5 text-gray-800 flex items-center justify-center transition-all">
+    <div class="fixed bottom-6 right-6 lg:right-8 z-30 flex items-center space-x-3 pointer-events-none">
+        <button onclick="prevSlide()" class="pointer-events-auto w-10 h-10 rounded-full bg-white/90 hover:bg-white backdrop-blur-md shadow-md border border-black/5 text-gray-800 flex items-center justify-center transition-all">
             <i class="fa-solid fa-arrow-left text-xs"></i>
         </button>
 
-        <div class="flex space-x-2 pointer-events-auto bg-white/90 backdrop-blur-md border border-black/5 px-4 py-2 sm:py-2.5 rounded-full shadow-sm" id="dots-container">
+        <div class="flex space-x-2 pointer-events-auto bg-white/90 backdrop-blur-md border border-black/5 px-4 py-2.5 rounded-full shadow-sm" id="dots-container">
         </div>
 
-        <button onclick="nextSlide()" class="pointer-events-auto w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/90 hover:bg-white backdrop-blur-md shadow-md border border-black/5 text-gray-800 flex items-center justify-center transition-all">
+        <button onclick="nextSlide()" class="pointer-events-auto w-10 h-10 rounded-full bg-white/90 hover:bg-white backdrop-blur-md shadow-md border border-black/5 text-gray-800 flex items-center justify-center transition-all">
             <i class="fa-solid fa-arrow-right text-xs"></i>
         </button>
     </div>
@@ -409,7 +436,7 @@
             for (let i = 0; i < totalSlides; i++) {
                 const dot = document.createElement('span');
                 dot.className = i === currentSlide 
-                    ? 'w-6 sm:w-7 h-1 rounded-full bg-gray-800 transition-all duration-300' 
+                    ? 'w-6 h-1 rounded-full bg-gray-800 transition-all duration-300' 
                     : 'w-2 h-1 rounded-full bg-gray-300 transition-all duration-300';
                 dotsContainer.appendChild(dot);
             }
@@ -420,9 +447,11 @@
             currentSlide = index;
             updateSlideUI();
 
-            const sidebar = document.getElementById('sidebar');
-            if (sidebar.classList.contains('open')) {
-                toggleSidebar();
+            if (window.innerWidth < 1024) {
+                const sidebar = document.getElementById('sidebar');
+                if (sidebar.classList.contains('open')) {
+                    toggleSidebar();
+                }
             }
         }
 
