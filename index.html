@@ -14,18 +14,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        body {
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #F7F4EE;
             color: #1E293B;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            height: 100vh;
-            width: 100vw;
         }
 
-        /* Sidebar Styling (Rounded Card Style) */
+        /* Sidebar Styling (Pills & Rounded Card Style) */
         #sidebar {
             position: fixed;
             top: 0;
@@ -106,7 +106,7 @@
             margin-right: 12px;
         }
 
-        /* Slide Transition */
+        /* Slide Page Transition */
         .slide-page {
             display: none;
             opacity: 0;
@@ -135,20 +135,19 @@
 </head>
 <body class="relative">
 
-    <!-- Tombol Hamburger / Menu (Kiri Atas) -->
-    <button onclick="toggleSidebar()" class="fixed top-6 left-6 z-40 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:bg-gray-50 transition-all">
+    <!-- Tombol Hamburger Menu (Kiri Atas) -->
+    <button onclick="toggleSidebar()" class="fixed top-6 left-6 z-40 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-md flex items-center justify-center text-gray-700 hover:bg-white transition-all">
         <i class="fa-solid fa-bars text-sm"></i>
     </button>
 
-    <!-- Overlay Sidebar -->
+    <!-- Overlay Latar Sidebar -->
     <div id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
-    <!-- SIDEBAR CARD STYLE (Sesuai Gambar 1) -->
+    <!-- SIDEBAR CARD STYLE (Gambar 1) -->
     <aside id="sidebar" class="p-6 flex flex-col items-center">
         
-        <!-- Profile Header -->
+        <!-- Header Profil -->
         <div class="flex flex-col items-center text-center mt-2 mb-5">
-            <!-- Avatar Ring -->
             <div class="w-24 h-24 rounded-full p-1 bg-white shadow-md mb-3">
                 <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full rounded-full object-cover">
             </div>
@@ -156,7 +155,7 @@
             <h2 class="text-xl font-bold text-[#1E293B]">Nisa Sri Fadilah</h2>
             <p class="text-[10px] font-bold tracking-[0.15em] text-[#8C7A6B] uppercase mt-1">DIGITAL & CREATIVE LEAD</p>
 
-            <!-- Social Circle Buttons -->
+            <!-- Social Buttons -->
             <div class="flex space-x-3 mt-4">
                 <a href="#" class="w-10 h-10 rounded-full bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-700 hover:text-black transition-all">
                     <i class="fa-brands fa-github text-base"></i>
@@ -169,14 +168,14 @@
                 </a>
             </div>
 
-            <!-- Available Status Badge -->
+            <!-- Badge Available Status -->
             <div class="mt-4 px-4 py-1.5 rounded-full bg-[#EFEAD8] border border-[#E2D8BE] flex items-center space-x-2">
                 <span class="w-2 h-2 rounded-full bg-[#10B981]"></span>
                 <span class="text-xs font-semibold text-[#524B38]">Available for Projects</span>
             </div>
         </div>
 
-        <!-- Menu Navigation (Pills Card Buttons) -->
+        <!-- Menu Navigasi -->
         <nav class="w-full space-y-2.5 mb-6">
             <button onclick="goToSlide(0)" id="btn-slide-0" class="menu-btn active">
                 <div class="flex items-center">
@@ -232,27 +231,28 @@
 
     </aside>
 
-    <!-- AREA UTAMA Halaman (Main Slides) -->
+    <!-- AREA UTAMA SLIDE -->
     <main class="w-full h-full relative overflow-hidden">
 
-        <!-- SLIDE 1: HERO HOME (Sesuai Gambar 2) -->
+        <!-- SLIDE 1: HERO HOME (SESUAI GAMBAR 2: Full Screen Cover Background) -->
         <section id="slide-0" class="slide-page active flex-col items-center justify-center relative h-full w-full">
-            <!-- Background Foto Full Center Transparent Overlay -->
-            <div class="absolute inset-0 z-0 flex items-center justify-center overflow-hidden pointer-events-none">
-                <img src="profile.jpg" alt="Nisa Background" class="max-h-[90vh] object-contain opacity-90">
+            
+            <!-- Foto Profil Full Layar Tanpa Border/Kotak Putih -->
+            <div class="absolute inset-0 z-0 flex items-center justify-center">
+                <img src="profile.jpg" alt="Nisa Background" class="w-full h-full object-cover object-center">
             </div>
 
-            <!-- Content Title Banner -->
-            <div class="relative z-10 text-center space-y-3 px-4">
-                <div class="inline-block px-5 py-1.5 rounded-full bg-white/70 backdrop-blur-sm border border-white/80 shadow-sm mb-1">
-                    <span class="text-[10px] font-bold tracking-[0.25em] text-gray-600 uppercase">PORTFOLIO PRESENTATION DECK</span>
+            <!-- Banner Judul Tengah -->
+            <div class="relative z-10 text-center space-y-3 px-4 pb-12">
+                <div class="inline-block px-6 py-2 rounded-full bg-white/80 backdrop-blur-md border border-white/90 shadow-sm mb-1">
+                    <span class="text-[10px] sm:text-xs font-bold tracking-[0.25em] text-gray-700 uppercase">PORTFOLIO PRESENTATION DECK</span>
                 </div>
 
-                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-[#1D2939]">
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[#1D2939] drop-shadow-sm">
                     NISA SRI FADILAH
                 </h1>
 
-                <p class="text-xs sm:text-sm font-bold tracking-[0.3em] text-[#475569] uppercase">
+                <p class="text-xs sm:text-sm font-bold tracking-[0.3em] text-[#334155] uppercase drop-shadow-sm">
                     INDUSTRIAL ENGINEERING
                 </p>
             </div>
@@ -349,10 +349,10 @@
 
     </main>
 
-    <!-- FLOATING SLIDE FOOTER CONTROLS (Sesuai Gambar 2) -->
-    <div class="fixed bottom-0 inset-x-0 h-14 bg-[#F7F4EE]/90 backdrop-blur-md border-t border-gray-200/50 z-30 flex items-center justify-between px-6">
+    <!-- SLIDE FOOTER NAVIGASI (Gambar 2) -->
+    <div class="fixed bottom-0 inset-x-0 h-16 bg-[#F7F4EE]/90 backdrop-blur-md border-t border-gray-200/50 z-30 flex items-center justify-between px-6 sm:px-10">
         <!-- Prev Button -->
-        <button onclick="prevSlide()" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-600 hover:text-black transition-all">
+        <button onclick="prevSlide()" class="w-9 h-9 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-600 hover:text-black hover:shadow transition-all">
             <i class="fa-solid fa-arrow-left text-xs"></i>
         </button>
 
@@ -369,12 +369,12 @@
         </div>
 
         <!-- Next Button -->
-        <button onclick="nextSlide()" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-600 hover:text-black transition-all">
+        <button onclick="nextSlide()" class="w-9 h-9 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-600 hover:text-black hover:shadow transition-all">
             <i class="fa-solid fa-arrow-right text-xs"></i>
         </button>
     </div>
 
-    <!-- Script Navigation -->
+    <!-- Script Navigasi -->
     <script>
         let currentSlide = 0;
         const totalSlides = 5;
@@ -399,10 +399,10 @@
             if (targetSlide) targetSlide.classList.add('active');
             if (targetBtn) targetBtn.classList.add('active');
 
-            // Update Counter Text
+            // Counter
             document.getElementById('slide-counter').innerText = `SLIDE 0${currentSlide + 1} / 0${totalSlides}`;
 
-            // Update Dots
+            // Dots
             const dotsContainer = document.getElementById('dots-container');
             dotsContainer.innerHTML = '';
             for (let i = 0; i < totalSlides; i++) {
