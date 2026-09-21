@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nisa Sri Fadilah - Portfolio</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { 
             margin: 0; 
@@ -15,35 +18,93 @@
             justify-content: center; 
             min-height: 100vh; 
         }
+
+        /* Shadow lembut dengan efek inset border seperti pada desain */
+        .custom-btn {
+            background-color: #FAF6F0;
+            border: 1.5px solid #E8DFD5;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .custom-btn:hover {
+            background-color: #F3ECE2;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 10px -1px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Trik Memotong / Crop Sisi Kiri Gambar Portofolio */
+        .cropped-banner {
+            width: 100%;
+            height: 100%;
+            min-height: 450px;
+            /* Memotong 45% bagian kiri gambar agar bagian menumpuk tidak kelihatan */
+            object-fit: cover;
+            object-position: 100% center; 
+        }
     </style>
 </head>
 <body>
 
-    <div style="max-width: 1100px; width: 100%; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); position: relative;">
+    <!-- Main Container Card -->
+    <div class="max-w-[1000px] w-full bg-[#FDFBF7] rounded-[28px] overflow-hidden shadow-2xl m-4 grid grid-cols-1 md:grid-cols-12 min-h-[580px] border border-[#E5DEC9]">
         
-        <!-- Gambar Portofolio dengan atribut usemap -->
-        <img src="PORTOFOLIO NISA.jpg" usemap="#portfolio-map" alt="Portfolio Nisa" style="width: 100%; height: auto; display: block;">
+        <!-- Sisi Kiri: Panel Navigasi Modul (Dirumuskan dengan HTML/CSS) -->
+        <div class="md:col-span-5 p-8 flex flex-col justify-between items-center text-center bg-[#FDFBF7]">
+            
+            <!-- Menu Bar Icon (Atas Kiri) -->
+            <div class="w-full flex justify-start mb-2">
+                <button class="text-gray-700 hover:text-black transition">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
 
-        <!-- Peta Area Klik Tombol -->
-        <map name="portfolio-map">
-            <!-- Icon Sosial Media -->
-            <!-- GitHub -->
-            <area shape="circle" coords="100,230,20" href="https://github.com/username-kamu" target="_blank" alt="GitHub">
-            <!-- LinkedIn -->
-            <area shape="circle" coords="145,230,20" href="https://linkedin.com/in/username-kamu" target="_blank" alt="LinkedIn">
-            <!-- Instagram -->
-            <area shape="circle" coords="190,230,20" href="https://instagram.com/username-kamu" target="_blank" alt="Instagram">
+            <div class="w-full flex flex-col items-center">
+                <!-- Foto Profil -->
+                <div class="w-24 h-24 rounded-full overflow-hidden mb-4 shadow-sm border-2 border-white">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
+                </div>
 
-            <!-- Tombol Navigasi Utama -->
-            <!-- View CV -->
-            <area shape="rect" coords="50,350,240,390" href="link-cv-kamu.pdf" target="_blank" alt="View CV">
-            <!-- Portfolio -->
-            <area shape="rect" coords="50,405,240,445" href="link-portfolio-kamu" target="_blank" alt="Portfolio">
-            <!-- Projects -->
-            <area shape="rect" coords="50,460,240,500" href="link-projects-kamu" target="_blank" alt="Projects">
-            <!-- About -->
-            <area shape="rect" coords="50,515,240,555" href="link-about-kamu" target="_blank" alt="About">
-        </map>
+                <!-- Nama -->
+                <h1 class="text-2xl font-bold text-[#2D3748] tracking-tight">Nisa Sri Fadilah</h1>
+                
+                <!-- Social Media Links (Bisa Diklik) -->
+                <div class="flex space-x-4 my-3 text-[#A08875]">
+                    <a href="https://github.com/username" target="_blank" class="text-xl hover:text-[#6B5748] transition"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://linkedin.com/in/username" target="_blank" class="text-xl hover:text-[#6B5748] transition"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://instagram.com/username" target="_blank" class="text-xl hover:text-[#6B5748] transition"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+
+                <!-- Deskripsi Singkat -->
+                <p class="text-xs text-[#718096] max-w-[240px] mb-6 leading-relaxed">
+                    Welcome to my portfolio. Explore my professional background and featured work below.
+                </p>
+
+                <!-- Tombol Navigasi Utama (Bisa Diklik) -->
+                <div class="w-full space-y-3.5 max-w-[260px]">
+                    <a href="link-cv-kamu.pdf" target="_blank" class="custom-btn block w-full py-2.5 text-sm font-semibold text-[#4A5568] rounded-full text-center">
+                        View CV
+                    </a>
+                    <a href="https://drive.google.com/..." target="_blank" class="custom-btn block w-full py-2.5 text-sm font-semibold text-[#4A5568] rounded-full text-center">
+                        Portfolio
+                    </a>
+                    <a href="#projects" class="custom-btn block w-full py-2.5 text-sm font-semibold text-[#4A5568] rounded-full text-center">
+                        Projects
+                    </a>
+                    <a href="#about" class="custom-btn block w-full py-2.5 text-sm font-semibold text-[#4A5568] rounded-full text-center">
+                        About
+                    </a>
+                </div>
+            </div>
+
+            <!-- Empty div for vertical balance -->
+            <div></div>
+        </div>
+
+        <!-- Sisi Kanan: Banner Gambar Utama yang Di-crop Bagian Terpotongnya -->
+        <div class="md:col-span-7 relative bg-[#E8E2D5] overflow-hidden flex items-center justify-center">
+            <img src="PORTOFOLIO NISA.jpg" alt="Portfolio Banner Nisa" class="cropped-banner">
+        </div>
 
     </div>
 
