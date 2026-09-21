@@ -9,107 +9,96 @@
     <!-- Font Awesome Icons CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { 
-            margin: 0; 
-            padding: 0; 
-            background-color: #e8e2d5; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            min-height: 100vh; 
-        }
-
-        /* Tombol Kapsul Khas Desain Kamu */
-        .custom-btn {
-            background-color: #FAF6F0;
-            border: 1.5px solid #E8DFD5;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
-            color: #4A5568;
+        /* Custom Styling untuk Tombol Navigasi Dark Mode */
+        .nav-btn {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #E2E8F0;
             transition: all 0.2s ease-in-out;
         }
 
-        .custom-btn:hover {
-            background-color: #F3ECE2;
+        .nav-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #FFFFFF;
             transform: translateY(-1px);
-            box-shadow: 0 6px 10px -1px rgba(0, 0, 0, 0.08);
-            color: #1A202C;
         }
     </style>
 </head>
-<body>
+<body class="bg-[#0B132B] text-white min-h-screen flex items-center justify-center p-0 md:p-6">
 
-    <!-- Main Container Card (Mengikuti proporsi dan sudut melengkung desain kamu) -->
-    <div class="max-w-[1100px] w-full bg-[#FDFBF7] rounded-[24px] overflow-hidden shadow-2xl m-4 grid grid-cols-1 md:grid-cols-12 min-h-[600px]">
+    <!-- Container Utama Full Screen / Card View -->
+    <div class="w-full max-w-[1280px] min-h-screen md:min-h-[650px] bg-[#0F172A] md:rounded-2xl overflow-hidden shadow-2xl grid grid-cols-1 md:grid-cols-12 border border-slate-800">
         
-        <!-- Sisi Kiri: Panel Sidebar (Warna Cream Terang Sesuai Desain Kamu) -->
-        <div class="md:col-span-5 lg:col-span-4 p-8 flex flex-col justify-between items-center text-center bg-[#FDFBF7] border-r border-[#E8DFD5]">
+        <!-- Sisi Kiri: Sidebar Navigasi Dark Theme -->
+        <div class="md:col-span-4 lg:col-span-3 bg-[#0B1120] p-6 flex flex-col justify-between items-center text-center border-r border-slate-800/80">
             
             <div class="w-full flex flex-col items-center">
-                <!-- Hamburger Menu Icon (Kiri Atas) -->
-                <div class="w-full flex justify-start mb-2">
-                    <button class="text-gray-700 hover:text-black transition">
+                <!-- Icon Hamburger Menu (Kiri Atas) -->
+                <div class="w-full flex justify-start mb-4">
+                    <button class="text-slate-400 hover:text-white transition">
                         <i class="fa-solid fa-bars text-lg"></i>
                     </button>
                 </div>
 
-                <!-- Foto Profil (Memakai profile.jpg) -->
-                <div class="w-20 h-20 rounded-full overflow-hidden mb-4 border border-gray-200 shadow-sm">
+                <!-- Foto Profil Bulat -->
+                <div class="w-20 h-20 rounded-full overflow-hidden mb-3 ring-2 ring-slate-700 shadow-lg">
                     <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
                 </div>
 
-                <!-- Nama -->
-                <h1 class="text-xl font-bold text-[#2D3748] tracking-tight">Nisa Sri Fadilah</h1>
+                <!-- Nama Lengkap -->
+                <h1 class="text-lg font-bold text-slate-100 tracking-tight">Nisa Sri Fadilah</h1>
                 
-                <!-- Social Media Icons (Memakai Warna Khas Kamu & Bisa Diklik) -->
-                <div class="flex space-x-3 my-3 text-[#A08875]">
-                    <a href="https://github.com/username" target="_blank" class="hover:text-[#6B5748] transition"><i class="fa-brands fa-github text-lg"></i></a>
-                    <a href="https://linkedin.com/in/username" target="_blank" class="hover:text-[#6B5748] transition"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
-                    <a href="https://instagram.com/username" target="_blank" class="hover:text-[#6B5748] transition"><i class="fa-brands fa-instagram text-lg"></i></a>
+                <!-- Social Media Icons -->
+                <div class="flex space-x-3 my-3 text-slate-400">
+                    <a href="https://github.com/username" target="_blank" class="hover:text-white transition text-sm"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://linkedin.com/in/username" target="_blank" class="hover:text-white transition text-sm"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://instagram.com/username" target="_blank" class="hover:text-white transition text-sm"><i class="fa-brands fa-instagram"></i></a>
                 </div>
 
-                <!-- Teks Deskripsi Kamu -->
-                <p class="text-[11px] text-[#718096] max-w-[220px] mb-6 leading-relaxed">
-                    Welcome to my portfolio. Explore my professional background and featured work below.
+                <!-- Subtitle / Intro Singkat -->
+                <p class="text-[11px] text-slate-400 max-w-[210px] mb-6 leading-relaxed">
+                    Hi, Nisa here. Check my other pages or download my CV below.
                 </p>
 
-                <!-- Tombol Navigasi Kapsul Kamu (Bisa Diklik) -->
-                <div class="w-full space-y-3 max-w-[240px]">
-                    <a href="link-cv-kamu.pdf" target="_blank" class="custom-btn block w-full py-2.5 text-xs font-semibold rounded-full text-center">
+                <!-- Tombol-tombol Navigasi Utama -->
+                <div class="w-full space-y-2.5 max-w-[220px]">
+                    <a href="link-cv-kamu.pdf" target="_blank" class="nav-btn block w-full py-2 text-xs font-medium rounded-lg text-center">
                         View CV
                     </a>
-                    <a href="https://drive.google.com/..." target="_blank" class="custom-btn block w-full py-2.5 text-xs font-semibold rounded-full text-center">
+                    <a href="https://drive.google.com/..." target="_blank" class="nav-btn block w-full py-2 text-xs font-medium rounded-lg text-center">
                         Portfolio
                     </a>
-                    <a href="#projects" class="custom-btn block w-full py-2.5 text-xs font-semibold rounded-full text-center">
+                    <a href="#projects" class="nav-btn block w-full py-2 text-xs font-medium rounded-lg text-center">
                         Projects
                     </a>
-                    <a href="#about" class="custom-btn block w-full py-2.5 text-xs font-semibold rounded-full text-center">
+                    <a href="#about" class="nav-btn block w-full py-2 text-xs font-medium rounded-lg text-center">
                         About
                     </a>
                 </div>
             </div>
 
             <!-- Footer / Copyright -->
-            <div class="mt-6 text-[10px] text-[#A0AEC0]">
+            <div class="mt-8 text-[10px] text-slate-500">
                 2026 made by Nisa
             </div>
         </div>
 
-        <!-- Sisi Kanan: Banner Hero (Memakai hero.jpg + Teks Overlay ala Dion) -->
-        <div class="md:col-span-7 lg:col-span-8 relative bg-[#E8E2D5] min-h-[350px] md:min-h-full flex items-center justify-center overflow-hidden">
+        <!-- Sisi Kanan: Hero Banner dengan Dark Overlay & Headline Teks -->
+        <div class="md:col-span-8 lg:col-span-9 relative min-h-[400px] md:min-h-full bg-slate-900 flex items-center justify-center overflow-hidden">
             
-            <!-- Gambar Hero Kamu -->
+            <!-- Gambar Hero Background -->
             <img src="hero.jpg" alt="Hero Background" class="absolute inset-0 w-full h-full object-cover object-center">
             
-            <!-- Soft Overlay agar teks di tengah tetap terbaca jelas -->
-            <div class="absolute inset-0 bg-black/20"></div>
+            <!-- Dark Overlay (Membuat gambar lebih gelap agar teks terbaca jelas) -->
+            <div class="absolute inset-0 bg-black/60 backdrop-blur-[1px]"></div>
 
-            <!-- Teks Nama Besar & Subtitle ala Dion -->
-            <div class="relative z-10 text-center px-6 text-white drop-shadow-md">
-                <h2 class="text-3xl md:text-5xl font-black tracking-wider uppercase">
+            <!-- Teks Nama Besar & Subtitle di Tengah Banner -->
+            <div class="relative z-10 text-center px-6">
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight drop-shadow-lg">
                     Nisa Sri Fadilah
                 </h2>
-                <p class="text-xs md:text-sm tracking-[0.2em] font-light mt-1 uppercase">
+                <p class="text-sm md:text-lg text-slate-300 font-light tracking-wide mt-2 drop-shadow">
                     Industrial Engineering
                 </p>
             </div>
