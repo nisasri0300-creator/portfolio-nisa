@@ -138,21 +138,21 @@
             transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
             opacity: 0;
             transform: scale(0.92);
-            letter-spacing: 0.2em;
+            letter-spacing: 0.15em;
             filter: blur(3px);
         }
 
         .scale-fade-item.active {
             opacity: 1;
             transform: scale(1);
-            letter-spacing: 0.3em;
+            letter-spacing: 0.22em;
             filter: blur(0px);
         }
 
         .scale-fade-item.exit {
             opacity: 0;
             transform: scale(1.05);
-            letter-spacing: 0.4em;
+            letter-spacing: 0.3em;
             filter: blur(4px);
         }
 
@@ -231,7 +231,7 @@
     <!-- AREA UTAMA SLIDE -->
     <main class="w-full h-full relative overflow-hidden">
 
-        <!-- SLIDE 1: HERO HOME (POSISI NAİK SIKIT KE AREA DADA ATAS / BADAAN TENGAH) -->
+        <!-- SLIDE 1: HOME (Hanya bagian ukuran Nama dan Title yang disesuaikan) -->
         <section id="slide-0" class="slide-page active flex-col items-center justify-center relative h-full w-full">
             
             <!-- Foto Profil Background -->
@@ -241,18 +241,20 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-[#F7F4EE]/60 via-transparent to-transparent"></div>
             </div>
 
-            <!-- Header Content (Di-offset sedikit ke bawah dari center murni agar pas di dada atas) -->
-            <div class="relative z-10 text-center space-y-1.5 px-6 max-w-4xl mx-auto translate-y-24 sm:translate-y-28 md:translate-y-32">
+            <!-- Header Content -->
+            <div class="relative z-10 text-center space-y-2 sm:space-y-3 px-6 max-w-4xl mx-auto translate-y-20 sm:translate-y-24 md:translate-y-28">
                 
-                <!-- 1. TITLE / SUBTITLE ANIMATED (POSISI DI ATAS NAMA) -->
-                <div class="text-[10px] sm:text-xs font-bold text-[#475569] uppercase tracking-[0.25em] min-h-[22px] flex items-center justify-center">
-                    <div class="scale-fade-container">
-                        <span id="scale-title" class="scale-fade-item active">INDUSTRIAL ENGINEERING</span>
+                <!-- 1. TITLE / SUBTITLE ANIMATED (Ukuran dibesarkan & dibungkus kapsul halus agar sangat jelas di HP & Web) -->
+                <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-white/60 backdrop-blur-md border border-white/80 shadow-sm transition-all">
+                    <div class="text-xs sm:text-sm md:text-base font-extrabold text-[#334155] uppercase tracking-[0.18em] sm:tracking-[0.22em] min-h-[20px] flex items-center justify-center">
+                        <div class="scale-fade-container">
+                            <span id="scale-title" class="scale-fade-item active">INDUSTRIAL ENGINEERING</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 2. NAMA UTAMA (BOLD TEGAS, PAS DI AREA DADA ATAS) -->
-                <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#0F172A] uppercase hero-text-shadow">
+                <!-- 2. NAMA UTAMA (Ukuran dibesarkan & lebih tegas di HP maupun Web) -->
+                <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#0F172A] uppercase hero-text-shadow leading-none pt-1">
                     NISA SRI FADILAH
                 </h1>
 
@@ -350,7 +352,7 @@
             <i class="fa-solid fa-arrow-left text-xs"></i>
         </button>
 
-        <!-- Indikator Slide Minimalis (Garis Tipis Modern) -->
+        <!-- Indikator Slide Minimalis -->
         <div class="flex space-x-2 pointer-events-auto bg-white/85 backdrop-blur-md border border-black/5 px-4 py-2 sm:py-2.5 rounded-full shadow-sm" id="dots-container">
             <!-- Indikator diinjeksi via JS -->
         </div>
