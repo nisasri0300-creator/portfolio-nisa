@@ -38,6 +38,19 @@
             text-shadow: 0px 2px 10px rgba(255, 253, 250, 0.85), 0px 0px 20px rgba(255, 253, 250, 0.65);
         }
 
+        /* Animasi Cursor Ketikan (Blinking Caret) */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+            margin-left: 2px;
+            color: #1D232A;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
         /* Label Kapsul Sub-Header Portfolio */
         .category-pill {
             background-color: #FFFDFA;
@@ -120,7 +133,7 @@
                     <span class="md:hidden font-bold text-sm text-[#2D3748]">Nisa Sri Fadilah</span>
                 </div>
 
-                <!-- Pembungkus Konten Sidebar yang Bisa Tersembunyi -->
+                <!-- Pembungkus Konten Sidebar -->
                 <div id="sidebarContent" class="sidebar-content flex flex-col items-center w-full transition-all duration-300">
                     
                     <!-- Foto Profil Melingkar -->
@@ -171,18 +184,16 @@
         <!-- Konten Utama (Sisi Kanan) -->
         <main class="flex-1 w-full bg-[#FFFDFA]">
             
-            <!-- 1. Hero Section -->
+            <!-- 1. Hero Section dengan Transisi Ketikan (Typing Effect) -->
             <section class="relative h-screen w-full bg-[#FFFDFA] flex items-center justify-center overflow-hidden">
                 <img src="hero.jpg" alt="Nisa Sri Fadilah Hero" class="absolute inset-0 w-full h-full object-cover object-center">
                 <div class="absolute inset-0 bg-[#FFFDFA]/20 backdrop-blur-[0.5px]"></div>
 
-                <div class="relative z-10 text-center px-4 text-hero-shadow">
+                <!-- Area Teks dengan Transisi Ketikan Ketik/Hapus Otomatis -->
+                <div class="relative z-10 text-center px-4 text-hero-shadow min-h-[140px] flex flex-col justify-center items-center">
                     <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-wider uppercase text-[#1D232A]">
-                        Nisa Sri Fadilah
+                        <span id="typing-text" class="typing-cursor"></span>
                     </h2>
-                    <p class="text-xs sm:text-sm md:text-base tracking-[0.25em] font-bold mt-2 uppercase text-[#3D4451]">
-                        Industrial Engineering
-                    </p>
                 </div>
             </section>
 
@@ -301,15 +312,15 @@
 
     </div>
 
-    <!-- Script JavaScript untuk Buka Tutup Sidebar -->
+    <!-- Script JavaScript untuk Toggle Sidebar & Efek Ketikan (Typing Effect) -->
     <script>
+        // 1. Fungsi Toggle Sidebar
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const toggleIcon = document.getElementById('toggleIcon');
             const isMobile = window.innerWidth < 768;
 
             if (isMobile) {
-                // Toggle versi Mobile (Layar Kecil)
                 const content = document.getElementById('sidebarContent');
                 const footer = document.getElementById('sidebarFooter');
                 if (content.style.display === 'none') {
@@ -322,7 +333,6 @@
                     toggleIcon.className = 'fa-solid fa-bars text-xl';
                 }
             } else {
-                // Toggle versi Desktop (Layar Lebar)
                 sidebar.classList.toggle('collapsed-desktop');
                 if (sidebar.classList.contains('collapsed-desktop')) {
                     toggleIcon.className = 'fa-solid fa-bars text-xl';
@@ -331,6 +341,47 @@
                 }
             }
         }
+
+        // 2. Transisi Ketikan (Typing Effect)
+        const words = [
+            "NISA SRI FADILAH",
+            "INDUSTRIAL ENGINEERING",
+            "E-COMMERCE SPECIALIST",
+            "DIGITAL MARKETING"
+        ];
+
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById('typing-text');
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+
+            if (isDeleting) {
+                typingElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 90; // Kecepatan ketik & hapus
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 1800; // Tahan kata selama 1.8 detik
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length; // Pindah ke kata berikutnya
+                typeSpeed = 400; // Jeda sebelum ketik kata baru
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+
+        // Jalankan Efek Ketikan Saat Halaman Dimuat
+        document.addEventListener('DOMContentLoaded', typeEffect);
     </script>
 </body>
 </html>
