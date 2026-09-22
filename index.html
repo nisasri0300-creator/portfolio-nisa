@@ -22,7 +22,7 @@
         #role-text {
             transition: opacity 0.4s ease-in-out;
         }
-        /* Transisi halus untuk Filter Kategori */
+        /* Transisi halus untuk Filter Kategori Creative */
         .creative-item {
             transition: all 0.3s ease-in-out;
         }
@@ -440,7 +440,6 @@
             const items = document.querySelectorAll('.creative-item');
             const buttons = document.querySelectorAll('.filter-btn');
 
-            // Perbarui status aktif pada tombol filter
             buttons.forEach(btn => {
                 btn.classList.remove('bg-[#EAE2D2]', 'text-slate-900', 'shadow-sm');
                 btn.classList.add('bg-[#F4EFE6]', 'text-slate-700');
@@ -448,7 +447,6 @@
             event.currentTarget.classList.remove('bg-[#F4EFE6]', 'text-slate-700');
             event.currentTarget.classList.add('bg-[#EAE2D2]', 'text-slate-900', 'shadow-sm');
 
-            // Tampilkan atau sembunyikan item berdasarkan kategori yang dipilih
             items.forEach(item => {
                 if (category === 'all' || item.getAttribute('data-category') === category) {
                     item.style.display = 'block';
@@ -465,6 +463,29 @@
                 }
             });
         }
+
+        // Animasi Berganti Peran / Title di Hero Section secara Otomatis
+        const roles = [
+            "INDUSTRIAL ENGINEERING",
+            "E-COMMERCE SPECIALIST",
+            "DIGITAL MARKETING",
+            "EDUCATION TEACHER",
+            "SOCIAL MEDIA SPECIALIST"
+        ];
+        let roleIndex = 0;
+        const roleTextElement = document.getElementById('role-text');
+
+        function rotateRole() {
+            if (!roleTextElement) return;
+            roleTextElement.style.opacity = '0';
+            setTimeout(() => {
+                roleIndex = (roleIndex + 1) % roles.length;
+                roleTextElement.textContent = roles[roleIndex];
+                roleTextElement.style.opacity = '1';
+            }, 400);
+        }
+
+        setInterval(rotateRole, 3000); // Berganti setiap 3 detik
     </script>
 </body>
 </html>
