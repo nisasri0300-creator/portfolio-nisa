@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +29,7 @@
     <!-- Sidebar Desktop -->
     <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-80 bg-[#F4EFE6] border-r border-[#E8E1D5] flex flex-col justify-between p-10 transition-transform duration-300 transform translate-x-0">
         <div>
-            <!-- Header Sidebar -->
+            <!-- Sidebar Header -->
             <div class="flex items-center justify-between mb-8">
                 <div class="flex items-center gap-4">
                     <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-md">
@@ -83,7 +83,7 @@
         </div>
     </aside>
 
-    <!-- Tombol Menu (☰) -->
+    <!-- Toggle Menu Button (☰) -->
     <button id="open-btn" onclick="toggleSidebar()" class="fixed top-6 left-6 z-40 w-10 h-10 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full hidden items-center justify-center text-slate-800 shadow-md hover:bg-[#eae2d2] transition-all">
         ☰
     </button>
@@ -116,7 +116,7 @@
                         <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
                             LOGO
                         </div>
-                        <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Klik pada logo untuk memperbesar</p>
+                        <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Click on any logo to view larger</p>
                     </div>
                     
                     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
@@ -129,8 +129,8 @@
                         <div onclick="openLogoModal('Madala Creative.png', 'Madala Creative')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer overflow-hidden">
                             <img src="Madala Creative.png" alt="Madala Creative" class="w-full h-full object-contain">
                         </div>
-                        <div onclick="openLogoModal('Teknik Industri.png', 'Teknik Industri')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer overflow-hidden">
-                            <img src="Teknik Industri.png" alt="Teknik Industri" class="w-full h-full object-contain">
+                        <div onclick="openLogoModal('Teknik Industri.png', 'Industrial Engineering')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer overflow-hidden">
+                            <img src="Teknik Industri.png" alt="Industrial Engineering" class="w-full h-full object-contain">
                         </div>
                         <div onclick="openLogoModal('Two Ambiverts.png', 'Two Ambiverts')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer overflow-hidden">
                             <img src="Two Ambiverts.png" alt="Two Ambiverts" class="w-full h-full object-contain">
@@ -141,21 +141,21 @@
                     </div>
                 </div>
 
-                <!-- BRANDING LUNAE -->
+                <!-- LUNAE BRANDING -->
                 <div class="mb-14">
                     <div class="mb-8 flex flex-col items-start">
                         <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
-                            BRANDING LUNAE
+                            LUNAE BRANDING
                         </div>
-                        <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Klik pada gambar untuk memperbesar</p>
+                        <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Click on any image to view larger</p>
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                            <div onclick="openLogoModal('Meet Lunae.png', 'COMMING SOON LUNAE')" class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-95 transition-opacity">
+                            <div onclick="openLogoModal('Meet Lunae.png', 'COMING SOON LUNAE')" class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-95 transition-opacity">
                                 <img src="Meet Lunae.png" alt="Meet Lunae" class="w-full h-auto object-cover">
                             </div>
-                            <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">COMMING SOON LUNAE</h3>
+                            <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">COMING SOON LUNAE</h3>
                         </div>
 
                         <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
@@ -206,11 +206,11 @@
                     </div>
                 </div>
 
-                <!-- BRANDING PRETTY GIRL -->
+                <!-- PRETTY GIRL BRANDING -->
                 <div class="mb-14">
                     <div class="mb-8 flex flex-col items-start">
                         <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
-                            BRANDING PRETTY GIRL
+                            PRETTY GIRL BRANDING
                         </div>
                         <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Kids Wear & Modular Style Collection</p>
                     </div>
@@ -273,7 +273,7 @@
                         <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
                             MODELING
                         </div>
-                        <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Klik pada foto untuk memperbesar</p>
+                        <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Click on any photo to view larger</p>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -299,17 +299,17 @@
         <section id="section-projects" class="hidden flex-1 p-8 md:p-16 pt-24 md:pt-16">
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-2xl font-bold tracking-wider uppercase mb-2 text-slate-900">Projects</h2>
-                <p class="text-sm text-slate-500 mb-8 tracking-wide">Daftar proyek profesional dan portofolio terkait.</p>
+                <p class="text-sm text-slate-500 mb-8 tracking-wide">Professional projects and portfolio case studies.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-6 shadow-sm">
                         <h3 class="font-bold text-base text-slate-900 mb-2">E-Commerce Specialist Portfolio</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed mb-4">Pengelolaan toko digital, strategi pemasaran, serta optimasi konversi penjualan.</p>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">Digital store management, marketing strategy, and sales conversion optimization.</p>
                         <span class="text-[10px] font-bold uppercase tracking-widest bg-[#EAE2D2] px-3 py-1 rounded-md text-slate-700">Active Project</span>
                     </div>
                     <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-6 shadow-sm">
                         <h3 class="font-bold text-base text-slate-900 mb-2">Industrial Engineering Case Studies</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed mb-4">Analisis efisiensi sistem produksi, optimasi rantai pasok, dan manajemen operasional.</p>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">Production system efficiency analysis, supply chain optimization, and operational management.</p>
                         <span class="text-[10px] font-bold uppercase tracking-widest bg-[#EAE2D2] px-3 py-1 rounded-md text-slate-700">Case Study</span>
                     </div>
                 </div>
@@ -324,7 +324,7 @@
                     <h2 class="text-xl font-bold text-slate-900 mb-1">Nisa Sri Fadilah</h2>
                     <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-4">Industrial Engineering & Creative Specialist</p>
                     <p class="text-xs text-slate-600 leading-relaxed">
-                        Memiliki ketertarikan mendalam pada efisiensi sistem, manajemen operasional, serta pengembangan kreativitas visual dan digital marketing. Berpengalaman dalam menjembatani pendekatan analitis teknik industri dengan dunia kreatif modern.
+                        Deeply passionate about systems efficiency, operational management, visual creativity development, and digital marketing. Experienced in bridging analytical industrial engineering approaches with the modern creative world.
                     </p>
                 </div>
             </div>
@@ -332,7 +332,7 @@
 
     </div>
 
-    <!-- Modal Pop-up untuk Gambar / Logo -->
+    <!-- Image / Logo Zoom Modal -->
     <div id="logoModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4" onclick="closeLogoModal()">
         <div class="bg-white rounded-3xl p-8 max-w-2xl w-full relative shadow-2xl flex flex-col items-center max-h-[90vh]" onclick="event.stopPropagation()">
             <button onclick="closeLogoModal()" class="absolute top-4 right-4 w-9 h-9 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center text-slate-700 font-bold text-sm transition-colors z-10">
@@ -353,7 +353,7 @@
         <button onclick="switchTab('about')" class="text-xs font-medium text-slate-400 hover:text-slate-900 uppercase tracking-widest transition-colors">About</button>
     </nav>
 
-    <!-- Script Pendukung -->
+    <!-- Supporting Scripts -->
     <script>
         let isSidebarOpen = true;
 
@@ -419,7 +419,7 @@
             }
         }
 
-        // Animasi teks peran (Role Rotator) di halaman Home
+        // Role Rotator Animation on Home Page
         const roles = [
             "INDUSTRIAL ENGINEERING",
             "CREATIVE SPECIALIST",
