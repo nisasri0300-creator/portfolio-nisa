@@ -109,30 +109,30 @@
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-center text-xl md:text-2xl font-bold tracking-[0.3em] uppercase mb-12 text-slate-900">C R E A T I V E</h2>
                 
-                <!-- LOGO (Ukuran Diperbesar Optimal & Padding Lebih Pas) -->
+                <!-- LOGO (Logo Diperbesar & Dapat Diklik untuk Membesar/Pop-up) -->
                 <div class="mb-14">
                     <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] mb-8 shadow-sm">
-                        LOGO
+                        LOGO (Klik untuk memperbesar)
                     </div>
                     
                     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-                        <div class="bg-white rounded-full aspect-square flex items-center justify-center p-3 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform">
-                            <img src="Lunae Logo.png" alt="Lunae Logo" class="w-[85%] h-[85%] object-contain">
+                        <div onclick="openLogoModal('Lunae Logo.png', 'Lunae Logo')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer">
+                            <img src="Lunae Logo.png" alt="Lunae Logo" class="w-full h-full object-contain">
                         </div>
-                        <div class="bg-white rounded-full aspect-square flex items-center justify-center p-3 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform">
-                            <img src="Hyper Season.png" alt="Hyper Season" class="w-[85%] h-[85%] object-contain">
+                        <div onclick="openLogoModal('Hyper Season.png', 'Hyper Season')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer">
+                            <img src="Hyper Season.png" alt="Hyper Season" class="w-full h-full object-contain">
                         </div>
-                        <div class="bg-white rounded-full aspect-square flex items-center justify-center p-3 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform">
-                            <img src="Madala Creative.png" alt="Madala Creative" class="w-[85%] h-[85%] object-contain">
+                        <div onclick="openLogoModal('Madala Creative.png', 'Madala Creative')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer">
+                            <img src="Madala Creative.png" alt="Madala Creative" class="w-full h-full object-contain">
                         </div>
-                        <div class="bg-white rounded-full aspect-square flex items-center justify-center p-3 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform">
-                            <img src="Teknik Industri.png" alt="Teknik Industri" class="w-[85%] h-[85%] object-contain">
+                        <div onclick="openLogoModal('Teknik Industri.png', 'Teknik Industri')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer">
+                            <img src="Teknik Industri.png" alt="Teknik Industri" class="w-full h-full object-contain">
                         </div>
-                        <div class="bg-white rounded-full aspect-square flex items-center justify-center p-3 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform">
-                            <img src="Two Ambiverts.png" alt="Two Ambiverts" class="w-[85%] h-[85%] object-contain">
+                        <div onclick="openLogoModal('Two Ambiverts.png', 'Two Ambiverts')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer">
+                            <img src="Two Ambiverts.png" alt="Two Ambiverts" class="w-full h-full object-contain">
                         </div>
-                        <div class="bg-white rounded-full aspect-square flex items-center justify-center p-3 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform">
-                            <img src="Beauty Skin Care.png" alt="Beauty Skin Care" class="w-[85%] h-[85%] object-contain">
+                        <div onclick="openLogoModal('Beauty Skin Care.png', 'Beauty Skin Care')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer">
+                            <img src="Beauty Skin Care.png" alt="Beauty Skin Care" class="w-full h-full object-contain">
                         </div>
                     </div>
                 </div>
@@ -160,7 +160,7 @@
                             <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">Color Palette & Moodboard</h3>
                         </div>
 
-                        <!-- 3. Typography & Color Palette Guide (Layout Diperbaiki agar tidak tumpuk & rapi ke bawah) -->
+                        <!-- 3. Typography & Color Palette Guide -->
                         <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
                             <div class="w-full bg-[#FAF8F5] rounded-xl p-4 mb-3 border border-slate-200 flex flex-col gap-3">
                                 <!-- Palet Warna -->
@@ -178,7 +178,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Tipografi & Huruf (Disusun vertikal berbaris rapi tanpa tumpang tindih) -->
+                                <!-- Tipografi & Huruf -->
                                 <div class="border-t border-slate-200 pt-2.5">
                                     <h4 class="font-serif text-lg font-bold tracking-tight text-[#1A202C]">
                                         Lunáe<span class="text-xs align-top text-[#9D6638]">✦</span>
@@ -247,6 +247,19 @@
 
     </div>
 
+    <!-- Modal Pop-up untuk Klik Logo -->
+    <div id="logoModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4" onclick="closeLogoModal()">
+        <div class="bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl flex flex-col items-center" onclick="event.stopPropagation()">
+            <button onclick="closeLogoModal()" class="absolute top-4 right-4 w-9 h-9 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center text-slate-700 font-bold text-sm transition-colors">
+                ✕
+            </button>
+            <div class="w-48 h-48 sm:w-64 sm:h-64 flex items-center justify-center p-4 mb-4">
+                <img id="modalImage" src="" alt="Zoomed Logo" class="w-full h-full object-contain">
+            </div>
+            <h3 id="modalTitle" class="text-sm font-bold uppercase tracking-widest text-slate-800"></h3>
+        </div>
+    </div>
+
     <!-- Mobile Bottom Navigation Bar -->
     <nav class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-[#F4EFE6]/95 backdrop-blur-md border-t border-[#E8E1D5] px-6 py-4 flex items-center justify-around shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
         <button onclick="switchTab('home')" class="text-xs font-bold text-slate-950 uppercase tracking-widest">Home</button>
@@ -300,6 +313,23 @@
                 activeBtn.className = "w-full text-left relative flex items-center gap-4 text-slate-900 font-bold text-sm tracking-wide transition-all py-2 px-3 bg-[#EAE2D2]/60 rounded-lg";
                 activeBtn.innerHTML = `<span class="absolute left-0 w-1 h-4 bg-slate-900 rounded-r-full"></span><span class="pl-2">${activeBtn.textContent.trim()}</span>`;
             }
+        }
+
+        function openLogoModal(imageSrc, title) {
+            const modal = document.getElementById('logoModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+
+            modalImage.src = imageSrc;
+            modalTitle.textContent = title;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeLogoModal() {
+            const modal = document.getElementById('logoModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
         }
 
         const roles = [
