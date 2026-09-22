@@ -97,4 +97,307 @@
                     NISA SRI FADILAH
                 </h1>
                 <div class="inline-flex items-center px-6 py-2.5 bg-[#FBF9F5]/90 backdrop-blur-md rounded-full shadow-sm border border-[#EBE4D5]">
-                    <
+                    <span id="role-text" class="text-xs sm:text-sm font-bold tracking-[0.2em] text-slate-800 uppercase">
+                        INDUSTRIAL ENGINEERING
+                    </span>
+                </div>
+            </div>
+        </main>
+
+        <!-- TAB 2: CREATIVE SECTION -->
+        <section id="section-creative" class="hidden flex-1 p-8 md:p-16 pt-24 md:pt-16">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-center text-xl md:text-2xl font-bold tracking-[0.3em] uppercase mb-12 text-slate-900">C R E A T I V E</h2>
+                
+                <!-- LOGO SECTION -->
+                <div class="mb-14">
+                    <div class="mb-8 flex flex-col items-start">
+                        <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
+                            LOGO
+                        </div>
+                        <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Klik pada logo untuk memperbesar</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+                        <div onclick="openLogoModal('Lunae Logo.png', 'Lunae Logo')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer overflow-hidden">
+                            <img src="Lunae Logo.png" alt="Lunae Logo" class="w-full h-full object-contain">
+                        </div>
+                        <div onclick="openLogoModal('Hyper Season.png', 'Hyper Season')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer overflow-hidden">
+                            <img src="Hyper Season.png" alt="Hyper Season" class="w-full h-full object-contain">
+                        </div>
+                        <div onclick="openLogoModal('Madala Creative.png', 'Madala Creative')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer overflow-hidden">
+                            <img src="Madala Creative.png" alt="Madala Creative" class="w-full h-full object-contain">
+                        </div>
+                        <div onclick="openLogoModal('Teknik Industri.png', 'Teknik Industri')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer overflow-hidden">
+                            <img src="Teknik Industri.png" alt="Teknik Industri" class="w-full h-full object-contain">
+                        </div>
+                        <div onclick="openLogoModal('Two Ambiverts.png', 'Two Ambiverts')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer overflow-hidden">
+                            <img src="Two Ambiverts.png" alt="Two Ambiverts" class="w-full h-full object-contain">
+                        </div>
+                        <div onclick="openLogoModal('Beauty Skin Care.png', 'Beauty Skin Care')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer overflow-hidden">
+                            <img src="Beauty Skin Care.png" alt="Beauty Skin Care" class="w-full h-full object-contain">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BRANDING -->
+                <div>
+                    <div class="mb-8 flex flex-col items-start">
+                        <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
+                            BRANDING
+                        </div>
+                        <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Klik pada gambar untuk memperbesar</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- 1. Meet Lunae Showcase -->
+                        <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+                            <div onclick="openLogoModal('Meet Lunae.png', 'Meet Lunáe Showcase')" class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-95 transition-opacity">
+                                <img src="Meet Lunae.png" alt="Meet Lunae" class="w-full h-auto object-cover">
+                            </div>
+                            <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">Meet Lunáe Showcase</h3>
+                        </div>
+
+                        <!-- 2. Color Palette & Moodboard -->
+                        <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+                            <div onclick="openLogoModal('Lunae Products.png', 'Color Palette & Moodboard')" class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-95 transition-opacity">
+                                <img src="Lunae Products.png" alt="Color Palette & Moodboard" class="w-full h-auto object-cover">
+                            </div>
+                            <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">Color Palette & Moodboard</h3>
+                        </div>
+
+                        <!-- 3. Visual Typography -->
+                        <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+                            <div onclick="openBrandingGuideModal()" class="w-full bg-[#FAF8F5] rounded-xl p-4 mb-3 border border-slate-200 flex flex-col gap-3 cursor-pointer hover:opacity-95 transition-opacity">
+                                <!-- Palet Warna -->
+                                <div>
+                                    <div class="rounded-lg overflow-hidden border border-black/5 flex h-5 mb-1.5 shadow-inner">
+                                        <div class="flex-1 bg-[#F7F1DE]"></div>
+                                        <div class="flex-1 bg-[#80BA99]"></div>
+                                        <div class="flex-1 bg-[#9D6638]"></div>
+                                        <div class="flex-1 bg-[#4E220F]"></div>
+                                    </div>
+                                    <div class="grid grid-cols-3 gap-1 text-[8px] text-center font-mono text-slate-600">
+                                        <div><span class="inline-block w-1.5 h-1.5 rounded-full bg-[#80BA99] mr-0.5"></span>#80BA99</div>
+                                        <div><span class="inline-block w-1.5 h-1.5 rounded-full bg-[#9D6638] mr-0.5"></span>#9D6638</div>
+                                        <div><span class="inline-block w-1.5 h-1.5 rounded-full bg-[#4E220F] mr-0.5"></span>#4E220F</div>
+                                    </div>
+                                </div>
+
+                                <!-- Tipografi & Huruf -->
+                                <div class="border-t border-slate-200 pt-2.5">
+                                    <h4 class="font-serif text-lg font-bold tracking-tight text-[#1A202C]">
+                                        Lunáe<span class="text-xs align-top text-[#9D6638]">✦</span>
+                                    </h4>
+                                    <p class="text-[8px] font-serif uppercase tracking-[0.15em] text-slate-500 pb-2 mb-2 border-b border-slate-200">
+                                        LUNAE TYPEFACE
+                                    </p>
+                                    <div class="flex flex-col gap-1 text-[9px] font-serif text-slate-700 tracking-wider">
+                                        <p class="font-semibold">ABCDEFGHIJKLM</p>
+                                        <p class="font-semibold">NOPQRSTUVWXYZ</p>
+                                        <p class="font-sans text-[9px] text-slate-800 pt-1">0123456789</p>
+                                        <p class="font-sans text-[8px] text-slate-800">!?#$%& (*;+.)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">Visual Typography</h3>
+                        </div>
+
+                        <!-- 4. Editorial Lookbook -->
+                        <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+                            <div onclick="openLogoModal('Model Showcase.png', 'Editorial Lookbook')" class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-95 transition-opacity">
+                                <img src="Model Showcase.png" alt="Model Showcase" class="w-full h-auto object-cover">
+                            </div>
+                            <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">Editorial Lookbook</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TAB 3: PROJECTS SECTION -->
+        <section id="section-projects" class="hidden flex-1 p-8 md:p-16 pt-24 md:pt-16">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-2xl font-bold tracking-wider uppercase mb-2 text-slate-900">Projects</h2>
+                <p class="text-sm text-slate-500 mb-8 tracking-wide">Daftar proyek profesional dan portofolio terkait.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-6 shadow-sm">
+                        <h3 class="font-bold text-base text-slate-900 mb-2">E-Commerce Specialist Portfolio</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">Pengelolaan toko digital, strategi pemasaran, serta optimasi konversi penjualan.</p>
+                        <span class="text-[10px] font-bold uppercase tracking-widest bg-[#EAE2D2] px-3 py-1 rounded-md text-slate-700">Active Project</span>
+                    </div>
+                    <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-6 shadow-sm">
+                        <h3 class="font-bold text-base text-slate-900 mb-2">Industrial Engineering Case Studies</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">Analisis efisiensi sistem produksi, optimasi rantai pasok, dan manajemen operasional.</p>
+                        <span class="text-[10px] font-bold uppercase tracking-widest bg-[#EAE2D2] px-3 py-1 rounded-md text-slate-700">Case Study</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: ABOUT ME SECTION -->
+        <section id="section-about" class="hidden flex-1 p-8 md:p-16 pt-24 md:pt-16">
+            <div class="max-w-3xl mx-auto bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-8 shadow-sm flex flex-col md:flex-row gap-8 items-center">
+                <img src="profile.jpg" alt="Profile" class="w-32 h-32 rounded-full object-cover border-2 border-white shadow-md">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 mb-1">Nisa Sri Fadilah</h2>
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-4">Industrial Engineering & Creative Specialist</p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Memiliki ketertarikan mendalam pada efisiensi sistem, manajemen operasional, serta pengembangan kreativitas visual dan digital marketing. Berpengalaman dalam menjembatani pendekatan analitis teknik industri dengan dunia kreatif modern.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Modal Pop-up untuk Gambar / Logo -->
+    <div id="logoModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4" onclick="closeLogoModal()">
+        <div class="bg-white rounded-3xl p-8 max-w-2xl w-full relative shadow-2xl flex flex-col items-center max-h-[90vh]" onclick="event.stopPropagation()">
+            <button onclick="closeLogoModal()" class="absolute top-4 right-4 w-9 h-9 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center text-slate-700 font-bold text-sm transition-colors z-10">
+                ✕
+            </button>
+            <div id="modalContentContainer" class="w-full flex items-center justify-center p-2 mb-4 overflow-auto max-h-[70vh]">
+                <img id="modalImage" src="" alt="Zoomed Image" class="max-w-full max-h-[65vh] object-contain rounded-lg">
+            </div>
+            <h3 id="modalTitle" class="text-sm font-bold uppercase tracking-widest text-slate-800 text-center"></h3>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-[#F4EFE6]/95 backdrop-blur-md border-t border-[#E8E1D5] px-6 py-4 flex items-center justify-around shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+        <button onclick="switchTab('home')" class="text-xs font-bold text-slate-950 uppercase tracking-widest">Home</button>
+        <button onclick="switchTab('creative')" class="text-xs font-medium text-slate-400 hover:text-slate-900 uppercase tracking-widest transition-colors">Creative</button>
+        <button onclick="switchTab('projects')" class="text-xs font-medium text-slate-400 hover:text-slate-900 uppercase tracking-widest transition-colors">Projects</button>
+        <button onclick="switchTab('about')" class="text-xs font-medium text-slate-400 hover:text-slate-900 uppercase tracking-widest transition-colors">About</button>
+    </nav>
+
+    <!-- Script Pendukung -->
+    <script>
+        let isSidebarOpen = true;
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContainer = document.getElementById('main-container');
+            const openBtn = document.getElementById('open-btn');
+
+            isSidebarOpen = !isSidebarOpen;
+
+            if (isSidebarOpen) {
+                sidebar.classList.remove('-translate-x-full');
+                mainContainer.classList.add('md:ml-80');
+                openBtn.classList.remove('flex');
+                openBtn.classList.add('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                mainContainer.classList.remove('md:ml-80');
+                openBtn.classList.remove('hidden');
+                openBtn.classList.add('flex');
+            }
+        }
+
+        function switchTab(tabName) {
+            document.getElementById('section-home').classList.add('hidden');
+            document.getElementById('section-creative').classList.add('hidden');
+            document.getElementById('section-projects').classList.add('hidden');
+            document.getElementById('section-about').classList.add('hidden');
+
+            document.getElementById('section-' + tabName).classList.remove('hidden');
+
+            ['home', 'creative', 'projects', 'about'].forEach(t => {
+                const btn = document.getElementById('nav-' + t);
+                if(btn) {
+                    btn.className = "w-full text-left flex items-center gap-4 text-slate-500 hover:text-slate-900 font-medium text-sm tracking-wide transition-all py-2 px-3 hover:bg-[#EAE2D2]/30 rounded-lg";
+                    btn.innerHTML = `<span class="pl-2">${btn.textContent.trim()}</span>`;
+                }
+            });
+
+            const activeBtn = document.getElementById('nav-' + tabName);
+            if(activeBtn) {
+                activeBtn.className = "w-full text-left relative flex items-center gap-4 text-slate-900 font-bold text-sm tracking-wide transition-all py-2 px-3 bg-[#EAE2D2]/60 rounded-lg";
+                activeBtn.innerHTML = `<span class="absolute left-0 w-1 h-4 bg-slate-900 rounded-r-full"></span><span class="pl-2">${activeBtn.textContent.trim()}</span>`;
+            }
+        }
+
+        function openLogoModal(imageSrc, title) {
+            const modal = document.getElementById('logoModal');
+            const modalContainer = document.getElementById('modalContentContainer');
+            const modalTitle = document.getElementById('modalTitle');
+
+            modalContainer.innerHTML = `<img src="${imageSrc}" alt="Zoomed Image" class="max-w-full max-h-[65vh] object-contain rounded-lg">`;
+            modalTitle.textContent = title;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function openBrandingGuideModal() {
+            const modal = document.getElementById('logoModal');
+            const modalContainer = document.getElementById('modalContentContainer');
+            const modalTitle = document.getElementById('modalTitle');
+
+            modalContainer.innerHTML = `
+                <div class="w-full bg-[#FAF8F5] rounded-xl p-6 border border-slate-200 flex flex-col gap-4 text-left">
+                    <div>
+                        <div class="rounded-lg overflow-hidden border border-black/5 flex h-7 mb-2 shadow-inner">
+                            <div class="flex-1 bg-[#F7F1DE]"></div>
+                            <div class="flex-1 bg-[#80BA99]"></div>
+                            <div class="flex-1 bg-[#9D6638]"></div>
+                            <div class="flex-1 bg-[#4E220F]"></div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-xs font-mono text-slate-600">
+                            <div><span class="inline-block w-2.5 h-2.5 rounded-full bg-[#80BA99] mr-1"></span>#80BA99</div>
+                            <div><span class="inline-block w-2.5 h-2.5 rounded-full bg-[#9D6638] mr-1"></span>#9D6638</div>
+                            <div><span class="inline-block w-2.5 h-2.5 rounded-full bg-[#4E220F] mr-1"></span>#4E220F</div>
+                        </div>
+                    </div>
+                    <div class="border-t border-slate-200 pt-4">
+                        <h4 class="font-serif text-2xl font-bold tracking-tight text-[#1A202C]">
+                            Lunáe<span class="text-sm align-top text-[#9D6638]">✦</span>
+                        </h4>
+                        <p class="text-xs font-serif uppercase tracking-[0.15em] text-slate-500 pb-3 mb-3 border-b border-slate-200">
+                            LUNAE TYPEFACE
+                        </p>
+                        <div class="flex flex-col gap-1.5 text-sm font-serif text-slate-700 tracking-wider">
+                            <p class="font-semibold">ABCDEFGHIJKLM</p>
+                            <p class="font-semibold">NOPQRSTUVWXYZ</p>
+                            <p class="font-sans text-sm text-slate-800 pt-1">0123456789</p>
+                            <p class="font-sans text-xs text-slate-800">!?#$%& (*;+.)</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            modalTitle.textContent = "Visual Typography";
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeLogoModal() {
+            const modal = document.getElementById('logoModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        const roles = [
+            "INDUSTRIAL ENGINEERING",
+            "EDUCATION TEACHER",
+            "E-COMMERCE SPECIALIST",
+            "DIGITAL MARKETING"
+        ];
+        let currentRoleIndex = 0;
+
+        setInterval(() => {
+            currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+            const roleElement = document.getElementById('role-text');
+            if (roleElement) {
+                roleElement.style.opacity = '0';
+                setTimeout(() => {
+                    roleElement.textContent = roles[currentRoleIndex];
+                    roleElement.style.opacity = '1';
+                }, 200);
+            }
+        }, 3500);
+    </script>
+</body>
+</html>
