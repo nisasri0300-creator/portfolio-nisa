@@ -126,6 +126,7 @@
                     <button onclick="filterCreative('web')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Design Web</button>
                     <button onclick="filterCreative('art')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Digital Art</button>
                     <button onclick="filterCreative('sticker')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Sticker Art</button>
+                    <button onclick="filterCreative('architecture')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Architecture</button>
                 </div>
 
                 <!-- CONTAINER UNTUK SELURUH ITEM CREATIVE -->
@@ -449,7 +450,7 @@
                         </div>
                     </div>
 
-                    <!-- STICKER ART SECTION (STICKER 1 & STICKER 2) -->
+                    <!-- STICKER ART SECTION -->
                     <div class="creative-item mb-14" data-category="sticker">
                         <div class="mb-8 flex flex-col items-start">
                             <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
@@ -461,7 +462,7 @@
                         <div class="space-y-8">
                             <!-- Seri 1: Lime Mascot Series -->
                             <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-6 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                                <div lg:col-span-5 class="lg:col-span-5 bg-white rounded-xl p-3 border border-slate-200 cursor-pointer hover:opacity-95 transition-opacity" onclick="openLogoModal('STICKER 1.png', 'Lime Mascot Series (Green Bear)')">
+                                <div class="lg:col-span-5 bg-white rounded-xl p-3 border border-slate-200 cursor-pointer hover:opacity-95 transition-opacity" onclick="openLogoModal('STICKER 1.png', 'Lime Mascot Series (Green Bear)')">
                                     <img src="STICKER 1.png" alt="Lime Mascot Series" class="w-full h-auto object-contain rounded-lg">
                                 </div>
                                 <div class="lg:col-span-7 flex flex-col justify-center">
@@ -489,6 +490,61 @@
                                 <div class="lg:col-span-5 bg-white rounded-xl p-3 border border-slate-200 cursor-pointer hover:opacity-95 transition-opacity order-1 lg:order-2" onclick="openLogoModal('STICKER 2.png', 'Citrus Girl Series (Orange Chibi)')">
                                     <img src="STICKER 2.png" alt="Citrus Girl Series" class="w-full h-auto object-contain rounded-lg">
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ARCHITECTURE SECTION (ARCH 1 s.d. ARCH 14) -->
+                    <div class="creative-item mb-14" data-category="architecture">
+                        <div class="mb-8 flex flex-col items-start">
+                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
+                                ARCHITECTURE 2D & 3D
+                            </div>
+                            <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Click on any architectural project to view larger</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 1.png', 'Architecture 1')">
+                                <img src="ARCH 1.png" alt="Architecture 1" class="w-full h-auto object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 2.png', 'Architecture 2')">
+                                <img src="ARCH 2.png" alt="Architecture 2" class="w-full h-auto object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 3.png', 'Architecture 3')">
+                                <img src="ARCH 3.png" alt="Architecture 3" class="w-full h-auto object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 4.png', 'Architecture 4')">
+                                <img src="ARCH 4.png" alt="Architecture 4" class="w-full h-auto object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 5.png', 'Architecture 5')">
+                                <img src="ARCH 5.png" alt="Architecture 5" class="w-full h-auto object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 6.png', 'Architecture 6')">
+                                <img src="ARCH 6.png" alt="Architecture 6" class="w-full h-auto object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 7.png', 'Architecture 7')">
+                                <img src="ARCH 7.png" alt="Architecture 7" class="w-full h-auto object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 8.png', 'Architecture 8')">
+                                <img src="ARCH 8.png" alt="Architecture 8" class="w-full h-auto object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 9.png', 'Architecture 9')">
+                                <img src="ARCH 9.png" alt="Architecture 9" class="w-full h-auto object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 10.png', 'Architecture 10')">
+                                <img src="ARCH 10.png" alt="Architecture 10" class="w-full h-auto object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 11.png', 'Architecture 11')">
+                                <img src="ARCH 11.png" alt="Architecture 11" class="w-full h-auto object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 12.png', 'Architecture 12')">
+                                <img src="ARCH 12.png" alt="Architecture 12" class="w-full h-auto object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 13.png', 'Architecture 13')">
+                                <img src="ARCH 13.png" alt="Architecture 13" class="w-full h-auto object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 14.png', 'Architecture 14')">
+                                <img src="ARCH 14.png" alt="Architecture 14" class="w-full h-auto object-cover rounded-xl">
                             </div>
                         </div>
                     </div>
