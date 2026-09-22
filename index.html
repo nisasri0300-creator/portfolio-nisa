@@ -125,6 +125,7 @@
                     <button onclick="filterCreative('social')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Social Media</button>
                     <button onclick="filterCreative('web')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Design Web</button>
                     <button onclick="filterCreative('art')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Digital Art</button>
+                    <button onclick="filterCreative('sticker')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Sticker Art</button>
                 </div>
 
                 <!-- CONTAINER UNTUK SELURUH ITEM CREATIVE -->
@@ -371,7 +372,7 @@
                         </div>
                     </div>
 
-                    <!-- DESIGN WEB SECTION (WEB 1 s.d. WEB 4) -->
+                    <!-- DESIGN WEB SECTION -->
                     <div class="creative-item mb-14" data-category="web">
                         <div class="mb-8 flex flex-col items-start">
                             <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
@@ -423,7 +424,7 @@
                         </div>
                     </div>
 
-                    <!-- DIGITAL ART SECTION (ART 1 s.d. ART 4) -->
+                    <!-- DIGITAL ART SECTION -->
                     <div class="creative-item mb-14" data-category="art">
                         <div class="mb-8 flex flex-col items-start">
                             <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
@@ -444,6 +445,50 @@
                             </div>
                             <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ART 4.png', 'Digital Art 4')">
                                 <img src="ART 4.png" alt="Digital Art 4" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STICKER ART SECTION (STICKER 1 & STICKER 2) -->
+                    <div class="creative-item mb-14" data-category="sticker">
+                        <div class="mb-8 flex flex-col items-start">
+                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
+                                STICKER ART
+                            </div>
+                            <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Click on any sticker series to view larger</p>
+                        </div>
+
+                        <div class="space-y-8">
+                            <!-- Seri 1: Lime Mascot Series -->
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-6 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                                <div lg:col-span-5 class="lg:col-span-5 bg-white rounded-xl p-3 border border-slate-200 cursor-pointer hover:opacity-95 transition-opacity" onclick="openLogoModal('STICKER 1.png', 'Lime Mascot Series (Green Bear)')">
+                                    <img src="STICKER 1.png" alt="Lime Mascot Series" class="w-full h-auto object-contain rounded-lg">
+                                </div>
+                                <div class="lg:col-span-7 flex flex-col justify-center">
+                                    <h3 class="font-bold text-sm uppercase tracking-wider text-slate-900 mb-3">Lime Mascot Series (Green Bear Character)</h3>
+                                    <ul class="text-xs text-slate-600 space-y-2 leading-relaxed">
+                                        <li><strong class="text-slate-800">Core Concept:</strong> Expressive Daily Reactions</li>
+                                        <li><strong class="text-slate-800">Visual Style:</strong> Bold vector line art paired with a vibrant lime green palette. Features a black circle element above the head as a signature visual accent.</li>
+                                        <li><strong class="text-slate-800">Tone & Vibe:</strong> Casual, humorous, and highly relatable, capturing spontaneous daily chat emotions ranging from drinking boba to sleepy and celebratory reactions.</li>
+                                        <li><strong class="text-slate-800">Target Application:</strong> Designed for instant messaging platforms (WhatsApp, LINE, Telegram) tailored for a young, expressive audience.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Seri 2: Citrus Girl Series -->
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-6 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                                <div class="lg:col-span-7 flex flex-col justify-center order-2 lg:order-1">
+                                    <h3 class="font-bold text-sm uppercase tracking-wider text-slate-900 mb-3">Citrus Girl Series (Orange Chibi Character)</h3>
+                                    <ul class="text-xs text-slate-600 space-y-2 leading-relaxed">
+                                        <li><strong class="text-slate-800">Core Concept:</strong> Friendly & Helpful Greetings</li>
+                                        <li><strong class="text-slate-800">Visual Style:</strong> Soft digital chibi illustration utilizing a warm pastel yellow and orange color scheme, finished with a citrus hat accessory and soft lighting details.</li>
+                                        <li><strong class="text-slate-800">Tone & Vibe:</strong> Warm, polite, and approachable. Uses supportive conversational phrases suited for customer-facing interactions ("Siap dibantu!", "Terima kasih!", "Semangat yaa!").</li>
+                                        <li><strong class="text-slate-800">Target Application:</strong> Ideal for customer service mascots, e-commerce brand identity, social media engagement, and conversational UI/UX design.</li>
+                                    </ul>
+                                </div>
+                                <div class="lg:col-span-5 bg-white rounded-xl p-3 border border-slate-200 cursor-pointer hover:opacity-95 transition-opacity order-1 lg:order-2" onclick="openLogoModal('STICKER 2.png', 'Citrus Girl Series (Orange Chibi)')">
+                                    <img src="STICKER 2.png" alt="Citrus Girl Series" class="w-full h-auto object-contain rounded-lg">
+                                </div>
                             </div>
                         </div>
                     </div>
