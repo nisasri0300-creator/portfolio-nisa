@@ -26,17 +26,16 @@
 </head>
 <body class="relative min-h-screen flex bg-[#F7F4EE]">
 
-    <!-- Sidebar Desktop (Foto Profil Lebih Besar) -->
+    <!-- Sidebar Desktop -->
     <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-80 bg-[#F4EFE6] border-r border-[#E8E1D5] flex flex-col justify-between p-10 transition-transform duration-300 transform translate-x-0">
         <div>
-            <!-- Header Sidebar dengan Foto Lebih Besar & Tombol Close (✕) -->
+            <!-- Header Sidebar -->
             <div class="flex items-center justify-between mb-8">
                 <div class="flex items-center gap-4">
-                    <!-- Foto Profil Lebih Besar -->
                     <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-md">
                     <div>
                         <h2 class="text-[10px] uppercase tracking-[0.3em] text-slate-400 font-bold mb-0.5">PORTFOLIO</h2>
-                        <h1 class="text-base font-bold tracking-tight text-slate-900 drop-shadow-[0_1px_2px_rgba(255,255,255,0.8)]">Nisa Sri Fadilah</h1>
+                        <h1 class="text-base font-bold tracking-tight text-slate-900">Nisa Sri Fadilah</h1>
                     </div>
                 </div>
                 <button onclick="toggleSidebar()" class="w-8 h-8 rounded-full hover:bg-[#EAE2D2] flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors">
@@ -75,7 +74,6 @@
             </nav>
         </div>
 
-        <!-- Tombol Download Resume di Bawah Sidebar -->
         <div>
             <a href="#" class="inline-flex items-center justify-between w-full text-slate-800 hover:text-slate-900 font-semibold text-xs tracking-[0.2em] uppercase pb-2 border-b border-slate-300 hover:border-slate-900 transition-all">
                 <span>Download Resume</span>
@@ -84,16 +82,10 @@
         </div>
     </aside>
 
-    <!-- Tombol Menu (☰) untuk Membuka Kembali Sidebar jika Ditutup -->
+    <!-- Tombol Menu (☰) -->
     <button id="open-btn" onclick="toggleSidebar()" class="fixed top-6 left-6 z-40 w-10 h-10 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full hidden items-center justify-center text-slate-800 shadow-md hover:bg-[#eae2d2] transition-all">
         ☰
     </button>
-
-    <!-- Mobile Top Header -->
-    <div class="md:hidden fixed top-0 inset-x-0 z-40 bg-[#F4EFE6]/90 backdrop-blur-md border-b border-[#E8E1D5] px-6 py-4 flex items-center justify-between">
-        <span class="text-xs font-bold uppercase tracking-[0.2em] text-slate-800">Nisa Sri Fadilah</span>
-        <a href="#" class="text-[10px] font-semibold uppercase tracking-widest text-slate-700 border-b border-slate-400 pb-0.5">Resume ↓</a>
-    </div>
 
     <!-- Main Content Area -->
     <div id="main-container" class="flex-1 ml-0 md:ml-80 transition-all duration-300 min-h-screen flex flex-col">
@@ -112,12 +104,12 @@
             </div>
         </main>
 
-        <!-- TAB 2: CREATIVE SECTION (Lengkap dengan Palet Warna & Tipografi) -->
+        <!-- TAB 2: CREATIVE SECTION -->
         <section id="section-creative" class="hidden flex-1 p-8 md:p-16 pt-24 md:pt-16">
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-center text-xl md:text-2xl font-bold tracking-[0.3em] uppercase mb-12 text-slate-900">C R E A T I V E</h2>
                 
-                <!-- Category: LOGO -->
+                <!-- LOGO -->
                 <div class="mb-14">
                     <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] mb-8 shadow-sm">
                         LOGO
@@ -145,7 +137,7 @@
                     </div>
                 </div>
 
-                <!-- Category: BRANDING -->
+                <!-- BRANDING -->
                 <div>
                     <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] mb-8 shadow-sm">
                         BRANDING
@@ -154,34 +146,66 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <!-- 1. Meet Lunae Showcase -->
                         <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                            <div>
-                                <img src="Meet Lunae.png" alt="Meet Lunae" class="w-full h-56 object-cover rounded-xl mb-3 border border-white">
-                                <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">Meet Lunae Showcase</h3>
+                            <div class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center">
+                                <img src="Meet Lunae.png" alt="Meet Lunae" class="w-full h-auto object-cover">
                             </div>
+                            <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">Meet Lunae Showcase</h3>
                         </div>
 
                         <!-- 2. Color Palette & Moodboard -->
                         <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                            <div>
-                                <img src="Lunae Products.png" alt="Color Palette & Moodboard" class="w-full h-56 object-cover rounded-xl mb-3 border border-white">
-                                <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">Color Palette & Moodboard</h3>
+                            <div class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center">
+                                <img src="Lunae Products.png" alt="Color Palette & Moodboard" class="w-full h-auto object-cover">
                             </div>
+                            <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">Color Palette & Moodboard</h3>
                         </div>
 
-                        <!-- 3. Typography Guide (Gambar 2 yang sempat hilang) -->
+                        <!-- 3. Typography & Color Palette Guide (Dibuat murni pakai HTML/CSS tanpa file gambar) -->
                         <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                            <div>
-                                <img src="image_119c41.png" alt="Typography Guide" class="w-full h-56 object-cover rounded-xl mb-3 border border-white">
-                                <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">Typography & Color Palette</h3>
+                            <div class="w-full bg-[#FAF8F5] rounded-xl p-3 mb-3 border border-slate-200 grid grid-cols-1 gap-3">
+                                <!-- Bagian Atas: Strip Palet Warna -->
+                                <div>
+                                    <div class="rounded-md overflow-hidden border border-black/5 flex h-5 mb-2">
+                                        <div class="flex-1 bg-[#F7F1DE]"></div>
+                                        <div class="flex-1 bg-[#80BA99]"></div>
+                                        <div class="flex-1 bg-[#9D6638]"></div>
+                                        <div class="flex-1 bg-[#4E220F]"></div>
+                                    </div>
+                                    <div class="grid grid-cols-3 gap-1 text-[8px] text-center font-mono text-slate-600">
+                                        <div><span class="inline-block w-2 h-2 rounded-full bg-[#80BA99] mr-0.5"></span>#80BA99</div>
+                                        <div><span class="inline-block w-2 h-2 rounded-full bg-[#9D6638] mr-0.5"></span>#9D6638</div>
+                                        <div><span class="inline-block w-2 h-2 rounded-full bg-[#4E220F] mr-0.5"></span>#4E220F</div>
+                                    </div>
+                                </div>
+                                <!-- Bagian Bawah: Tipografi & Karakter -->
+                                <div class="border-t border-slate-200 pt-2">
+                                    <h4 class="font-serif text-lg font-bold tracking-tight text-[#1A202C]">
+                                        Lunáe<span class="text-[10px] align-top text-[#9D6638]">✦</span>
+                                    </h4>
+                                    <p class="text-[9px] font-serif uppercase tracking-[0.15em] text-slate-500 pb-1 mb-1 border-b border-slate-200">
+                                        LUNAE TYPEFACE
+                                    </p>
+                                    <div class="grid grid-cols-2 gap-1 text-[8px] font-serif text-slate-700">
+                                        <div>
+                                            <p class="tracking-wider">ABCDEFGHIJKLM</p>
+                                            <p class="tracking-wider">NOPQRSTUVWXYZ</p>
+                                        </div>
+                                        <div>
+                                            <p class="font-sans text-[9px]">0123456789</p>
+                                            <p class="font-sans text-[8px]">!?#$%& (*;+.)</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">Typography & Color Palette</h3>
                         </div>
 
                         <!-- 4. Editorial & Typography Model -->
                         <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                            <div>
-                                <img src="Model Showcase.png" alt="Model Showcase" class="w-full h-56 object-cover rounded-xl mb-3 border border-white">
-                                <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">Editorial & Typography</h3>
+                            <div class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center">
+                                <img src="Model Showcase.png" alt="Model Showcase" class="w-full h-auto object-cover">
                             </div>
+                            <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">Editorial & Typography</h3>
                         </div>
                     </div>
                 </div>
@@ -234,7 +258,7 @@
         <button onclick="switchTab('about')" class="text-xs font-medium text-slate-400 hover:text-slate-900 uppercase tracking-widest transition-colors">About</button>
     </nav>
 
-    <!-- Script Pendukung Interaksi & Navigasi -->
+    <!-- Script Pendukung -->
     <script>
         let isSidebarOpen = true;
 
