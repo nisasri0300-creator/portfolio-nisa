@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Production Line Balancing & Ergonomic Layout - LUNAE Production Improvement</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#F8F5EE] text-slate-800 font-sans antialiased selection:bg-[#EAE2D2]">
+    
+    <!-- Header / Navbar Kembali -->
+    <header class="max-w-4xl mx-auto px-6 py-8">
+        <a href="index.html" class="inline-flex items-center gap-2 text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors">
+            <span>←</span> Back to Portfolio
+        </a>
+    </header>
+
+    <!-- Main Content Article -->
+    <main class="max-w-4xl mx-auto px-6 pb-20">
+        
+        <!-- Judul Dokumen -->
+        <div class="mb-10 pb-8 border-b border-[#E8E1D5]">
+            <span class="px-3 py-1 bg-[#EAE2D2] text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full">Project 05 · Active Project</span>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4 mb-3">Production Line Balancing & Ergonomic Layout</h1>
+            <p class="text-sm font-medium text-slate-600">LUNAE · Production Improvement Case | Applying takt time, cycle time, workstation balancing, bottleneck analysis, and ergonomic flow.</p>
+        </div>
+
+        <!-- 01 · Project Context -->
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-slate-900 mb-3">01 · Project Context</h2>
+            <p class="text-sm text-slate-700 leading-relaxed bg-[#F4EFE6] p-6 rounded-2xl border border-[#E8E1D5]">
+                LUNAE is a fashion product project centered on a modular kimono-style shirt. This case treats production as a measurable system: material is transformed through a sequence of operations, and each operation must support the required production pace while maintaining quality and a workable operator environment[cite: 13].
+            </p>
+        </section>
+
+        <!-- 02 · Objective -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-slate-900 mb-3">02 · Objective</h2>
+            <p class="text-sm text-slate-700 leading-relaxed bg-[#F4EFE6] p-6 rounded-2xl border border-[#E8E1D5]">
+                Develop a practical production-line improvement framework for LUNAE by connecting demand with takt time, actual cycle time, workstation allocation, bottleneck identification, line balancing, and ergonomic layout. The purpose is to improve flow and usable capacity before assuming that additional labor, machines, or floor space are required[cite: 13].
+            </p>
+        </section>
+
+        <!-- 03 · Reference Methodology -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-slate-900 mb-3">03 · Reference Methodology</h2>
+            <p class="text-sm text-slate-700 leading-relaxed mb-4">
+                The methodology is informed by iFactory's manufacturing guidance on takt time, cycle time, line balancing, workstation analysis, and production monitoring. iFactory describes takt time as the production pace required by customer demand and distinguishes it from cycle time, the actual time required by a process or workstation[cite: 13].
+            </p>
+            <div class="p-4 bg-white rounded-xl border border-[#E8E1D5] text-xs text-slate-600">
+                <b>Primary reference:</b> iFactory — Production Line Balancing, Takt Time & Workstation.<br>
+                <a href="https://ifactoryapp.com/industries/manufacturing-plant/production-line-balancing-takt-time-workstation" target="_blank" class="text-blue-600 hover:underline break-all">https://ifactoryapp.com/industries/manufacturing-plant/production-line-balancing-takt-time-workstation</a>
+            </div>
+        </section>
+
+        <!-- 04 · Owner Perspective -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-slate-900 mb-3">04 · Owner Perspective</h2>
+            <p class="text-sm text-slate-700 leading-relaxed mb-4">
+                For an owner, production efficiency is not simply about keeping operators busy. The objective is to create a production system whose capacity can be understood, measured, and improved against actual demand[cite: 13].
+            </p>
+            <ul class="space-y-2 text-sm text-slate-700 bg-white p-6 rounded-2xl border border-[#E8E1D5]">
+                <li>• What output is required from the line?[cite: 13]</li>
+                <li>• What production pace is required to satisfy that demand?[cite: 13]</li>
+                <li>• Which workstation is actually limiting flow?[cite: 13]</li>
+                <li>• Where is work accumulating or waiting?[cite: 13]</li>
+                <li>• Can work content be redistributed between stations?[cite: 13]</li>
+                <li>• How much capacity is lost through imbalance or unnecessary movement?[cite: 13]</li>
+                <li>• Can the workstation be redesigned to improve both productivity and operator comfort?[cite: 13]</li>
+            </ul>
+        </section>
+
+        <!-- 05 · Production Flow -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-slate-900 mb-3">05 · Production Flow</h2>
+            <div class="p-4 bg-[#F4EFE6] rounded-xl font-mono text-xs font-bold text-slate-800 text-center border border-[#E8E1D5] mb-4">
+                MATERIAL PREPARATION → CUTTING → SEWING → FINISHING → QUALITY CHECK → PACKING
+            </div>
+            <p class="text-sm text-slate-700 leading-relaxed">
+                For LUNAE, the sewing process can be decomposed into individual work elements such as component preparation, joining, sleeve-related operations, detail finishing, and inspection. The final sequence should follow the approved production method and actual work instructions[cite: 13].
+            </p>
+        </section>
+
+        <!-- 06 · Takt Time vs. Cycle Time -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-slate-900 mb-4">06 · Takt Time vs. Cycle Time</h2>
+            <div class="overflow-x-auto mb-4">
+                <table class="w-full text-left border-collapse bg-white rounded-xl overflow-hidden shadow-sm border border-[#E8E1D5]">
+                    <thead>
+                        <tr class="bg-[#F4EFE6] text-xs font-bold text-slate-900 uppercase tracking-wider border-b border-[#E8E1D5]">
+                            <th class="p-4">Concept</th>
+                            <th class="p-4">Formula / Meaning</th>
+                            <th class="p-4">Use in LUNAE</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-xs text-slate-700 divide-y divide-[#E8E1D5]">
+                        <tr>
+                            <td class="p-4 font-semibold">Takt Time</td>
+                            <td class="p-4">Available production time ÷ required customer output</td>
+                            <td class="p-4">Sets the required production pace.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-semibold">Cycle Time</td>
+                            <td class="p-4">Actual time required to complete one unit at a process/workstation</td>
+                            <td class="p-4">Measures the real operating pace.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-semibold">Takt Adherence</td>
+                            <td class="p-4">Whether actual cycles stay at or below the required pace</td>
+                            <td class="p-4">Shows whether the station can consistently keep up.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-sm text-slate-700 leading-relaxed">
+                Takt time is a target pace derived from demand; it is not the same as actual cycle time. A workstation whose cycle time repeatedly exceeds takt creates a capacity problem that should be investigated through work-content analysis and line balancing[cite: 13].
+            </p>
+        </section>
+
+        <!-- 07 · Line Balancing -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-slate-900 mb-4">07 · Line Balancing</h2>
+            <p class="text-sm text-slate-700 mb-4">
+                Line balancing distributes feasible work elements across workstations so that workloads are as balanced as practical relative to the required production pace[cite: 13].
+            </p>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse bg-white rounded-xl overflow-hidden shadow-sm border border-[#E8E1D5]">
+                    <thead>
+                        <tr class="bg-[#F4EFE6] text-xs font-bold text-slate-900 uppercase tracking-wider border-b border-[#E8E1D5]">
+                            <th class="p-4">Metric</th>
+                            <th class="p-4">Basic Logic</th>
+                            <th class="p-4">Decision</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-xs text-slate-700 divide-y divide-[#E8E1D5]">
+                        <tr>
+                            <td class="p-4 font-semibold">Work Content</td>
+                            <td class="p-4">Sum of task times required for one unit</td>
+                            <td class="p-4">Understand total labor content.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-semibold">Workstation Load</td>
+                            <td class="p-4">Task time assigned to a workstation</td>
+                            <td class="p-4">Compare workload between stations.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-semibold">Line Efficiency</td>
+                            <td class="p-4">Total work content ÷ (workstations × cycle-time target)</td>
+                            <td class="p-4">Evaluate balance of assigned capacity.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-semibold">Balance Loss</td>
+                            <td class="p-4">1 − line efficiency</td>
+                            <td class="p-4">Quantify capacity lost through imbalance.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 08 · Bottleneck Analysis -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-slate-900 mb-3">08 · Bottleneck Analysis</h2>
+            <p class="text-sm text-slate-700 leading-relaxed mb-4">
+                The visible queue is not automatically the root bottleneck. iFactory's simulation material highlights that queues can be downstream effects and that constraints can shift after upstream improvements[cite: 13].
+            </p>
+            <ul class="space-y-2 text-sm text-slate-700 bg-white p-6 rounded-2xl border border-[#E8E1D5]">
+                <li>• Measure actual cycle time by operation and across multiple observations[cite: 13].</li>
+                <li>• Compare each workstation against the required takt[cite: 13].</li>
+                <li>• Observe WIP accumulation and waiting before and after stations[cite: 13].</li>
+                <li>• Separate planned work from downtime, material shortage, and quality rework[cite: 13].</li>
+                <li>• Check whether the constraint changes when work is redistributed[cite: 13].</li>
+                <li>• Prioritize improvements that increase total line throughput, not only local speed[cite: 13].</li>
+            </ul>
+        </section>
+
+        <!-- 09 · Ergonomic Layout -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-slate-900 mb-3">09 · Ergonomic Layout</h2>
+            <p class="text-sm text-slate-700 leading-relaxed mb-4">
+                Ergonomic layout is treated as part of production-system design to minimize unnecessary reaching, walking, awkward posture, and material-handling movement[cite: 13].
+            </p>
+            <ul class="space-y-2 text-sm text-slate-700 bg-white p-6 rounded-2xl border border-[#E8E1D5]">
+                <li>• Place frequently used materials within an efficient reach zone[cite: 13].</li>
+                <li>• Arrange machines and worktables according to process sequence[cite: 13].</li>
+                <li>• Reduce unnecessary walking between consecutive operations[cite: 13].</li>
+                <li>• Separate incoming material, work-in-process, and completed work[cite: 13].</li>
+                <li>• Maintain clear material flow and avoid crossing paths where practical[cite: 13].</li>
+                <li>• Set suitable working height and seating conditions for the task[cite: 13].</li>
+            </ul>
+        </section>
+
+        <!-- 10 · LUNAE Measurement Framework -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-slate-900 mb-4">10 · LUNAE Measurement Framework</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse bg-white rounded-xl overflow-hidden shadow-sm border border-[#E8E1D5]">
+                    <thead>
+                        <tr class="bg-[#F4EFE6] text-xs font-bold text-slate-900 uppercase tracking-wider border-b border-[#E8E1D5]">
+                            <th class="p-4">Station</th>
+                            <th class="p-4">Operation</th>
+                            <th class="p-4">Cycle Time</th>
+                            <th class="p-4">Takt</th>
+                            <th class="p-4">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-xs text-slate-700 divide-y divide-[#E8E1D5]">
+                        <tr><td class="p-4 font-semibold">WS-01</td><td class="p-4">Component preparation</td><td class="p-4">Measure</td><td class="p-4">Calculate</td><td class="p-4">Standardize method</td></tr>
+                        <tr><td class="p-4 font-semibold">WS-02</td><td class="p-4">Main assembly</td><td class="p-4">Measure</td><td class="p-4">Calculate</td><td class="p-4">Compare with takt</td></tr>
+                        <tr><td class="p-4 font-semibold">WS-03</td><td class="p-4">Sleeve / detail operation</td><td class="p-4">Measure</td><td class="p-4">Calculate</td><td class="p-4">Check bottleneck risk</td></tr>
+                        <tr><td class="p-4 font-semibold">WS-04</td><td class="p-4">Finishing</td><td class="p-4">Measure</td><td class="p-4">Calculate</td><td class="p-4">Balance workload</td></tr>
+                        <tr><td class="p-4 font-semibold">WS-05</td><td class="p-4">Quality / final check</td><td class="p-4">Measure</td><td class="p-4">Calculate</td><td class="p-4">Check queue and rework</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 11 · Production Dashboard -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-slate-900 mb-4">11 · Production Dashboard</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse bg-white rounded-xl overflow-hidden shadow-sm border border-[#E8E1D5]">
+                    <thead>
+                        <tr class="bg-[#F4EFE6] text-xs font-bold text-slate-900 uppercase tracking-wider border-b border-[#E8E1D5]">
+                            <th class="p-4">KPI</th>
+                            <th class="p-4">Management Question</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-xs text-slate-700 divide-y divide-[#E8E1D5]">
+                        <tr><td class="p-4 font-semibold">Required Output</td><td class="p-4">What quantity must the line produce?</td></tr>
+                        <tr><td class="p-4 font-semibold">Takt Time</td><td class="p-4">What pace is required to meet demand?</td></tr>
+                        <tr><td class="p-4 font-semibold">Cycle Time by Station</td><td class="p-4">Which stations are above or near takt?</td></tr>
+                        <tr><td class="p-4 font-semibold">Takt Adherence</td><td class="p-4">How consistently does each station keep pace?</td></tr>
+                        <tr><td class="p-4 font-semibold">Line Efficiency</td><td class="p-4">How well is workstation capacity balanced?</td></tr>
+                        <tr><td class="p-4 font-semibold">WIP / Queue</td><td class="p-4">Where is flow accumulating?</td></tr>
+                        <tr><td class="p-4 font-semibold">Quality / Rework</td><td class="p-4">Where is production capacity being lost to defects?</td></tr>
+                        <tr><td class="p-4 font-semibold">Lead Time</td><td class="p-4">How long does a unit take through the process?</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 12 · Improvement Roadmap -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-slate-900 mb-4">12 · Improvement Roadmap</h2>
+            <ul class="space-y-2 text-sm text-slate-700 bg-white p-6 rounded-2xl border border-[#E8E1D5]">
+                <li>01 — Map the actual LUNAE production sequence[cite: 13].</li>
+                <li>02 — Break the process into measurable work elements[cite: 13].</li>
+                <li>03 — Collect cycle-time observations across representative conditions[cite: 13].</li>
+                <li>04 — Calculate takt time from actual demand and time[cite: 13].</li>
+                <li>05 — Compare cycle time and takt by workstation[cite: 13].</li>
+                <li>06 — Identify the true constraint using flow, WIP, and capacity evidence[cite: 13].</li>
+                <li>07 — Rebalance feasible work content between workstations[cite: 13].</li>
+                <li>08 — Improve workstation layout and material placement[cite: 13].</li>
+                <li>09 — Monitor output, takt adherence, efficiency, WIP, quality, and lead time[cite: 13].</li>
+                <li>10 — Rebalance again when demand or process conditions change[cite: 13].</li>
+            </ul>
+        </section>
+
+        <!-- 13 · Definition of Success -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-slate-900 mb-3">13 · Definition of Success</h2>
+            <p class="text-sm text-slate-700 leading-relaxed mb-6">
+                The target is a production line whose capacity is measurable and aligned with demand: workstations operate at an appropriate pace, bottlenecks are visible, work is distributed more evenly, material movement is controlled, and the operator environment supports consistent work[cite: 13].
+            </p>
+            <div class="p-5 bg-slate-900 text-white rounded-2xl text-center font-bold text-xs tracking-widest uppercase">
+                LUNAE · Production Line Balancing & Ergonomic Layout
+            </div>
+        </section>
+
+        <!-- Portfolio Positioning Footer -->
+        <footer class="pt-8 border-t border-[#E8E1D5] text-xs text-slate-500">
+            <p class="font-semibold mb-1">Portfolio Positioning</p>
+            <p>Project 05 demonstrates how a product-level case such as LUNAE can be translated into a production-engineering problem, examining how demand, takt, cycle time, bottlenecks, and layout interact[cite: 13].</p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
