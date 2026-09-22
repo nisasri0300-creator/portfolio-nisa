@@ -3,159 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio - Nisa Sri Fadilah</title>
+    <title>Portfolio - Nisa Sri Fadilah</title>
     <style>
         /* Reset & Base Styles */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f9f9f9; color: #333; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f7f4ee; color: #2c2c2c; }
         
-        /* Sidebar Styles */
-        .sidebar { width: 250px; height: 100vh; background: #2c3e50; color: #fff; position: fixed; left: 0; top: 0; transition: 0.3s; padding: 20px; z-index: 100; }
-        .sidebar h2 { text-align: center; margin-bottom: 30px; font-size: 22px; }
+        /* Sidebar Styles (Style Gambar 1) */
+        .sidebar { width: 260px; height: 100vh; background: #f2ede4; color: #2c2c2c; position: fixed; left: 0; top: 0; transition: 0.3s; padding: 25px 20px; z-index: 100; border-right: 1px solid #e6dfd3; display: flex; flex-direction: column; justify-content: space-between; }
+        
+        .profile-section { display: flex; align-items: center; gap: 12px; margin-bottom: 25px; }
+        .profile-section img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; }
+        .profile-info .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #888; }
+        .profile-info h3 { font-size: 15px; font-weight: bold; color: #1a1a1a; }
+
+        .social-icons { display: flex; gap: 12px; margin-bottom: 30px; font-size: 16px; color: #555; }
+        
         .sidebar ul { list-style: none; }
-        .sidebar ul li { margin-bottom: 15px; }
-        .sidebar ul li a { color: #fff; text-decoration: none; cursor: pointer; display: block; padding: 10px; border-radius: 5px; transition: 0.3s; }
-        .sidebar ul li a:hover, .sidebar ul li a.active { background: #34495e; }
+        .sidebar ul li { margin-bottom: 12px; }
+        .sidebar ul li a { color: #555; text-decoration: none; cursor: pointer; display: block; padding: 8px 12px; border-radius: 6px; font-size: 14px; transition: 0.2s; }
+        .sidebar ul li a:hover, .sidebar ul li a.active { background: #e2dcd2; color: #1a1a1a; font-weight: 500; }
+
+        .sidebar-footer { font-size: 12px; color: #888; border-top: 1px solid #e6dfd3; padding-top: 15px; }
+        .sidebar-footer a { color: #2c2c2c; text-decoration: none; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
 
         /* Main Content */
-        .main-content { margin-left: 250px; padding: 30px; transition: 0.3s; }
-        .tab-content { display: none; animation: fadeIn 0.5s; }
+        .main-content { margin-left: 260px; padding: 40px; transition: 0.3s; }
+        .tab-content { display: none; animation: fadeIn 0.4s; }
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Gallery Grid untuk Foto 1 - 8 */
-        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
-        .gallery img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .gallery img:hover { transform: scale(1.05); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        /* Section Title & Subheaders */
+        .section-title { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: #888; margin-bottom: 15px; margin-top: 25px; background: #ece6dc; display: inline-block; padding: 4px 10px; border-radius: 4px; }
+        .hint-text { font-size: 12px; color: #777; margin-bottom: 20px; }
 
-        /* Image Modal (Pop-up Gambar) */
+        /* Gallery Grid ala Gambar 1 (Card Style) */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .card { background: #fff; padding: 12px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 6px 15px rgba(0,0,0,0.08); }
+        .card img { width: 100%; height: 240px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+        .card-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #444; text-align: center; padding: 5px 0; }
+
+        /* Image Modal */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); overflow: auto; }
         .modal-content { margin: auto; display: block; max-width: 80%; max-height: 80vh; margin-top: 50px; border-radius: 8px; }
-        .close-btn { position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .close-btn:hover { color: #bbb; }
+        .close-btn { position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; }
 
-        /* Mobile Bottom Nav & Responsive Styles */
-        .mobile-bottom-nav { display: none; position: fixed; bottom: 0; width: 100%; background: #2c3e50; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 100; }
-        .mobile-bottom-nav ul { display: flex; justify-content: space-around; list-style: none; padding: 10px 0; margin: 0; }
-        .mobile-bottom-nav ul li a { color: #fff; text-decoration: none; font-size: 14px; display: flex; flex-direction: column; align-items: center; cursor: pointer; }
-        
-        .menu-toggle { display: none; background: #2c3e50; color: #fff; border: none; padding: 10px 15px; font-size: 18px; cursor: pointer; position: fixed; top: 10px; left: 10px; z-index: 101; border-radius: 5px; }
+        /* Mobile Responsive */
+        .menu-toggle { display: none; background: #f2ede4; color: #2c2c2c; border: 1px solid #dcd6cb; padding: 8px 14px; font-size: 16px; cursor: pointer; position: fixed; top: 15px; left: 15px; z-index: 101; border-radius: 6px; }
 
         @media (max-width: 768px) {
-            .sidebar { left: -250px; }
+            .sidebar { left: -260px; }
             .sidebar.show { left: 0; }
-            .main-content { margin-left: 0; padding: 60px 20px 80px 20px; } /* Jarak untuk tombol toggle dan bottom nav */
+            .main-content { margin-left: 0; padding: 70px 20px 40px 20px; }
             .menu-toggle { display: block; }
-            .mobile-bottom-nav { display: block; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Tombol Menu Mobile (Untuk membuka sidebar di HP) -->
+    <!-- Tombol Menu Mobile -->
     <button class="menu-toggle" onclick="toggleSidebar()">☰ Menu</button>
 
-    <!-- Sidebar -->
+    <!-- Sidebar (Gaya Gambar 1) -->
     <div class="sidebar" id="sidebar">
-        <h2>Nisa Sri Fadilah</h2>
-        <ul id="sidebar-nav">
-            <li><a class="active" onclick="switchTab('profil', this)">Profil</a></li>
-            <li><a onclick="switchTab('portofolio', this)">Portofolio</a></li>
-            <li><a onclick="switchTab('kontak', this)">Kontak</a></li>
-        </ul>
+        <div>
+            <div class="profile-section">
+                <!-- Ganti foto profil jika ada, misal: foto-profil.jpg -->
+                <img src="foto1.jpg" alt="Profile">
+                <div class="profile-info">
+                    <div class="label">Portfolio</div>
+                    <h3>Nisa Sri Fadilah</h3>
+                </div>
+            </div>
+
+            <!-- Social Media Icons (Simulasi ikon ringkas) -->
+            <div class="social-icons">
+                <span>🌐</span> <span>💼</span> <span>📸</span>
+            </div>
+
+            <ul id="sidebar-nav">
+                <li><a class="active" onclick="switchTab('home', this)">Home</a></li>
+                <li><a onclick="switchTab('creative', this)">Creative</a></li>
+                <li><a onclick="switchTab('projects', this)">Projects</a></li>
+                <li><a onclick="switchTab('about', this)">About Me</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-footer">
+            <a href="#">DOWNLOAD CV <span>↓</span></a>
+            <p style="margin-top: 8px; font-size: 11px; color: #aaa;">2026 BY NISA</p>
+        </div>
     </div>
 
     <!-- Konten Utama -->
     <div class="main-content">
         
-        <!-- Tab Profil -->
-        <div id="profil" class="tab-content active">
-            <h1>Tentang Saya</h1>
-            <p style="margin-top: 15px; line-height: 1.6;">
-                Halo! Nama saya Nisa Sri Fadilah. Selamat datang di portofolio digital saya. 
-                Saya adalah seseorang yang memiliki passion di bidang kreatif dan selalu antusias untuk belajar hal-hal baru. 
-                Di sini Anda dapat melihat beberapa karya dan dokumentasi proyek yang telah saya buat.
-            </p>
-        </div>
-
-        <!-- Tab Portofolio (Dengan Foto 1 sampai 8) -->
-        <div id="portofolio" class="tab-content">
-            <h1>Galeri Portofolio</h1>
-            <p style="margin-top: 10px;">Klik gambar untuk memperbesar.</p>
+        <!-- Tab Home / Portofolio Utama (Berisi Foto 1 sampai 8) -->
+        <div id="home" class="tab-content active">
+            
+            <!-- Kategori / Bagian Pertama -->
+            <div class="section-title">Creative Collection</div>
+            <p class="hint-text">Klik pada foto untuk memperbesar.</p>
             
             <div class="gallery">
-                <!-- Masukkan Foto 1 sampai 8 di sini -->
-                <!-- Pastikan nama file sesuai (misal foto1.jpg, foto2.png, dll) -->
-                <img src="foto1.jpg" alt="Karya 1" onclick="openModal(this.src)">
-                <img src="foto2.jpg" alt="Karya 2" onclick="openModal(this.src)">
-                <img src="foto3.jpg" alt="Karya 3" onclick="openModal(this.src)">
-                <img src="foto4.jpg" alt="Karya 4" onclick="openModal(this.src)">
-                <img src="foto5.jpg" alt="Karya 5" onclick="openModal(this.src)">
-                <img src="foto6.jpg" alt="Karya 6" onclick="openModal(this.src)">
-                <img src="foto7.jpg" alt="Karya 7" onclick="openModal(this.src)">
-                <img src="foto8.jpg" alt="Karya 8" onclick="openModal(this.src)">
+                <div class="card" onclick="openModal('foto1.jpg')">
+                    <img src="foto1.jpg" alt="Foto 1">
+                    <div class="card-title">Are You Ready?</div>
+                </div>
+                <div class="card" onclick="openModal('foto2.jpg')">
+                    <img src="foto2.jpg" alt="Foto 2">
+                    <div class="card-title">Color Palette & Title</div>
+                </div>
+                <div class="card" onclick="openModal('foto3.jpg')">
+                    <img src="foto3.jpg" alt="Foto 3">
+                    <div class="card-title">Soft Textures & Comfort</div>
+                </div>
+                <div class="card" onclick="openModal('foto4.jpg')">
+                    <img src="foto4.jpg" alt="Foto 4">
+                    <div class="card-title">Kids Wear Lookbook</div>
+                </div>
             </div>
+
+            <!-- Kategori / Bagian Kedua (Modeling / Sesuai Gambar 1) -->
+            <div class="section-title">Modeling</div>
+            <p class="hint-text">Koleksi foto sesi pemotretan.</p>
+
+            <div class="gallery">
+                <div class="card" onclick="openModal('foto5.jpg')">
+                    <img src="foto5.jpg" alt="Foto 5">
+                    <div class="card-title">Portrait Session 1</div>
+                </div>
+                <div class="card" onclick="openModal('foto6.jpg')">
+                    <img src="foto6.jpg" alt="Foto 6">
+                    <div class="card-title">Group Concept</div>
+                </div>
+                <div class="card" onclick="openModal('foto7.jpg')">
+                    <img src="foto7.jpg" alt="Foto 7">
+                    <div class="card-title">Studio Styling</div>
+                </div>
+                <div class="card" onclick="openModal('foto8.jpg')">
+                    <img src="foto8.jpg" alt="Foto 8">
+                    <div class="card-title">Vibrant Mood</div>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Tab Kontak -->
-        <div id="kontak" class="tab-content">
-            <h1>Hubungi Saya</h1>
-            <div style="margin-top: 15px; line-height: 1.6;">
-                <p><strong>Email:</strong> nisa.srifadilah@email.com</p>
-                <p><strong>Instagram:</strong> @nisasrifadilah</p>
-                <p><strong>LinkedIn:</strong> Nisa Sri Fadilah</p>
-            </div>
+        <!-- Tab Creative -->
+        <div id="creative" class="tab-content">
+            <div class="section-title">Creative Works</div>
+            <p style="margin-top: 15px; line-height: 1.6;">Halaman khusus untuk menampilkan berbagai proyek kreatif dan konsep desain visual Anda.</p>
+        </div>
+
+        <!-- Tab Projects -->
+        <div id="projects" class="tab-content">
+            <div class="section-title">Projects</div>
+            <p style="margin-top: 15px; line-height: 1.6;">Daftar proyek atau portofolio pekerjaan lain yang pernah diselesaikan.</p>
+        </div>
+
+        <!-- Tab About Me -->
+        <div id="about" class="tab-content">
+            <div class="section-title">About Me</div>
+            <p style="margin-top: 15px; line-height: 1.6;">
+                Halo! Nama saya Nisa Sri Fadilah. Saya memiliki ketertarikan mendalam di bidang seni visual, desain, dan pemotretan. 
+                Portofolio ini merangkum sebagian kecil dari perjalanan kreatif saya.
+            </p>
         </div>
 
     </div>
 
-    <!-- Modal untuk Gambar (Pop-up saat gambar diklik) -->
+    <!-- Modal Pop-up Gambar -->
     <div id="imageModal" class="modal">
         <span class="close-btn" onclick="closeModal()">&times;</span>
         <img class="modal-content" id="modalImg">
     </div>
 
-    <!-- Mobile Bottom Navigation -->
-    <div class="mobile-bottom-nav">
-        <ul>
-            <li><a onclick="switchTab('profil', this)">👤<br>Profil</a></li>
-            <li><a onclick="switchTab('portofolio', this)">🖼️<br>Portofolio</a></li>
-            <li><a onclick="switchTab('kontak', this)">✉️<br>Kontak</a></li>
-        </ul>
-    </div>
-
     <!-- JavaScript -->
     <script>
-        // Fungsi untuk mengganti Tab / Halaman
         function switchTab(tabId, element) {
-            // Sembunyikan semua konten tab
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
             
-            // Tampilkan tab yang dipilih
             document.getElementById(tabId).classList.add('active');
 
-            // Hapus class 'active' dari semua menu di sidebar
             const links = document.querySelectorAll('#sidebar-nav a');
             links.forEach(link => link.classList.remove('active'));
             
-            // Tambahkan class 'active' ke menu yang diklik (jika dari sidebar)
-            if(element.parentElement.parentElement.id === 'sidebar-nav') {
+            if(element) {
                 element.classList.add('active');
             }
 
-            // Tutup sidebar di mode mobile setelah memilih menu
             if(window.innerWidth <= 768) {
                 document.getElementById('sidebar').classList.remove('show');
             }
         }
 
-        // Fungsi untuk membuka Sidebar di HP
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('show');
         }
 
-        // Fungsi untuk membuka Modal (Pop-up) Gambar
         function openModal(src) {
             const modal = document.getElementById("imageModal");
             const modalImg = document.getElementById("modalImg");
@@ -163,12 +210,10 @@
             modalImg.src = src;
         }
 
-        // Fungsi untuk menutup Modal Gambar
         function closeModal() {
             document.getElementById("imageModal").style.display = "none";
         }
 
-        // Menutup modal jika area kosong di luar gambar diklik
         window.onclick = function(event) {
             const modal = document.getElementById("imageModal");
             if (event.target == modal) {
