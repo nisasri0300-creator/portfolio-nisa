@@ -412,34 +412,10 @@
         }
 
         function closeLogoModal() {
-            const modal = document.getElementById('logoCardModal') || document.getElementById('logoModal');
-            if (modal) {
-                modal.classList.remove('flex');
-                modal.classList.add('hidden');
-            }
+            const modal = document.getElementById('logoModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
         }
-
-        // Role Rotator Animation on Home Page
-        const roles = [
-            "INDUSTRIAL ENGINEERING",
-            "CREATIVE SPECIALIST",
-            "E-COMMERCE SPECIALIST",
-            "UI/UX & BRANDING DESIGNER"
-        ];
-        let roleIndex = 0;
-        const roleTextElement = document.getElementById('role-text');
-
-        function rotateRoles() {
-            if (!roleTextElement) return;
-            roleTextElement.style.opacity = 0;
-            setTimeout(() => {
-                roleIndex = (roleIndex + 1) % roles.length;
-                roleTextElement.textContent = roles[roleIndex];
-                roleTextElement.style.opacity = 1;
-            }, 400);
-        }
-
-        setInterval(rotateRoles, 3000);
     </script>
 </body>
 </html>
