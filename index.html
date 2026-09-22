@@ -123,6 +123,8 @@
                     <button onclick="filterCreative('modeling')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Modeling</button>
                     <button onclick="filterCreative('poster')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Poster</button>
                     <button onclick="filterCreative('social')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Social Media</button>
+                    <button onclick="filterCreative('web')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Design Web</button>
+                    <button onclick="filterCreative('art')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Digital Art</button>
                 </div>
 
                 <!-- CONTAINER UNTUK SELURUH ITEM CREATIVE -->
@@ -347,7 +349,7 @@
                         </div>
                     </div>
 
-                    <!-- SOCIAL MEDIA SECTION (SOSIAL MEDIA 1 s.d. SOSIAL MEDIA 3) -->
+                    <!-- SOCIAL MEDIA SECTION -->
                     <div class="creative-item mb-14" data-category="social">
                         <div class="mb-8 flex flex-col items-start">
                             <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
@@ -365,6 +367,83 @@
                             </div>
                             <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('SOSIAL MEDIA 3.png', 'SOCIAL MEDIA 3')">
                                 <img src="SOSIAL MEDIA 3.png" alt="Social Media 3" class="w-full h-auto object-cover rounded-xl">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DESIGN WEB SECTION (WEB 1 s.d. WEB 4) -->
+                    <div class="creative-item mb-14" data-category="web">
+                        <div class="mb-8 flex flex-col items-start">
+                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
+                                DESIGN WEB
+                            </div>
+                            <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Click on any web design to view larger</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+                                <div onclick="openLogoModal('WEB 1.png', 'Calbyeco')" class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-95 transition-opacity">
+                                    <img src="WEB 1.png" alt="Calbyeco" class="w-full h-auto object-cover">
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-xs uppercase tracking-wider text-slate-900 mb-1">Calbyeco</h3>
+                                    <p class="text-[11px] text-slate-500 leading-relaxed">Landing page for a strawberry snack brand</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+                                <div onclick="openLogoModal('WEB 2.png', 'Qyokazu')" class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-95 transition-opacity">
+                                    <img src="WEB 2.png" alt="Qyokazu" class="w-full h-auto object-cover">
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-xs uppercase tracking-wider text-slate-900 mb-1">Qyokazu</h3>
+                                    <p class="text-[11px] text-slate-500 leading-relaxed">Storefront page for a fashion label</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+                                <div onclick="openLogoModal('WEB 3.png', 'Oatcak')" class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-95 transition-opacity">
+                                    <img src="WEB 3.png" alt="Oatcak" class="w-full h-auto object-cover">
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-xs uppercase tracking-wider text-slate-900 mb-1">Oatcak</h3>
+                                    <p class="text-[11px] text-slate-500 leading-relaxed">Menu page for a food brand</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+                                <div onclick="openLogoModal('WEB 4.png', 'Lunae')" class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-95 transition-opacity">
+                                    <img src="WEB 4.png" alt="Lunae" class="w-full h-auto object-cover">
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-xs uppercase tracking-wider text-slate-900 mb-1">Lunae</h3>
+                                    <p class="text-[11px] text-slate-500 leading-relaxed">Menu page for a fashion label</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DIGITAL ART SECTION (ART 1 s.d. ART 4) -->
+                    <div class="creative-item mb-14" data-category="art">
+                        <div class="mb-8 flex flex-col items-start">
+                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
+                                DIGITAL ART
+                            </div>
+                            <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Click on any digital art to view larger</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ART 1.png', 'Digital Art 1')">
+                                <img src="ART 1.png" alt="Digital Art 1" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ART 2.png', 'Digital Art 2')">
+                                <img src="ART 2.png" alt="Digital Art 2" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ART 3.png', 'Digital Art 3')">
+                                <img src="ART 3.png" alt="Digital Art 3" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ART 4.png', 'Digital Art 4')">
+                                <img src="ART 4.png" alt="Digital Art 4" class="w-full h-64 object-cover rounded-xl">
                             </div>
                         </div>
                     </div>
