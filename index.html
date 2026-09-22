@@ -166,7 +166,7 @@
                         </div>
 
                         <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                            <div onclick="openBrandingGuideModal()" class="w-full bg-[#FAF8F5] rounded-xl p-4 mb-3 border border-slate-200 flex flex-col gap-3 cursor-pointer hover:opacity-95 transition-opacity">
+                            <div onclick="openLogoModal('Lunae Products.png', 'VISUAL TYPOGRAPHY & COLOR PALETTE')" class="w-full bg-[#FAF8F5] rounded-xl p-4 mb-3 border border-slate-200 flex flex-col gap-3 cursor-pointer hover:opacity-95 transition-opacity">
                                 <div>
                                     <div class="rounded-lg overflow-hidden border border-black/5 flex h-5 mb-1.5 shadow-inner">
                                         <div class="flex-1 bg-[#F7F1DE]"></div>
@@ -224,7 +224,7 @@
                         </div>
 
                         <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                            <div onclick="openPrettyGirlPaletteModal()" class="w-full bg-[#FAF8F5] rounded-xl p-4 mb-3 border border-slate-200 flex flex-col gap-3 cursor-pointer hover:opacity-95 transition-opacity">
+                            <div onclick="openLogoModal('Pretty Girl Model.png', 'COLOR PALETTE & TITLE')" class="w-full bg-[#FAF8F5] rounded-xl p-4 mb-3 border border-slate-200 flex flex-col gap-3 cursor-pointer hover:opacity-95 transition-opacity">
                                 <div>
                                     <div class="rounded-lg overflow-hidden border border-black/5 flex flex-col h-12 mb-2 shadow-inner">
                                         <div class="flex-1 bg-[#F1C4D4]"></div>
@@ -400,118 +400,46 @@
             }
         }
 
-        function openLogoModal(imageSrc, title) {
+        function openLogoModal(imageSrc, titleText) {
             const modal = document.getElementById('logoModal');
-            const modalContainer = document.getElementById('modalContentContainer');
+            const modalImage = document.getElementById('modalImage');
             const modalTitle = document.getElementById('modalTitle');
 
-            modalContainer.innerHTML = `<img src="${imageSrc}" alt="Zoomed Image" class="max-w-full max-h-[65vh] object-contain rounded-lg">`;
-            modalTitle.textContent = title;
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function openBrandingGuideModal() {
-            const modal = document.getElementById('logoModal');
-            const modalContainer = document.getElementById('modalContentContainer');
-            const modalTitle = document.getElementById('modalTitle');
-
-            modalContainer.innerHTML = `
-                <div class="w-full bg-[#FAF8F5] rounded-xl p-6 border border-slate-200 flex flex-col gap-4 text-left">
-                    <div>
-                        <div class="rounded-lg overflow-hidden border border-black/5 flex h-7 mb-2 shadow-inner">
-                            <div class="flex-1 bg-[#F7F1DE]"></div>
-                            <div class="flex-1 bg-[#80BA99]"></div>
-                            <div class="flex-1 bg-[#9D6638]"></div>
-                            <div class="flex-1 bg-[#4E220F]"></div>
-                        </div>
-                        <div class="grid grid-cols-3 gap-2 text-xs font-mono text-slate-600">
-                            <div><span class="inline-block w-2.5 h-2.5 rounded-full bg-[#80BA99] mr-1"></span>#80BA99</div>
-                            <div><span class="inline-block w-2.5 h-2.5 rounded-full bg-[#9D6638] mr-1"></span>#9D6638</div>
-                            <div><span class="inline-block w-2.5 h-2.5 rounded-full bg-[#4E220F] mr-1"></span>#4E220F</div>
-                        </div>
-                    </div>
-                    <div class="border-t border-slate-200 pt-4">
-                        <h4 class="font-serif text-2xl font-bold tracking-tight text-[#1A202C]">
-                            Lunáe<span class="text-sm align-top text-[#9D6638]">✦</span>
-                        </h4>
-                        <p class="text-xs font-serif uppercase tracking-[0.15em] text-slate-500 pb-3 mb-3 border-b border-slate-200">
-                            LUNAE TYPEFACE
-                        </p>
-                        <div class="flex flex-col gap-1.5 text-sm font-serif text-slate-700 tracking-wider">
-                            <p class="font-semibold">ABCDEFGHIJKLM</p>
-                            <p class="font-semibold">NOPQRSTUVWXYZ</p>
-                            <p class="font-sans text-sm text-slate-800 pt-1">0123456789</p>
-                        </div>
-                    </div>
-                </div>
-            `;
-            modalTitle.textContent = "VISUAL TYPOGRAPHY & COLOR PALETTE";
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function openPrettyGirlPaletteModal() {
-            const modal = document.getElementById('logoModal');
-            const modalContainer = document.getElementById('modalContentContainer');
-            const modalTitle = document.getElementById('modalTitle');
-
-            modalContainer.innerHTML = `
-                <div class="w-full bg-[#FAF8F5] rounded-xl p-6 border border-slate-200 flex flex-col gap-4 text-left">
-                    <div>
-                        <div class="rounded-lg overflow-hidden border border-black/5 flex h-7 mb-2 shadow-inner">
-                            <div class="flex-1 bg-[#F1C4D4]"></div>
-                            <div class="flex-1 bg-[#F5E6CA]"></div>
-                            <div class="flex-1 bg-[#E2EEF8]"></div>
-                            <div class="flex-1 bg-[#C4E0DC]"></div>
-                        </div>
-                        <div class="grid grid-cols-2 gap-2 text-xs font-mono text-slate-600">
-                            <div><span class="inline-block w-2.5 h-2.5 rounded-full bg-[#F1C4D4] mr-1"></span>#F50202</div>
-                            <div><span class="inline-block w-2.5 h-2.5 rounded-full bg-[#F5E6CA] mr-1"></span>#F8F7BA</div>
-                            <div><span class="inline-block w-2.5 h-2.5 rounded-full bg-[#E2EEF8] mr-1"></span>#B0E3C3</div>
-                            <div><span class="inline-block w-2.5 h-2.5 rounded-full bg-[#C4E0DC] mr-1"></span>#A3CCDA</div>
-                        </div>
-                    </div>
-                    <div class="border-t border-slate-200 pt-4 text-center">
-                        <h4 class="font-sans text-2xl font-extrabold tracking-wide text-[#A3CCDA] drop-shadow-sm">
-                            PRETTY GIRL
-                        </h4>
-                        <p class="text-xs font-sans tracking-widest text-slate-500 uppercase mt-1">
-                            KIDS WEAR & MODULAR STYLE COLLECTION
-                        </p>
-                    </div>
-                </div>
-            `;
-            modalTitle.textContent = "PRETTY GIRL COLOR PALETTE & TITLE";
+            modalImage.src = imageSrc;
+            modalTitle.textContent = titleText;
             modal.classList.remove('hidden');
             modal.classList.add('flex');
         }
 
         function closeLogoModal() {
-            const modal = document.getElementById('logoModal');
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
+            const modal = document.getElementById('logoCardModal') || document.getElementById('logoModal');
+            if (modal) {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }
         }
 
+        // Animasi teks peran (Role Rotator) di halaman Home
         const roles = [
             "INDUSTRIAL ENGINEERING",
-            "EDUCATION TEACHER",
+            "CREATIVE SPECIALIST",
             "E-COMMERCE SPECIALIST",
-            "DIGITAL MARKETING"
+            "UI/UX & BRANDING DESIGNER"
         ];
-        let currentRoleIndex = 0;
+        let roleIndex = 0;
+        const roleTextElement = document.getElementById('role-text');
 
-        setInterval(() => {
-            currentRoleIndex = (currentRoleIndex + 1) % roles.length;
-            const roleElement = document.getElementById('role-text');
-            if (roleElement) {
-                roleElement.style.opacity = '0';
-                setTimeout(() => {
-                    roleElement.textContent = roles[currentRoleIndex];
-                    roleElement.style.opacity = '1';
-                }, 200);
-            }
-        }, 3500);
+        function rotateRoles() {
+            if (!roleTextElement) return;
+            roleTextElement.style.opacity = 0;
+            setTimeout(() => {
+                roleIndex = (roleIndex + 1) % roles.length;
+                roleTextElement.textContent = roles[roleIndex];
+                roleTextElement.style.opacity = 1;
+            }, 400);
+        }
+
+        setInterval(rotateRoles, 3000);
     </script>
 </body>
 </html>
