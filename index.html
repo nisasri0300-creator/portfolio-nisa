@@ -95,19 +95,19 @@
     <!-- Main Content Area -->
     <div id="main-container" class="flex-1 ml-0 md:ml-80 transition-all duration-300 min-h-screen flex flex-col">
 
-        <!-- TAB 1: HOME SECTION -->
-        <main id="section-home" class="relative flex-1 h-screen hero-bg flex flex-col items-center justify-end pb-20 md:pb-16 px-4 overflow-hidden">
-            <div class="relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center mb-4">
-                <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-[0.15em] text-[#121c2e] uppercase drop-shadow-[0_2px_12px_rgba(255,255,255,0.95)] mb-4">
-                    NISA SRI FADILAH
-                </h1>
-                <div class="inline-flex items-center px-6 py-2.5 bg-[#FBF9F5]/90 backdrop-blur-md rounded-full shadow-sm border border-[#EBE4D5]">
-                    <span id="role-text" class="text-xs sm:text-sm font-bold tracking-[0.2em] text-slate-800 uppercase">
-                        INDUSTRIAL ENGINEERING
-                    </span>
-                </div>
-            </div>
-        </main>
+        !-- TAB 1: HOME SECTION (Bersih, hanya Hero Banner & Title) -->
+<main id="section-home" class="relative flex-1 h-screen hero-bg flex flex-col items-center justify-end pb-20 md:pb-16 px-4 overflow-hidden">
+    <div class="relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center mb-4">
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-[0.15em] text-[#121c2e] uppercase drop-shadow-[0_2px_12px_rgba(255,255,255,0.95)] mb-4">
+            NISA SRI FADILAH
+        </h1>
+        <div class="inline-flex items-center px-6 py-2.5 bg-[#FBF9F5]/90 backdrop-blur-md rounded-full shadow-sm border border-[#EBE4D5]">
+            <span id="role-text" class="text-xs sm:text-sm font-bold tracking-[0.2em] text-slate-800 uppercase">
+                E-COMMERCE SPECIALIST
+            </span>
+        </div>
+    </div>
+</main>
 
         <!-- TAB 2: CREATIVE SECTION -->
         <section id="section-creative" class="hidden flex-1 p-8 md:p-16 pt-24 md:pt-16">
@@ -635,7 +635,7 @@
         </div>
     </div>
 </section>
-  <!-- TAB: ABOUT ME SECTION -->
+ <!-- TAB 2: ABOUT ME SECTION (Berisi Kartu Profil & 1 Baris Grid Keahlian Saja) -->
 <section id="section-about" class="flex-1 p-8 md:p-16 pt-24 md:pt-16 flex flex-col justify-center hidden">
     <div class="max-w-4xl mx-auto w-full">
         
@@ -651,7 +651,7 @@
                     Nisa Sri Fadilah
                 </h2>
                 <p class="text-[11px] md:text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">
-                    Industrial Engineer, Educator & Creative Specialist
+                    INDUSTRIAL ENGINEER, EDUCATOR & CREATIVE SPECIALIST
                 </p>
                 <p class="text-xs md:text-sm text-slate-700 leading-relaxed">
                     Deeply passionate about systems efficiency, operational management, educational technology, visual creativity, and digital solutions. Experienced in bridging analytical approaches with creative development and teaching practice.
@@ -659,7 +659,7 @@
             </div>
         </div>
 
-       <!-- Expertise Grid Cards (Cukup 1 saja di sini) -->
+        <!-- Expertise Grid Cards (Hanya 1 Baris / 3 Kotak) -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-5 shadow-sm">
                 <h3 class="font-bold text-xs uppercase tracking-wider text-slate-900 mb-1">Systems & Operations</h3>
@@ -674,28 +674,6 @@
                 <p class="text-xs text-slate-600">Brand visual identity and digital growth strategies.</p>
             </div>
         </div>
-
-    </div>
-</section>
-        
-        <!-- Optional: Grid Fokus Keahlian Tambahan di Bawahnya -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-5 shadow-sm">
-                <h3 class="font-bold text-xs uppercase tracking-wider text-slate-900 mb-1">Systems & Operations</h3>
-                <p class="text-xs text-slate-600">Industrial process optimization and layout balancing.</p>
-            </div>
-            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-5 shadow-sm">
-                <h3 class="font-bold text-xs uppercase tracking-wider text-slate-900 mb-1">Education & Content</h3>
-                <p class="text-xs text-slate-600">Curriculum design and interactive learning products.</p>
-            </div>
-            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-5 shadow-sm">
-                <h3 class="font-bold text-xs uppercase tracking-wider text-slate-900 mb-1">Creative Strategy</h3>
-                <p class="text-xs text-slate-600">Brand visual identity and digital growth strategies.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
     <!-- Image / Logo Zoom Modal -->
     <div id="logoModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4" onclick="closeLogoModal()">
         <div class="bg-white rounded-3xl p-8 max-w-2xl w-full relative shadow-2xl flex flex-col items-center max-h-[90vh]" onclick="event.stopPropagation()">
