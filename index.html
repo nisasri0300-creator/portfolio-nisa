@@ -1,920 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nisa Sri Fadilah - Portfolio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #F7F4EE;
-            color: #1A202C;
-            overflow-x: hidden;
+            color: #2D2A26;
         }
-        .hero-bg {
-            background-image: url('hero.jpg');
-            background-size: cover;
-            background-position: center 20%;
+        /* Custom scrollbar yang tipis dan elegan */
+        ::-webkit-scrollbar {
+            width: 6px;
         }
-        #role-text {
-            transition: opacity 0.4s ease-in-out;
+        ::-webkit-scrollbar-track {
+            background: #F7F4EE;
         }
-        /* Transisi halus untuk Filter Kategori Creative */
-        .creative-item {
-            transition: all 0.3s ease-in-out;
+        ::-webkit-scrollbar-thumb {
+            background: #E6DFD3;
+            border-radius: 3px;
         }
     </style>
 </head>
-<body class="relative min-h-screen flex bg-[#F7F4EE]">
+<body class="flex flex-col md:flex-row min-h-screen selection:bg-stone-300">
 
-    <!-- Sidebar Desktop -->
-    <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-80 bg-[#F4EFE6] border-r border-[#E8E1D5] flex flex-col justify-between p-10 transition-transform duration-300 transform translate-x-0">
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="w-full md:w-80 bg-[#F4EFE6] border-r border-[#E6DFD3] p-8 flex flex-col justify-between md:sticky md:top-0 h-auto md:h-screen z-20">
         <div>
-            <!-- Sidebar Header -->
-            <div class="flex items-center justify-between mb-8">
-                <div class="flex items-center gap-4">
-                    <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-md">
-                    <div>
-                        <h2 class="text-[10px] uppercase tracking-[0.3em] text-slate-400 font-bold mb-0.5">PORTFOLIO</h2>
-                        <h1 class="text-base font-bold tracking-tight text-slate-900">Nisa Sri Fadilah</h1>
-                    </div>
+            <!-- Profile Info -->
+            <div class="flex items-center space-x-4 mb-10">
+                <div class="w-12 h-12 rounded-full bg-stone-300 overflow-hidden flex-shrink-0 ring-1 ring-stone-400/30">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
                 </div>
-                <button onclick="toggleSidebar()" class="w-8 h-8 rounded-full hover:bg-[#EAE2D2] flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors">
-                    ✕
-                </button>
-            </div>
-                
-           <!-- Social Links Icons -->
-            <div class="flex items-center gap-3.5 mb-10 pb-6 border-b border-[#EAE2D2]">
-                <a href="https://github.com/nisasri0300-creator" target="_blank" class="w-7 h-7 rounded-full bg-[#EAE2D2] hover:bg-[#DDD5C3] flex items-center justify-center text-slate-700 transition-colors shadow-sm">
-                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                </a>
-                <a href="https://www.linkedin.com/in/nisa-sri-fadilah-576758170/" target="_blank" class="w-7 h-7 rounded-full bg-[#EAE2D2] hover:bg-[#DDD5C3] flex items-center justify-center text-slate-700 transition-colors shadow-sm">
-                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-                </a>
-                <a href="https://www.instagram.com/_nisasrf/" target="_blank" class="w-7 h-7 rounded-full bg-[#EAE2D2] hover:bg-[#DDD5C3] flex items-center justify-center text-slate-700 transition-colors shadow-sm">
-                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                </a>
+                <div>
+                    <span class="text-[10px] tracking-widest text-stone-400 font-semibold uppercase block">Portfolio</span>
+                    <h1 class="font-bold text-sm text-stone-900">Nisa Sri Fadilah</h1>
+                </div>
             </div>
 
-            <!-- Menu List -->
-            <nav class="space-y-3">
-                <button onclick="switchTab('home')" id="nav-home" class="w-full text-left relative flex items-center gap-4 text-slate-900 font-bold text-sm tracking-wide transition-all py-2 px-3 bg-[#EAE2D2]/60 rounded-lg">
-                    <span class="absolute left-0 w-1 h-4 bg-slate-900 rounded-r-full"></span>
-                    <span class="pl-2">Home</span>
-                </button>
-                <button onclick="switchTab('creative')" id="nav-creative" class="w-full text-left flex items-center gap-4 text-slate-500 hover:text-slate-900 font-medium text-sm tracking-wide transition-all py-2 px-3 hover:bg-[#EAE2D2]/30 rounded-lg">
-                    <span class="pl-2">Creative</span>
-                </button>
-                <button onclick="switchTab('projects')" id="nav-projects" class="w-full text-left flex items-center gap-4 text-slate-500 hover:text-slate-900 font-medium text-sm tracking-wide transition-all py-2 px-3 hover:bg-[#EAE2D2]/30 rounded-lg">
-                    <span class="pl-2">Projects</span>
-                </button>
-                <button onclick="switchTab('about')" id="nav-about" class="w-full text-left flex items-center gap-4 text-slate-500 hover:text-slate-900 font-medium text-sm tracking-wide transition-all py-2 px-3 hover:bg-[#EAE2D2]/30 rounded-lg">
-                    <span class="pl-2">About Me</span>
-                </button>
+            <!-- Social Media Icons -->
+            <div class="flex space-x-3 mb-8 text-stone-600">
+                <a href="https://github.com" target="_blank" class="w-9 h-9 rounded-lg bg-stone-200/60 flex items-center justify-center hover:bg-stone-200 hover:text-stone-900 transition"><i class="fa-brands fa-github text-sm"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="w-9 h-9 rounded-lg bg-stone-200/60 flex items-center justify-center hover:bg-stone-200 hover:text-stone-900 transition"><i class="fa-brands fa-linkedin text-sm"></i></a>
+                <a href="https://instagram.com" target="_blank" class="w-9 h-9 rounded-lg bg-stone-200/60 flex items-center justify-center hover:bg-stone-200 hover:text-stone-900 transition"><i class="fa-brands fa-instagram text-sm"></i></a>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="space-y-1">
+                <a href="#home" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-stone-600 hover:text-stone-900 hover:bg-stone-200/50 transition font-medium text-sm">
+                    <span>Home</span>
+                </a>
+                <a href="#creative" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-stone-600 hover:text-stone-900 hover:bg-stone-200/50 transition font-medium text-sm">
+                    <span>Creative</span>
+                </a>
+                <a href="#projects" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-stone-600 hover:text-stone-900 hover:bg-stone-200/50 transition font-medium text-sm">
+                    <span>Projects</span>
+                </a>
+                <a href="#about" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-stone-900 bg-stone-200/70 font-semibold text-sm shadow-sm">
+                    <span>About Me</span>
+                </a>
             </nav>
         </div>
 
-        <div class="space-y-3">
-            <a href="#" class="inline-flex items-center justify-between w-full text-slate-800 hover:text-slate-900 font-semibold text-xs tracking-[0.2em] uppercase pb-2 border-b border-slate-300 hover:border-slate-900 transition-all">
+        <!-- Sidebar Footer / CV -->
+        <div class="pt-6 border-t border-[#E6DFD3] mt-8">
+            <a href="#" class="flex items-center justify-between text-xs font-bold text-stone-800 tracking-wider uppercase py-2 hover:text-stone-500 transition mb-4">
                 <span>Download CV</span>
-                <span>↓</span>
+                <i class="fa-solid fa-arrow-down text-[10px]"></i>
             </a>
-            <p class="text-[10px] text-slate-400 font-medium tracking-widest text-center uppercase">2026 by Nisa</p>
+            <p class="text-[11px] text-stone-400 tracking-wide">2026 BY NISA</p>
         </div>
     </aside>
 
-    <!-- Toggle Menu Button (☰) -->
-    <button id="open-btn" onclick="toggleSidebar()" class="fixed top-6 left-6 z-40 w-10 h-10 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full hidden items-center justify-center text-slate-800 shadow-md hover:bg-[#eae2d2] transition-all">
-        ☰
-    </button>
-
-    <!-- Main Content Area -->
-    <div id="main-container" class="flex-1 ml-0 md:ml-80 transition-all duration-300 min-h-screen flex flex-col">
-
-        <!-- TAB 1: HOME SECTION -->
-        <main id="section-home" class="relative flex-1 h-screen hero-bg flex flex-col items-center justify-end pb-20 md:pb-16 px-4 overflow-hidden">
-            <div class="relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center mb-4">
-                <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-[0.15em] text-[#121c2e] uppercase drop-shadow-[0_2px_12px_rgba(255,255,255,0.95)] mb-4">
-                    NISA SRI FADILAH
-                </h1>
-                <div class="inline-flex items-center px-6 py-2.5 bg-[#FBF9F5]/90 backdrop-blur-md rounded-full shadow-sm border border-[#EBE4D5]">
-                    <span id="role-text" class="text-xs sm:text-sm font-bold tracking-[0.2em] text-slate-800 uppercase">
-                        INDUSTRIAL ENGINEERING
-                    </span>
-                </div>
-            </div>
-        </main>
-
-        <!-- TAB 2: CREATIVE SECTION -->
-        <section id="section-creative" class="hidden flex-1 p-8 md:p-16 pt-24 md:pt-16">
-            <div class="max-w-6xl mx-auto">
-                <h2 class="text-center text-xl md:text-2xl font-bold tracking-[0.3em] uppercase mb-8 text-slate-900">C R E A T I V E</h2>
-                
-                <!-- TABBED FILTERING BUTTONS -->
-                <div class="flex justify-center items-center gap-3 mb-12 flex-wrap" id="filter-buttons">
-                    <button onclick="filterCreative('all')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#EAE2D2] text-slate-900 shadow-sm">All</button>
-                    <button onclick="filterCreative('logo')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Logo</button>
-                    <button onclick="filterCreative('lunae')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Lunae Branding</button>
-                    <button onclick="filterCreative('pretty')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Pretty Girl Branding</button>
-                    <button onclick="filterCreative('modeling')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Modeling</button>
-                    <button onclick="filterCreative('poster')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Poster</button>
-                    <button onclick="filterCreative('social')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Social Media</button>
-                    <button onclick="filterCreative('web')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Design Web</button>
-                    <button onclick="filterCreative('art')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Digital Art</button>
-                    <button onclick="filterCreative('sticker')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Sticker Art</button>
-                    <button onclick="filterCreative('architecture')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Architecture</button>
-                </div>
-
-                <!-- CONTAINER UNTUK SELURUH ITEM CREATIVE -->
-                <div id="creative-container">
-                    
-                    <!-- LOGO SECTION -->
-                    <div class="creative-item mb-14" data-category="logo">
-                        <div class="mb-8 flex flex-col items-start">
-                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
-                                LOGO
-                            </div>
-                            <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Click on any logo to view larger</p>
-                        </div>
-                        
-                        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-                            <div onclick="openLogoModal('Lunae Logo.png', 'Lunae Logo')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer overflow-hidden">
-                                <img src="Lunae Logo.png" alt="Lunae Logo" class="w-full h-full object-contain">
-                            </div>
-                            <div onclick="openLogoModal('Hyper Season.png', 'Hyper Season')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer overflow-hidden">
-                                <img src="Hyper Season.png" alt="Hyper Season" class="w-full h-full object-contain">
-                            </div>
-                            <div onclick="openLogoModal('Madala Creative.png', 'Madala Creative')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer overflow-hidden">
-                                <img src="Madala Creative.png" alt="Madala Creative" class="w-full h-full object-contain">
-                            </div>
-                            <div onclick="openLogoModal('Teknik Industri.png', 'Industrial Engineering')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer overflow-hidden">
-                                <img src="Teknik Industri.png" alt="Industrial Engineering" class="w-full h-full object-contain">
-                            </div>
-                            <div onclick="openLogoModal('Two Ambiverts.png', 'Two Ambiverts')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer overflow-hidden">
-                                <img src="Two Ambiverts.png" alt="Two Ambiverts" class="w-full h-full object-contain">
-                            </div>
-                            <div onclick="openLogoModal('Beauty Skin Care.png', 'Beauty Skin Care')" class="bg-white rounded-full aspect-square flex items-center justify-center p-1.5 shadow-sm border border-[#E8E1D5] hover:scale-105 transition-transform cursor-pointer overflow-hidden">
-                                <img src="Beauty Skin Care.png" alt="Beauty Skin Care" class="w-full h-full object-contain">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- LUNAE BRANDING -->
-                    <div class="creative-item mb-14" data-category="lunae">
-                        <div class="mb-8 flex flex-col items-start">
-                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
-                                LUNAE BRANDING
-                            </div>
-                            <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Click on any image to view larger</p>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                                <div onclick="openLogoModal('Meet Lunae.png', 'COMING SOON LUNAE')" class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-95 transition-opacity">
-                                    <img src="Meet Lunae.png" alt="Meet Lunae" class="w-full h-auto object-cover">
-                                </div>
-                                <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">COMING SOON LUNAE</h3>
-                            </div>
-
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                                <div onclick="openLogoModal('Lunae Products.png', 'COLOR PALETTE & MOODBOARD')" class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-95 transition-opacity">
-                                    <img src="Lunae Products.png" alt="Color Palette & Moodboard" class="w-full h-auto object-cover">
-                                </div>
-                                <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">COLOR PALETTE & MOODBOARD</h3>
-                            </div>
-
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                                <div onclick="openLogoModal('Lunae Products.png', 'VISUAL TYPOGRAPHY & COLOR PALETTE')" class="w-full bg-[#FAF8F5] rounded-xl p-4 mb-3 border border-slate-200 flex flex-col gap-3 cursor-pointer hover:opacity-95 transition-opacity">
-                                    <div>
-                                        <div class="rounded-lg overflow-hidden border border-black/5 flex h-5 mb-1.5 shadow-inner">
-                                            <div class="flex-1 bg-[#F7F1DE]"></div>
-                                            <div class="flex-1 bg-[#80BA99]"></div>
-                                            <div class="flex-1 bg-[#9D6638]"></div>
-                                            <div class="flex-1 bg-[#4E220F]"></div>
-                                        </div>
-                                        <div class="grid grid-cols-3 gap-1 text-[8px] text-center font-mono text-slate-600">
-                                            <div><span class="inline-block w-1.5 h-1.5 rounded-full bg-[#80BA99] mr-0.5"></span>#80BA99</div>
-                                            <div><span class="inline-block w-1.5 h-1.5 rounded-full bg-[#9D6638] mr-0.5"></span>#9D6638</div>
-                                            <div><span class="inline-block w-1.5 h-1.5 rounded-full bg-[#4E220F] mr-0.5"></span>#4E220F</div>
-                                        </div>
-                                    </div>
-                                    <div class="border-t border-slate-200 pt-2.5">
-                                        <h4 class="font-serif text-lg font-bold tracking-tight text-[#1A202C]">
-                                            Lunáe<span class="text-xs align-top text-[#9D6638]">✦</span>
-                                        </h4>
-                                        <p class="text-[8px] font-serif uppercase tracking-[0.15em] text-slate-500 pb-2 mb-2 border-b border-slate-200">
-                                            LUNAE TYPEFACE
-                                        </p>
-                                        <div class="flex flex-col gap-1 text-[9px] font-serif text-slate-700 tracking-wider">
-                                            <p class="font-semibold">ABCDEFGHIJKLM</p>
-                                            <p class="font-semibold">NOPQRSTUVWXYZ</p>
-                                            <p class="font-sans text-[9px] text-slate-800 pt-1">0123456789</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">VISUAL TYPOGRAPHY & COLOR PALETTE</h3>
-                            </div>
-
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                                <div onclick="openLogoModal('Model Showcase.png', 'EDITORIAL LOOKBOOK')" class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-95 transition-opacity">
-                                    <img src="Model Showcase.png" alt="Model Showcase" class="w-full h-auto object-cover">
-                                </div>
-                                <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">EDITORIAL LOOKBOOK</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- PRETTY GIRL BRANDING -->
-                    <div class="creative-item mb-14" data-category="pretty">
-                        <div class="mb-8 flex flex-col items-start">
-                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
-                                PRETTY GIRL BRANDING
-                            </div>
-                            <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Kids Wear & Modular Style Collection</p>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                                <div onclick="openLogoModal('Are You Ready.png', 'ARE YOU READY?')" class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-95 transition-opacity">
-                                    <img src="Are You Ready.png" alt="Are You Ready" class="w-full h-auto object-cover">
-                                </div>
-                                <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">ARE YOU READY?</h3>
-                            </div>
-
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                                <div onclick="openLogoModal('Pretty Girl Model.png', 'COLOR PALETTE & TITLE')" class="w-full bg-[#FAF8F5] rounded-xl p-4 mb-3 border border-slate-200 flex flex-col gap-3 cursor-pointer hover:opacity-95 transition-opacity">
-                                    <div>
-                                        <div class="rounded-lg overflow-hidden border border-black/5 flex flex-col h-12 mb-2 shadow-inner">
-                                            <div class="flex-1 bg-[#F1C4D4]"></div>
-                                            <div class="flex-1 bg-[#F5E6CA]"></div>
-                                            <div class="flex-1 bg-[#E2EEF8]"></div>
-                                            <div class="flex-1 bg-[#C4E0DC]"></div>
-                                        </div>
-                                        <div class="grid grid-cols-2 gap-1 text-[8px] font-mono text-slate-600">
-                                            <div><span class="inline-block w-1.5 h-1.5 rounded-full bg-[#F1C4D4] mr-0.5"></span>#F50202</div>
-                                            <div><span class="inline-block w-1.5 h-1.5 rounded-full bg-[#F5E6CA] mr-0.5"></span>#F8F7BA</div>
-                                            <div><span class="inline-block w-1.5 h-1.5 rounded-full bg-[#E2EEF8] mr-0.5"></span>#B0E3C3</div>
-                                            <div><span class="inline-block w-1.5 h-1.5 rounded-full bg-[#C4E0DC] mr-0.5"></span>#A3CCDA</div>
-                                        </div>
-                                    </div>
-                                    <div class="border-t border-slate-200 pt-2 text-center">
-                                        <h4 class="font-sans text-base font-extrabold tracking-wide text-[#A3CCDA] drop-shadow-sm">
-                                            PRETTY GIRL
-                                        </h4>
-                                        <p class="text-[7px] font-sans tracking-wider text-slate-500 uppercase">
-                                            KIDS WEAR & MODULAR STYLE COLLECTION
-                                        </p>
-                                    </div>
-                                </div>
-                                <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">COLOR PALETTE & TITLE</h3>
-                            </div>
-
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                                <div onclick="openLogoModal('Soft Textures.png', 'SOFT TEXTURES & COMFORT')" class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-95 transition-opacity">
-                                    <img src="Soft Textures.png" alt="Soft Textures" class="w-full h-auto object-cover">
-                                </div>
-                                <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">SOFT TEXTURES & COMFORT</h3>
-                            </div>
-
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                                <div onclick="openLogoModal('Pretty Girl Model.png', 'KIDS WEAR LOOKBOOK')" class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-95 transition-opacity">
-                                    <img src="Pretty Girl Model.png" alt="Pretty Girl Model" class="w-full h-auto object-cover">
-                                </div>
-                                <h3 class="font-bold text-xs uppercase tracking-wider text-slate-800">KIDS WEAR LOOKBOOK</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- MODELING SECTION -->
-                    <div class="creative-item mb-14" data-category="modeling">
-                        <div class="mb-8 flex flex-col items-start">
-                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
-                                MODELING
-                            </div>
-                            <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Click on any photo to view larger</p>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('Modeling 1.png', 'Modeling 1')">
-                                <img src="Modeling 1.png" alt="Modeling 1" class="w-full h-48 object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('Modeling 2.png', 'Modeling 2')">
-                                <img src="Modeling 2.png" alt="Modeling 2" class="w-full h-48 object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('Modeling 3.png', 'Modeling 3')">
-                                <img src="Modeling 3.png" alt="Modeling 3" class="w-full h-48 object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('Modeling 4.png', 'Modeling 4')">
-                                <img src="Modeling 4.png" alt="Modeling 4" class="w-full h-48 object-cover rounded-xl">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- POSTER SECTION -->
-                    <div class="creative-item mb-14" data-category="poster">
-                        <div class="mb-8 flex flex-col items-start">
-                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
-                                POSTER
-                            </div>
-                            <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Click on any poster to view larger</p>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('POSTER 1.png', 'POSTER 1')">
-                                <img src="POSTER 1.png" alt="Poster 1" class="w-full h-64 object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('POSTER 2.png', 'POSTER 2')">
-                                <img src="POSTER 2.png" alt="Poster 2" class="w-full h-64 object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('POSTER 3.png', 'POSTER 3')">
-                                <img src="POSTER 3.png" alt="Poster 3" class="w-full h-64 object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('POSTER 4.png', 'POSTER 4')">
-                                <img src="POSTER 4.png" alt="Poster 4" class="w-full h-64 object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('POSTER 5.png', 'POSTER 5')">
-                                <img src="POSTER 5.png" alt="Poster 5" class="w-full h-64 object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('POSTER 6.png', 'POSTER 6')">
-                                <img src="POSTER 6.png" alt="Poster 6" class="w-full h-64 object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('POSTER 7.png', 'POSTER 7')">
-                                <img src="POSTER 7.png" alt="Poster 7" class="w-full h-64 object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('POSTER 8.png', 'POSTER 8')">
-                                <img src="POSTER 8.png" alt="Poster 8" class="w-full h-64 object-cover rounded-xl">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- SOCIAL MEDIA SECTION -->
-                    <div class="creative-item mb-14" data-category="social">
-                        <div class="mb-8 flex flex-col items-start">
-                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
-                                SOCIAL MEDIA
-                            </div>
-                            <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Click on any social media preview to view larger</p>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('SOSIAL MEDIA 1.png', 'SOCIAL MEDIA 1')">
-                                <img src="SOSIAL MEDIA 1.png" alt="Social Media 1" class="w-full h-auto object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('SOSIAL MEDIA 2.png', 'SOCIAL MEDIA 2')">
-                                <img src="SOSIAL MEDIA 2.png" alt="Social Media 2" class="w-full h-auto object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('SOSIAL MEDIA 3.png', 'SOCIAL MEDIA 3')">
-                                <img src="SOSIAL MEDIA 3.png" alt="Social Media 3" class="w-full h-auto object-cover rounded-xl">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- DESIGN WEB SECTION -->
-                    <div class="creative-item mb-14" data-category="web">
-                        <div class="mb-8 flex flex-col items-start">
-                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
-                                DESIGN WEB
-                            </div>
-                            <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Click on any web design to view larger</p>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                                <div onclick="openLogoModal('WEB 1.png', 'Calbyeco')" class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-95 transition-opacity">
-                                    <img src="WEB 1.png" alt="Calbyeco" class="w-full h-auto object-cover">
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-xs uppercase tracking-wider text-slate-900 mb-1">Calbyeco</h3>
-                                    <p class="text-[11px] text-slate-500 leading-relaxed">Landing page for a strawberry snack brand</p>
-                                </div>
-                            </div>
-
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                                <div onclick="openLogoModal('WEB 2.png', 'Qyokazu')" class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-95 transition-opacity">
-                                    <img src="WEB 2.png" alt="Qyokazu" class="w-full h-auto object-cover">
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-xs uppercase tracking-wider text-slate-900 mb-1">Qyokazu</h3>
-                                    <p class="text-[11px] text-slate-500 leading-relaxed">Storefront page for a fashion label</p>
-                                </div>
-                            </div>
-
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                                <div onclick="openLogoModal('WEB 3.png', 'Oatcak')" class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-95 transition-opacity">
-                                    <img src="WEB 3.png" alt="Oatcak" class="w-full h-auto object-cover">
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-xs uppercase tracking-wider text-slate-900 mb-1">Oatcak</h3>
-                                    <p class="text-[11px] text-slate-500 leading-relaxed">Menu page for a food brand</p>
-                                </div>
-                            </div>
-
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-                                <div onclick="openLogoModal('WEB 4.png', 'Lunae')" class="w-full bg-white rounded-xl mb-3 border border-slate-200 overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-95 transition-opacity">
-                                    <img src="WEB 4.png" alt="Lunae" class="w-full h-auto object-cover">
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-xs uppercase tracking-wider text-slate-900 mb-1">Lunae</h3>
-                                    <p class="text-[11px] text-slate-500 leading-relaxed">Menu page for a fashion label</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- DIGITAL ART SECTION -->
-                    <div class="creative-item mb-14" data-category="art">
-                        <div class="mb-8 flex flex-col items-start">
-                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
-                                DIGITAL ART
-                            </div>
-                            <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Click on any digital art to view larger</p>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ART 1.png', 'Digital Art 1')">
-                                <img src="ART 1.png" alt="Digital Art 1" class="w-full h-64 object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ART 2.png', 'Digital Art 2')">
-                                <img src="ART 2.png" alt="Digital Art 2" class="w-full h-64 object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ART 3.png', 'Digital Art 3')">
-                                <img src="ART 3.png" alt="Digital Art 3" class="w-full h-64 object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ART 4.png', 'Digital Art 4')">
-                                <img src="ART 4.png" alt="Digital Art 4" class="w-full h-64 object-cover rounded-xl">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- STICKER ART SECTION -->
-                    <div class="creative-item mb-14" data-category="sticker">
-                        <div class="mb-8 flex flex-col items-start">
-                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
-                                STICKER ART
-                            </div>
-                            <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Click on any sticker series to view larger</p>
-                        </div>
-
-                        <div class="space-y-8">
-                            <!-- Seri 1: Lime Mascot Series -->
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-6 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                                <div class="lg:col-span-5 bg-white rounded-xl p-3 border border-slate-200 cursor-pointer hover:opacity-95 transition-opacity" onclick="openLogoModal('STICKER 1.png', 'Lime Mascot Series (Green Bear)')">
-                                    <img src="STICKER 1.png" alt="Lime Mascot Series" class="w-full h-auto object-contain rounded-lg">
-                                </div>
-                                <div class="lg:col-span-7 flex flex-col justify-center">
-                                    <h3 class="font-bold text-sm uppercase tracking-wider text-slate-900 mb-3">Lime Mascot Series (Green Bear Character)</h3>
-                                    <ul class="text-xs text-slate-600 space-y-2 leading-relaxed">
-                                        <li><strong class="text-slate-800">Core Concept:</strong> Expressive Daily Reactions</li>
-                                        <li><strong class="text-slate-800">Visual Style:</strong> Bold vector line art paired with a vibrant lime green palette. Features a black circle element above the head as a signature visual accent.</li>
-                                        <li><strong class="text-slate-800">Tone & Vibe:</strong> Casual, humorous, and highly relatable, capturing spontaneous daily chat emotions ranging from drinking boba to sleepy and celebratory reactions.</li>
-                                        <li><strong class="text-slate-800">Target Application:</strong> Designed for instant messaging platforms (WhatsApp, LINE, Telegram) tailored for a young, expressive audience.</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <!-- Seri 2: Citrus Girl Series -->
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-6 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                                <div class="lg:col-span-7 flex flex-col justify-center order-2 lg:order-1">
-                                    <h3 class="font-bold text-sm uppercase tracking-wider text-slate-900 mb-3">Citrus Girl Series (Orange Chibi Character)</h3>
-                                    <ul class="text-xs text-slate-600 space-y-2 leading-relaxed">
-                                        <li><strong class="text-slate-800">Core Concept:</strong> Friendly & Helpful Greetings</li>
-                                        <li><strong class="text-slate-800">Visual Style:</strong> Soft digital chibi illustration utilizing a warm pastel yellow and orange color scheme, finished with a citrus hat accessory and soft lighting details.</li>
-                                        <li><strong class="text-slate-800">Tone & Vibe:</strong> Warm, polite, and approachable. Uses supportive conversational phrases suited for customer-facing interactions ("Siap dibantu!", "Terima kasih!", "Semangat yaa!").</li>
-                                        <li><strong class="text-slate-800">Target Application:</strong> Ideal for customer service mascots, e-commerce brand identity, social media engagement, and conversational UI/UX design.</li>
-                                    </ul>
-                                </div>
-                                <div class="lg:col-span-5 bg-white rounded-xl p-3 border border-slate-200 cursor-pointer hover:opacity-95 transition-opacity order-1 lg:order-2" onclick="openLogoModal('STICKER 2.png', 'Citrus Girl Series (Orange Chibi)')">
-                                    <img src="STICKER 2.png" alt="Citrus Girl Series" class="w-full h-auto object-contain rounded-lg">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ARCHITECTURE SECTION (ARCH 1 s.d. ARCH 14) -->
-                    <div class="creative-item mb-14" data-category="architecture">
-                        <div class="mb-8 flex flex-col items-start">
-                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
-                                ARCHITECTURE 2D & 3D
-                            </div>
-                            <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Click on any architectural project to view larger</p>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 1.png', 'Architecture 1')">
-                                <img src="ARCH 1.png" alt="Architecture 1" class="w-full h-auto object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 2.png', 'Architecture 2')">
-                                <img src="ARCH 2.png" alt="Architecture 2" class="w-full h-auto object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 3.png', 'Architecture 3')">
-                                <img src="ARCH 3.png" alt="Architecture 3" class="w-full h-auto object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 4.png', 'Architecture 4')">
-                                <img src="ARCH 4.png" alt="Architecture 4" class="w-full h-auto object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 5.png', 'Architecture 5')">
-                                <img src="ARCH 5.png" alt="Architecture 5" class="w-full h-auto object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 6.png', 'Architecture 6')">
-                                <img src="ARCH 6.png" alt="Architecture 6" class="w-full h-auto object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 7.png', 'Architecture 7')">
-                                <img src="ARCH 7.png" alt="Architecture 7" class="w-full h-auto object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 8.png', 'Architecture 8')">
-                                <img src="ARCH 8.png" alt="Architecture 8" class="w-full h-auto object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 9.png', 'Architecture 9')">
-                                <img src="ARCH 9.png" alt="Architecture 9" class="w-full h-auto object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 10.png', 'Architecture 10')">
-                                <img src="ARCH 10.png" alt="Architecture 10" class="w-full h-auto object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 11.png', 'Architecture 11')">
-                                <img src="ARCH 11.png" alt="Architecture 11" class="w-full h-auto object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 12.png', 'Architecture 12')">
-                                <img src="ARCH 12.png" alt="Architecture 12" class="w-full h-auto object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 13.png', 'Architecture 13')">
-                                <img src="ARCH 13.png" alt="Architecture 13" class="w-full h-auto object-cover rounded-xl">
-                            </div>
-                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('ARCH 14.png', 'Architecture 14')">
-                                <img src="ARCH 14.png" alt="Architecture 14" class="w-full h-auto object-cover rounded-xl">
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-1 p-8 md:p-16 overflow-y-auto space-y-24">
+        
+        <!-- HOME SECTION -->
+        <section id="home" class="min-h-[70vh] flex flex-col justify-center max-w-2xl">
+            <span class="text-xs font-semibold text-stone-500 tracking-widest uppercase mb-3">Industrial Engineering & Creative Creator</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-stone-900 mb-6 tracking-tight leading-tight">
+                Blending engineering precision with refined aesthetic vision.
+            </h2>
+            <p class="text-stone-600 text-sm md:text-base leading-relaxed mb-8">
+                Focused on structural optimization, comprehensive branding, digital art, and creative spatial concepts.
+            </p>
+            <div class="flex items-center space-x-4">
+                <a href="#creative" class="bg-stone-900 text-white px-5 py-2.5 rounded-xl text-xs font-semibold hover:bg-stone-800 transition shadow-sm">View Works</a>
+                <a href="#about" class="text-stone-700 px-5 py-2.5 rounded-xl text-xs font-semibold hover:bg-stone-200/50 transition border border-stone-300/60">Read Bio</a>
             </div>
         </section>
 
-        <!-- TAB 3: PROJECTS SECTION -->
-        <section id="section-projects" class="hidden flex-1 p-8 md:p-16 pt-24 md:pt-16">
-            <div class="max-w-6xl mx-auto">
-                <h2 class="text-2xl font-bold tracking-wider uppercase mb-2 text-slate-900">Projects & Case Studies</h2>
-                <p class="text-sm text-slate-500 mb-8 tracking-wide">Professional works, engineering studies, and educational products.</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                   <!-- Project 1 -->
-            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-                <div>
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="px-3 py-1 bg-[#EAE2D2] text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full">Educational Product (Excel)</span>
-                        <span class="text-[10px] text-slate-400 font-mono">2025</span>
-                    </div>
-                    <h3 class="font-bold text-base text-slate-900 mb-2">Interactive Teaching Dashboard & Grade Tracker (Excel)</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
-                        Automated student grading template powered by Excel formulas, complete with class performance charts and learning outcome analysis.
-                    </p>
-                </div>
-                <div>
-                    <div class="flex items-center gap-2 pt-4 border-t border-[#E8E1D5] mb-4">
-                        <span class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Tools: Microsoft Excel, Formulas</span>
-                    </div>
-                  <a href="Interactive_Teaching_Dashboard_Grade_Tracker.xlsx" download class="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1">
-    Download Template / View File
-    <span class="text-sm">→</span>
-</a>
-
-                </div>
+        <!-- CREATIVE SECTION -->
+        <section id="creative" class="pt-10">
+            <div class="mb-8">
+                <h2 class="text-xl font-bold text-stone-900 mb-1">Creative Gallery</h2>
+                <p class="text-stone-500 text-xs">A curated collection of branding, visual arts, and modeling projects.</p>
             </div>
-
-                  <!-- Project 2 -->
-<div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-    <div>
-        <div class="flex items-center justify-between mb-3">
-            <span class="px-3 py-1 bg-[#EAE2D2] text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full">Teaching Resource</span>
-            <span class="text-[10px] text-slate-400 font-mono">2025</span>
-        </div>
-        <h3 class="font-bold text-base text-slate-900 mb-2">Digital Learning Module & Curriculum Design</h3>
-        <p class="text-xs text-slate-600 leading-relaxed mb-4">
-            Structured educational modules, student worksheets (LKPD), and interactive teaching materials designed to boost concept absorption.
-        </p>
-    </div>
-    <div>
-        <div class="pt-4 border-t border-[#EAE2D2] mb-3">
-            <span class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Tools: Physics, Curriculum Design, LKPD</span>
-        </div>
-        <a href="Modul_Physics_Electricity.jpeg" target="_blank" class="text-xs font-semibold text-blue-600 hover:text-blue-800 inline-flex items-center gap-1">
-            View Module <span class="text-sm">→</span>
-        </a>
-    </div>
-</div>
-
-                  <!-- Project 3 -->
-<div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-    <div>
-        <div class="flex items-center justify-between mb-3">
-            <span class="px-3 py-1 bg-[#EAE2D2] text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full">Active Project</span>
-            <span class="text-[10px] text-slate-400 font-mono">2025</span>
-        </div>
-        <h3 class="font-bold text-base text-slate-900 mb-2">Omnichannel Store Performance & Sales Analytics</h3>
-        <p class="text-xs text-slate-600 leading-relaxed mb-4">
-            Digital store management, sales evaluation across cross-platforms, and conversion rate optimization strategies.
-        </p>
-    </div>
-    <div>
-        <div class="pt-4 border-t border-[#EAE2D2] mb-3">
-            <span class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Tools: Analytics, Excel, Strategy</span>
-        </div>
-        <a href="project-omnichannel.html" target="_blank" class="text-xs font-semibold text-blue-600 hover:text-blue-800 inline-flex items-center gap-1">
-            Read Details <span class="text-sm">→</span>
-        </a>
-    </div>
-</div>
-
-                   <!-- Project 4 -->
-<div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-    <div>
-        <div class="flex items-center justify-between mb-3">
-            <span class="px-3 py-1 bg-[#EAE2D2] text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full">Active Project</span>
-            <span class="text-[10px] text-slate-400 font-mono">2025</span>
-        </div>
-        <h3 class="font-bold text-base text-slate-900 mb-2">Supply Chain & Inventory Optimization</h3>
-        <p class="text-xs text-slate-600 leading-relaxed mb-4">
-            Supply chain analysis and warehouse inventory level management, supporting growth without excess cost.
-        </p>
-    </div>
-    <div>
-        <div class="pt-4 border-t border-[#EAE2D2] mb-3">
-            <span class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Tools: MRP, BOM, Inventory Strategy</span>
-        </div>
-        <a href="project-supply-chain.html" target="_blank" class="text-xs font-semibold text-blue-600 hover:text-blue-800 inline-flex items-center gap-1">
-            Read Details <span class="text-sm">→</span>
-        </a>
-    </div>
-</div>
-                  <!-- Project 5 -->
-<div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-    <div>
-        <div class="flex items-center justify-between mb-3">
-            <span class="px-3 py-1 bg-[#EAE2D2] text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full">Active Project</span>
-            <span class="text-[10px] text-slate-400 font-mono">2025</span>
-        </div>
-        <h3 class="font-bold text-base text-slate-900 mb-2">Production Line Balancing & Ergonomic Layout</h3>
-        <p class="text-xs text-slate-600 leading-relaxed mb-4">
-            LUNAE case study applying takt time, cycle time, workstation balancing, bottleneck analysis, and ergonomic flow.
-        </p>
-    </div>
-    <div>
-        <div class="pt-4 border-t border-[#EAE2D2] mb-3">
-            <span class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Tools: Takt Time, Line Balancing, WIP</span>
-        </div>
-        <a href="project-lunae.html" target="_blank" class="text-xs font-semibold text-blue-600 hover:text-blue-800 inline-flex items-center gap-1">
-            Read Details <span class="text-sm">→</span>
-        </a>
-    </div>
-</div>
-                    <!-- Project 6 -->
-<div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-    <div>
-        <div class="flex items-center justify-between mb-3">
-            <span class="px-3 py-1 bg-[#EAE2D2] text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full">Creative Strategy</span>
-            <span class="text-[10px] text-slate-400 font-mono">2026</span>
-        </div>
-        <h3 class="font-bold text-base text-slate-900 mb-2">Brand Visual Identity & Social Media Growth</h3>
-        <p class="text-xs text-slate-600 leading-relaxed mb-4">
-            Comprehensive brand guideline development and social media content strategies to scale brand recognition for LUNAE.
-        </p>
-    </div>
-    <div>
-        <div class="pt-4 border-t border-[#EAE2D2] mb-3">
-            <span class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Tools: Brand Identity, Visual System, Social Media</span>
-        </div>
-        <a href="lunae-brand.jpeg" target="_blank" class="text-xs font-semibold text-blue-600 hover:text-blue-800 inline-flex items-center gap-1">
-            View Portfolio <span class="text-sm">→</span>
-        </a>
-    </div>
-</div>
-
-       <!-- TAB 4: ABOUT ME SECTION -->
-<section id="section-about" class="hidden flex-1 p-8 md:p-16 pt-24 md:pt-16">
-    <div class="max-w-4xl mx-auto">
-        
-        <!-- Header Card dengan Profil -->
-        <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-3xl p-8 md:p-12 shadow-sm mb-8">
-            <div class="flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
-                <div class="flex items-center gap-6">
-                    <!-- Foto Profil -->
-                    <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border-2 border-white shadow-md flex-shrink-0">
-                    <div>
-                        <span class="px-3 py-1 bg-[#EAE2D2] text-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full">Industrial Engineer & Strategist</span>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 mb-2 tracking-tight">Nisa Sri Fadilah</h2>
-                        <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Education, Systems Efficiency & Brand Strategy</p>
-                    </div>
-                </div>
-                <!-- Quick Badge -->
-                <div class="p-4 bg-white rounded-2xl border border-[#E8E1D5] text-xs font-mono text-slate-600 shadow-sm">
-                    📍 Based in ID<br>
-                    ✨ Available for Projects
-                </div>
-            </div>
-        </div>
-
-        <!-- Main Narrative Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             
-            <!-- Kolom Cerita Utama (2 Span) -->
-            <div class="md:col-span-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-3xl p-8 shadow-sm flex flex-col justify-between">
-                <div class="space-y-4 text-sm text-slate-700 leading-relaxed">
-                    <p>
-                        Deeply passionate about systems efficiency, operational management, educational technology, and visual communication. I approach complex challenges through a dual lens: operational rigor and creative clarity.
-                    </p>
-                    <p>
-                        Whether optimizing manufacturing lines through takt time analysis or building structured supply chain workflows and cohesive brand identities like LUNAE, my objective is always to bridge technical precision with intuitive design.
-                    </p>
-                </div>
-                <div class="mt-8 pt-6 border-t border-[#EAE2D2] text-xs font-semibold text-slate-500 uppercase tracking-widest">
-                    Engineering & Design Synergy
-                </div>
+            <!-- Filters -->
+            <div class="flex flex-wrap gap-2 mb-8">
+                <button onclick="filterSelection('all')" class="px-3.5 py-1.5 rounded-lg text-xs font-medium bg-stone-900 text-white transition">All</button>
+                <button onclick="filterSelection('branding')" class="px-3.5 py-1.5 rounded-lg text-xs font-medium bg-stone-200/80 text-stone-600 hover:bg-stone-200 transition">Branding</button>
+                <button onclick="filterSelection('modeling')" class="px-3.5 py-1.5 rounded-lg text-xs font-medium bg-stone-200/80 text-stone-600 hover:bg-stone-200 transition">Modeling</button>
+                <button onclick="filterSelection('digital')" class="px-3.5 py-1.5 rounded-lg text-xs font-medium bg-stone-200/80 text-stone-600 hover:bg-stone-200 transition">Digital Art</button>
             </div>
 
-            <!-- Kolom Highlight Nilai (1 Span) -->
-            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-3xl p-8 shadow-sm flex flex-col justify-between">
-                <div>
-                    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Core Philosophy</h3>
-                    <ul class="space-y-3 text-xs text-slate-700">
-                        <li class="flex items-start gap-2">
-                            <span class="text-slate-400">✦</span> Precision in metrics and workflow design.
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-slate-400">✦</span> Minimalism that enhances usability.
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <span class="text-slate-400">✦</span> Scalable systems built for real-world impact.
-                        </li>
-                    </ul>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="gallery-item branding bg-white rounded-2xl p-4 border border-stone-200/80 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80" class="w-full h-48 object-cover rounded-xl mb-4 cursor-pointer" onclick="openModal(this)">
+                    <h3 class="font-bold text-stone-800 text-sm">Lunae Brand Identity</h3>
+                    <p class="text-xs text-stone-500 mt-1">Visual guidelines and minimalist logo execution.</p>
                 </div>
-                <div class="mt-6 pt-4 border-t border-[#EAE2D2] text-[10px] text-slate-400 font-mono">
-                    EST. 2025 — 2026
+                <div class="gallery-item modeling bg-white rounded-2xl p-4 border border-stone-200/80 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80" class="w-full h-48 object-cover rounded-xl mb-4 cursor-pointer" onclick="openModal(this)">
+                    <h3 class="font-bold text-stone-800 text-sm">Editorial Concept</h3>
+                    <p class="text-xs text-stone-500 mt-1">Commercial modeling and artistic direction.</p>
                 </div>
             </div>
+        </section>
 
-        </div>
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="pt-10">
+            <div class="mb-8">
+                <h2 class="text-xl font-bold text-stone-900 mb-1">Projects</h2>
+                <p class="text-stone-500 text-xs">Industrial systems analysis and technical implementations.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm max-w-xl">
+                <h3 class="font-bold text-stone-800 text-sm mb-2">Supply Chain Optimization</h3>
+                <p class="text-stone-600 text-xs leading-relaxed">Workflow analysis and bottleneck mitigation strategies utilizing structured simulation modeling.</p>
+            </div>
+        </section>
 
-        <!-- Expertise Cards Bottom -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-6 shadow-sm">
-                <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">Technical & Operations</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">
-                    Production line balancing, bottleneck identification, inventory optimization, and robust data dashboarding.
+        <!-- ABOUT ME SECTION (Pastikan ID ini ada agar konten tampil) -->
+        <section id="about" class="pt-10 pb-20">
+            <div class="bg-white p-8 md:p-10 rounded-3xl border border-stone-200/80 shadow-sm max-w-2xl">
+                <h2 class="text-xl font-bold text-stone-900 mb-4">About Me</h2>
+                <p class="text-stone-600 text-xs md:text-sm leading-relaxed mb-6">
+                    Hi, I am Nisa Sri Fadilah. I bridge the analytical rigor of Industrial Engineering with high-level aesthetic execution in branding, digital design, architecture layout, and creative media.
                 </p>
+                <div class="grid grid-cols-2 gap-4 text-xs text-stone-700 font-medium border-t border-stone-100 pt-6">
+                    <div><i class="fa-solid fa-check mr-2 text-stone-400"></i>Industrial Engineering</div>
+                    <div><i class="fa-solid fa-check mr-2 text-stone-400"></i>Visual Branding</div>
+                    <div><i class="fa-solid fa-check mr-2 text-stone-400"></i>Creative Modeling</div>
+                    <div><i class="fa-solid fa-check mr-2 text-stone-400"></i>Digital Art & Design</div>
+                </div>
             </div>
-            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-6 shadow-sm">
-                <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">Creative & Strategy</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">
-                    Visual brand identity systems, art direction, packaging guidelines, and engaging multi-channel content strategy.
-                </p>
-            </div>
-        </div>
+        </section>
 
-    </div>
-</section>
+    </main>
 
-    </div>
-
-    <!-- Image / Logo Zoom Modal -->
-    <div id="logoModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4" onclick="closeLogoModal()">
-        <div class="bg-white rounded-3xl p-8 max-w-2xl w-full relative shadow-2xl flex flex-col items-center max-h-[90vh]" onclick="event.stopPropagation()">
-            <button onclick="closeLogoModal()" class="absolute top-4 right-4 w-9 h-9 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center text-slate-700 font-bold text-sm transition-colors z-10">
-                ✕
-            </button>
-            <div id="modalContentContainer" class="w-full flex items-center justify-center p-2 mb-4 overflow-auto max-h-[70vh]">
-                <img id="modalImage" src="" alt="Zoomed Image" class="max-w-full max-h-[65vh] object-contain rounded-lg">
-            </div>
-            <h3 id="modalTitle" class="text-sm font-bold uppercase tracking-widest text-slate-800 text-center"></h3>
-        </div>
+    <!-- MODAL POPUP -->
+    <div id="imageModal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4" onclick="closeModal()">
+        <img id="modalImg" class="max-h-[85vh] rounded-xl object-contain shadow-2xl">
     </div>
 
-    <!-- Mobile Bottom Navigation Bar -->
-    <nav class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-[#F4EFE6]/95 backdrop-blur-md border-t border-[#E8E1D5] px-6 py-4 flex items-center justify-around shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
-        <button onclick="switchTab('home')" class="text-xs font-bold text-slate-950 uppercase tracking-widest">Home</button>
-        <button onclick="switchTab('creative')" class="text-xs font-medium text-slate-400 hover:text-slate-900 uppercase tracking-widest transition-colors">Creative</button>
-        <button onclick="switchTab('projects')" class="text-xs font-medium text-slate-400 hover:text-slate-900 uppercase tracking-widest transition-colors">Projects</button>
-        <button onclick="switchTab('about')" class="text-xs font-medium text-slate-400 hover:text-slate-900 uppercase tracking-widest transition-colors">About</button>
-    </nav>
-
-    <!-- Supporting Scripts -->
     <script>
-        let isSidebarOpen = true;
-
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const mainContainer = document.getElementById('main-container');
-            const openBtn = document.getElementById('open-btn');
-
-            isSidebarOpen = !isSidebarOpen;
-
-            if (isSidebarOpen) {
-                sidebar.classList.remove('-translate-x-full');
-                mainContainer.classList.add('md:ml-80');
-                openBtn.classList.remove('flex');
-                openBtn.classList.add('hidden');
-            } else {
-                sidebar.classList.add('-translate-x-full');
-                mainContainer.classList.remove('md:ml-80');
-                openBtn.classList.remove('hidden');
-                openBtn.classList.add('flex');
+        function openModal(element) {
+            let modal = document.getElementById("imageModal");
+            let modalImg = document.getElementById("modalImg");
+            modal.style.display = "flex";
+            modalImg.src = element.src;
+        }
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+        function filterSelection(category) {
+            let items = document.getElementsByClassName('gallery-item');
+            for (let i = 0; i < items.length; i++) {
+                items[i].style.display = (category === 'all' || items[i].classList.contains(category)) ? "block" : "none";
             }
         }
-
-        function switchTab(tabName) {
-            document.getElementById('section-home').classList.add('hidden');
-            document.getElementById('section-creative').classList.add('hidden');
-            document.getElementById('section-projects').classList.add('hidden');
-            document.getElementById('section-about').classList.add('hidden');
-
-            document.getElementById('section-' + tabName).classList.remove('hidden');
-
-            ['home', 'creative', 'projects', 'about'].forEach(t => {
-                const btn = document.getElementById('nav-' + t);
-                if(btn) {
-                    btn.className = "w-full text-left flex items-center gap-4 text-slate-500 hover:text-slate-900 font-medium text-sm tracking-wide transition-all py-2 px-3 hover:bg-[#EAE2D2]/30 rounded-lg";
-                    btn.innerHTML = `<span class="pl-2">${btn.textContent.trim()}</span>`;
-                }
-            });
-
-            const activeBtn = document.getElementById('nav-' + tabName);
-            if(activeBtn) {
-                activeBtn.className = "w-full text-left relative flex items-center gap-4 text-slate-900 font-bold text-sm tracking-wide transition-all py-2 px-3 bg-[#EAE2D2]/60 rounded-lg";
-                activeBtn.innerHTML = `<span class="absolute left-0 w-1 h-4 bg-slate-900 rounded-r-full"></span><span class="pl-2">${activeBtn.textContent.trim()}</span>`;
-            }
-        }
-
-        function openLogoModal(imageSrc, titleText) {
-            const modal = document.getElementById('logoModal');
-            const modalImage = document.getElementById('modalImage');
-            const modalTitle = document.getElementById('modalTitle');
-
-            modalImage.src = imageSrc;
-            modalTitle.textContent = titleText;
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function closeLogoModal() {
-            const modal = document.getElementById('logoModal');
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
-        }
-
-        // Fungsi Filter Kategori (Tabbed Filtering) untuk Bagian Creative
-        function filterCreative(category) {
-            const items = document.querySelectorAll('.creative-item');
-            const buttons = document.querySelectorAll('.filter-btn');
-
-            buttons.forEach(btn => {
-                btn.classList.remove('bg-[#EAE2D2]', 'text-slate-900', 'shadow-sm');
-                btn.classList.add('bg-[#F4EFE6]', 'text-slate-700');
-            });
-            event.currentTarget.classList.remove('bg-[#F4EFE6]', 'text-slate-700');
-            event.currentTarget.classList.add('bg-[#EAE2D2]', 'text-slate-900', 'shadow-sm');
-
-            items.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'block';
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'translateY(0)';
-                    }, 50);
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'translateY(10px)';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
-                }
-            });
-        }
-
-        // Animasi Berganti Peran / Title di Hero Section secara Otomatis
-        const roles = [
-            "INDUSTRIAL ENGINEERING",
-            "EDUCATION TEACHER",
-            "E-COMMERCE SPECIALIST",
-            "DIGITAL MARKETING",
-            "SOCIAL MEDIA SPECIALIST"
-        ];
-        let roleIndex = 0;
-        const roleTextElement = document.getElementById('role-text');
-
-        function rotateRole() {
-            if (!roleTextElement) return;
-            roleTextElement.style.opacity = '0';
-            setTimeout(() => {
-                roleIndex = (roleIndex + 1) % roles.length;
-                roleTextElement.textContent = roles[roleIndex];
-                roleTextElement.style.opacity = '1';
-            }, 400);
-        }
-
-        setInterval(rotateRole, 3000); // Berganti setiap 3 detik
     </script>
 </body>
 </html>
