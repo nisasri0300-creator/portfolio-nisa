@@ -635,21 +635,51 @@
         </div>
     </div>
 </section>
-        <!-- TAB 4: ABOUT ME SECTION -->
-        <section id="section-about" class="hidden flex-1 p-8 md:p-16 pt-24 md:pt-16">
-            <div class="max-w-3xl mx-auto bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-8 shadow-sm flex flex-col md:flex-row gap-8 items-center">
-                <img src="profile.jpg" alt="Profile" class="w-32 h-32 rounded-full object-cover border-2 border-white shadow-md">
-                <div>
-                    <h2 class="text-xl font-bold text-slate-900 mb-1">Nisa Sri Fadilah</h2>
-                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-4">Industrial Engineer, Educator & Creative Specialist</p>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        Deeply passionate about systems efficiency, operational management, educational technology, visual creativity, and digital solutions. Experienced in bridging analytical approaches with creative development and teaching practice.
-                    </p>
+       <!-- TAB 1: ABOUT SECTION -->
+<section id="section-about" class="flex-1 p-8 md:p-16 pt-24 md:pt-16 flex flex-col justify-center">
+    <div class="max-w-4xl mx-auto w-full">
+        <!-- Main Card Container -->
+        <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-3xl p-8 md:p-12 shadow-sm flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            
+            <!-- Profile Picture -->
+            <div class="flex-shrink-0">
+                <div class="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-white shadow-md bg-white">
+                    <img src="path-foto-kamu.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
                 </div>
             </div>
-        </section>
 
+            <!-- Profile Info & Description -->
+            <div class="flex-1 text-center md:text-left">
+                <h1 class="text-2xl md:text-3xl font-bold tracking-tight text-slate-900 mb-1">
+                    Nisa Sri Fadilah
+                </h1>
+                <p class="text-[11px] md:text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">
+                    Industrial Engineer, Educator & Creative Specialist
+                </p>
+                
+                <p class="text-xs md:text-sm text-slate-700 leading-relaxed">
+                    Deeply passionate about systems efficiency, operational management, educational technology, visual creativity, and digital solutions. Experienced in bridging analytical approaches with creative development and teaching practice.
+                </p>
+            </div>
+        </div>
+
+        <!-- Optional: Grid Fokus Keahlian Tambahan di Bawahnya -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-5 shadow-sm">
+                <h3 class="font-bold text-xs uppercase tracking-wider text-slate-900 mb-1">Systems & Operations</h3>
+                <p class="text-xs text-slate-600">Industrial process optimization and layout balancing.</p>
+            </div>
+            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-5 shadow-sm">
+                <h3 class="font-bold text-xs uppercase tracking-wider text-slate-900 mb-1">Education & Content</h3>
+                <p class="text-xs text-slate-600">Curriculum design and interactive learning products.</p>
+            </div>
+            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-5 shadow-sm">
+                <h3 class="font-bold text-xs uppercase tracking-wider text-slate-900 mb-1">Creative Strategy</h3>
+                <p class="text-xs text-slate-600">Brand visual identity and digital growth strategies.</p>
+            </div>
+        </div>
     </div>
+</section>
 
     <!-- Image / Logo Zoom Modal -->
     <div id="logoModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4" onclick="closeLogoModal()">
