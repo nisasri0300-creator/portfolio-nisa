@@ -1,266 +1,441 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nisa Sri Fadilah - Portfolio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Plus Jakarta Sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #F7F4EE;
-            color: #2D2A26;
+        }
+        #role-text {
+            transition: opacity 0.4s ease-in-out;
         }
     </style>
 </head>
-<body class="flex flex-col md:flex-row min-h-screen">
+<body class="text-slate-800 antialiased flex min-h-screen relative overflow-x-hidden">
 
-    <!-- SIDEBAR NAVIGATION -->
-    <aside class="w-full md:w-72 bg-[#F4EFE6] border-r border-[#E6DFD3] p-6 flex flex-col justify-between sticky top-0 h-auto md:h-screen z-20">
+    <!-- TOMBOL HAMBURGER MOBILE -->
+    <button onclick="toggleSidebar()" id="open-btn" class="md:hidden fixed top-6 left-6 z-40 bg-[#F4EFE6] border border-[#E8E1D5] p-3 rounded-2xl shadow-sm items-center justify-center text-slate-800 hover:bg-[#EAE2D2] transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+    </button>
+
+    <!-- SIDEBAR / NAVIGASI -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-30 w-80 bg-[#F4EFE6] border-r border-[#E8E1D5] p-8 flex flex-col justify-between transform transition-transform duration-300 ease-in-out md:translate-x-0 -translate-x-full shadow-sm">
         <div>
-            <!-- Profile Info -->
-            <div class="flex items-center space-x-4 mb-8">
-                <div class="w-14 h-14 rounded-full bg-stone-300 overflow-hidden flex-shrink-0">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
-                </div>
+            <!-- Tombol Tutup Sidebar (Mobile) -->
+            <div class="flex justify-end md:hidden mb-4">
+                <button onclick="toggleSidebar()" class="w-8 h-8 rounded-full bg-[#EAE2D2] flex items-center justify-center font-bold text-slate-800">✕</button>
+            </div>
+
+            <!-- Profil Singkat di Sidebar -->
+            <div class="flex items-center gap-4 mb-10 pb-6 border-b border-[#E8E1D5]">
+                <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-14 h-14 rounded-2xl object-cover border border-[#E8E1D5] shadow-sm">
                 <div>
-                    <h1 class="font-bold text-lg text-stone-800">Nisa Sri Fadilah</h1>
-                    <p class="text-xs text-stone-500">Industrial Engineering & Creative Creator</p>
+                    <h1 class="font-bold text-sm tracking-wide text-slate-900">Nisa Sri Fadilah</h1>
+                    <p class="text-[11px] text-slate-500 font-medium tracking-wider uppercase mt-0.5">Portfolio & Works</p>
                 </div>
             </div>
 
-            <!-- Navigation Links -->
+            <!-- Menu Navigasi -->
             <nav class="space-y-2">
-                <a href="#home" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-stone-700 hover:bg-stone-200/60 transition font-medium text-sm">
-                    <i class="fa-solid fa-house w-5"></i> <span>Home</span>
-                </a>
-                <a href="#creative" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-stone-700 hover:bg-stone-200/60 transition font-medium text-sm">
-                    <i class="fa-solid fa-palette w-5"></i> <span>Creative</span>
-                </a>
-                <a href="#projects" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-stone-700 hover:bg-stone-200/60 transition font-medium text-sm">
-                    <i class="fa-solid fa-briefcase w-5"></i> <span>Projects</span>
-                </a>
-                <a href="#about" class="flex items-center space-x-3 px-4 py-2.5 rounded-xl text-stone-700 hover:bg-stone-200/60 transition font-medium text-sm">
-                    <i class="fa-solid fa-user w-5"></i> <span>About Me</span>
-                </a>
+                <button id="nav-home" onclick="switchTab('home')" class="w-full text-left relative flex items-center gap-4 text-slate-900 font-bold text-sm tracking-wide transition-all py-2 px-3 bg-[#EAE2D2]/60 rounded-lg">
+                    <span class="absolute left-0 w-1 h-4 bg-slate-900 rounded-r-full"></span>
+                    Home
+                </button>
+                <button id="nav-creative" onclick="switchTab('creative')" class="w-full text-left flex items-center gap-4 text-slate-500 hover:text-slate-900 font-medium text-sm tracking-wide transition-all py-2 px-3 hover:bg-[#EAE2D2]/30 rounded-lg">
+                    Creative Works
+                </button>
+                <button id="nav-projects" onclick="switchTab('projects')" class="w-full text-left flex items-center gap-4 text-slate-500 hover:text-slate-900 font-medium text-sm tracking-wide transition-all py-2 px-3 hover:bg-[#EAE2D2]/30 rounded-lg">
+                    Projects
+                </button>
+                <button id="nav-about" onclick="switchTab('about')" class="w-full text-left flex items-center gap-4 text-slate-500 hover:text-slate-900 font-medium text-sm tracking-wide transition-all py-2 px-3 hover:bg-[#EAE2D2]/30 rounded-lg">
+                    About Me
+                </button>
             </nav>
         </div>
 
-        <!-- Sidebar Footer / Socials & CV -->
-        <div class="pt-6 border-t border-[#E6DFD3] mt-6">
-            <div class="flex space-x-3 mb-4 text-stone-600">
-                <a href="https://github.com" target="_blank" class="hover:text-stone-900 transition"><i class="fa-brands fa-github text-lg"></i></a>
-                <a href="https://linkedin.com" target="_blank" class="hover:text-stone-900 transition"><i class="fa-brands fa-linkedin text-lg"></i></a>
-                <a href="https://instagram.com" target="_blank" class="hover:text-stone-900 transition"><i class="fa-brands fa-instagram text-lg"></i></a>
-            </div>
-            <a href="#" class="block w-full text-center bg-stone-800 text-white py-2.5 rounded-xl text-sm font-semibold hover:bg-stone-700 transition shadow-sm mb-4">
-                <i class="fa-solid fa-download mr-2"></i> Download CV
-            </a>
-            <p class="text-xs text-stone-400 text-center">&copy; 2026 Nisa Sri Fadilah</p>
+        <!-- Footer Sidebar -->
+        <div class="text-[11px] text-slate-400 font-medium tracking-wider pt-6 border-t border-[#E8E1D5]">
+            © 2026 Nisa Sri Fadilah. <br>All rights reserved.
         </div>
     </aside>
 
-    <!-- MAIN CONTENT -->
-    <main class="flex-1 p-6 md:p-12 overflow-y-auto">
-        
-        <!-- HOME SECTION -->
-        <section id="home" class="mb-16 min-h-[80vh] flex flex-col justify-center">
-            <div class="max-w-2xl">
-                <span class="inline-block bg-stone-200 text-stone-700 text-xs px-3 py-1 rounded-full font-semibold mb-4 tracking-wide">HELLO THERE!</span>
-                <h1 class="text-4xl md:text-6xl font-bold text-stone-900 mb-6 tracking-tight">
-                    I'm Nisa Sri Fadilah, blending engineering precision with creative vision.
-                </h1>
-                <p class="text-stone-600 text-base md:text-lg leading-relaxed mb-8">
-                    An Industrial Engineering student with a deep passion for branding, graphic design, digital art, web design, and modeling. I turn complex ideas into structural and aesthetic realities.
+    <!-- KONTEN UTAMA -->
+    <div id="main-container" class="flex-1 flex flex-col md:ml-80 transition-all duration-300 min-h-screen">
+
+        <!-- TAB 1: HOME SECTION -->
+        <section id="section-home" class="flex-1 flex items-center justify-center p-8 md:p-16 pt-24 md:pt-16">
+            <div class="max-w-2xl w-full text-center">
+                <div class="inline-block px-4 py-1.5 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-sm mb-6 text-slate-600">
+                    Welcome to my space
+                </div>
+                <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+                    Nisa Sri Fadilah
+                </h2>
+                <p id="role-text" class="text-xs md:text-sm font-bold tracking-[0.3em] uppercase text-slate-500 mb-8 h-6">
+                    INDUSTRIAL ENGINEERING
                 </p>
-                <div class="flex space-x-4">
-                    <a href="#creative" class="bg-stone-900 text-white px-6 py-3 rounded-xl font-medium text-sm hover:bg-stone-800 transition shadow-sm">Explore Creative Work</a>
-                    <a href="#about" class="border border-stone-300 text-stone-700 px-6 py-3 rounded-xl font-medium text-sm hover:bg-stone-200/50 transition">Get to Know Me</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- CREATIVE SECTION -->
-        <section id="creative" class="mb-16">
-            <div class="mb-8">
-                <h2 class="text-2xl font-bold text-stone-900 mb-2">Creative Works & Gallery</h2>
-                <p class="text-stone-500 text-sm">Explore my design collections, branding, modeling, and digital artwork.</p>
-            </div>
-
-            <!-- Filter Buttons -->
-            <div class="flex flex-wrap gap-2 mb-8" id="filter-buttons">
-                <button onclick="filterSelection('all')" class="filter-btn active px-4 py-2 rounded-lg text-xs font-semibold bg-stone-900 text-white transition">All</button>
-                <button onclick="filterSelection('branding')" class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold bg-stone-200 text-stone-700 hover:bg-stone-300 transition">Branding & Logo</button>
-                <button onclick="filterSelection('modeling')" class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold bg-stone-200 text-stone-700 hover:bg-stone-300 transition">Modeling</button>
-                <button onclick="filterSelection('poster')" class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold bg-stone-200 text-stone-700 hover:bg-stone-300 transition">Poster & Social Media</button>
-                <button onclick="filterSelection('digital')" class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold bg-stone-200 text-stone-700 hover:bg-stone-300 transition">Digital Art</button>
-                <button onclick="filterSelection('architecture')" class="filter-btn px-4 py-2 rounded-lg text-xs font-semibold bg-stone-200 text-stone-700 hover:bg-stone-300 transition">Architecture & Web</button>
-            </div>
-
-            <!-- Gallery Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
-                <!-- Item 1 -->
-                <div class="gallery-item branding bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-md transition">
-                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80" alt="Lunae Branding" class="w-full h-48 object-cover cursor-pointer" onclick="openModal(this)">
-                    <div class="p-4">
-                        <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md uppercase tracking-wider">Branding</span>
-                        <h3 class="font-bold text-stone-800 mt-2 text-sm">Lunae Brand Identity</h3>
-                        <p class="text-xs text-stone-500 mt-1">Complete visual identity design including logo and style guide.</p>
-                    </div>
-                </div>
-
-                <!-- Item 2 -->
-                <div class="gallery-item modeling bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-md transition">
-                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80" alt="Modeling Portfolio" class="w-full h-48 object-cover cursor-pointer" onclick="openModal(this)">
-                    <div class="p-4">
-                        <span class="text-[10px] font-bold text-rose-600 bg-rose-50 px-2.5 py-1 rounded-md uppercase tracking-wider">Modeling</span>
-                        <h3 class="font-bold text-stone-800 mt-2 text-sm">Editorial Modeling Look</h3>
-                        <p class="text-xs text-stone-500 mt-1">Creative fashion and aesthetic commercial modeling photoshoot.</p>
-                    </div>
-                </div>
-
-                <!-- Item 3 -->
-                <div class="gallery-item poster bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-md transition">
-                    <img src="https://images.unsplash.com/photo-1542744094-24638eff58bb?auto=format&fit=crop&w=600&q=80" alt="Poster Design" class="w-full h-48 object-cover cursor-pointer" onclick="openModal(this)">
-                    <div class="p-4">
-                        <span class="text-[10px] font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md uppercase tracking-wider">Poster</span>
-                        <h3 class="font-bold text-stone-800 mt-2 text-sm">Event Campaign Poster</h3>
-                        <p class="text-xs text-stone-500 mt-1">Eye-catching social media and event promotion poster design.</p>
-                    </div>
-                </div>
-
-                <!-- Item 4 -->
-                <div class="gallery-item digital bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-md transition">
-                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Digital Art" class="w-full h-48 object-cover cursor-pointer" onclick="openModal(this)">
-                    <div class="p-4">
-                        <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-md uppercase tracking-wider">Digital Art</span>
-                        <h3 class="font-bold text-stone-800 mt-2 text-sm">Abstract 3D Digital Art</h3>
-                        <p class="text-xs text-stone-500 mt-1">Exploration of textures, lighting, and geometric patterns.</p>
-                    </div>
-                </div>
-
-                <!-- Item 5 -->
-                <div class="gallery-item architecture bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-md transition">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Architecture" class="w-full h-48 object-cover cursor-pointer" onclick="openModal(this)">
-                    <div class="p-4">
-                        <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md uppercase tracking-wider">Architecture</span>
-                        <h3 class="font-bold text-stone-800 mt-2 text-sm">Minimalist Space Layout</h3>
-                        <p class="text-xs text-stone-500 mt-1">Interior concept and structural space organization.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROJECTS SECTION -->
-        <section id="projects" class="mb-16">
-            <div class="mb-8">
-                <h2 class="text-2xl font-bold text-stone-900 mb-2">Industrial & Web Projects</h2>
-                <p class="text-stone-500 text-sm">Engineering systems analysis, optimization, and web development case studies.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="font-bold text-stone-800 text-base">Supply Chain Optimization Analysis</h3>
-                        <span class="text-xs bg-stone-100 text-stone-600 px-2.5 py-1 rounded-md font-medium">Engineering</span>
-                    </div>
-                    <p class="text-stone-600 text-xs leading-relaxed mb-4">Conducted data-driven workflow efficiency studies and bottleneck identification using simulation tools to improve manufacturing delivery time.</p>
-                    <div class="flex gap-2">
-                        <span class="text-[10px] bg-stone-100 text-stone-600 px-2 py-0.5 rounded">Python</span>
-                        <span class="text-[10px] bg-stone-100 text-stone-600 px-2 py-0.5 rounded">Simul8</span>
-                    </div>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm">
-                    <div class="flex justify-between items-start mb-4">
-                        <h3 class="font-bold text-stone-800 text-base">Portfolio Web Design System</h3>
-                        <span class="text-xs bg-stone-100 text-stone-600 px-2.5 py-1 rounded-md font-medium">Web Dev</span>
-                    </div>
-                    <p class="text-stone-600 text-xs leading-relaxed mb-4">Designed and built responsive personal portfolio websites incorporating clean UI components, Tailwind CSS, and interactive image galleries.</p>
-                    <div class="flex gap-2">
-                        <span class="text-[10px] bg-stone-100 text-stone-600 px-2 py-0.5 rounded">HTML/CSS</span>
-                        <span class="text-[10px] bg-stone-100 text-stone-600 px-2 py-0.5 rounded">Tailwind</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ABOUT ME SECTION -->
-        <section id="about" class="mb-16">
-            <div class="bg-white p-8 rounded-3xl border border-stone-200 shadow-sm max-w-3xl">
-                <h2 class="text-2xl font-bold text-stone-900 mb-4">About Me</h2>
-                <p class="text-stone-600 text-sm leading-relaxed mb-6">
-                    Hi! I am Nisa. Combining analytical problem-solving from my Industrial Engineering background with creative expressions such as visual branding, graphic arts, and design, I strive to create solutions that are both functional and visually compelling.
+                <p class="text-xs md:text-sm text-slate-600 leading-relaxed mb-10 max-w-lg mx-auto">
+                    Menggabungkan ketelitian teknik industri dengan kreativitas desain visual dan pengembangan digital yang bermakna.
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-stone-700">
-                    <div class="flex items-center space-x-3">
-                        <i class="fa-solid fa-graduation-cap text-stone-400"></i>
-                        <span>Industrial Engineering Student</span>
+                <div class="flex items-center justify-center gap-4">
+                    <button onclick="switchTab('creative')" class="px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-full text-xs font-bold uppercase tracking-[0.15em] shadow-sm transition-all">
+                        Explore Works
+                    </button>
+                    <button onclick="switchTab('about')" class="px-6 py-3 bg-[#F4EFE6] hover:bg-[#EAE2D2] border border-[#E8E1D5] text-slate-800 rounded-full text-xs font-bold uppercase tracking-[0.15em] shadow-sm transition-all">
+                        About Me
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: CREATIVE WORKS SECTION -->
+        <section id="section-creative" class="hidden flex-1 p-8 md:p-16 pt-24 md:pt-16">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-center text-xl md:text-2xl font-bold tracking-[0.3em] uppercase mb-8 text-slate-900">C R E A T I V E &nbsp; W O R K S</h2>
+                
+                <!-- Filter Kategori -->
+                <div class="flex flex-wrap justify-center gap-3 mb-12">
+                    <button onclick="filterCreative('all')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#EAE2D2] text-slate-900 shadow-sm">All</button>
+                    <button onclick="filterCreative('logo')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Logo</button>
+                    <button onclick="filterCreative('poster')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Poster</button>
+                    <button onclick="filterCreative('social')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Social Media</button>
+                    <button onclick="filterCreative('web')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Web Design</button>
+                    <button onclick="filterCreative('art')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Digital Art</button>
+                    <button onclick="filterCreative('sticker')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Sticker Art</button>
+                    <button onclick="filterCreative('architecture')" class="filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700">Architecture</button>
+                </div>
+
+                <!-- Daftar Konten Kreatif -->
+                <div id="creative-grid">
+                    
+                    <!-- LOGO SECTION -->
+                    <div class="creative-item mb-14" data-category="logo">
+                        <div class="mb-8 flex flex-col items-start">
+                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
+                                LOGO DESIGN
+                            </div>
+                            <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Click on any design to view larger</p>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('Logo 1.png', 'Logo Design 1')">
+                                <img src="Logo 1.png" alt="Logo 1" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('Logo 2.png', 'Logo Design 2')">
+                                <img src="Logo 2.png" alt="Logo 2" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('Logo 3.png', 'Logo Design 3')">
+                                <img src="Logo 3.png" alt="Logo 3" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex items-center space-x-3">
-                        <i class="fa-solid fa-location-dot text-stone-400"></i>
-                        <span>Indonesia</span>
+
+                    <!-- POSTER SECTION -->
+                    <div class="creative-item mb-14" data-category="poster">
+                        <div class="mb-8 flex flex-col items-start">
+                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
+                                POSTER DESIGN
+                            </div>
+                            <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Click on any design to view larger</p>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('POSTER 1.png', 'POSTER 1')">
+                                <img src="POSTER 1.png" alt="Poster 1" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('POSTER 2.png', 'POSTER 2')">
+                                <img src="POSTER 2.png" alt="Poster 2" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('POSTER 3.png', 'POSTER 3')">
+                                <img src="POSTER 3.png" alt="Poster 3" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('POSTER 4.png', 'POSTER 4')">
+                                <img src="POSTER 4.png" alt="Poster 4" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('POSTER 5.png', 'POSTER 5')">
+                                <img src="POSTER 5.png" alt="Poster 5" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('POSTER 6.png', 'POSTER 6')">
+                                <img src="POSTER 6.png" alt="Poster 6" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex items-center space-x-3">
-                        <i class="fa-solid fa-palette text-stone-400"></i>
-                        <span>Branding & Visual Design</span>
+
+                    <!-- SOCIAL MEDIA SECTION -->
+                    <div class="creative-item mb-14" data-category="social">
+                        <div class="mb-8 flex flex-col items-start">
+                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
+                                SOCIAL MEDIA DESIGN
+                            </div>
+                            <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Click on any design to view larger</p>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('Social Media 1.png', 'Social Media 1')">
+                                <img src="Social Media 1.png" alt="Social Media 1" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('Social Media 2.png', 'Social Media 2')">
+                                <img src="Social Media 2.png" alt="Social Media 2" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('Social Media 3.png', 'Social Media 3')">
+                                <img src="Social Media 3.png" alt="Social Media 3" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex items-center space-x-3">
-                        <i class="fa-solid fa-camera text-stone-400"></i>
-                        <span>Modeling & Creative Art</span>
+
+                    <!-- DESIGN WEB SECTION -->
+                    <div class="creative-item mb-14" data-category="web">
+                        <div class="mb-8 flex flex-col items-start">
+                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
+                                WEB DESIGN
+                            </div>
+                            <p class="text-[10px] text-slate-400 font-medium tracking-wider uppercase">UI/UX & Web Layouts</p>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('Web Design.png', 'Web Design Layout')">
+                                <img src="Web Design.png" alt="Web Design" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DIGITAL ART SECTION -->
+                    <div class="creative-item mb-14" data-category="art">
+                        <div class="mb-8 flex flex-col items-start">
+                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
+                                DIGITAL ART
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('Digital Art.png', 'Digital Art')">
+                                <img src="Digital Art.png" alt="Digital Art" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STICKER ART SECTION -->
+                    <div class="creative-item mb-14" data-category="sticker">
+                        <div class="mb-8 flex flex-col items-start">
+                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
+                                STICKER ART
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('Sticker Art.png', 'Sticker Art')">
+                                <img src="Sticker Art.png" alt="Sticker Art" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ARCHITECTURE SECTION -->
+                    <div class="creative-item mb-14" data-category="architecture">
+                        <div class="mb-8 flex flex-col items-start">
+                            <div class="inline-block px-6 py-2 bg-[#F4EFE6] border border-[#E8E1D5] rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-sm mb-1.5">
+                                ARCHITECTURE
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-2xl p-3 shadow-sm cursor-pointer hover:scale-[1.02] transition-transform overflow-hidden" onclick="openLogoModal('Architecture.png', 'Architecture Design')">
+                                <img src="Architecture.png" alt="Architecture" class="w-full h-64 object-cover rounded-xl">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: PROJECTS SECTION -->
+        <section id="section-projects" class="hidden flex-1 p-8 md:p-16 pt-24 md:pt-16">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-center text-xl md:text-2xl font-bold tracking-[0.3em] uppercase mb-12 text-slate-900">P R O J E C T S</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-400 mb-2 block">Industrial Engineering</span>
+                            <h3 class="text-lg font-bold text-slate-900 mb-3">System Optimization & Analysis</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-6">Menerapkan konsep teknik industri untuk menganalisis alur produksi, efisiensi operasional, dan peningkatan kualitas sistem kerja.</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-3 py-1 bg-white border border-[#E8E1D5] rounded-full text-[10px] font-semibold text-slate-700">Process Engineering</span>
+                            <span class="px-3 py-1 bg-white border border-[#E8E1D5] rounded-full text-[10px] font-semibold text-slate-700">Operations</span>
+                        </div>
+                    </div>
+                    <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-400 mb-2 block">Branding & Creative</span>
+                            <h3 class="text-lg font-bold text-slate-900 mb-3">Brand Identity Development</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-6">Pengembangan identitas visual, mulai dari pembuatan logo, pemilihan palet warna, tipografi, hingga panduan estetika merek.</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-3 py-1 bg-white border border-[#E8E1D5] rounded-full text-[10px] font-semibold text-slate-700">UI/UX</span>
+                            <span class="px-3 py-1 bg-white border border-[#E8E1D5] rounded-full text-[10px] font-semibold text-slate-700">Visual Design</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-    </main>
+        <!-- TAB 4: ABOUT ME SECTION -->
+        <section id="section-about" class="hidden flex-1 p-8 md:p-16 pt-24 md:pt-16">
+            <div class="max-w-4xl mx-auto bg-[#F4EFE6] border border-[#E8E1D5] rounded-3xl p-8 md:p-12 shadow-sm">
+                <h2 class="text-center text-xl md:text-2xl font-bold tracking-[0.3em] uppercase mb-8 text-slate-900">A B O U T &nbsp; M E</h2>
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <img src="profile.jpg" alt="Nisa Sri Fadilah" class="w-40 h-40 rounded-2xl object-cover border-4 border-white shadow-md">
+                    <div class="space-y-4 text-xs md:text-sm text-slate-700 leading-relaxed">
+                        <p>Halo! Saya <strong class="text-slate-900">Nisa Sri Fadilah</strong>, seorang profesional dengan latar belakang <strong class="text-slate-900">Industrial Engineering</strong> yang memiliki ketertarikan mendalam pada dunia desain kreatif, identitas merek (branding), serta pengembangan antarmuka digital.</p>
+                        <p>Saya menggabungkan pola pikir analitis dari teknik industri dengan kreativitas visual untuk menciptakan solusi yang fungsional sekaligus estetis. Terbuka untuk berbagai kesempatan kolaborasi di bidang teknik, desain, maupun kreatif.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- IMAGE MODAL -->
-    <div id="imageModal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4" onclick="closeModal()">
-        <div class="relative max-w-4xl w-full flex justify-center">
-            <img id="modalImg" src="" class="max-h-[85vh] max-w-full rounded-xl object-contain shadow-2xl">
-            <button class="absolute top-4 right-4 text-white bg-black/50 hover:bg-black w-10 h-10 rounded-full flex items-center justify-center transition">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
+    </div>
+
+    <!-- MODAL POPUP UNTUK GAMBAR -->
+    <div id="imageModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="relative bg-[#F7F4EE] rounded-3xl max-w-3xl w-full p-6 border border-[#E8E1D5] shadow-2xl flex flex-col items-center">
+            <button onclick="closeLogoModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#EAE2D2] hover:bg-[#DDD5C3] flex items-center justify-center text-slate-800 font-bold transition-colors">✕</button>
+            <h3 id="modalTitle" class="text-xs font-bold tracking-[0.2em] uppercase text-slate-800 mb-4"></h3>
+            <div class="w-full max-h-[70vh] flex items-center justify-center overflow-hidden rounded-2xl bg-white border border-[#E8E1D5] p-2">
+                <img id="modalImg" src="" alt="Zoomed Image" class="max-h-[65vh] object-contain rounded-xl">
+            </div>
         </div>
     </div>
 
-    <!-- JAVASCRIPT FOR FILTERING & MODAL -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        function filterSelection(category) {
-            let items = document.getElementsByClassName('gallery-item');
-            if (category == 'all') category = '';
+        const roles = [
+            "INDUSTRIAL ENGINEERING",
+            "CREATIVE DESIGNER",
+            "BRANDING STRATEGIST",
+            "UI/UX & DIGITAL ARTIST"
+        ];
+        let currentRoleIndex = 0;
+        const roleTextElement = document.getElementById('role-text');
+
+        function rotateRole() {
+            if (!roleTextElement) return;
+            roleTextElement.style.opacity = 0;
+            setTimeout(() => {
+                currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+                roleTextElement.textContent = roles[currentRoleIndex];
+                roleTextElement.style.opacity = 1;
+            }, 400);
+        }
+        setInterval(rotateRole, 3000);
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContainer = document.getElementById('main-container');
+            const openBtn = document.getElementById('open-btn');
+
+            sidebar.classList.toggle('-translate-x-full');
             
-            for (let i = 0; i < items.length; i++) {
-                items[i].style.display = "none";
-                if (items[i].className.indexOf(category) > -1) {
-                    items[i].style.display = "block";
+            if (sidebar.classList.contains('-translate-x-full')) {
+                mainContainer.classList.remove('md:ml-80');
+                mainContainer.classList.add('ml-0');
+                openBtn.classList.remove('hidden');
+                openBtn.classList.add('flex');
+            } else {
+                mainContainer.classList.add('md:ml-80');
+                openBtn.classList.add('hidden');
+                openBtn.classList.remove('flex');
+            }
+        }
+
+        window.addEventListener('resize', () => {
+            const sidebar = document.getElementById('sidebar');
+            const openBtn = document.getElementById('open-btn');
+            if (window.innerWidth < 768) {
+                if (!sidebar.classList.contains('-translate-x-full')) {
+                    sidebar.classList.add('-translate-x-full');
+                    openBtn.classList.remove('hidden');
+                    openBtn.classList.add('flex');
                 }
+            } else {
+                sidebar.classList.remove('-translate-x-full');
+                openBtn.classList.add('hidden');
+                openBtn.classList.remove('flex');
             }
+        });
 
-            // Update active button styles
-            let buttons = document.getElementsByClassName('filter-btn');
-            for (let i = 0; i < buttons.length; i++) {
-                buttons[i].classList.remove('bg-stone-900', 'text-white');
-                buttons[i].classList.add('bg-stone-200', 'text-stone-700');
+        function switchTab(tabName) {
+            const tabs = ['home', 'creative', 'projects', 'about'];
+            tabs.forEach(t => {
+                const section = document.getElementById(`section-${t}`);
+                const navBtn = document.getElementById(`nav-${t}`);
+                
+                if (t === tabName) {
+                    section.classList.remove('hidden');
+                    if (navBtn) {
+                        navBtn.className = "w-full text-left relative flex items-center gap-4 text-slate-900 font-bold text-sm tracking-wide transition-all py-2 px-3 bg-[#EAE2D2]/60 rounded-lg";
+                        if (!navBtn.querySelector('span.absolute')) {
+                            const indicator = document.createElement('span');
+                            indicator.className = "absolute left-0 w-1 h-4 bg-slate-900 rounded-r-full";
+                            navBtn.prepend(indicator);
+                        }
+                    }
+                } else {
+                    section.classList.add('hidden');
+                    if (navBtn) {
+                        navBtn.className = "w-full text-left flex items-center gap-4 text-slate-500 hover:text-slate-900 font-medium text-sm tracking-wide transition-all py-2 px-3 hover:bg-[#EAE2D2]/30 rounded-lg";
+                        const indicator = navBtn.querySelector('span.absolute');
+                        if (indicator) indicator.remove();
+                    }
+                }
+            });
+
+            if (window.innerWidth < 768) {
+                toggleSidebar();
             }
-            event.target.classList.remove('bg-stone-200', 'text-stone-700');
-            event.target.classList.add('bg-stone-900', 'text-white');
+            window.scrollTo(0, 0);
         }
 
-        function openModal(element) {
-            let modal = document.getElementById("imageModal");
-            let modalImg = document.getElementById("modalImg");
-            modal.style.display = "flex";
-            modalImg.src = element.src;
+        function filterCreative(category) {
+            const items = document.querySelectorAll('.creative-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                btn.className = "filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#F4EFE6] hover:bg-[#EAE2D2] text-slate-700";
+            });
+            event.target.className = "filter-btn px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.15em] transition-all bg-[#EAE2D2] text-slate-900 shadow-sm";
+
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         }
 
-        function closeModal() {
-            document.getElementById("imageModal").style.display = "none";
+        function openLogoModal(imgSrc, titleText) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            const modalTitle = document.getElementById('modalTitle');
+
+            modalImg.src = imgSrc;
+            modalTitle.textContent = titleText;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
         }
+
+        function closeLogoModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        document.getElementById('imageModal').addEventListener('click', (e) => {
+            if (e.target.id === 'imageModal') {
+                closeLogoModal();
+            }
+        });
     </script>
 </body>
 </html>
