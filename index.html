@@ -635,28 +635,44 @@
         </div>
     </div>
 </section>
-      <!-- TAB 1: ABOUT SECTION -->
+    <!-- TAB 1: ABOUT SECTION -->
 <section id="section-about" class="flex-1 p-8 md:p-16 pt-24 md:pt-16 flex flex-col justify-center">
     <div class="max-w-4xl mx-auto w-full">
         
-        <!-- Main Profile Card -->
-        <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-3xl p-8 md:p-12 shadow-sm flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-6">
+        <!-- Header Estetik dengan Foto Blur di Atas -->
+        <div class="relative overflow-hidden rounded-3xl bg-[#F4EFE6] border border-[#E8E1D5] p-8 md:p-12 mb-6 shadow-sm text-center">
+            <!-- Elemen Foto Kecil yang Diblur sebagai Ambient Background -->
+            <div class="absolute inset-0 opacity-15 blur-md scale-110 pointer-events-none">
+                <img src="NAMA_FOTO_WAJAH_ASLI.jpg" alt="Background Ambient" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Konten Header Atas -->
+            <div class="relative z-10">
+                <span class="text-[10px] font-bold uppercase tracking-widest bg-[#EAE2D2] px-3 py-1 rounded-md text-slate-700 inline-block mb-3">
+                    Industrial Engineer & Creator
+                </span>
+                <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-2">
+                    Nisa Sri Fadilah
+                </h1>
+                <p class="text-xs md:text-sm text-slate-600 max-w-lg mx-auto">
+                    Bridging analytical precision with creative execution to build efficient systems and impactful digital experiences.
+                </p>
+            </div>
+        </div>
+
+        <!-- Main Profile Card (Foto Asli yang Jelas & Bio) -->
+        <div class="bg-[#F4EFE6] border border-[#E8E1D5] rounded-3xl p-6 md:p-8 shadow-sm flex flex-col md:flex-row items-center gap-6 md:gap-10 mb-6">
             
-            <!-- Profile Picture (Pastikan nama file foto kamu benar di attribute src) -->
+            <!-- Foto Profil Asli (Pastikan nama file fotonya benar) -->
             <div class="flex-shrink-0">
-                <div class="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-white shadow-md bg-white">
-                    <img src="lunae-brand.jpeg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
+                <div class="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden border-4 border-white shadow-md bg-white">
+                    <img src="NAMA_FOTO_WAJAH_ASLI.jpg" alt="Nisa Sri Fadilah" class="w-full h-full object-cover">
                 </div>
             </div>
 
-            <!-- Profile Info & Bio -->
+            <!-- Bio Singkat -->
             <div class="flex-1 text-center md:text-left">
-                <h1 class="text-2xl md:text-3xl font-bold tracking-tight text-slate-900 mb-1">
-                    Nisa Sri Fadilah
-                </h1>
-                <p class="text-[11px] md:text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">
-                    Industrial Engineer, Educator & Creative Specialist
-                </p>
+                <h2 class="font-bold text-base text-slate-900 mb-1">About My Journey</h2>
                 <p class="text-xs md:text-sm text-slate-700 leading-relaxed">
                     Deeply passionate about systems efficiency, operational management, educational technology, visual creativity, and digital solutions. Experienced in bridging analytical approaches with creative development and teaching practice.
                 </p>
